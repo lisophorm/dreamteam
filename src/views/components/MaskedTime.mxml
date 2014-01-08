@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:s="library://ns.adobe.com/flex/spark"
+		 xmlns:fx="http://ns.adobe.com/mxml/2009"
+		 xmlns:ai="http://ns.adobe.com/ai/2009"
+		 xmlns:d="http://ns.adobe.com/fxg/2008/dt"
+		 xmlns:flm="http://ns.adobe.com/flame/2008" 
+		 >
+	<fx:Script>
+		<![CDATA[
+			[Bindable]
+			public var text:String = "00:00";
+			
+			protected var charNum:int = 0;
+			public function init(e:Event=null):void
+			{
+				text = "00:00"
+				charNum = 0;
+				minute.setFocus();
+				systemManager.stage.addEventListener(KeyboardEvent.KEY_DOWN, checkKey);
+				update();
+			}
+			
+			protected function checkKey( e:KeyboardEvent ):void
+			{
+				if ("0123456789".indexOf(String.fromCharCode(e.charCode))!=-1)
+				{		
+					if (text.charAt(charNum)==":")
+					{
+						charNum+=1;
+					}
+					charNum %= text.length;
+					text = text.substr(0, charNum)+String.fromCharCode(e.charCode)+text.substr(charNum+1);
+					charNum+=1;
+					//			charNum %= time.length;
+					//time[charNum] = String.fromCharCode(e.charCode);
+					
+					
+				}
+				update();
+			}
+			protected function update():void
+			{
+				minute.text = text.split(":")[0];
+				seconds.text = text.split(":")[1];
+				if (charNum<2)
+				{
+					minute.setFocus();
+					minute.selectRange(charNum, charNum+1); 
+				}
+				
+				if (charNum>=2)
+				{
+					seconds.setFocus();
+					seconds.selectRange(charNum-2, charNum-2+1);
+				}
+			}
+			
+			
+		]]>
+	</fx:Script>
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	<s:HGroup verticalAlign="middle">
+		<s:TextInput text="" id="minute" width="80" textAlign="center" skinClass="skins.vodafoneTextInput"  softKeyboardType="number"  selectionHighlighting="always" 
+					 selectable="true"  /> 
+		<s:Label text=":" /> 
+		<s:TextInput text="" id="seconds" width="80" textAlign="center" skinClass="skins.vodafoneTextInput" softKeyboardType="number"  selectionHighlighting="always" 
+					 selectable="true"  />		
+	</s:HGroup>
+	
+	
+</s:Group>

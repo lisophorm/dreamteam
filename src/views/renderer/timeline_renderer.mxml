@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:ItemRenderer xmlns:fx="http://ns.adobe.com/mxml/2009" 
+				xmlns:s="library://ns.adobe.com/flex/spark" 
+				xmlns:mx="library://ns.adobe.com/flex/mx" 
+				autoDrawBackground="false">
+	<fx:Script>
+		<![CDATA[
+			
+			
+			[Bindable]
+			public var teamColor:uint = 0xFFFFFF;
+			
+			
+		]]>
+	</fx:Script>
+		<s:HGroup>
+			<s:Label paddingLeft="50" text="{data.@year}" color="{teamColor}"/><s:Spacer width="100"/><s:Label fontFamily="StandardRegularAllCase" width="700" text="{data.text()}"/>
+		</s:HGroup>
+	
+</s:ItemRenderer>

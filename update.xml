@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<update xmlns="http://ns.adobe.com/air/framework/update/description/1.0">
+    <version>0.9.4</version>
+    <url>http://c-lab.co.uk/clients/dreamteam/dreamteam_0_9_4.air</url>
+    <description><![CDATA[
+         This version has fixes for the following known issues:
+         * Button on players are larger to improve touch interaction
+         * Fix for Windows bug in air - where proxy image does not show
+         (resolved by publishing from OSX)
+         * Added update on demand
+  ]]></description>
+</update>

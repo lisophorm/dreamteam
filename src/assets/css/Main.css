@@ -1,0 +1,166 @@
+/* CSS file */
+@namespace s "library://ns.adobe.com/flex/spark";
+@namespace mx "library://ns.adobe.com/flex/mx";
+
+
+global
+{
+	/*
+	text-align: center;
+	content-background-color: #FFFFFF;
+	*/
+	fontFamily: "StandardRegular";
+}
+s|Label  {
+	fontSize: 20;
+	fontFamily: "StandardRegular";
+	color: #FFFFFF;
+	
+}
+s|VideoPlayer, s|VideoDisplay {
+	borderThickness: 0;
+	backgroundColor: #000000;
+}
+
+.cameraHeading 
+{
+	fontSize: 24;
+	fontFamily: "StandardRegular";
+	color: #FFFFFF;
+}
+.cameralistLabel 
+{
+	fontSize: 20;
+	fontFamily: "StandardRegularNoCFF";
+	color: #FFFFFF;
+}
+
+#photoList s|Label  {
+	fontSize: 24;
+	fontFamily: "StandardRegular";
+	color: #FFFFFF
+		
+}
+#titleDisplay 
+{
+	fontSize: 28;
+	fontFamily: "StandardRegular";
+	color:#FFFFFF;
+}
+.verysmallprint {
+	fontSize: 14;
+	fontFamily: "StandardRegular";
+	color:#FFFFFF;
+
+}
+.smallprint {
+	fontSize: 21;
+	fontFamily: "StandardRegular";
+	color:#FFFFFF;
+}
+.smallprintLink {
+	fontSize: 21;
+	fontFamily: "StandardRegular";
+}
+s|FormHeading s|Label#labelDisplay {
+	fontSize: 32;
+	fontFamily: "StandardRegularAllCase";
+	color: #FFFFFF;
+	fontWeight: normal;
+}
+s|FormItem
+{
+	skinClass: ClassReference("skins.vodafoneFormItem");
+	
+}
+#labelDisplay, .formItemLabelStyles {
+	fontSize: 32;
+	fontFamily: "StandardRegular";
+	color: #FFFFFF;
+	fontWeight: normal;
+}
+s|FormItem s|Label#labelDisplay, s|RadioButton s|Label,
+{
+	fontFamily: "StandardRegularAllCase";
+}
+
+
+s|VGroup.Game s|Label
+{
+	fontSize: 32;
+	fontFamily: "StandardRegular";
+	textAlign: left;
+	color: #FFFFFF;
+}
+
+s|VGroup.Game s|Label.userInfo
+{
+	fontSize: 32;
+	fontFamily: "StandardRegular"; 
+	textAlign: left;
+	color: #FFFFFF;
+}
+
+s|VGroup.Game s|Label.heading
+{
+	fontSize: 32;
+	fontFamily: "StandardRegular";
+	textAlign: left;
+	color: #E60000;
+}
+s|Button {
+	skinClass: ClassReference("skins.vodafoneButton");
+	fontFamily: "StandardRegular";
+	fontSize: 28;
+}
+.buttonLabel {
+	fontFamily: "StandardRegular";
+	fontSize: 28;
+}
+s|TextInput {
+	fontFamily: "StandardMedium";
+	fontSize: 32;
+}
+s|RadioButton {
+	skinClass: ClassReference("skins.vodafoneRadioButton");
+	
+}
+s|RadioButton #labelDisplay {
+	fontSize:18;
+	fontFamily: "StandardRegularAllCase";
+	
+}
+s|CheckBox {
+	skinClass: ClassReference("skins.vodafoneCheckBox");
+}
+s|TextInput
+{
+	skinClass: ClassReference("skins.vodafoneTextInput");
+}
+
+s|Button.nav
+{
+	skinClass: ClassReference("skins.BasicButton");
+	color: #FFFFFF;
+
+	
+}
+mx|ViewStack mx|VBox
+{
+	horizontalAlign: "center";
+	verticalAlign: "middle";
+	width:"100%";
+	height:"100%"
+	
+}
+.thankyou
+{
+	fontFamily: "StandardMedium";
+	fontSize: 40;
+}
+.sideButton {
+	fontSize: 14px;
+	fontFamily: "StandardRegular";
+	color: #CCCCCC;
+	
+}

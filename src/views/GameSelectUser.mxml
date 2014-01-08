@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		xmlns:s="library://ns.adobe.com/flex/spark" 
+		remove="exit(event)" creationComplete="created(event)" 
+		xmlns:components="views.components.*" xmlns:mx="library://ns.adobe.com/flex/mx" 
+		>
+	<fx:Script>
+		<![CDATA[
+			import events.ApplicationEvent;
+			import events.KioskError;
+			import events.ViewEvent;
+			
+			import model.Config;
+			
+			import mx.collections.IList;
+			import mx.collections.XMLListCollection;
+			import mx.events.FlexEvent;
+			import mx.rpc.events.FaultEvent;
+			import mx.rpc.events.ResultEvent;
+			import mx.utils.StringUtil;
+			
+			import spark.events.IndexChangeEvent;
+			
+			import views.components.AlfoDataGroup;
+			
+			[Bindable]
+			public var data:Object;
+			
+			
+			[Bindable]
+			public var userDataList:XMLListCollection = new XMLListCollection();
+			
+			protected var lookupTimer:Timer;
+			
+			private var lastScrollPosition:int;
+			
+			public function created(event:FlexEvent=null):void
+			{
+				this.addEventListener( Event.INIT, init);
+			}
+			
+			public function init(event:Event=null):void
+			{
+				trace("*** INIT APPLICATIONTYPE ***");
+				if (this.parentApplication.data!=null)
+				{
+					data = this.parentApplication.data;
+				/*	var xml:XML = <root>
+									<users><name>Frank</name><img src="www.intel-ultrabook-lovebox.comphotos/0002.jpg"/></users>
+									<users><name>Roger</name><img src="www.intel-ultrabook-lovebox.com/photos/0002.jpg"/></users>
+								</root>;*/
+					//display(xml..users);
+					
+					lookup();
+				}
+			}
+			
+			protected function exit(event:Event=null):void
+			{
+				trace("*** EXIT APPLICATIONTYPE ***");
+				stopTimer();
+			}
+			protected function stopTimer():void
+			{
+				if (lookupTimer!=null)
+				{
+					lookupTimer.removeEventListener( TimerEvent.TIMER, lookup );
+					lookupTimer.stop();
+				}
+			}
+			protected function submit(e:MouseEvent):void
+			{
+				if (userList.selectedIndex!=-1)
+				{
+				var userID:int = int(userDataList.getItemAt(userList.selectedIndex).id);
+				var userName:String= userDataList.getItemAt(userList.selectedIndex).firstname.text()+" "+userDataList.getItemAt(userList.selectedIndex).lastname.text()
+				this.parentApplication.dispatchEvent( new ViewEvent( ViewEvent.LOCATION_PHOTO_SELECTED_USER ) );
+				} else
+				{
+					this.parentApplication.dispatchEvent(new KioskError(KioskError.ERROR, "NO USER SELECTED", "PLEASE SELECT USER"));
+				}
+			}
+			
+			protected function cancel(e:MouseEvent):void
+			{
+				
+				this.parentApplication.dispatchEvent( new ViewEvent(ViewEvent.LOCATION_RESTART ));
+			}
+			protected function display(users:XMLList):void
+			{
+				userDataList.source = users;
+				
+				//trace(users);
+			}
+			protected function recieved(e:ResultEvent=null):void
+			{
+				// -> Do we need to send an isRegistered? We should divide Facebook and Direct registration perhaps
+				var xml:XML = new XML(e.result)
+				display(xml..root);
+				lookupIn(20);
+			}
+			protected function lookup( e:Event =null ):void
+			{
+				stopTimer();
+				getData.url = (this.parentApplication).baseURL+'photoxml.php';
+				lastScrollPosition=userList.layout.verticalScrollPosition;
+				getData.send();
+			}
+			protected function lookupIn( sec: int ):void
+			{
+				lookupTimer = new Timer( sec*1000,0);
+				lookupTimer.addEventListener( TimerEvent.TIMER, lookup );
+				lookupTimer.start();
+			}
+			protected function error(e:FaultEvent):void
+			{
+				this.parentApplication.dispatchEvent(new KioskError(KioskError.ERROR, e.fault.message.toString(), "COMMUNICATION ERROR"));
+				
+			}
+			public function itemImage(item:Object):String {
+				return StringUtil.trim(item.profileurl.text());             
+			}
+			public function itemName(item:Object):String {
+				return item.name.text();     
+		
+			}
+			public function resizeImage( e:Event ):void {
+				
+				var d:spark.components.Image = spark.components.Image(e.currentTarget);
+				//trace(d.width);
+				if (!isNaN(d.width)) {
+					if (d.width>0) {
+						d.scaleX = d.scaleY = Math.max(80/d.width, 80/d.height);
+						//d.left = (d.width)/2;
+						//d.top = (-d.height)/2
+						
+					}
+				}
+			}
+			
+
+			protected function userList_updateCompleteHandler(event:FlexEvent):void
+			{
+				trace("************* user list updated"+lastScrollPosition);
+				userList.layout.verticalScrollPosition=lastScrollPosition;
+				
+			}
+			
+		]]>
+	</fx:Script>
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->			
+		<s:HTTPService id="getData" resultFormat="e4x" method="POST" url="{(this.parentApplication).baseURL+'photoxml.php'}" result="recieved(event)" fault="error(event)" />
+
+	</fx:Declarations>
+
+	
+	<s:VGroup horizontalAlign="center" verticalAlign="middle" width="100%" height="600">
+
+			
+			<s:List id="userList" dataProvider="{userDataList}" width="100%"  height="80%" borderAlpha="0" updateComplete="userList_updateCompleteHandler(event)">
+
+				
+
+				<s:itemRenderer>
+					<fx:Component>
+						<s:ItemRenderer>
+							
+						<s:HGroup verticalAlign="middle" width="100%" paddingBottom="2" paddingTop="2">
+						
+						<s:BorderContainer borderAlpha="0"  width="80" height="80">
+							
+							<s:Image left="0" top="0" mask="{rect}"   source='{outerDocument.itemImage(data)}' updateComplete="{outerDocument.resizeImage(event)}"  />
+								<s:Graphic id="rect">
+									<s:Rect width="80" height="80" radiusX="10" radiusY="10" top="0" left="0">
+										<s:fill>
+											<s:SolidColor color="0xCCFFCC"/><!-- can be any color -->
+										</s:fill>
+									</s:Rect>
+									
+								</s:Graphic>
+						</s:BorderContainer>
+							
+							<s:Label width="100%" text='{data.firstname.text()+" "+data.lastname.text()}' />
+								
+						</s:HGroup>
+							
+						</s:ItemRenderer>
+					
+					</fx:Component>
+					
+				</s:itemRenderer>
+			
+			</s:List>
+		
+			
+		<s:HGroup verticalAlign="middle">
+			<s:Button  label="Back" click="cancel(event)"  skinClass="skins.vodafoneButton"/>
+			<s:Spacer y="8" width="200" height="24"/>
+			<s:Button id="submitButton" label="Submit" click="submit(event)"  skinClass="skins.vodafoneButton" />
+		</s:HGroup>
+		
+		
+	</s:VGroup>
+</s:Group>

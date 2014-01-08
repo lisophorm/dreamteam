@@ -1,0 +1,850 @@
+<game>
+  <team name="Arsenal" id="Arsenal"  color="0xA9172A" logo="Arsenal.png">
+  <goalkeeper>
+    <player>David Seaman</player>
+    <player>Wojciech Szczesny</player>
+    <player>Jens Lehmann</player>
+    <player>Manuel Almunia</player>
+    </goalkeeper>
+  <defender>
+    <player>Tony Adams</player>
+    <player>Thomas Vermaelen</player>
+    <player>William Gallas</player>
+    <player>Sol Campbell</player>
+    <player>Bacary Sagna</player>
+    <player>Emmanuel Eboue</player>
+    <player>Kolo Toure</player>
+    <player>Philippe Senderos</player>
+    <player>Kieran Gibbs</player>
+    <player>Gael Clichy</player>
+  </defender>
+  <midfielder>
+    <player>Jack Wilshere</player>
+    <player>Theo Walcott</player>
+    <player>Marc Overmars</player>
+    <player>Robert Pires</player>
+    <player>Aaron Ramsey</player>
+    <player>Santi Cazola</player>
+    <player>Cesc Fabregas</player>
+    <player>Patrick Vieira</player>
+    <player>Freddie Ljungberg</player>
+    <player>Alexandre Song</player>
+  </midfielder>
+  <forward>
+    <player>Robin van Persie</player>
+    <player>Ian Wright</player>
+    <player>Thierry Henry</player>
+    <player>Olivier Giroud</player>
+    <player>Dennis Bergkamp</player>
+    <player>Sylvain Wiltord</player>
+    <player>Nwankwo Kano</player>
+    <player>Jose Antonio Reyes</player>
+    </forward>
+  </team>
+  
+  <team name="Aston Villa" id="Aston-Villa"  color="0xA9172A" logo="Aston-Villa.png">
+  <goalkeeper>
+    <player>Shay Given</player>
+    <player>Brad Friedel</player>
+    <player>Mark Bosnich</player>
+    <player>Nigel Spink</player>
+  </goalkeeper>
+  <defender>
+    <player>Alan Wright</player>
+    <player>Olof Mellberg</player>
+    <player>Martin Laursen</player>
+    <player>Gareth Southgate</player>
+    <player>Ugo Ehiogu</player>
+    <player>Earl Barrett</player>
+    <player>James Collins</player>
+    <player>Steve Staunton</player>
+    <player>Ron Vlaar</player>
+    <player>Ciaran Clark</player>
+  </defender>
+  <midfielder>
+    <player>Stiliyan Petrov</player>
+    <player>Gareth Barry</player>
+    <player>Gordon Cowans</player>
+    <player>Charles N'Zogbia</player>
+    <player>Ian Taylor</player>
+    <player>Ashley Young</player>
+    <player>Fabian Delph</player>
+    <player>James Milner</player>
+    <player>David Platt</player>
+    <player>Lee Hendrie</player>
+  </midfielder>
+  <forward>
+    <player>Gabriel Agbonlahor</player>
+    <player>Darren Bent</player>
+    <player>Christian Benteke</player>
+    <player>Dion Dublin</player>
+    <player>Dwight Yorke</player>
+    <player>Dean Saunders</player>
+    <player>Nathan Delfeunso</player>
+    <player>Andreas Weimann</player>
+  </forward>
+  </team>
+  
+  
+  <team name="Cardiff" id="Cardiff"  color="0xA9172A" logo="Cardiff-City.png">
+  <goalkeeper>
+    <player>David Williams</player>
+    <player>Jon Hallworth</player>
+    <player>David Marshall</player>
+    <player>Tom Heaton</player>
+  </goalkeeper>
+  <defender>
+    <player>Kevin McNaughton</player>
+    <player>Roger Johnson</player>
+    <player>Chris Barker</player>
+    <player>Tony Vidmar</player>
+    <player>Ben Turner</player>
+    <player>Mark Hudson</player>
+    <player>Mathew Connolly</player>
+    <player>Ben Nugent</player>
+    <player>Ben Turner</player>
+    <player>Leon Barnett</player>
+  </defender>
+  <midfielder>
+    <player>Peter Whittingham</player>
+    <player>Jason Koumas</player>
+    <player>Aron Gunnarsson</player>
+    <player>Andy Legg</player>
+    <player>Craig Conway</player>
+    <player>Graham Kavanagh</player>
+    <player>Craig Noone</player>
+    <player>Don Cowie</player>
+    <player>Kim Bo-Kyung</player>
+    <player>Tommy Smith</player>
+  </midfielder>
+  <forward>
+    <player>Carl Dale</player>
+    <player>Cohen Griffith</player>
+    <player>Jay Bothroyd</player>
+    <player>Heidar Helguson</player>
+    <player>Fraizer Campbell</player>
+    <player>Robert Earnshaw</player>
+    <player>Joe Mason</player>
+    <player>Rudy Gestede</player>
+  </forward>
+  </team>
+  
+  <team name="Chelsea" id="Chelsea"  color="0xA9172A" logo="Chelsea.png">
+  <goalkeeper>
+    <player>Petr Cech</player>
+    <player>Carlo Cudicini</player>
+    <player>Ed de Goey</player>
+    <player>Dmitri Kharine</player>
+  </goalkeeper>
+  <defender>
+    <player>John Terry</player>
+    <player>Ashley Cole</player>
+    <player>Steve Clark</player>
+    <player>Branislav Ivanovic</player>
+    <player>David Luiz</player>
+    <player>Alex</player>
+    <player>Wayne Bridge</player>
+    <player>Marcel Desailly</player>
+    <player>Frank Leboeuf</player>
+    <player>Ricardo Carvalho</player>
+  </defender>
+  <midfielder>
+    <player>Dennis Wise</player>
+    <player>Frank Lampard</player>
+    <player>Juan Mata</player>
+    <player>Roberto Di Matteo</player>
+    <player>Joe Cole</player>
+    <player>Michael Essien</player>
+    <player>Claude Makelele</player>
+    <player>Damien Duff</player>
+    <player>Michael Ballack</player>
+    <player>Arjen Robben</player>
+  </midfielder>
+  <forward>
+    <player>Fernando Torres</player>
+    <player>Didier Drogba</player>
+    <player>Jimmy Floyd Hasselbaink</player>
+    <player>Gianfranco Zola</player>
+    <player>Demba Ba</player>
+    <player>Nicolas Anelka</player>
+    <player>Mark Hughes</player>
+    <player>Eiður Guðjohnsen</player>
+  </forward>
+   </team>
+   
+  <team name="Crystal Palace" id="Crystal-Palace"  color="0xA9172A" logo="Crystal-Palace.png">
+  <goalkeeper>
+    <player>Julián Speroni</player>
+    <player>Gábor Király</player>
+    <player>Nigel Martyn</player>
+    <player>Add Player</player>
+  </goalkeeper>
+  <defender>
+    <player>Tony Popovic</player>
+    <player>Fitz Hall</player>
+    <player>Chris Coleman</player>
+    <player>Emmerson Boyce</player>
+    <player>Clint Hill</player>
+    <player>Paddy McCarthy</player>
+    <player>Fan Zhiyi</player>
+    <player>Mark Hudson</player>
+    <player>Dean Gordon</player>
+    <player>Andy Linighan</player>
+  </defender>
+  <midfielder>
+    <player>Wayne Routledge</player>
+    <player>Mile Jedinak</player>
+    <player>Wilfried Zaha</player>
+    <player>Hayden Mullins</player>
+    <player>Darren Ambrose</player>
+    <player>Tommy Black</player>
+    <player>Ben Watson</player>
+    <player>Yannick Bolasie</player>
+    <player>Simon Rodger</player>
+    <player>John Salako</player>
+  </midfielder>
+  <forward>
+    <player>Andrew Johnson</player>
+    <player>Dougie Freedman</player>
+    <player>Ian Wright</player>
+    <player>Dougie Freedman</player>
+    <player>Lombardo</player>
+    <player>Glenn Murray</player>
+    <player>Clinton Morrison</player>
+    <player>Andy Gray</player>
+  </forward>
+   </team>
+   
+  <team name="Everton" id="Everton"  color="0xA9172A" logo="Everton.png">
+  <goalkeeper>
+    <player>Tim Howard</player>
+    <player>Paul Gerrard</player>
+    <player>Richard Wright</player>
+    <player>Neville Southall</player>
+    </goalkeeper>
+  <defender>
+    <player>Leighton Baines</player>
+    <player>Sylvain Distin</player>
+    <player>Phil Jagielka</player>
+    <player>Seamus Coleman</player>
+    <player>Joleon Lescott</player>
+    <player>John Heitinga</player>
+    <player>David Unsworth</player>
+    <player>Kevin Ratcliffe</player>
+    <player>Dave Watson</player>
+    <player>David Weir</player>
+  </defender>
+  <midfielder>
+    <player>Mikel Arteta</player>
+    <player>Marouane Fellaini</player>
+    <player>Steven Pienaar</player>
+    <player>Leon Osman</player>
+    <player>Darron Gibson</player>
+    <player>Jack Rodwell</player>
+    <player>Phil Neville</player>
+    <player>Kevin Sheedy</player>
+    <player>Thomas Graveson</player>
+    <player>David Ginola</player>
+  </midfielder>
+  <forward>
+    <player>Tim Cahill</player>
+    <player>Louis Saha</player>
+    <player>Peter Beardsley</player>
+    <player>Duncan Ferguson</player>
+    <player>Graeme Sharp</player>
+    <player>Nikica Jelavic</player>
+    <player>Wayne Rooney</player>
+    <player>Tony Cottee</player>
+  </forward>
+  </team>
+  
+  <team name="Fulham" id="Fullham"  color="0xA9172A" logo="Fulham.png">
+  <goalkeeper>
+    <player>Mark Schwarzer</player>
+    <player>Edwin van der Sar</player>
+    <player>Maik Taylor</player>
+    <player>David Stockdale</player>
+  </goalkeeper>
+  <defender>
+    <player>Brede Hangeland</player>
+    <player>Zat Knight</player>
+    <player>Aaron Hughes</player>
+    <player>John Arne Riise</player>
+    <player>Philippe Senderos</player>
+    <player>Mattew Briggs</player>
+    <player>Steve Finnan</player>
+    <player>Alan Nailson</player>
+    <player>Simon Morgan</player>
+    <player>Andy Melvilla</player>
+  </defender>
+  <midfielder>
+    <player>Damien Duff</player>
+    <player>Danny Murphy</player>
+    <player>Luis Boa Morte</player>
+    <player>Steed Malbranque</player>
+    <player>Bryan Ruiz</player>
+    <player>Mousa Dembele</player>
+    <player>Steve Sidwell</player>
+    <player>Kieran Richardson</player>
+    <player>John Marshall</player>
+    <player>Clint Dempsey</player>
+  </midfielder>
+  <forward>
+    <player>Barry Hayles</player>
+    <player>Bobby Zamora</player>
+    <player>Dimitar Berbatov</player>
+    <player>Louis Saha</player>
+    <player>Brian McBride</player>
+    <player>Mladen Petric</player>
+    <player>Kevin Betsy</player>
+    <player>Gary Brazil</player>
+  </forward>
+   </team>
+   
+  <team name="Hull" id="Hull"  color="0xA9172A" logo="Hull-City.png">
+  <goalkeeper>
+    <player>Matt Duke</player>
+    <player>Boaz Myhill</player>
+    <player>Steve Harper</player>
+    <player>Allan McGregor</player>
+    </goalkeeper>
+  <defender>
+    <player>Michael Turner</player>
+    <player>Anthony Gardner</player>
+    <player>Kamil Zayatte</player>
+    <player>James Chester</player>
+    <player>Liam Rosenior</player>
+    <player>Andy Dawson</player>
+    <player>Paul McShane</player>
+    <player>Maynor Figuerora</player>
+    <player>Abdoulaye Faye</player>
+    <player>Jack Hobbs</player>
+  </defender>
+  <midfielder>
+    <player>Jimmy Bullard</player>
+    <player>Stephen Hunt</player>
+    <player>Geovanni</player>
+    <player>Robert Koren</player>
+    <player>Tom Huddlestone</player>
+    <player>Paul McShane</player>
+    <player>George Boateng</player>
+    <player>Ian Ashbee</player>
+    <player>Stephen Quinn</player>
+    <player>Ahmed Elmohamady</player>
+  </midfielder>
+  <forward>
+    <player>Caleb Folan</player>
+    <player>Marlon King</player>
+    <player>Dean Windass</player>
+    <player>Aaron McLean</player>
+    <player>Nick Proschwitz</player>
+    <player>Sone Aluko</player>
+    <player>Gedo</player>
+    <player>Danny Graham</player>
+  </forward>
+   </team>
+   
+  <team name="Liverpool" id="Liverpool"  color="0xA9172A" logo="Liverpool.png">
+  <goalkeeper>
+    <player>Pepe Reina</player>
+    <player>Brad Jones</player>
+    <player>David James</player>
+    <player>Jerzy Dudek</player>
+  </goalkeeper>
+  <defender>
+    <player>Sami Hyypia</player>
+    <player>John Arne Riise</player>
+    <player>Daniel Agger</player>
+    <player>Steve Finnan</player>
+    <player>Glen Johnson</player>
+    <player>Jamie Carragher</player>
+    <player>Martin Skrtel</player>
+    <player>Jose Enrique</player>
+    <player>Kolo Toure</player>
+    <player>Markus Babbel</player>
+  </defender>
+  <midfielder>
+    <player>Steven Gerrard</player>
+    <player>Xabi Alonso</player>
+    <player>Steve McManaman</player>
+    <player>Dirk Kuyt</player>
+    <player>Javier Mascherano</player>
+    <player>Danny Murphy</player>
+    <player>Philippe Coutinho</player>
+    <player>Raheem Sterling</player>
+    <player>Ronnie Whelan</player>
+    <player>Jamie Redknapp</player>
+  </midfielder>
+  <forward>
+    <player>Michael Owen</player>
+    <player>Daniel Sturridge</player>
+    <player>Fernando Torres</player>
+    <player>Luis Suarez</player>
+    <player>Robbie Fowler</player>
+    <player>Ian Rush</player>
+    <player>Emile Heskey</player>
+    <player>John Barnes</player>
+  </forward>
+  </team>
+  <team name="Manchester City" id="Man-City"  color="0xA9172A" logo="Man-City.png">
+  <goalkeeper>
+    <player>Joe Hart</player>
+    <player>David James</player>
+    <player>Nicky Weaver</player>
+    <player>Costel Pantilimon</player>
+  </goalkeeper>
+  <defender>
+    <player>Vincent Kompany</player>
+    <player>Richard Dunne</player>
+    <player>Micah Richards</player>
+    <player>Sylvain Distin</player>
+    <player>Richard Dunne</player>
+    <player>Joleon Lescott</player>
+    <player>Kolo Toure</player>
+    <player>Pablo Zabaleta</player>
+    <player>Ian Brightwell</player>
+    <player>Steve Redmond</player>  
+    </defender>
+  <midfielder>
+    <player>Stephen Ireland</player>
+    <player>Yaya Toure</player>
+    <player>Gareth Barry</player>
+    <player>Shaun Wright-Phillips</player>
+    <player>Joey Barton</player>
+    <player>James Milner</player>
+    <player>Martin Petrov</player>
+    <player>Nigel De Jong</player>
+    <player>Kevin Horlock</player>
+    <player>David Silva</player> 
+     </midfielder>
+  <forward>
+    <player>Carlos Tevez</player>
+    <player>Nicholas Anelka</player>
+    <player>Niall Quinn</player>
+    <player>Sergio Aguero</player>
+    <player>Mario Ballotelli</player>
+    <player>Uwe Rosler</player>
+    <player>Shaun Goater</player>
+    <player>Edin Dzeko</player>
+    </forward>
+   </team>
+    <team name="Manchester United" id="Man-UTD"  color="0xA9172A" logo="Man-Utd.png">
+  <goalkeeper>
+    <player>Peter Schmeichel</player>
+    <player>Edwin Van Der Sar</player>
+    <player>David De Gea</player>
+    <player>Fabien Barthez</player>  
+    </goalkeeper>
+  <defender>
+    <player>Rio Ferdinand</player>
+    <player>Gary Neville</player>
+    <player>Mikaël Silvestre</player>
+    <player>Patrice Evra</player>
+    <player>Nemanja Vidic</player>
+    <player>Gary Pallister</player>
+    <player>Dennis Irwin</player>
+    <player>Phil Jones</player>
+    <player>Steve Bruce</player>
+    <player>Rafael</player>  
+    </defender>
+  <midfielder>
+    <player>David Beckham</player>
+    <player>Paul Scholes</player>
+    <player>Ryan Giggs</player>
+    <player>Roy Keane</player>
+    <player>Cristiano Ronaldo</player>
+    <player>Darren Fletcher</player>
+    <player>Nani</player>
+    <player>Brian Mclair</player>
+    <player>Nicky Butt</player>
+    <player>Paul Ince</player>  
+    </midfielder>
+  <forward>
+    <player>Wayne Rooney</player>
+    <player>Robin van Persie</player>
+    <player>Eric Cantona</player>
+    <player>Ruud Van Nistleroy</player>
+    <player>Andy Cole</player>
+    <player>Ole Gunnar Solskjaer</player>
+    <player>Dwight York</player>
+    <player>Teddy Sheringham</player>
+</forward>
+   </team>
+    <team name="Newcastle" id="Newcastle"  color="0xA9172A" logo="Newcastle.png">
+  <goalkeeper>
+    <player>Pavel Srníček</player>
+    <player>Tim Krul</player>
+    <player>Steve Harper</player>
+    <player>Shay Given</player>
+  </goalkeeper>
+  <defender>
+    <player>Steven Taylor</player>
+    <player>Jose Enrique</player>
+    <player>Jonathan Woodgate</player>
+    <player>Fabricio Coloccini</player>
+    <player>Ryan Taylor</player>
+    <player>Massadio Haidara</player>
+    <player>Warren Barton</player>
+    <player>Steve Watson</player>
+    <player>Kevin Scott</player>
+    <player>Mathieu Debuchy</player>  
+  </defender>
+  <midfielder>
+    <player>Hatem Ben Arfa</player>
+    <player>Yohan Cabaye</player>
+    <player>Jonas Gutierrez</player>
+    <player>James Milner</player>
+    <player>Gary Speed</player>
+    <player>Lee Clark</player>
+    <player>David Batty</player>
+    <player>Nolberto Solano</player>
+    <player>Laurent Robert</player>
+    <player>Rob Lee</player> 
+     </midfielder>
+  <forward>
+    <player>Andy Carroll</player>
+    <player>Les Ferdinand</player>
+    <player>Andy Cole</player>
+    <player>Alan Shearer</player>
+    <player>Papiss Cisse</player>
+    <player>Demba Ba</player>
+    <player>Shola Ameobi</player>
+    <player>Yoan Gouffran</player>
+  </forward>
+   </team>
+    <team name="Norwich" id="Norwich"  color="0xA9172A" logo="Norwich.png">
+  <goalkeeper>
+    <player>John Ruddy</player>
+    <player>Mark Bunn</player>
+    <player>Andy Marshall</player>
+    <player>Bryan Gunn</player>  
+	</goalkeeper>
+  <defender>
+    <player>Sebastien Bassong</player>
+    <player>Russell Martin</player>
+    <player>Michael Turner</player>
+    <player>Anthony Pilkington</player>
+    <player>Gary Doherty</player>
+    <player>Spencer Prior</player>
+    <player>Adam Dury</player>
+    <player>Matt Jackson</player>
+    <player>Marc Tierney</player>
+    <player>Elliot Ward</player>  
+    </defender>
+  <midfielder>
+    <player>Lee Croft</player>
+    <player>Wes Hoolahan</player>
+    <player>Bradley Johnson</player>
+    <player>Robert Snodgrass</player>
+    <player>Gary Holt</player>
+    <player>Darren Eadie</player>
+    <player>Ian Crook</player>
+    <player>Nathan Redmond</player>
+    <player>Korey Smith</player>
+    <player>David Fox</player> 
+     </midfielder>
+  <forward>
+    <player>Grant Holt</player>
+    <player>Dion Dublin</player>
+    <player>Iwan Roberts</player>
+    <player>Darren Huckerby</player>
+    <player>Ricky van Wolfswinkel</player>
+    <player>Chris Sutton</player>
+    <player>Chris Martin</player>
+    <player>Simeon Jackson</player> 
+     </forward>
+   </team>
+   
+    <team name="Southampton" id="Southampton"  color="0xA9172A" logo="Southampton.png">
+  <goalkeeper>
+    <player>Kelvin Davis</player>
+    <player>Artur Boruc</player>
+    <player>Tim Flowers</player>
+    <player>Paul Jones</player> 
+     </goalkeeper>
+  <defender>
+    <player>Wayne Bridge</player>
+    <player>Nathaniel Clyne</player>
+    <player>Jose Fonte</player>
+    <player>Jason Dodd</player>
+    <player>Chris Baird</player>
+    <player>Maya Yoshida</player>
+    <player>Paul Telfer</player>
+    <player>Neil Ruddock</player>
+    <player>Danny Fox</player> 
+     </defender>
+  <midfielder>
+    <player>Adam Lallana</player>
+    <player>Morgan Schneiderlin</player>
+    <player>Jason Puncheon</player>
+    <player>Neil Maddison</player>
+    <player>Dean Hammond</player>
+    <player>Jack Cork</player>
+    <player>Gaston Ramirez</player>
+    <player>Steven Davis</player>
+    <player>Matthew Oakley</player> 
+     </midfielder>
+  <forward>
+    <player>Rickie Lambert</player>
+    <player>Jay Rodriguez</player>
+    <player>Matt Le Tissier</player>
+    <player>Kevin Phillips</player>
+    <player>Peter Crouch</player>
+    <player>James Beattie</player>
+    <player>Add Player</player>
+ </forward>
+   </team>
+   
+    <team name="Stoke City" id="Stoke"  color="0xA9172A" logo="Stoke.png">
+  <goalkeeper>
+    <player>Asmir Begovic</player>
+    <player>Thomas Sorensen</player>
+    <player>Steve Simonsen</player>
+    <player>Carlo Nash</player>  
+    </goalkeeper>
+  <defender>
+    <player>Mathew Upson</player>
+    <player>Ryan Shawcross</player>
+    <player>Andy Wilkinson</player>
+    <player>Abdoulaye Faye</player>
+    <player>Jonathan Woodgate</player>
+    <player>Robert Huth</player>
+    <player>Geoff Cameron</player>
+    <player>Andy Griffin</player>  
+    </defender>
+  <midfielder>
+    <player>Charlie Adam</player>
+    <player>Steven Nzonzi</player>
+    <player>Matthew Etherington</player>
+    <player>Liam Lawrence</player>
+    <player>Marc Wilson</player>
+    <player>Rory Delap</player>
+    <player>Jermaine Pennant</player>
+    <player>Glen Whelan</player>  </midfielder>
+  <forward>
+    <player>Jonathan Walters</player>
+    <player>Peter Crouch</player>
+    <player>Kenwyne Jones</player>
+    <player>James Beattie</player>
+    <player>Ricardo Fuller</player>
+    <player>Cameron Jerome</player>  
+    </forward>
+   </team>
+   
+    <team name="Swansea" id="Swansea"  color="0xA9172A" logo="Swansea.png">
+  <goalkeeper>
+    <player>Michael Vorm</player>
+    <player>Gerhard Tremmel</player>
+    <player>David Cornell</player>
+    <player>Dorus De Vries</player>  
+    </goalkeeper>
+  <defender>
+    <player>Ashley Williams</player>
+    <player>Angel Rangel</player>
+    <player>Neil Taylor</player>
+    <player>Ben Davies</player>
+    <player>Chico</player>
+    <player>Alan Tate</player>
+    <player>Gary Monk</player>
+    <player>Dwight Tiendalli</player>
+    <player>Jordi Amat</player>
+    <player>Steven Caulker</player>  
+    </defender>
+  <midfielder>
+    <player>Scott Sinclair</player>
+    <player>Nathan Dyer</player>
+    <player>Wayne Routledge</player>
+    <player>Leon Britton</player>
+    <player>Mark Gower</player>
+    <player>Jonathan de Guzman</player>
+    <player>Pablo Hernandez</player>
+    <player>Jonjo Shelvey</player>
+    <player>Gylfi Sigurdsson</player>
+    <player>Joe Allen</player> 
+     </midfielder>
+  <forward>
+    <player>luke Moore</player>
+    <player>Michu</player>
+    <player>Wilfried Bony</player>
+    <player>Leroy Lita</player>
+    <player>Leroy Lita</player>
+    <player>Itay Shechter</player>
+    <player>Roland Lamah</player>
+    <player>Rory Donnelly</player>
+    <player>Alvaro Vazquez</player>
+  </forward>
+   </team>
+   
+    <team name="Sunderland" id="Sunderland"  color="0xA9172A" logo="Sunderland.png">
+  <goalkeeper>
+    <player>Simon Mignolet</player>
+    <player>Craig Gordon</player>
+    <player>Kieren Westwood</player>
+    <player>Thomas Sorensen</player> 
+     </goalkeeper>
+  <defender>
+    <player>Michael Gray</player>
+    <player>John O'Shea</player>
+    <player>Chris Makin</player>
+    <player>Michael Gray</player>
+    <player>Wes Brown</player>
+    <player>Carlos Cuéllar</player>
+    <player>Titus Bramble</player>
+    <player>Paul Butler</player>
+    <player>Danny Collins</player>
+    <player>Michael Turner</player>  
+    </defender>
+  <midfielder>
+    <player>Craig Gardner</player>
+    <player>Sebastian Larsson</player>
+    <player>Julio Arca</player>
+    <player>Kevin Kilbane</player>
+    <player>Lee Cattermole</player>
+    <player>Adam Johnson</player>
+    <player>Kieran Richardson</player>
+    <player>Steed Malbranque</player>
+    <player>Kevin Ball</player>
+    <player>Stephane Sessegnon</player>  
+    </midfielder>
+  <forward>
+    <player>Steven Fletcher</player>
+    <player>Niall Quinn</player>
+    <player>Kevin Phillips</player>
+    <player>Darren Bent</player>
+    <player>Asamoah Gyan</player>
+    <player>Kenwyne Jones</player>
+    <player>Jozy Altidore</player>
+    <player>Stephen Elliott</player>
+  </forward>
+   </team>
+  
+    <team name="Tottenham" id="Tottenham"  color="0xA9172A" logo="Tottenham.png">
+
+  <goalkeeper>
+    <player>Ian Walker</player>
+    <player>Paul Robinson</player>
+    <player>Brad Friedel</player>
+    <player>Hugo Lloris</player> 
+     </goalkeeper>
+  <defender>
+    <player>Ledley King</player>
+    <player>Michael Dawson</player>
+    <player>Jan Vertonghen</player>
+    <player>Jonathan Woodgate</player>
+    <player>Gary Mabbutt</player>
+    <player>Benoit Assou-Ekotto</player>
+    <player>Kyle Walker</player>
+    <player>Stephen Carr</player>
+    <player>Colin Calderwood</player>
+    <player>Younes Kaboul</player>
+      </defender>
+  <midfielder>
+    <player>Gareth Bale</player>
+    <player>Aaron Lennon</player>
+    <player>Luka Modric</player>
+    <player>Scott Parker</player>
+    <player>Rafael van der Vaart</player>
+    <player>Darren Anderton</player>
+    <player>David Ginola</player>
+    <player>Michael Carrick</player>
+    <player>Mousa Dembele</player>
+    <player>Gustavo Poyet</player>  
+    </midfielder>
+  <forward>
+    <player>Jermain Defoe</player>
+    <player>Dimitar Berbatov</player>
+    <player>Robbie Keane</player>
+    <player>Teddy Sheringham</player>
+    <player>Les Ferdinand</player>
+    <player>Jurgen Klinsmann</player>
+    <player>Roberto Soldado</player>
+    <player>Peter Crouch</player>
+  </forward>
+   </team>
+    <team name="West Brom" id="WBA"  color="0xA9172A" logo="WBA.png">
+  <goalkeeper>
+    <player>Ben Foster</player>
+    <player>Paul Robinson</player>
+    <player>Scott Carson</player>
+    <player>Russell Hoult</player> 
+     </goalkeeper>
+  <defender>
+    <player>Jonas Olsson</player>
+    <player>Liam Ridgewell</player>
+    <player>Nicky Shorey</player>
+    <player>Billy Jones</player>
+    <player>Neil Clement</player>
+    <player>Gabriel Tabas</player>
+    <player>Darren Moore</player>
+    <player>Larus Sigurdsson</player>
+    <player>Paul Robinson</player>
+    <player>Please Add Player</player> 
+     </defender>
+  <midfielder>
+    <player>Youssouf Mulumbu</player>
+    <player>James Morrison</player>
+    <player>Chris Brunt</player>
+    <player>Jonathan Greening</player>
+    <player>Jerome Thomas</player>
+    <player>Graham Dorrans</player>
+    <player>Zoltan Gera</player>
+    <player>Claudio Yacob</player>
+    <player>Steven Reid</player>
+    <player>Derek McInnes</player> 
+     </midfielder>
+  <forward>
+    <player>Shane Long</player>
+    <player>Peter Odemwingie</player>
+    <player>Romelu Lukaku</player>
+    <player>Robert Earnshaw</player>
+    <player>Nicolas Anelka</player>
+    <player>Lee Huges</player>
+    <player>Scott Dobie</player>
+    <player>Roman Bednar</player>
+  </forward>
+   </team>
+   
+    <team name="West Ham" id="West-Ham"  color="0xA9172A" logo="West-ham.png">
+ 
+  <goalkeeper>
+    <player>Robert Green</player>
+    <player>Shaka Hislop</player>
+    <player>Jussi Jaaskelainen</player>
+    <player>David James</player>
+      </goalkeeper>
+  <defender>
+    <player>Rio Ferdinand</player>
+    <player>Winston Reid</player>
+    <player>James Collins</player>
+    <player>George McCartney</player>
+    <player>Joey O'Brien</player>
+    <player>James Tomkins</player>
+    <player>Steve Potts</player>
+    <player>Danny Gabbidon</player>
+    <player>Stuart Pearce</player>
+    <player>Anton Ferdinand</player>  
+    </defender>
+  <midfielder>
+    <player>Joe Cole</player>
+    <player>Hayden Mullins</player>
+    <player>Scott Parker</player>
+    <player>Mark Noble</player>
+    <player>Matt Jarvis</player>
+    <player>Matthew Taylor</player>
+    <player>Kevin Nolan</player>
+    <player>Jack Collison</player>
+    <player>Frank Lampard</player>
+    <player>Alou Diarra</player>  
+    </midfielder>
+  <forward>
+    <player>Paulo Di Canio</player>
+    <player>Trevor Sinclair</player>
+    <player>Andy Carroll</player>
+    <player>Carlton Cole</player>
+    <player>Teddy Sheringham</player>
+    <player>Ricardo Vaz Te</player>
+    <player>Bobby Zamora</player>
+    <player>Modibo Maiga</player>
+  </forward>
+   </team>
+   </game>

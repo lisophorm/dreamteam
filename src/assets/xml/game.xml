@@ -1,0 +1,70 @@
+<game>
+    <team name="Arsenal">
+                <player type="goalkeeper" shirtno="1" id="0">David Seaman</player>
+                <player type="goalkeeper" shirtno="1" id="1">WOJCIECH SZCZĘSNY</player>
+                <player type="goalkeeper" shirtno="1" id="2">JENS LEHMANN</player>
+                <player type="goalkeeper" shirtno="1" id="3">Manuel Almunia</player>
+                <player type="defender" shirtno="2" id="0">TONY ADAMS</player>
+                <player type="defender" shirtno="5" id="1">Thomas Vermaelen</player>
+                <player type="defender" shirtno="3" id="2">William Gallas</player>
+                <player type="defender" shirtno="2" id="3">Sol Campbell</player>
+                <player type="defender" shirtno="6" id="4">Bacary Sagna</player>
+                <player type="defender" shirtno="3" id="5">Emmanuel Eboue</player>
+                <player type="defender" shirtno="5" id="6">Kolo Toure</player>
+                <player type="defender" shirtno="3" id="7">Philippe Senderos</player>
+                <player type="defender" shirtno="6" id="8">Kieran Gibbs</player>
+                <player type="defender" shirtno="4" id="9">Gael Clichy</player>
+                <player type="midfielder" shirtno="1" id="0">Jack Wilshere</player>
+                <player type="midfielder" shirtno="1" id="1">Theo Walcott</player>
+                <player type="midfielder" shirtno="1" id="2">Marc Overmars</player>
+                <player type="midfielder" shirtno="1" id="3">Robert Pires</player>
+                <player type="midfielder" shirtno="1" id="4">Aaron Ramsey</player>
+                <player type="midfielder" shirtno="1" id="5">Santi Cazola</player>
+                <player type="midfielder" shirtno="1" id="6">Cesc Fabregas</player>
+                <player type="midfielder" shirtno="1" id="7">Patrick Vieira</player>
+                <player type="midfielder" shirtno="1" id="8">Freddie Ljungberg</player>
+                <player type="midfielder" shirtno="1" id="9">Alexandre Song</player>
+                <player type="forward" shirtno="1" id="0">Robin van Persie</player>
+                <player type="forward" shirtno="1" id="1">Ian Wright</player>
+                <player type="forward" shirtno="1" id="2">Thierry Henry</player>
+                <player type="forward" shirtno="1" id="3">Olivier Giroud</player>
+                <player type="forward" shirtno="1" id="4">Dennis Bergkamp</player>
+                <player type="forward"  shirtno="1"id="5">Sylvain Wiltord</player>
+                <player type="forward" shirtno="1" id="6">Nwankwo Kano</player>
+                <player type="forward" shirtno="1" id="7">JOSÉ ANTONIO REYES</player>
+        </team>
+            <team name="OTHER">
+                <player type="goalkeeper" shirtno="1" id="0">David Oncogen</player>
+                <player type="goalkeeper" shirtno="1" id="1">WOJCIECH SZCZĘSNY</player>
+                <player type="goalkeeper" shirtno="1" id="2">JENS LEHMANN</player>
+                <player type="goalkeeper" shirtno="1" id="3">Manuel Almunia</player>
+                <player type="defender" shirtno="2" id="0">TONY ADAMS</player>
+                <player type="defender" shirtno="5" id="1">Thomas Vermaelen</player>
+                <player type="defender" shirtno="3" id="2">William Gallas</player>
+                <player type="defender" shirtno="2" id="3">Sol Campbell</player>
+                <player type="defender" shirtno="6" id="4">Bacary Sagna</player>
+                <player type="defender" shirtno="3" id="5">Emmanuel Eboue</player>
+                <player type="defender" shirtno="5" id="6">Kolo Toure</player>
+                <player type="defender" shirtno="3" id="7">Philippe Senderos</player>
+                <player type="defender" shirtno="6" id="8">Kieran Gibbs</player>
+                <player type="defender" shirtno="4" id="9">Gael Clichy</player>
+                <player type="midfielder" shirtno="1" id="0">Jack Wilshere</player>
+                <player type="midfielder" shirtno="1" id="1">Theo Walcott</player>
+                <player type="midfielder" shirtno="1" id="2">Marc Overmars</player>
+                <player type="midfielder" shirtno="1" id="3">Robert Pires</player>
+                <player type="midfielder" shirtno="1" id="4">Aaron Ramsey</player>
+                <player type="midfielder" shirtno="1" id="5">Santi Cazola</player>
+                <player type="midfielder" shirtno="1" id="6">Cesc Fabregas</player>
+                <player type="midfielder" shirtno="1" id="7">Patrick Vieira</player>
+                <player type="midfielder" shirtno="1" id="8">Freddie Ljungberg</player>
+                <player type="midfielder" shirtno="1" id="9">Alexandre Song</player>
+                <player type="forward" shirtno="1" id="0">Robin van Persie</player>
+                <player type="forward" shirtno="1" id="1">Ian Wright</player>
+                <player type="forward" shirtno="1" id="2">Thierry Henry</player>
+                <player type="forward" shirtno="1" id="3">Olivier Giroud</player>
+                <player type="forward" shirtno="1" id="4">Dennis Bergkamp</player>
+                <player type="forward"  shirtno="1"id="5">Sylvain Wiltord</player>
+                <player type="forward" shirtno="1" id="6">Nwankwo Yahoo</player>
+                <player type="forward" shirtno="1" id="7">JOSÉ ANTONIO REYES</player>
+        </team>
+</game>

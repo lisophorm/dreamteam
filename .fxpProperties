@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<fxpProperties abbreviated="false" authoringTool="Flex Builder" compiles="false" parentProject="eccb1d86-7d71-4f45-98ab-30040f0711e9" projectUUID="eccb1d86-7d71-4f45-98ab-30040f0711e9" pureCatalystProject="false" sdkVersion="4.11.0" uuid="4cb4dd4a-209b-4493-accd-583b6ac3c35c" version="15">
+  <projects/>
+  <src/>
+  <swc>
+    <linked location="sdkPlaceHolder" path="sdkPlaceHolder" position="0" uuid="4cb4dd4a-209b-4493-accd-583b6ac3c35c"/>
+    <linked location="/libs" path="/libs" position="1" uuid="e4d2001b-7af8-4bd0-bbcd-528660abfc6d"/>
+  </swc>
+  <misc/>
+  <theme/>
+  <mxmlFormattingPrefs groupAttributesByState="true" maxLineWidth="100" mxmlAlignAttributes="true" mxmlAttributeOrder="id,userLabel,includeIn,excludeFrom,visible,x,y,z,left,right,top,bottom,width,height,minWidth,minHeight,maxWidth,maxHeight,label" mxmlKeepAttributeValuesOrganized="true"/>
+</fxpProperties>

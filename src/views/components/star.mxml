@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Graphic
+	xmlns:fx="http://ns.adobe.com/mxml/2009"
+	xmlns:s="library://ns.adobe.com/flex/spark"
+	width="80" height="80">
+	
+	<s:Path data="M 119,0 L 148,86 238,86 166,140 192,226 119,175 46,226 72,140 0,86 90,86 Z"
+			y="2" scaleX="0.3361345" scaleY="0.3361345">
+		<s:fill>
+			<s:SolidColor color="#FFCC00" />
+		</s:fill>
+	</s:Path>
+</s:Graphic>

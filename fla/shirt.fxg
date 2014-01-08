@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Graphic version="2.0" viewHeight="1080" viewWidth="1920" ATE:version="1.0.0" flm:version="1.0.0" d:using="" pd:backgroundColor="0" xmlns="http://ns.adobe.com/fxg/2008" xmlns:ATE="http://ns.adobe.com/ate/2009" xmlns:d="http://ns.adobe.com/fxg/2008/dt" xmlns:flm="http://ns.adobe.com/flame/2008" xmlns:pd="http://ns.adobe.com/xfl/2008/pd">
+  <Library>
+    <Definition name="T_shrit" flm:originalName="T-shrit">
+      <Group>
+        <Group d:type="layer" d:userLabel="FlashAICB">
+          <Path data="M14.3 -54.4 24.75 -54.3Q30.2 -54.15 36.2 -50.65 40.4 -48.2 45.6 -43.3L58.6 -30.95Q58.85 -30.7 59.75 -29.7L60.5 -28.85Q61.7 -27.6 60.55 -26.3L43.15 -4.95Q42.8 -4.5 42.25 -4.5 41.95 -4.5 41.6 -4.75L31.45 -12.5 39.6 50.85Q39.6 51.4 39.3 51.75 39
+ 52.1 38.45 52.1L-40.45 52.35Q-41 52.35 -41.3 52 -41.6 51.6 -41.55 51.1L-33.45 -12.4 -43.55 -4.6Q-43.9 -4.4 -44.25 -4.4 -44.85 -4.4 -45.1 -4.8L-62.55 -26.1Q-63.65 -27.5 -62.45 -28.7L-56.1 -35.05Q-50.35 -40.65 -45.2 -45.3 -38.25 -51.5 -31.55
+ -53.4 -28.85 -54.2 -25.65 -54.2L-16.4 -54.15Q-15.95 -54.15 -15.6 -53.85 -15.3 -53.55 -15.25 -53.1 -15.1 -51.15 -11.3 -49.55 -7.1 -47.8 -1.05 -47.8 4.95 -47.8 9.2 -49.55 13.15 -51.2 13.15 -53.25 13.15 -53.75 13.5 -54.05 13.8 -54.4 14.3 -54.4">
+            <fill>
+              <SolidColor color="#E6001C"/>
+            </fill>
+          </Path>
+        </Group>
+        <Group d:type="layer" d:userLabel="Layer 3"/>
+      </Group>
+    </Definition>
+  </Library>
+  <Group d:type="layer" d:userLabel="Selected Items">
+    <T_shrit x="868" y="488.5" d:userLabel="bg">
+      <filters>
+        <BevelFilter blurX="5" blurY="5" quality="3"/>
+        <DropShadowFilter blurX="5" blurY="5" quality="3" strength="0.22" distance="5"/>
+        <GlowFilter blurX="10" blurY="10" quality="3" color="#000000"/>
+      </filters>
+    </T_shrit>
+  </Group>
+  <Private/>
+</Graphic>

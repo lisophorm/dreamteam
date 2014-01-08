@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:s="library://ns.adobe.com/flex/spark"
+		 xmlns:fx="http://ns.adobe.com/mxml/2009"
+		 width="116" height="103">
+	<s:Rect x="0" y="0" width="116" height="103">
+		<s:fill>
+			<s:SolidColor color="#0071c5"/>
+		</s:fill>
+	</s:Rect>
+	<s:Group x="16" y="16">
+		<s:Path x="0.94" y="0.9" winding="nonZero" data="M 2 38.653 L 17.385 23.269 L 17.385 4.263 L 26.888 4.263 L 26.888 14.218 L 39.106 2 L 76.211 39.106">
+			<s:stroke>
+				<s:SolidColorStroke weight="4" miterLimit="10" color="#FFFFFF"/>
+			</s:stroke>
+		</s:Path>
+		<s:Path x="10.895" y="11.309" winding="nonZero" data="M 2 28.697 L 28.698 2 L 56.074 29.377 L 56.074 57.658 L 36.39 57.658 L 36.39 32.771 L 22.362 32.771 L 22.362 57.658 L 2 57.658 L 2 28.697 Z">
+			<s:stroke>
+				<s:SolidColorStroke weight="4" miterLimit="10" color="#FFFFFF"/>
+			</s:stroke>
+		</s:Path>
+	</s:Group>
+</s:Group>

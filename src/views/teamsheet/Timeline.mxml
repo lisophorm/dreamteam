@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		 xmlns:s="library://ns.adobe.com/flex/spark" 
+		 xmlns:renderer="library://ns.adobe.com/flex/spark" 
+		 xmlns:mx="library://ns.adobe.com/flex/mx"  
+		 creationComplete="created(event)">
+	<fx:Script>
+		<![CDATA[
+			import com.alfo.utils.Console;
+			
+			import events.KioskError;
+			import events.TeamEvent;
+			
+			import model.TeamModel;
+			
+			import mx.events.FlexEvent;
+			import mx.rpc.events.FaultEvent;
+			import mx.rpc.events.ResultEvent;
+			
+			import views.renderer.timeline_renderer;
+			
+			[Bindable]
+			public var selectedTeam:String = "";
+			
+			[Bindable]
+			public var timelineData:XMLList=null;
+			
+			[Bindable]
+			public var galleryData:XMLList=null;
+			
+			[Bindable]
+			public var currentIndex:int=0;
+			
+			[Bindable]
+			protected var teamColor:uint = 0xFFFFFF;
+			
+			
+			public var data:Object;
+			
+			public function created(event:FlexEvent=null):void
+			{
+				this.addEventListener( Event.INIT, init);
+				init();
+			}
+			public function init(event:Event=null):void
+			{
+				Console.log("*** INIT TIMELINE ***", this);
+				if (this.parentApplication.data!=null)
+				{
+					data = this.parentApplication.data;
+					selectedTeam = data.team;
+					Console.log( data.team, this );
+					
+					
+				}
+				TeamModel._instance.addEventListener( TeamEvent.TEAM_INFO, ready);
+			
+			}
+			protected function ready( e:TeamEvent ):void
+			{
+				if (TeamEvent.TEAM_INFO == e.type )
+				{
+					timelineData = TeamModel.getTimeline();
+					teamColor = TeamModel.getTeamColor();
+					showInfo();
+				}
+			}
+			protected function showInfo():void
+			{
+				for (var i:int=0;i<timeline.numElements;i++)
+				{
+					try {
+						timeline_renderer(timeline.getElementAt( i )).teamColor = teamColor;	
+					} catch (e:Error)
+					{
+						
+					}
+				}
+				galleryData = TeamModel.getTimelineGallery()
+
+				
+			}
+		]]>
+	</fx:Script>
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	<s:BorderContainer backgroundAlpha="0.7"  backgroundColor="0x000000" width="1280"  borderVisible="false">
+		<s:HGroup>
+			
+		
+	<s:VGroup paddingBottom="20">
+		
+	
+	<s:Label text="{selectedTeam.toUpperCase()+' HISTORY'}" width="100%" height="100" fontSize="76" color="{teamColor}" paddingLeft="50" paddingTop="10"/>
+		<s:Line height="{timeline.height}" width="1" includeInLayout="false" x="142" y="110">
+			<s:stroke>
+				<s:SolidColorStroke color="{teamColor}" weight="1" />
+			</s:stroke>
+		</s:Line>
+	<s:DataGroup id="timeline" itemRenderer="views.renderer.timeline_renderer">
+		<s:layout>
+			<s:VerticalLayout gap="20"/>
+		</s:layout> 
+		<s:XMLListCollection  id="timelineDataList"  source="{timelineData}"/>
+	</s:DataGroup>
+	</s:VGroup>
+	<s:VGroup width="300" verticalCenter="0" height="100%" verticalAlign="middle">
+		<s:Spacer height="100"/>
+		<s:DataGroup id="gallery" verticalCenter="0" itemRenderer="views.renderer.timelinegallery_renderer">
+			<s:layout>
+				<s:VerticalLayout gap="20"/>
+			</s:layout> 
+			<s:XMLListCollection  source="{galleryData}"/>
+		</s:DataGroup>
+	</s:VGroup>
+		</s:HGroup>
+
+	</s:BorderContainer>	
+	
+</s:Group>

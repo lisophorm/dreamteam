@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		  xmlns:s="library://ns.adobe.com/flex/spark" 
+		  xmlns:mx="library://ns.adobe.com/flex/mx"
+		  mouseMove="mouseMoveHandler(event)"
+		  creationComplete="created(event)" enabled="true" mouseEnabled="true" buttonMode="true">
+	<fx:Script>
+		<![CDATA[
+			import flash.filters.BitmapFilterQuality;
+			import flash.filters.BitmapFilterType;
+			
+			import mx.core.DragSource;
+			import mx.core.UIComponent;
+			import mx.events.DragEvent;
+			import mx.events.FlexEvent;
+			import mx.managers.DragManager;
+			
+			import spark.components.Image;
+			import spark.filters.BevelFilter;
+			import spark.filters.DropShadowFilter;
+			import spark.filters.GlowFilter;
+			import spark.primitives.BitmapImage;
+			
+			
+			public function created(event:FlexEvent=null):void
+			{
+				this.addEventListener( Event.INIT, init);
+				init();
+			}
+			public function init(event:Event=null):void
+			{
+				var bf:spark.filters.BevelFilter = new spark.filters.BevelFilter();
+				bf.angle = 45;
+				bf.blurX = bf.blurY = 5;
+				bf.distance = 3;
+				bf.strength = 1;
+				bf.quality = BitmapFilterQuality.HIGH;
+				bf.type = BitmapFilterType.INNER;
+				var df:spark.filters.DropShadowFilter = new spark.filters.DropShadowFilter();
+				df.angle = 180;
+				df.blurX = bf.blurY = 5;
+				df.distance = 5;
+				df.strength = .22;
+				df.quality = BitmapFilterQuality.HIGH;				
+				df.color = 0x000000;
+				var gf:spark.filters.GlowFilter = new spark.filters.GlowFilter();
+				gf.blurX = bf.blurY = 10;
+				gf.strength = 1;
+				gf.quality = BitmapFilterQuality.HIGH;				
+				gf.color = 0x000000;
+
+				bg.filters = [bf, df, gf];
+			}
+			[Bindable]
+			public var label:String ="";
+			
+			[Bindable]
+			public var type:String ="";
+
+			[Bindable]
+			public var data:Object = null;
+			
+			
+			private function mouseMoveHandler(event:MouseEvent):void 
+			{                
+				if (currentState != "player" && currentState != "goalkeeper")
+				{
+					
+					
+					var img:Image = new Image;
+					
+					img.source = shirtDefault.bitmapData.clone();
+					img.width = shirtDefault.bitmapData.width*.8;
+					img.height = shirtDefault.bitmapData.height*.8;
+					img.smooth =true;
+					var _X:Number = UIComponent(event.currentTarget).mouseX-(img.width/2)
+					var _Y:Number = UIComponent(event.currentTarget).mouseY-(img.height/2)
+					var dragInitiator:UIComponent = UIComponent(event.currentTarget);
+					/*
+					var proxyUI:UIComponent = new UIComponent();
+					var b:Bitmap = new Bitmap( shirtDefault.bitmapData.clone(), "auto", true);
+					proxyUI.width = img.width;
+					proxyUI.height = img.height;
+					proxyUI.addChild( b  );
+					*/
+					var ds:DragSource = new DragSource();
+					ds.addData(dragInitiator, "img");  
+					
+					DragManager.doDrag(dragInitiator, ds, event, img, _X, _Y, .8);
+				}				
+			}
+			
+
+			
+				
+		]]>
+	</fx:Script>
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	<fx:Style>
+		@namespace s "library://ns.adobe.com/flex/spark";
+		@namespace mx "library://ns.adobe.com/flex/mx";
+		
+		.sideButton, #labelDisplay {
+			fontSize: 14px;
+			fontFamily: "StandardRegular";
+			color: #CCCCCC;
+			
+		}
+		
+	</fx:Style>
+	<s:states>
+		<s:State name="up" />
+		<s:State name="over" />
+		<s:State name="down" />
+		<s:State name="disabled" />
+		<s:State name="initial"  />
+		<s:State name="goalkeeper"  />
+		<s:State name="player"  />
+		
+	</s:states>
+	<s:BitmapImage id="shirtDefault" includeInLayout="false" visible="false" smooth="true"  source="@Embed('/assets/images/shirts/shirt_initial.png')"/>
+	<s:Rect id="bg" radiusX="12" radiusY="12" width="200" height="35">
+		<s:filters>
+			
+		</s:filters>
+		<s:fill>
+			<s:SolidColor color.goalkeeper="0xFECD0A" color.player="0xE6001C" color.over="0x999999" color="0x999999" color.initial="0x999999" />
+		</s:fill>
+	</s:Rect>
+	<s:Label id="labelDisplay" styleName="sideButton"
+			 textAlign="center" fontSize="14" fontFamily="StandardRegular" color="0xffffff" 
+			 maxDisplayedLines="1"
+			 horizontalCenter="0" verticalCenter="1" verticalAlign="middle"
+			 left="10" right="10" top="2" bottom="2" text="{label}">
+		
+	</s:Label>
+	
+</s:Group>

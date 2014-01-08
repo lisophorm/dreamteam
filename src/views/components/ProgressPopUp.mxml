@@ -1,0 +1,96 @@
+<?xml version="1.0"?>
+<!-- containers\spark\myComponents\MyLoginForm.mxml -->
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009"
+			   xmlns:mx="library://ns.adobe.com/flex/mx"
+			   xmlns:s="library://ns.adobe.com/flex/spark"
+			   width="578" height="259" remove="exit()" >
+	<s:layout>
+		<s:VerticalLayout/>
+	</s:layout>
+	<fx:Metadata>
+		[Event(name="closeError", type="flash.events.Event")]
+	</fx:Metadata>
+	
+	
+	<fx:Script>
+		<![CDATA[
+			import model.ML;
+			
+			import mx.events.FlexEvent;
+			import mx.managers.PopUpManager;
+			
+				
+				
+			[Bindable]
+			public var message:String="Please Wait";
+			
+			[Bindable]
+			public var windowTitle:String="Please Wait";
+			
+			[Bindable]
+			public var exitFunction:Function = null;
+			
+			protected function exit(e:FlexEvent=null):void
+			{
+				if (exitFunction!=null)
+					exitFunction();
+				
+			}
+			
+				// Handle the close button and Cancel button.
+				private function handleCloseEvent():void {
+					PopUpManager.removePopUp(this);
+				}            
+				
+				// Handle the OK button.
+				private function processLogin():void {
+					// Check credentials (not shown) then remove pop up.
+					var eventObject:Event = new Event("closeError");
+					dispatchEvent(eventObject); 
+					PopUpManager.removePopUp(this);
+				}
+		]]>
+	</fx:Script>
+	<s:Group>
+		
+	
+	<s:Rect top="0" bottom="0" left="0" right="0"
+			id="borderRect"
+			topLeftRadiusX="10"
+			topLeftRadiusY="10"
+			bottomLeftRadiusX="10"
+			bottomLeftRadiusY="10"
+			topRightRadiusX="10"
+			topRightRadiusY="10"
+			bottomRightRadiusX="10"
+			bottomRightRadiusY="10"
+			>
+		<s:stroke>
+			<s:SolidColorStroke id="borderStroke" color="0x0085CF" weight="8"/>
+		</s:stroke>
+		<s:fill>
+			<s:SolidColor id="bgFill" color="0xf1f1f1" alpha="1"  />
+		</s:fill>
+		<s:filters>
+			<s:DropShadowFilter 
+				distance="15" 
+				angle="45" 
+				color="0x000000" 
+				alpha=".8" 
+				blurX="8" 
+				blurY="8" 
+				strength=".65" 
+				inner="false" 
+				knockout="false"/>
+		</s:filters>
+	</s:Rect>
+	<s:BorderContainer width="574" height="259" backgroundAlpha="0" borderVisible="false" >
+		<s:TextArea x="12" width="574" height="259" borderVisible="false" contentBackgroundAlpha="0" fontFamily="StandardRegularAllCase"
+					fontSize="36" editable="false" selectable="false" text="{ML.t(message)}" fontWeight="bold" textAlign="center" verticalAlign="middle" />
+
+	</s:BorderContainer>
+	</s:Group>
+
+
+
+</s:Group>

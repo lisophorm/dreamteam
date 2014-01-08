@@ -1,0 +1,166 @@
+<teams>
+<teaminfo>
+    <name>Aston Villa</name>
+    <statistics>
+
+    </statistics>
+
+    <top_players>
+        <player>
+            <name>Paul McGrath</name>
+            <shirtno>8</shirtno>
+            <img src="/assets/images/players/paul-mcgrath.jpg"/>
+
+            <gallery>
+                <img src="/assets/images/players/paul-mcgrath1.jpg" />
+                <img src="/assets/images/players/paul-mcgrath2.jpg"  />
+            </gallery>
+
+            <description>
+                <![CDATA[McGrath signed on 3rd August 1989 for a fee of £400,000 and became a consistent mainstay of the Villa line up.
+
+In 1996 McGrath won a second League Cup for Villa. By the end of his Villa career he had chalked up 252 appearances in the claret and blue strip. He is affectionately referred to as 'God' by many Villa fans.]]>
+            </description>
+            <statistics poy="1982/1993" goals="9">
+               
+                <data key="PFA Player of the Year" value="1982" />
+                <data key="PFA Player of the Year" value="1993" />
+                <data key="FA Premier League – runner up"  />
+            </statistics>
+        </player>
+
+        <player>
+            <name>Gabriel Agbonlahor</name>
+            <shirtno>10</shirtno>
+            <img src="/assets/images/players/gabriel-agbonlahor.jpg"/>
+            <gallery>
+                <img src="/assets/images/players/gabriel-agbonlahor1.jpg" />
+                <img src="/assets/images/players/gabriel-agbonlahor2.jpg"  />
+            </gallery>
+            <description>
+                <![CDATA[Gabriel Imuetinyan "Gabby" Agbonlahor is an English footballer of Nigerian-Scottish heritage who plays as a striker or a winger and was the team's interim captain for part of the 2011/12 season. 
+
+Agbonlahor is a product of Aston Villa's Academy and has earned three caps for the English national team. 
+He is Aston Villa’s all-time leading Premier League goal scorer.]]>
+            </description>
+            <statistics poy="2009/10" goals="62">
+                <data key="Football League Cup Runner-Up 2009/2010" />
+                <data key="Barclays Premier League Player of the Month November 2007" /> 
+            </statistics>
+        </player>
+
+        <player>
+            <name>Gareth Barry</name>
+            <shirtno>7</shirtno>
+            <img src="/assets/images/players/gareth-barry.jpg"/>
+            <gallery>
+                <img src="/assets/images/players/gareth-barry1.jpg" />
+                <img src="/assets/images/players/gareth-barry2.jpg"  />
+            </gallery>
+            <description>
+                <![CDATA[Barry joined Aston Villa from Brighton & Hove Albion as a trainee in 1997. He played his first match for Villa on 2nd May 1998 against Sheffield Wednesday.
+
+Barry became the youngest player to appear in 300 Premier League games (aged 26 years 247 days).
+He went on and captained Aston Villa and is 9th in their all-time list of appearances.]]>
+            </description>
+            <statistics poy="2006/2007" goals="41">
+                <data key="Intertoto Cup Winner" value="2001" />
+                <data key="Player of the season 2006/2007"  />
+            </statistics>
+
+        </player>
+
+        <player>
+            <name>Christian Benteke</name>
+            <shirtno>12</shirtno>
+            <img src="/assets/images/players/christian-benteke.jpg"/>
+            <gallery>
+                <img src="/assets/images/players/christian-benteke1.jpg" />
+                <img src="/assets/images/players/christian-benteke2.jpg"  />
+            </gallery>
+            <description>
+                <![CDATA[On 31st August 2012, Benteke joined Premier League Club Aston Villa on a four-year deal for a fee believed to be around £7 million.
+On 15th September 2012, Benteke scored on his debut for Aston Villa in a 2–0 win against Swansea City. At the time Villa’s manager Paul Lambert praised Benteke's performance, calling him "unplayable“.
+Benteke is a regular starter in the 2013/14 Villa team and continues to impress the management team.]]>
+            </description>
+            <statistics poy="" goals="22">
+                <data key="International Appearances" value="15" />    
+                <data key="International Goals" value="6" />
+
+            </statistics>
+        </player>
+
+        <player>
+            <name>Dwight Yorke</name>
+            <shirtno>2</shirtno>
+            <img src="/assets/images/players/dwight-yorke.jpg"/>
+            <gallery>
+                <img src="/assets/images/players/dwight-yorke1.jpg" />
+                <img src="/assets/images/players/dwight-yorke2.jpg"  />
+            </gallery>
+            <description>
+                <![CDATA[Yorke was first discovered by the Aston Villa manager Graham Taylor whilst he was on a tour of the West Indies in 1989. Yorke appeared in a friendly match against Aston Villa; Taylor was impressed and offered Yorke a trial at Villa. After a short period of time Yorke was given a permanent contract. 
+
+From 1989 to 1998, Yorke played initially as a right winger until the 1995/96 season. He then switched to centre forward and quickly established himself as one of the Premier League’s top strikers.]]>
+            </description>
+            <statistics poy="1998" goals="73">
+                <data key="Premier League Player of the Month 1996/1999/2000" />
+                <data key="PFA Premier League Team of the Year" value="1998" />
+                <data key="Premier League Golden Boot" value="1998" />
+                <data key="Premier League Player of the season" value="1989" />
+            </statistics>
+        </player>
+    </top_players>    
+    
+    <video src="/assets/video/Behind the scenes at Villa team photoshoot.mp4" />
+    <gallery>
+            <item>
+                <img src="/assets/images/gallery/aston-villa/1920x1080_Villa-Park_external-from-club.jpg" alt="Villa Park" />
+                <description><![CDATA[Villa Park comprises of 42,788 seats split between four stands. These four stands are the Holte End to the South, the Trinity Road Stand to the West, the Doug Ellis Stand opposite the Trinity Road Stand and the North Stand behind the Northern goal.  All of the stands are composed of two tiers except the Trinity Road Stand, which has three.
+The highest attendance recorded at Villa Park was 76,588 on 2nd March 1946 in an FA Cup 6th round tie against Derby County. The highest attendance in a Premier League game was 42,788 on 29th December 2009, against Liverpool.]]>
+                </description>
+                <statistics>
+                    <description><![CDATA[<span fontWeight="bold">Capacity:</span> 42,788<br/><br/><span fontWeight="bold">Field Dimensions:</span> 105m x 68m<br/><br/><span fontWeight="bold">Surface:</span> Desso GrassMaster.]]></description>
+
+                    <stat key="Capacity" value="42,788" />
+                    <stat key="Field Dimensions" value="105m x 68m" />
+                    <stat key="Surface" value="Desso GrassMaster" />
+                    
+
+                </statistics>
+            </item>
+              <item>
+                <img src="/assets/images/gallery/aston-villa/Villa-Park_GV-2103-from-corner-from-club.jpg" alt="Villa Park" />
+                <description><![CDATA[Villa Park comprises of 42,788 seats split between four stands. These four stands are the Holte End to the South, the Trinity Road Stand to the West, the Doug Ellis Stand opposite the Trinity Road Stand and the North Stand behind the Northern goal.  All of the stands are composed of two tiers except the Trinity Road Stand, which has three.
+The highest attendance recorded at Villa Park was 76,588 on 2nd March 1946 in an FA Cup 6th round tie against Derby County. The highest attendance in a Premier League game was 42,788 on 29th December 2009, against Liverpool]]>
+                </description>
+                <statistics>
+                     <description><![CDATA[<span fontWeight="bold">Capacity:</span> 42,788<br/><br/><span fontWeight="bold">Field Dimensions:</span> 105m x 68m<br/><br/><span fontWeight="bold">Surface:</span> Desso GrassMaster.]]></description>
+                     <stat key="Capacity" value="42,788" />
+                    <stat key="Field Dimensions" value="105m x 68m" />
+                    <stat key="Surface" value="Desso GrassMaster" />
+                    
+                </statistics>
+            </item>
+    </gallery>
+    <timeline>
+         <gallery>
+                <img src="/assets/images/timeline/crystal_palace/01.jpg" />
+                <img src="/assets/images/timeline/crystal_palace/02.jpg" />
+                <img src="/assets/images/timeline/crystal_palace/03.jpg" />
+            </gallery>
+        <data year="1905">Crystal Palace Football Club is formed at the venue of the glass Palace that stood at the top of Sydenham Hill.</data>
+        <data year="1914">Henry Colclough becomes the first Palace player to represent England on 16th March, making his debut in a 2-0 victory over Wales in Cardiff.</data>
+        <data year="1921">Palace win the inaugural Division Three title and secure promotion to Division Two at the first attempt.</data>
+        <data year="1924">Palace move to a new purpose built stadium named Selhurst Park, playing their first match in their new home against Sheffield Wednesday on 30th August The land for the new stadium was purchased in 1922 for £2,570 and £30,000 was spent on the stadium’s construction.</data>
+        <data year="1969">Under the leadership of Bert Head, Palace finish second in Division Two and win promotion to the top-flight for the first time in the club’s history Local boy Steve Kember was the hero, scoring the winner against Fulham on 19th April to secure a place in Division One.</data>
+        <data year="1988">Jim Cannon plays his last game for the club after 15 years of service. The defender played 660 games for Palace, which remains a club record.</data>
+        <data year="1990">The Eagles survived in Division One despite a record 9-0 league defeat against Liverpool on the opening day of the 1989/90 season. The Eagles got their revenge however, beating Liverpool 4-3 in the semi-final of the FA Cup. Palace drew 3-3 against Manchester United in the final, before losing the replay 1-0.</data>
+        <data year="1991">Palace finish third in the top flight (their highest league finish to date) and beat Everton at Wembley to win the Zenith Data Systems Cup.</data>
+        <data year="2004">At the start of the year, Palace were in the bottom four of the First Division but Iain Dowie arrived as manager and a remarkable run of results lifted Palace into a play-off place. The Eagles overcame Sunderland on penalties to reach the final in Cardiff where Neil Shipperley’s goal was enough to beat West Ham United and take Palace back into the Premier League.</data>
+        <data year="2013">Crystal Palace beat Watford in the Play off final at Wembley to win promotion to the Barclays Premier League</data>
+
+    </timeline>
+
+</teaminfo>
+</teams>

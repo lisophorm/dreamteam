@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		 xmlns:s="library://ns.adobe.com/flex/spark" 
+		 xmlns:mx="library://ns.adobe.com/flex/mx" width="600" height="300" added="onAdded()" remove="exit()">
+	<fx:Script>
+		<![CDATA[
+			import model.ML;
+			
+			import mx.events.FlexEvent;
+			import mx.managers.PopUpManager;
+			
+			
+			protected var isremoving:Boolean = false;
+			
+			[Bindable]
+			public var message:String="";
+			
+			[Bindable]
+			public var windowTitle:String="I/O ERROR:";
+			
+			[Bindable]
+			public var exitFunction:Function = null;
+			
+			protected function onAdded(e:FlexEvent=null):void
+			{
+				isremoving = false;
+			}
+
+			
+			protected function exit(e:FlexEvent=null):void
+			{
+				isremoving = true;
+				if (exitFunction!=null)
+					exitFunction();
+				
+			}
+			public function get isRemoving():Boolean
+			{
+				return isremoving;
+			}
+		]]>
+	</fx:Script>
+<fx:Metadata>
+	[Event(name="closeError", type="flash.events.Event")]
+</fx:Metadata>
+	<fx:Declarations>
+		<s:DropShadowFilter id="shadowfilter" strength=".8" distance="8" />
+	</fx:Declarations> 
+		<s:Rect id="tbFill" left="0" right="0" top="0" bottom="1" radiusX="30" filters="{[shadowfilter]}">
+			<s:fill>
+				<s:LinearGradient rotation="90">
+					<s:GradientEntry color="0x0068A9"/>
+					<s:GradientEntry color="0x0085CF"/>
+				</s:LinearGradient>
+			</s:fill>
+		</s:Rect>
+		<s:VGroup width="100%" height="100%" horizontalAlign="center" verticalAlign="middle">
+			<s:Label x="81" y="124" color="#FFFFFF" fontSize="32" text="{windowTitle}"  fontFamily="StandardRegularAllCase"/>
+			<s:TextArea x="58" y="79" textAlign="center" width="484" height="140" color="0x000000" editable="false"
+						fontSize="18" verticalAlign="middle" text="{ML.t(message)}"  fontFamily="StandardRegularAllCase" 
+						selectable="false" />
+			<s:Button height="50"  label="CLOSE" click="PopUpManager.removePopUp(this);" skinClass="skins.vodafoneButton" />
+		</s:VGroup>
+</s:Group>

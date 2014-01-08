@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- http://blog.flexexamples.com/2009/10/23/displaying-a-popup-spark-titlewindow-container-in-flex-4/ -->
+<s:TitleWindow name="tandcWindow"
+			   xmlns:fx="http://ns.adobe.com/mxml/2009"
+			   xmlns:s="library://ns.adobe.com/flex/spark"
+			   xmlns:mx="library://ns.adobe.com/flex/halo"
+			   title="{ML.t('Terms and Conditions')}"
+			   width="600" height="460"
+			   close="ttlWndw_close(event);" resize="onresize()"
+			   added="onAdded()"  
+			   remove="exit();" xmlns:controls="com.flexcapacitor.controls.*" skinClass="skins.barTitleWindow" >
+		
+		<fx:Script>
+			<![CDATA[
+				import model.ML;
+				
+				import mx.events.FlexEvent;
+				
+				protected var isremoving:Boolean = false;
+				
+				[Bindable]
+				public var exitFunction:Function = null;
+				
+				protected function onAdded(e:FlexEvent=null):void
+				{
+					isremoving = false;
+				}
+				protected function exit(e:FlexEvent=null):void
+				{
+					isremoving = true;
+					if (exitFunction!=null)
+						exitFunction();
+					
+				}
+				public function get isRemoving():Boolean
+				{
+					return isremoving;
+				}
+				
+				public function onresize(e:Event=null):void
+				{
+					// WHY SO COMPLICATED - ASK ADOBE'S WEBVIEW DEVELOPER -	
+					trace("*** tcRESIZE "+parentApplication.stage.stageWidth);
+					trace("popup width:"+ this.width);
+					tec.width = (this.width-10*this.parentApplication.scale)*this.parentApplication.scale;
+					tec.height = this.height*this.parentApplication.scale-(160*this.parentApplication.scale);
+					var pt:Point = this.globalToLocal(new Point(((parentApplication.stage.stageWidth-tec.width+1*this.parentApplication.scale)/2),(parentApplication.stage.stageHeight-this.height*this.parentApplication.scale)/2 ));
+			
+					tec.x=pt.x// -(this.width/2)+20;
+					tec.y=pt.y;
+					//gino.scaleX = gino.scaleY = this.parentApplication.scale;
+					//gino.x =  (this.width*this.parentApplication.scale-(gino.width*this.parentApplication.scale))/2;
+					//gino.y =  (this.height*this.parentApplication.scale - ((gino.height*2+10) * this.parentApplication.scale));
+					if	(tec.hasEventListener( Event.COMPLETE))
+					{
+						tec.removeEventListener( Event.COMPLETE, onresize);	
+					}
+
+				}
+			]]>
+		</fx:Script>
+		<controls:WebView id="tec" width="596" height="300" addedToStage="ta_addedToStageHandler(event)" />
+	
+	
+	
+	<s:Button x="236" y="350" height="50" skinClass="skins.vodafoneButton" id="gino" label="Close" click="PopUpManager.removePopUp(this);"/>
+	<fx:Metadata>
+		[Event(name="showTerms", type="flash.events.Event")]
+	</fx:Metadata>
+	<fx:Script>
+		<![CDATA[
+			import flash.events.Event;
+			import flash.utils.setInterval;
+			import flashx.textLayout.conversion.*;
+			import flashx.textLayout.elements.*;
+			import mx.core.IFlexDisplayObject;
+			import mx.events.CloseEvent;
+			import mx.managers.PopUpManager;
+			import spark.utils.TextFlowUtil;
+			
+			protected var tcRequest:URLRequest;
+			protected var tcLoader:URLLoader = new URLLoader();
+			public var initialUrl:String;
+			protected var myStage:StageWebView;
+			
+			protected function ttlWndw_close(evt:CloseEvent):void {
+				//myStage.visible=false;
+				//myStage.viewPort = new Rectangle(100,100,100,100);
+				//myStage.dispose();
+				//myStage = null;
+				PopUpManager.removePopUp(evt.currentTarget as IFlexDisplayObject);
+			}
+			
+			protected function ta_addedToStageHandler(event:Event):void
+			{
+				//var pt:Point = new Point(event.localX, event.localY);
+				
+				setInterval(resizza,300);
+				
+				var pt:Point = event.target.parent.localToGlobal(new Point());
+				var locazia:Point=gino.contentToGlobal(new Point());
+				trace("converso x:"+locazia.x+" y:"+locazia.y+" t:"+pt.x);
+				// This copies a single file into a subdir of appStorageDir
+				
+				try
+				{
+					var source:File = File.applicationDirectory.resolvePath("assets/html/tandc.html"); 
+					// create file(s) in a subdir of appStorageDir to simplify cleanup
+					var destination:File = File.applicationStorageDirectory.resolvePath("assets/html/tandc.html");
+					// now do the copy and create a ref to our HTML file that a browser will understand
+					source.copyTo(destination, true);   
+					initialUrl = "file://" + destination.nativePath ;
+					trace("terms added to stage");
+					
+				} catch (error:Error)
+				{
+					trace("Warning: "+error.message.toString());
+				}
+				
+				onresize();
+				tec.addEventListener( Event.COMPLETE, onresize);	
+				tec.source=initialUrl;
+
+			}
+			protected function resizza():void {
+				var eventObject:Event = new Event("showTerms");
+				dispatchEvent(eventObject); 
+			}
+
+			
+		]]>
+	</fx:Script>
+
+</s:TitleWindow>

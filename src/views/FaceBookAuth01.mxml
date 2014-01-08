@@ -1,0 +1,400 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		 xmlns:s="library://ns.adobe.com/flex/spark"     
+		 remove="exit(event)" creationComplete="created(event)"
+		 
+		 xmlns:components="components.*" width="100%" height="100%" xmlns:components1="iamjosh.samples.components.*">
+	
+	<fx:Script>
+		<![CDATA[
+			import com.alfo.DelayedExecution;
+			import com.alfo.utils.CleanWebView;
+			import com.alfo.utils.Console;
+			import com.alfo.utils.EncryptWrapper;
+			import com.lia.crypto.AES;
+			
+			import events.ApplicationEvent;
+			import events.KioskError;
+			import events.UserEvent;
+			import events.ViewEvent;
+			
+			import flash.filters.DropShadowFilter;
+			import flash.media.StageWebView;
+			import flash.net.URLRequest;
+			import flash.utils.clearInterval;
+			
+			import model.Config;
+			import model.ML;
+			
+			import mx.events.FlexEvent;
+			import mx.managers.PopUpManager;
+			import mx.rpc.events.FaultEvent;
+			import mx.rpc.events.ResultEvent;
+			
+			import spark.filters.DropShadowFilter;
+			import spark.primitives.Rect;           
+			
+			protected var htmlLoader:HTMLLoader;
+			protected var openBrowser:Boolean = false; 
+			protected var webContainer:Sprite;
+			// URL Should be: http://www.ignitesocial.co.uk/vf_budapest/
+			
+			private var fbScope:String= "email,publish_actions" //"email,publish_checkins,publish_stream,offline_access";
+			//public var fbAppID:String="151003608367721";
+			
+			private var fbRedir:String;
+			private var fbLogout:String;
+			protected var fbAuthURL:String;
+			//protected var fbAuthURL:String="https://m.facebook.com/dialog/permissions.request?app_id=252378658153874&display=touch&next=http://www.ignitesocial.co.uk/ignite/php-sdk/examples/landed.php&type=user_agent&perms=email,publish_checkins,publish_stream,offline_access&fbconnect=1&response_type=token";
+			protected var data:Object = null;
+			
+			
+			public var access_token:String;
+			public var currentURN:String;
+			public var optin_marketing:Boolean;
+			public var optin_terms:Boolean;
+			
+			protected var intervallo:Number;
+			protected var pref:Config;
+			
+			public function created(event:FlexEvent=null):void
+			{
+				
+				this.addEventListener( Event.INIT, init);
+				this.parentApplication.addEventListener( ApplicationEvent.POPUP_CLOSE, hideBrowser);
+				this.parentApplication.addEventListener( ApplicationEvent.POPUP_OPEN, showBrowser);
+			}
+			
+			protected  function hideBrowser(event:Event=null):void
+			{
+				if (webContainer!=null)
+				{
+					//  webContainer.visible = false;
+				}
+			}
+			protected  function showBrowser(event:Event=null):void
+			{
+				if (webContainer!=null)
+				{
+					//  webContainer.visible = true;
+				}
+			}
+			public function init(event:Event=null):void
+			{
+				Console.log("*** INIT FACBOOKAUTH01 ***", this);
+				if (this.parentApplication.data!=null)
+				{
+					//this.fbAppID = this.parentApplication.facebookAppID
+					data = this.parentApplication.data;
+					currentURN = data.urn;
+					optin_marketing = data.optin_marketing;
+					optin_terms = data.optin_terms;
+					setToken.url = (this.parentApplication).baseURL+'/facebook/setuser.php';
+				}
+				clearWebContainer();
+				webContainer = new Sprite();
+				this.stage.addChild( webContainer );
+				htmlLoader = new HTMLLoader();
+				htmlLoader.cacheResponse=false;
+				htmlLoader.useCache=false;
+				//htmlLoader.manageCookies=true;
+				//htmlLoader.
+				
+				pref = new Config();
+				var facebookAppID:String = pref.prefsXML..facebookAppID;
+				var redirect_uri:String = pref.prefsXML..serverIP;
+
+				
+				fbRedir = (this.parentApplication).baseURL+"/php-sdk/examples/landed.php";
+				fbLogout = (this.parentApplication).baseURL+"/php-sdk/examples/logout.php"; // &display=touch publish_checkins ,offline_access
+				//fbAuthURL = "https://graph.facebook.com/oauth/authorize?type=user_agent&display=popup&scope=publish_actions,email,user_photos,publish_stream,publish_checkins&client_id="+fbAppID+"&skip_api_login=0&redirect_uri="+(this.parentApplication).baseURL+"/php-sdk/examples/landed.php&response_type=token";
+				fbAuthURL = "https://graph.facebook.com/oauth/authorize?type=user_agent&scope=email,publish_actions,&client_id="+facebookAppID+"&display=touch&redirect_uri=https://"+redirect_uri+"/php-sdk/examples/landed.php&response_type=token"; //&auth_type=reauthenticate
+				var tempo:DelayedExecution=new DelayedExecution(2000,this,createBrowser);
+				//createBrowser();
+				
+				
+			}
+			protected function exit(event:Event):void
+			{
+				if (htmlLoader!=null)
+				{
+					if (webContainer.contains(htmlLoader))
+						webContainer.removeChild(htmlLoader);
+				}
+				htmlLoader=null;
+				
+				
+				clearWebContainer();
+				Console.log("*** EXIT FACEBOOKAUTH01 ***", this);
+			}
+			protected function clearWebContainer():void
+			{
+				if (this.webContainer!=null)
+				{
+					if (this.stage.contains( webContainer ))
+					{
+						this.stage.removeChild( webContainer );
+					}
+				}   
+				
+			}
+			
+			
+			protected function onURLChanging(event:LocationChangeEvent):void
+			{
+				if(event.location.indexOf("skip_api_login=1") != -1) {
+					Console.log("activating cookies on urlchange", this);
+					//URLRequestDefaults.manageCookies=true;
+				}
+				Console.log("URL changing: "+event.location, this);
+				status_label.text = "URL CHANGING "+event.location;
+				this.webContainer.visible = false;
+				this.parentApplication.dispatchEvent( new Event("hideDropShadow"));
+			}
+			
+			protected function onURLChange(event:LocationChangeEvent):void
+			{
+				if(event.location.indexOf("facebook.com/login.php") != -1) {
+					Console.log("activating cookies", this);
+					//URLRequestDefaults.manageCookies=true;
+				}
+				Console.log("URL change "+event.location, this);
+				var punto:Point=container.localToGlobal(new Point());
+				status_label.text = "URL changed: "+event.location;
+				this.webContainer.visible = false;
+				this.parentApplication.dispatchEvent( new Event("hideDropShadow"));
+			}
+			protected function onURLCompleted( e:Event ):void
+			{
+				URLRequestDefaults.manageCookies=true;
+				status_label.text = "URL LOADING COMPLETE";
+				Console.log("URL loading complete: "+htmlLoader.location, this);
+				showURL();
+			}
+			
+			private function showURL():void
+			{
+				//Console.log"timer location:"+webView.location);
+				var URI:String=htmlLoader.location;
+				var canDisplay:Boolean = true;
+				// access token exists in location
+				Console.log("htmlLoader.location: "+htmlLoader.location, this);
+				
+				if(htmlLoader.location.indexOf("completop.php")!=-1) 
+				{
+					htmlLoader.load( new URLRequest( fbAuthURL ));
+				
+				} else if(htmlLoader.location.indexOf("access_token")!=-1) 
+				{
+					canDisplay = false;
+					Console.log("ACCESS TOKEN OBTAINED", this);
+					
+					//webView.viewPort = new Rectangle(0, 0, 0, 0);
+					//webView.stage=null;
+					//URI=URI.replace("#","?");
+					Console.log("URI:"+URI, this);
+					URI=URI.substr(URI.indexOf("#")+1);
+					var vars:URLVariables = new URLVariables();
+					vars.decode(URI);
+					access_token=vars.access_token;
+					Console.log("Access token:"+vars.access_token, this);
+					htmlLoader.removeEventListener( Event.COMPLETE, onURLCompleted);    
+					
+					
+					Config.access_token = access_token;
+					Config.logout = fbLogout;
+					
+					logoutCompleted();
+				if (webContainer.contains( htmlLoader ) )
+					{
+						webContainer.removeChild( htmlLoader );
+					}
+//					htmlLoader.load(new URLRequest("https://www.facebook.com/logout.php?access_token="+access_token+"&confirm=1&next="+fbLogout));  
+				}
+				
+				// error
+				//htmlLoader.location.indexOf("authorize?type=user_agent&display=popup")!=-1 ||
+				if( ( htmlLoader.location.indexOf("landed.php?error_reason=user_denied")!=-1 && htmlLoader.location.indexOf("facebook.com/login.php")==-1)) {
+					Console.log("An error occured: "+htmlLoader.location, this);
+					
+					canDisplay = false;
+					//webView.viewPort = new Rectangle(0, 0, 0, 0);
+					htmlLoader.removeEventListener( Event.COMPLETE, onURLCompleted);    
+					htmlLoader.removeEventListener(LocationChangeEvent.LOCATION_CHANGE,onURLChange);    
+					htmlLoader.removeEventListener(LocationChangeEvent.LOCATION_CHANGING,onURLChanging);
+					htmlLoader=null;
+					this.parentApplication.dispatchEvent(new KioskError(KioskError.ERROR, "Authentication Error, please start data entry again", "ERROR", home));
+					
+				}
+				if (canDisplay)
+				{
+					this.webContainer.visible = true;
+					webContainer.addChild( htmlLoader ); 
+					this.parentApplication.dispatchEvent( new Event("showDropShadow")); 
+					
+				}
+			}
+			protected function logoutCompleted(e:Event=null):void
+			{
+				Console.log("**** LOGOUT COMPLETED ****", this);
+				
+				//htmlLoader.removeEventListener(LocationChangeEvent.LOCATION_CHANGING,onURLChanging);
+				htmlLoader.removeEventListener(LocationChangeEvent.LOCATION_CHANGE,onURLChange);    
+				htmlLoader.removeEventListener(LocationChangeEvent.LOCATION_CHANGING,onURLChanging);
+				
+				htmlLoader.removeEventListener( Event.COMPLETE, onURLCompleted);    
+				this.parentApplication.dispatchEvent( new Event("hideDropShadow"));
+				
+				var passVars:Object=new Object();
+				passVars.token=EncryptWrapper.Wrap(access_token);
+				passVars.urn=EncryptWrapper.Wrap(currentURN);
+				passVars.optInTerms = optin_terms ? 1 : 0;
+				passVars.optInMarketing = optin_marketing ? 1 : 0;
+				setToken.send(passVars);
+				
+				
+			}
+			protected function exitLogin():void {
+				var dato:Object=new Object;
+				dato.urn=currentURN;
+				
+				//navigator.pushView(views.ExtraInfo,dato);
+				htmlLoader=null;
+				this.parentApplication.dispatchEvent( new Event("hideDropShadow"));
+				this.parentApplication.dispatchEvent( new ViewEvent( ViewEvent.LOCATION_FACEBOOK_REGISTERED ) );
+			}
+			protected function home( e:Event = null ):void {
+				
+				htmlLoader=null;
+				this.parentApplication.dispatchEvent( new Event("hideDropShadow"));
+				this.parentApplication.dispatchEvent( new ViewEvent( ViewEvent.LOCATION_RESTART ) );
+			}
+			
+			
+			protected function createBrowser():void 
+			{
+				Console.log("CREATING BROWSER", this);
+				URLRequestDefaults.manageCookies=false;
+				
+				
+				//              busone.x=container.width/2-50;
+				//              busone.y=container.height/2-50;
+				htmlLoader.width=container.width;
+				htmlLoader.height=container.height;
+				htmlLoader.scaleX=htmlLoader.scaleY=1;
+				resizeWebApp();
+				
+				htmlLoader.addEventListener( LocationChangeEvent.LOCATION_CHANGING, onURLChanging );
+				htmlLoader.addEventListener( LocationChangeEvent.LOCATION_CHANGING, onURLChange );
+				
+				htmlLoader.addEventListener( Event.COMPLETE, onURLCompleted);    // FIRES WHEN LOADING IS DONE
+				//Console.log("Loading URL: "+fbAuthURL, this);
+				//htmlLoader.load( new URLRequest( fbAuthURL ) ); 
+				
+				//backend - force logout/login
+				var logoutURL:String = "http://"+pref.prefsXML..serverIP+"/facebook/forceloggaout.php";
+				Console.log("Loading URL: " +logoutURL, this);
+				htmlLoader.load( new URLRequest(logoutURL) );
+				
+			}
+			public function resizeWebApp():void
+			{
+				
+				if (htmlLoader!=null)
+				{
+					var scale:Number = Math.min( 1366/this.stage.stageWidth,  768/this.stage.stageHeight);
+					var offsetY : Number = 80;
+					var dx:Number = ((this.stage.stageWidth-1366*scale)/2);
+					var dy:Number = ((this.stage.stageHeight-(768)*scale)/2)+offsetY;
+					var dwidth:Number = 1366 * scale;
+					var dheight:Number = (768-(offsetY)) * scale-20;
+					var r:Rectangle = new Rectangle(dx, dy, dwidth, dheight);
+					htmlLoader.x = dx;
+					htmlLoader.y = dy;
+					htmlLoader.width=dwidth;
+					htmlLoader.height=dheight;
+					
+					
+					
+				}
+				
+			}
+			protected function resizeBrowser():void {
+				
+				if (htmlLoader!=null)
+				{
+					Console.log("*** RESIZED WEB BROWSER", this);
+				}
+			}
+			
+			
+			
+			protected function httpservice1_resultHandler(event:ResultEvent):void
+			{
+				
+				Console.log("TOKEN RESULT FROM DATABASE "+setToken.lastResult.result+" "+currentURN, this);
+				
+				switch (setToken.lastResult.result)
+				{
+					case "NO":// Token not found
+						this.parentApplication.dispatchEvent( new ViewEvent( ViewEvent.LOCATION_FACEBOOK ));
+						break;
+					case "OK":// Token save 
+						this.parentApplication.dispatchEvent( new UserEvent( UserEvent.REGISTERED, "facebook", event.result.id, event.result.name ));
+						this.parentApplication.dispatchEvent( new ViewEvent( ViewEvent.LOCATION_FACEBOOK_REGISTERED ));
+						break;
+					case "DUPLICATE":// Token save  - may need to change to say you can only register once....
+						this.parentApplication.dispatchEvent(new KioskError(KioskError.ERROR, "You have already registered...", "Duplicate", home));
+						break;
+					case "ERROR":
+						this.parentApplication.dispatchEvent(new KioskError(KioskError.ERROR, setToken.lastResult.message, "ERROR", home));
+						
+						break;
+					default:
+						var output:String = "";
+						for (var m:String in event.result)
+						{
+							output = m+" "+event.result[m]+"\n";
+						}
+						this.parentApplication.dispatchEvent(new KioskError(KioskError.ERROR, output.toString(), "ERROR", home));
+						
+				}
+				
+				
+				
+			}
+			
+			protected function httpservice1_faultHandler(event:FaultEvent):void
+			{
+				
+				this.parentApplication.dispatchEvent(new KioskError(KioskError.ERROR, event.fault.message, event.fault.faultString.toUpperCase(), restart));
+			}
+			
+			
+			protected function restart(e:Event=null):void
+			{
+				CleanWebView.wipeOut();
+				NativeApplication.nativeApplication.exit();
+			}
+			
+		]]>
+	</fx:Script>
+	
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+		<s:HTTPService id="setToken" resultFormat="flashvars" method="POST" url="{ (this.parentApplication).baseURL+'/facebook/setuser.php'}" result="httpservice1_resultHandler(event)" fault="httpservice1_faultHandler(event)" />
+	</fx:Declarations>
+	
+	<s:BorderContainer width="100%" height="100%" id="container" borderAlpha="0" >
+		<s:VGroup width="100%" height="100%" horizontalAlign="center" verticalAlign="middle">
+			<s:Label id="status_label" includeInLayout="false" text="status" color="0x000000" />
+			<components1:AnimatedGIFImage smoothBitmapContent="true" source="assets/images/ajax_loader_blue_128.gif"/>
+			<s:Spacer height="20"/>
+			<s:Label textAlign="center" text="Connecting with FaceBook &#xd;(this could take up to 30 seconds)&#xd;Thank you for your patience" fontSize="20" id="busone" />
+			<!--
+			<s:BusyIndicator horizontalCenter="0" verticalCenter="0" width="100" height="100" rotationInterval="200" symbolColor="#1caed0" id="busone" />
+			-->
+			
+		</s:VGroup>
+	</s:BorderContainer>
+</s:Group>

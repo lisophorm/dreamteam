@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		xmlns:s="library://ns.adobe.com/flex/spark"		
+		remove="exit(event)" creationComplete="created(event)"
+		
+		xmlns:components="components.*" width="100%" height="100%">
+	
+	<fx:Script>
+		<![CDATA[
+			import com.alfo.DelayedExecution;
+			import com.alfo.utils.CleanWebView;
+			import com.alfo.utils.EncryptWrapper;
+			import com.lia.crypto.AES;
+			
+			import events.KioskError;
+			import events.UserEvent;
+			import events.ViewEvent;
+			
+			import flash.filters.DropShadowFilter;
+			import flash.media.StageWebView;
+			import flash.net.URLRequest;
+			import flash.utils.clearInterval;
+			
+			import model.ML;
+			
+			import mx.events.FlexEvent;
+			import mx.managers.PopUpManager;
+			import mx.rpc.events.FaultEvent;
+			import mx.rpc.events.ResultEvent;
+			
+			import spark.filters.DropShadowFilter;
+			import spark.primitives.Rect;			
+			
+			protected var htmlLoader:HTMLLoader;
+			protected var openBrowser:Boolean = false; 
+			protected var webContainer:Sprite;
+
+			private var fbLogout:String;
+
+			protected var data:Object = null;
+			
+			
+			public var access_token:String;
+			public var currentURN:String;
+			public var optin_marketing:Boolean;
+			public var optin_terms:Boolean;
+			
+			protected var intervallo:Number;
+			
+			public function created(event:FlexEvent=null):void
+			{
+				this.addEventListener( Event.INIT, init);
+			}
+			public function init(event:Event=null):void
+			{
+				trace("*** INIT FACEBOOKLOGOUTOVERRIDE ***");
+				if (this.parentApplication.data!=null)
+				{
+					data = this.parentApplication.data;
+					currentURN = data.urn;
+					optin_marketing = data.optin_marketing;
+					optin_terms = data.optin_terms;
+				}
+				clearWebContainer();
+				webContainer = new Sprite();
+				this.stage.addChild( webContainer );
+				htmlLoader = new HTMLLoader();
+				htmlLoader.cacheResponse=false;
+				htmlLoader.useCache=false;
+				
+				
+				//fbLogout = (this.parentApplication).baseURL+"forcelogout.php"; // &display=touch publish_checkins ,offline_access
+				fbLogout="http://www.facebook.com";
+				createBrowser();
+				
+				
+			}
+			protected function exit(event:Event):void
+			{
+				htmlLoader.removeEventListener(LocationChangeEvent.LOCATION_CHANGING,onURLChanging);
+				htmlLoader.removeEventListener(LocationChangeEvent.LOCATION_CHANGE,onURLChange);	// NOT ALWAYS FIRING
+				htmlLoader.removeEventListener( Event.COMPLETE, onURLCompleted);	
+				
+				if (htmlLoader!=null)
+				{
+					if (webContainer.contains(htmlLoader))
+						webContainer.removeChild(htmlLoader);
+				}
+					htmlLoader=null;
+				
+				
+				clearWebContainer();
+				CleanWebView.wipeOut();
+				
+				this.parentApplication.dispatchEvent( new Event("hideDropShadow"));
+				
+				trace("*** EXIT FACEBOOKLOGOUTOVERRIDE ***");
+			}
+			protected function clearWebContainer():void
+			{
+				if (this.webContainer!=null)
+				{
+					if (this.stage.contains( webContainer ))
+					{
+						this.stage.removeChild( webContainer );
+					}
+				}	
+				
+			}
+			
+			
+			protected function onURLChanging(event:LocationChangeEvent):void
+			{
+				trace("URL changing "+event.location);
+				this.webContainer.visible = false;
+				this.parentApplication.dispatchEvent( new Event("hideDropShadow"));
+			}
+			
+			protected function onURLChange(event:LocationChangeEvent):void
+			{
+					
+				trace( "URL CHANGED "+event.location );
+				this.webContainer.visible = false;
+				this.parentApplication.dispatchEvent( new Event("hideDropShadow"));
+			}
+			protected function onURLCompleted( e:Event ):void
+			{
+				
+				status_label.text = "URL LOADING COMPLETE";
+				//webView.stage = stage;
+
+				trace("url loading complete");
+			
+				this.webContainer.visible = true;
+				webContainer.addChild( htmlLoader ); 
+				this.parentApplication.dispatchEvent( new Event("showDropShadow"));	
+				htmlLoader.removeEventListener(LocationChangeEvent.LOCATION_CHANGING,onURLChanging);
+				htmlLoader.removeEventListener(LocationChangeEvent.LOCATION_CHANGE,onURLChange);	// NOT ALWAYS FIRING
+				htmlLoader.removeEventListener( Event.COMPLETE, onURLCompleted);	
+				
+			}
+			
+			
+			protected function createBrowser():void 
+			{
+				trace("CREATING BROWSER");
+				htmlLoader.width=container.width;
+				htmlLoader.height=container.height;
+				htmlLoader.scaleX=htmlLoader.scaleY=1;
+				resizeWebApp();
+				        
+				htmlLoader.addEventListener( LocationChangeEvent.LOCATION_CHANGING, onURLChanging );
+				htmlLoader.addEventListener( LocationChangeEvent.LOCATION_CHANGE, onURLChange );
+				htmlLoader.addEventListener( Event.COMPLETE, onURLCompleted);	 // FIRES WHEN LOADING IS DONE
+				htmlLoader.load( new URLRequest( fbLogout ) );	
+
+				
+				
+			}
+			public function resizeWebApp():void
+			{
+				
+				if (htmlLoader!=null)
+				{
+					var scale:Number = Math.min( 1366/this.stage.stageWidth,  768/this.stage.stageHeight);
+					var offsetY : Number = 80;
+					var dx:Number = ((this.stage.stageWidth-1366*scale)/2);
+					var dy:Number = ((this.stage.stageHeight-(768)*scale)/2)+offsetY;
+					var dwidth:Number = 1366 * scale;
+					var dheight:Number = (768-(offsetY)) * scale-20;
+					var r:Rectangle = new Rectangle(dx, dy, dwidth, dheight);
+					htmlLoader.x = dx;
+					htmlLoader.y = dy;
+					htmlLoader.width=dwidth;
+					htmlLoader.height=dheight;
+					
+					
+					
+				}
+				
+			}
+			protected function resizeBrowser():void {
+				
+				if (htmlLoader!=null)
+				{
+					trace("*** RESIZED WEB BROWSER");
+				}
+			}
+		
+			
+			protected function restart(e:Event=null):void
+			{
+				CleanWebView.wipeOut();
+				NativeApplication.nativeApplication.exit();
+			}
+			
+		]]>
+	</fx:Script>
+	
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	
+	<s:BorderContainer width="100%" height="100%" id="container" borderAlpha="0" >
+	<s:VGroup width="100%" height="100%" horizontalAlign="center" verticalAlign="middle">
+		<s:Label id="status_label" includeInLayout="false" text="status" color="0x000000" />
+		<s:Label text="{ML.t('loading')}" id="busone" />
+		<!--
+			<s:BusyIndicator horizontalCenter="0" verticalCenter="0" width="100" height="100" rotationInterval="200" symbolColor="#1caed0" id="busone" />
+		-->
+		
+	</s:VGroup>
+</s:BorderContainer>
+</s:Group>

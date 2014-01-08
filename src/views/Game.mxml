@@ -1,0 +1,457 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		 xmlns:s="library://ns.adobe.com/flex/spark" 
+		 xmlns:mx="library://ns.adobe.com/flex/mx" width="1920" height="1080" 
+		 xmlns:views="views.*" xmlns:skins="skins.*" xmlns:components="views.components.*"
+		 creationComplete="created(event)" remove="exit(event)" >
+	<fx:Script>
+		<![CDATA[
+			import com.alfo.utils.Console;
+			import com.greensock.BlitMask;
+			import com.greensock.TweenMax;
+			
+			import flash.events.MouseEvent;
+			
+			import mx.core.BitmapAsset;
+			import mx.core.DragSource;
+			import mx.core.UIComponent;
+			import mx.events.DragEvent;
+			import mx.events.FlexEvent;
+			import mx.managers.DragManager;
+			import mx.rpc.events.FaultEvent;
+			import mx.rpc.events.ResultEvent;
+			
+			import spark.primitives.BitmapImage;
+			
+			import events.KioskError;
+			import events.KioskEvent;
+			import events.TeamEvent;
+			import events.UserEvent;
+			import events.ViewEvent;
+			
+			import model.ML;
+			import model.TeamModel;
+			
+			public var data:Object;
+			protected var selectedTeam:String;
+			
+			public function created(event:FlexEvent=null):void
+			{
+				this.addEventListener( Event.INIT, init);
+				init();
+			}
+			public function init(event:Event=null):void
+			{
+				Console.log("*** INIT GAME ***", this);
+				if (this.parentApplication.data!=null)
+				{
+					data = this.parentApplication.data;
+					selectedTeam = data.team;
+					Console.log( data.team, this );
+				}
+				
+				populateShirtNo();
+				teamData.send();
+				reset();
+				start_overlay.visible = true;
+				start_overlay.alpha = 1;
+					
+				TeamModel._instance.addEventListener( TeamEvent.UPDATE, redrawTeamConfigurations);
+				TeamModel.reset();
+				TeamModel.selectedTeam = selectedTeam;
+				
+				
+			}
+			protected function redrawTeamConfigurations( e:TeamEvent = null ):void
+			{
+				Console.log("Redraw Team", this);
+				resetList( goalkeeperData );
+				resetList( defenderData )
+				resetList( midfielderData )
+				resetList( forwardData )
+				var itm:Object;
+				for (var i:int=0;i<TeamModel.list.length;i++)
+				{
+					
+					if (TeamModel.list[i].type=="goalkeeper")
+					{
+					
+						itm = findAndChange( TeamModel.list[i].data, goalkeeperData);
+						if (itm!=null)
+						{
+							itm.@playertype = TeamModel.list[i].type;
+						} 
+					}
+					if (TeamModel.list[i].type=="defender")
+					{
+						
+						itm = findAndChange( TeamModel.list[i].data, defenderData);
+						if (itm!=null)
+						{
+							itm.@playertype = "player";
+						}
+					}
+					if (TeamModel.list[i].type=="midfielder")
+					{
+						
+						itm = findAndChange( TeamModel.list[i].data, midfielderData);
+						if (itm!=null)
+						{
+							itm.@playertype = "player";
+							Console.log( itm, this );
+						}
+					}
+					if (TeamModel.list[i].type=="forward")
+					{
+						
+						itm = findAndChange( TeamModel.list[i].data, forwardData);
+						if (itm!=null)
+						{
+							itm.@playertype = "player";
+						}
+					}
+										
+				}
+				
+ 
+			}
+			protected function resetList( list:XMLList):void
+			{
+				if (list!=null)
+				for (var i:int=0;i<list.length();i++)
+				{
+					list[i].@playertype = "initial";		
+				}
+			}
+
+			protected function findAndChange( item:String, list:XMLList):Object
+			{
+				if (list!=null)
+				for (var i:int=0;i<list.length();i++)
+				{
+					
+					if (list[i].text() == item)
+					{
+						return list[i];
+//						Console.log((list[i]), this)
+					}
+				}
+				return null;
+			}
+				
+			protected function getAllShirtComponents():Array
+			{
+				return [goalkeeper, defender_0, defender_1, defender_2, defender_3, midfielder_0, midfielder_1, midfielder_2, midfielder_3, forward_0, forward_1]
+								
+			}
+			
+			//unique provides an index reference point for populating/updating data
+			protected function populateShirtNo():void
+			{
+				//get all shirt components
+				var players:Array = getAllShirtComponents();
+				for (var i:int=0;i<TeamModel.list.length;i++)
+				{
+					shirt(players[i]).shirtno = TeamModel.list[i].shirtno;
+					
+				}
+				
+			}
+			public function exit( e:Event = null):void
+			{
+				trace("*** EXIT GAME ***");
+				clock.clearTimer();
+				
+			}
+			
+			protected function facebook(e:Event=null):void
+			{
+				this.parentApplication.dispatchEvent( new ViewEvent( ViewEvent.LOCATION_SELECT_USER_TYPE ));
+				
+			}
+
+			[Bindable]
+			public var goalkeeperData:XMLList;
+			[Bindable]
+			public var defenderData:XMLList;
+			[Bindable]
+			public var midfielderData:XMLList;
+			[Bindable]
+			public var forwardData:XMLList;
+			
+			[Bindable]
+			public var teamlogo:String;
+			
+			protected function populate(e:ResultEvent=null):void
+			{
+				if (selectedTeam!=null)
+				{
+					var xml:XML = new XML(e.result);
+					var team:XMLList = xml..team.(@name==selectedTeam);
+					var allPlayers:XMLList = team..player;
+					teamlogo = team.@logo;
+					for (var i:int = 0; i<allPlayers.length();i++)
+					{
+						//Console.log((allPlayers[i].parent() as XML).name(), this);
+						allPlayers[i].@type = (allPlayers[i].parent() as XML).name().toString();
+					}
+					
+					goalkeeperData = (team.goalkeeper..player);
+					defenderData = (team.defender..player);
+					midfielderData = (team.midfielder..player);
+					forwardData = (team.forward..player);
+					TeamModel.team = team;
+					
+				}
+			}
+			protected function error(e:FaultEvent):void
+			{
+				this.parentApplication.dispatchEvent(new KioskError(KioskError.ERROR, e.fault.message.toString(), "COMMUNICATION ERROR"));
+				
+			}
+			
+			protected function doStart(e:Event):void
+			{
+				Console.log( "doStart", this);
+				//fade and hide
+				
+				TweenMax.to( start_overlay, .5, {alpha:0, onComplete: hide_start_overlay});
+				
+			}
+			
+			protected function hide_start_overlay(e:Event=null):void
+			{
+				Console.log("hide_start_overlay", this);
+				start_overlay.visible = false;
+				clock.start();
+				clock.addEventListener( "EXIT", confirmTeam);
+				
+			}
+			
+			protected function doReStart(e:Event):void
+			{
+				Console.log( "Start", this);
+				//fade and hide
+				
+				TweenMax.to( incomplete_overlay, .5, {alpha:0, onComplete: hide_restart_overlay});
+				
+			}
+			protected function reset():void
+			{
+				Console.log("reset", this);
+				//TeamModel.reset();
+				// reset()
+				//clock.reset();
+				TeamModel.reset();
+				clock.reset();
+				
+				var players:Array = getAllShirtComponents();
+				for (var i:int=0;i<players.length;i++)
+				{
+					shirt(players[i]).reset();
+
+				}
+				
+				
+			}
+			protected function resetAndRestart():void
+			{
+				Console.log("resetAndRestart", this);
+				reset();
+				clock.start();
+				clock.addEventListener( "EXIT", confirmTeam);
+			}
+			protected function hide_restart_overlay(e:Event=null):void
+			{
+				incomplete_overlay.visible = false;
+				resetAndRestart()
+				//clock.start();
+				//need some sort of restart function
+			}
+			protected function confirmTeam( e:Event ):void
+			{
+				//retry or continue
+				//exit all events listeners
+				clock.removeEventListener( "EXIT", confirmTeam);
+				clock.clearTimer();
+				if (!TeamModel.isTeamComplete())
+				{
+					Console.log("Team was not complete - show overlay to try again", this);
+					incomplete_overlay.visible = true;
+					incomplete_overlay.alpha = 0;
+					TweenMax.to( incomplete_overlay, .5, {alpha:0.85});
+				} else 
+				{
+					Console.log("Clear all events and lets move on", this);
+					saveScreenshot();
+					
+					this.parentApplication.dispatchEvent( new ViewEvent( ViewEvent.LOCATION_SELECT_USER_TYPE ));
+				}
+			}
+			protected function saveScreenshot():void
+			{
+				//create screenshot
+				//buttonLists.visible = false;
+				var bd:BitmapData = new BitmapData(gamecontainer.width, gamecontainer.height, true,0xFFFFFFFF);
+				bd.draw(gamecontainer);
+				var b:Bitmap = new Bitmap(bd, "auto", true);
+				TeamModel.addBitmap(b);
+				//var ss:BitmapImage = new BitmapImage();
+				//ss.source = b;
+				//this.addElement(ss);
+				//gamecontainer.visible = false;
+				
+				
+			}
+		]]>
+	</fx:Script>
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+		<s:HTTPService id="teamData" resultFormat="xml" url="{(this.parentApplication).baseURL+'assets/xml/game_full.xml'}" result="populate(event)" fault="error(event)" />		
+	</fx:Declarations>
+	<!-- Menu -->
+	<!-- Field -->
+	
+	<s:BorderContainer borderAlpha="0" width="100%" height="100%" id="gamecontainer">
+	<s:backgroundFill>
+		
+		<s:LinearGradient rotation="60"  >
+			<s:GradientEntry color="0x000000"/>
+			<s:GradientEntry color="0x000000"/>
+			<s:GradientEntry color="0x8d1123"/>
+		</s:LinearGradient>
+	</s:backgroundFill>
+		<s:VGroup width="100%">
+			
+	
+		<s:VGroup horizontalAlign="center" width="100%" paddingTop="0">
+			<s:Group>
+				<s:HGroup horizontalCenter="0" verticalCenter="60">
+					<s:Label fontFamily="StandardRegularAllCase" text="{'You\'ve got '+clock.seconds.toString()+' seconds to select your Dream Team'}" color="0x97393A" fontSize="19" />
+					<s:Spacer width="200" />
+					<s:Label fontFamily="StandardRegularAllCase" text="Highlight your selected players from the list below"  color="0x97393A" fontSize="19"/>					
+					
+				</s:HGroup>
+				
+				<s:Image source="assets/images/txt_select_your__dream_team.png" verticalCenter="0" smooth="true"/>
+				<s:Image horizontalCenter="-0" smooth="true" scaleX=".5" scaleY=".5"
+						 source="{'/assets/images/logos/medium-shaded/'+teamlogo}"  width="418" height="360" />
+				
+			</s:Group>
+				
+		</s:VGroup>
+		
+		<s:HGroup width="100%" paddingTop="0">
+	
+
+		<s:Spacer width="46" />
+		<s:VGroup width="400" id="buttonLists">
+			
+			<s:Label text="GOALKEEPER" />			
+			<s:DataGroup id="goalkeeperGroup" itemRenderer="views.renderer.buttonList" width="420">
+				<s:layout>
+					<s:TileLayout horizontalGap="0" columnWidth="205" useVirtualLayout="true" />
+				</s:layout>
+				<s:XMLListCollection  id="goalkeeperList" source="{goalkeeperData}"/>	
+			</s:DataGroup>
+			
+			<s:Spacer height="18" />
+			<s:Label text="DEFENDER" />			
+			<s:DataGroup itemRenderer="views.renderer.buttonList" width="420">
+				<s:layout>
+					<s:TileLayout horizontalGap="0" columnWidth="205" useVirtualLayout="true" />
+				</s:layout>
+				<s:XMLListCollection  id="defenderList"  source="{defenderData}"/>	
+			</s:DataGroup>
+			
+			<s:Spacer height="18" />
+			<s:Label text="MIDFIELDER" />			
+			<s:DataGroup itemRenderer="views.renderer.buttonList" width="420">
+				<s:layout>
+					<s:TileLayout horizontalGap="0" columnWidth="205" />
+				</s:layout>
+
+				<s:XMLListCollection  id="midfielderList"  source="{midfielderData}"/>	
+			</s:DataGroup>
+			
+			<s:Spacer height="18" />
+			<s:Label text="FORWARD" />			
+			<s:DataGroup itemRenderer="views.renderer.buttonList" width="420">
+				<s:layout>
+					<s:TileLayout horizontalGap="0" columnWidth="205" />
+				</s:layout>
+
+				<s:XMLListCollection  id="forwardList"  source="{forwardData}"/>	
+			</s:DataGroup>
+			
+		</s:VGroup>
+	
+	<s:VGroup width="1000" height="700" horizontalAlign="center">
+		<s:Spacer height="60" />
+		<s:Image visible="true" source="assets/images/graphics_pitch.png" smooth="true" width="882" height="684" includeInLayout="false" y="70" x="65"  />
+		
+		<components:shirt id="goalkeeper"  type="goalkeeper" label="GOALKEEPER" x="420" y="8"  includeInLayout="false" />
+		
+		<components:shirt id="defender_0" type="defender" x="175" y="160.95" label="DEFENDER"  includeInLayout="false"/>
+		<components:shirt id="defender_1" type="defender" x="332" y="160.95" label="DEFENDER"   includeInLayout="false"/>
+		<components:shirt id="defender_2" type="defender" x="516.95" y="160.95" label="DEFENDER"   includeInLayout="false"/>
+		<components:shirt id="defender_3" type="defender" x="673.95" y="160.95" label="DEFENDER"   includeInLayout="false"/>
+
+		<components:shirt id="midfielder_0" type="midfielder" x="175" y="314.95" label="MIDFIELDER"  includeInLayout="false"/>
+		<components:shirt id="midfielder_1" type="midfielder" x="332" y="314.95" label="MIDFIELDER"   includeInLayout="false"/>
+		<components:shirt id="midfielder_2" type="midfielder" x="516.95" y="314.95" label="MIDFIELDER"   includeInLayout="false"/>
+		<components:shirt id="midfielder_3" type="midfielder" x="673.95" y="314.95" label="MIDFIELDER"   includeInLayout="false"/>
+
+		<components:shirt id="forward_0" type="forward" x="332" y="475.95" label="FORWARD"   includeInLayout="false"/>
+		<components:shirt id="forward_1" type="forward" x="516.95" y="475.95" label="FORWARD"   includeInLayout="false"/>
+			
+		<s:Image click="confirmTeam(event)" width="567" height="106" source="assets/images/btn_confirm_team_sheet.png" smooth="true" includeInLayout="false" x="220" y="680" />
+		
+	</s:VGroup>
+	
+	<s:VGroup horizontalAlign="center" verticalCenter="0">
+		<s:Image source="assets/images/logo_live.png" smooth="true" />
+		<s:Image source="assets/images/txt_brought_to_you_by.png" smooth="true" />
+		<s:Spacer height="100" />
+		<s:Label text="TIME REMAINING" fontSize="31">
+			<s:filters>
+				<s:DropShadowFilter blurX="5" blurY="5" strength=".5" />
+			</s:filters>
+		</s:Label>
+		<components:clockView id="clock" />
+		
+	</s:VGroup>
+</s:HGroup>		
+	<!-- Guide layer -->
+	<!--s:Image smooth="true" source="assets/images/guide_select_your_team.jpg" buttonMode="true" click="facebook(event)" /-->
+			
+		</s:VGroup>
+		</s:BorderContainer>
+	
+	
+	
+	<s:BorderContainer id="start_overlay" borderAlpha="0" x="0" y="0" width="1920" height="1080" includeInLayout="false">
+		<s:backgroundFill>
+			<s:SolidColor alpha=".85" color="0x000000" />
+		</s:backgroundFill>
+		<s:VGroup horizontalCenter="0" verticalCenter="-100" horizontalAlign="center">
+		<s:Label fontFamily="StandardRegularAllCase" textAlign="center" text="{'You’ve got '+this.clock.seconds+' seconds to select your Dream Team Highlight your selected players from the list below'}" fontSize="42" width="1139" >
+		</s:Label>
+			<s:Spacer height="20" />
+	  <components:LargeButton label="START" click="doStart(event)" />
+	</s:VGroup>
+		
+	</s:BorderContainer>
+	
+	<s:BorderContainer id="incomplete_overlay" visible="false" borderAlpha="0" width="1920" height="1080" includeInLayout="false">
+		<s:backgroundFill>
+			<s:SolidColor alpha=".85" color="0x000000" />
+		</s:backgroundFill>
+		<s:VGroup horizontalCenter="0" verticalCenter="-100" horizontalAlign="center">
+			<s:Label fontFamily="StandardRegularAllCase" textAlign="center" text="{'Unfortunatly you did not submit your dream team in '+this.clock.seconds+' seconds.\nWould you like to try again?'}" fontSize="42" width="1280" />
+			<s:Spacer height="20" />
+			<components:LargeButton label="RESTART" click="doReStart(event)" />
+		</s:VGroup>
+		
+	</s:BorderContainer>
+</s:Group>

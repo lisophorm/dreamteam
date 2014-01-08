@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:ItemRenderer xmlns:fx="http://ns.adobe.com/mxml/2009" 
+				xmlns:s="library://ns.adobe.com/flex/spark" 
+				xmlns:mx="library://ns.adobe.com/flex/mx" 
+				autoDrawBackground="false">
+	<fx:Script>
+		<![CDATA[
+		
+			
+			[Bindable]
+			public var teamColor:uint = 0xFFFFFF;
+			
+			
+		]]>
+	</fx:Script>
+	
+	<s:BorderContainer borderVisible="false" width="1243" height="666" backgroundColor="0x000000">
+		<s:Image smooth="true" width="1243" height="666" backgroundColor="0x00000" backgroundAlpha=".5" source="{data.img.@src.toString()}"/>
+		<s:Label text="{data.img.@alt.toString().toUpperCase()}" color="{teamColor}" fontSize="62" paddingLeft="10" paddingTop="10" />
+		
+	</s:BorderContainer>
+	
+	
+	
+	
+</s:ItemRenderer>

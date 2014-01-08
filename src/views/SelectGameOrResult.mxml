@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		xmlns:s="library://ns.adobe.com/flex/spark" 
+		xmlns:components="views.components.*" 
+		xmlns:mx="library://ns.adobe.com/flex/mx" 
+		remove="exit(event)" creationComplete="created(event)"
+		
+		>
+	<fx:Script>
+		<![CDATA[
+			import events.KioskError;
+			import events.KioskEvent;
+			import events.UserEvent;
+			import events.ViewEvent;
+			
+			import model.ML;
+			
+			import mx.events.FlexEvent;
+			
+			public function created(event:FlexEvent=null):void
+			{
+				this.addEventListener( Event.INIT, init);
+				init();
+			}
+			public function init(event:Event=null):void
+			{
+				trace("*** INIT SELECTGAMEORRESULT ***");
+			}
+			public function exit( e:Event = null):void
+			{
+				trace("*** EXIT SELECTGAMEORRESULT ***");
+			}
+			
+			protected function selectGame(e:Event=null):void
+			{
+					this.parentApplication.dispatchEvent( new ViewEvent( ViewEvent.LOCATION_SELECT_TEAM, {type: "GAME" } ));
+			
+			}
+			protected function selectTeamSheet(e:Event=null):void
+			{
+				this.parentApplication.dispatchEvent( new ViewEvent( ViewEvent.LOCATION_SELECT_TEAM, {type: "SHEET" } ));
+				
+			}
+					]]>
+	</fx:Script>
+	<fx:Declarations>
+
+	</fx:Declarations>
+	<s:Image smooth="true" source="assets/images/bg_start.jpg" includeInLayout="true" x="0" y="0"  />
+	<s:VGroup horizontalAlign="center" verticalAlign="middle" width="100%" height="100%">
+		
+			<s:HGroup width="100%" horizontalAlign="center" height="345" verticalCenter="true">
+				<s:Image smooth="true" source="assets/images/txt_select_you_team.png" buttonMode="true" click="selectGame(event)" />
+				<s:Spacer width="280" />
+				<s:Image smooth="true" source="assets/images/logo_live.png" verticalAlign="middle"  />			
+				<s:Spacer width="280" />	
+				<s:Image smooth="true" source="assets/images/txt_see_the_team_sheets.png" buttonMode="true" click="selectTeamSheet(event)" />
+			</s:HGroup>
+		
+		<s:Spacer height="220" />
+		<s:Image smooth="true" verticalAlign="bottom" source="assets/images/txt_brought_to_you_by.png"  />		
+				
+	</s:VGroup>
+
+</s:Group>

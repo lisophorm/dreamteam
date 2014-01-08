@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		 xmlns:s="library://ns.adobe.com/flex/spark" 
+		 xmlns:mx="library://ns.adobe.com/flex/mx" 
+		 creationComplete="created(event)" >
+	<fx:Script>
+		<![CDATA[
+			import com.alfo.utils.Console;
+			
+			import events.TeamEvent;
+			
+			import model.TeamModel;
+			
+			import mx.events.FlexEvent;
+			
+			[Bindable]
+			protected var teamColor:uint = 0xFFFFFF;
+			
+			[Bindable]
+			protected var videoSource:String = "";
+			
+			
+			public function created(event:FlexEvent=null):void
+			{
+				this.addEventListener( Event.INIT, init);
+				init();
+			}
+			public function init(event:Event=null):void
+			{
+				Console.log("*** INIT TOPFIVEPLAYERS ***", this);
+				
+				if (this.parentApplication.data!=null)
+				{
+					/*	data = this.parentApplication.data;
+					selectedTeam = data.team;
+					teamname = data.team;
+					Console.log( data.team, this );
+					*/
+				}
+				this.parent.addEventListener( "EXIT", exit);
+				TeamModel._instance.addEventListener( TeamEvent.TEAM_INFO, ready);
+			}	
+			protected function ready( e:TeamEvent ):void
+			{
+				if (TeamEvent.TEAM_INFO == e.type )
+				{
+					teamColor = TeamModel.getTeamColor();
+					videoSource = TeamModel.getVideo();		
+					//video.playerControls.visible = false;
+					
+				}
+				
+			}
+			
+			protected function exit( e:Event=null ):void
+			{
+				video.stop();
+				
+			}
+				
+		]]>
+			</fx:Script>
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	<s:BorderContainer borderColor="0x000000" cornerRadius="0" backgroundColor="0x000000" >
+		<s:borderStroke>
+			<s:SolidColorStroke weight="15" color="0x000000" />
+		</s:borderStroke>
+		<s:VideoPlayer source="{videoSource}" skinClass="skins.VideoPlayerSkin" autoDisplayFirstFrame="true" autoPlay="false" id="video">
+		</s:VideoPlayer>	
+	</s:BorderContainer>
+	
+</s:Group>

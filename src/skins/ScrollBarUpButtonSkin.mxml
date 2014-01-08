@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+
+ADOBE SYSTEMS INCORPORATED
+Copyright 2008 Adobe Systems Incorporated
+All Rights Reserved.
+
+NOTICE: Adobe permits you to use, modify, and distribute this file
+in accordance with the terms of the license agreement accompanying it.
+
+-->
+
+<!--- The default skin class for up button of the Spark ScrollBar component.  
+
+@see spark.components.supportClasses.ScrollBarBase
+@see spark.components.HScrollBar
+@see spark.components.VScrollBar
+
+@langversion 3.0
+@playerversion Flash 10
+@playerversion AIR 1.5
+@productversion Flex 4
+-->
+<s:SparkSkin xmlns:fx="http://ns.adobe.com/mxml/2009" xmlns:s="library://ns.adobe.com/flex/spark"
+			 xmlns:fb="http://ns.adobe.com/flashbuilder/2009">
+	
+	<fx:Metadata>
+		<![CDATA[ 
+		/** 
+		* @copy spark.skins.spark.ApplicationSkin#hostComponent
+		*/
+		[HostComponent("spark.components.Button")]
+		]]>
+	</fx:Metadata> 
+	
+	<fx:Script fb:purpose="styling">
+		/* Define the skin elements that should not be colorized. 
+		For scroll bar buttons, the graphics are colorized but the arrow is not. */
+		static private const exclusions:Array = ["arrow"];
+		
+		/**
+		 * @private
+		 */  
+		override public function get colorizeExclusions():Array {return exclusions;}
+		
+		/* Define the symbol fill items that should be colored by the "symbolColor" style. */
+		static private const symbols:Array = [];
+		
+		/**
+		 * @private
+		 */
+		override public function get symbolItems():Array {return symbols};
+		
+		/**
+		 * @private
+		 */
+		override protected function initializationComplete():void
+		{
+			useChromeColor = true;
+			super.initializationComplete();
+		}
+	</fx:Script>
+	
+	<s:states>
+		<s:State name="up" />
+		<s:State name="over" />
+		<s:State name="down" />
+		<s:State name="disabled" />
+	</s:states>
+	
+	<!-- border/background -->
+	
+	
+	<!-- fill -->
+	<s:Ellipse horizontalCenter="0" verticalCenter="0" width="26.2246" height="26.2246">
+		<s:fill>
+			<s:SolidColor color="0x000000" alpha=".8" />
+		</s:fill>
+	</s:Ellipse>
+	
+	
+	<!-- highlight -->
+	
+	<s:Ellipse horizontalCenter="0" verticalCenter="0" width="26.2246" height="26.2246">
+		<s:stroke>
+			<s:SolidColorStroke weight="4" caps="none" joints="miter" miterLimit="4" color="#FFFFFF"/>
+		</s:stroke>
+	</s:Ellipse>
+	
+	<!-- arrow -->
+            
+	
+
+	<s:Path horizontalCenter="0" verticalCenter="0" id="arrow"  data="M14.7354 6.34375 7.36816 0 0 6.34375">
+		<s:stroke>
+			<s:SolidColorStroke weight="4" caps="none" joints="miter" miterLimit="4" color="#FFFFFF"/>
+		</s:stroke>
+	</s:Path>
+</s:SparkSkin>

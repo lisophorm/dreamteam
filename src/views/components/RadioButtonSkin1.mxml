@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Skin xmlns:s="library://ns.adobe.com/flex/spark"
+		xmlns:fx="http://ns.adobe.com/mxml/2009"
+		xmlns:ai="http://ns.adobe.com/ai/2009"
+		xmlns:d="http://ns.adobe.com/fxg/2008/dt"
+		xmlns:flm="http://ns.adobe.com/flame/2008"
+		width="55" height="58">
+	<fx:Metadata>[HostComponent("spark.components.RadioButton")]</fx:Metadata>
+	<s:states>
+		<s:State name="up"/>
+		<s:State name="over"/>
+		<s:State name="down"/>
+		<s:State name="disabled"/>
+		<s:State name="upAndSelected"/>
+		<s:State name="overAndSelected"/>
+		<s:State name="downAndSelected"/>
+		<s:State name="disabledAndSelected"/>
+	</s:states>
+	<s:Group x="1" y="2">
+		<s:mask>
+			<s:Group x="0.027" y="-0.143" ai:spare="1">
+				<s:Rect x="0.00146484" y="-0.00195313" width="52.7266" height="54.9473" radiusX="8.56881" radiusY="8.56881">
+					<s:fill>
+						<s:SolidColor color="#FFFFFF"/>
+					</s:fill>
+				</s:Rect>
+			</s:Group>
+		</s:mask>
+		<s:Rect d:id="41" x="0" y="0" width="53" height="55"
+				flm:variant="29">
+			<s:fill>
+				<s:LinearGradient x="26.3726" y="-3.06488" scaleX="60.659" rotation="90">
+					<s:GradientEntry ratio="0" color="#7C9CBC"/>
+					<s:GradientEntry ratio="0.00567627" color="#F2F2F2"/>
+					<s:GradientEntry ratio="0.449327" color="#F1F1F1"/>
+					<s:GradientEntry ratio="0.669854" color="#EAEAEA"/>
+					<s:GradientEntry ratio="0.850835" color="#D6D6D6"/>
+					<s:GradientEntry ratio="1" color="#B3B3B3"/>
+				</s:LinearGradient>
+			</s:fill>
+		</s:Rect>
+	</s:Group>
+	<s:Rect x="1" y="2" width="53" height="55" radiusX="8.57058" radiusY="8.57942">
+		<s:stroke>
+			<s:SolidColorStroke weight="2" caps="none" joints="miter" miterLimit="4" color="#243E8F"/>
+		</s:stroke>
+	</s:Rect>
+	<s:Group x="1" y="2" alpha="0.089996" flm:isolated="false" flm:knockout="false">
+		<s:Group x="0" y="0">
+			<s:mask>
+				<s:Group x="0.058" y="0.241" ai:spare="1">
+					<s:Rect width="52.6582" height="5.25195">
+						<s:fill>
+							<s:SolidColor color="#FFFFFF"/>
+						</s:fill>
+					</s:Rect>
+				</s:Group>
+			</s:mask>
+			<s:Path x="0.058" y="0.241"
+					data="M 6.691 3.162 L 45.977 3.162 C 48.672 3.162 51.079 3.978 52.665 5.252 C 52.351 2.315 48.653 0 44.126 0 L 8.541 0 C 4.012 0 0.315 2.315 0 5.252 C 1.589 3.978 3.996 3.162 6.691 3.162"
+					winding="nonZero">
+				<s:fill>
+					<s:SolidColor color="#FFFFFF"/>
+				</s:fill>
+			</s:Path>
+		</s:Group>
+	</s:Group>
+	<s:Group x="1" y="50" alpha="0.089996" flm:isolated="false" flm:knockout="false">
+		<s:Group x="0" y="0">
+			<s:mask>
+				<s:Group x="0.058" y="0.918" ai:spare="1">
+					<s:Rect width="52.6582" height="5.24902">
+						<s:fill>
+							<s:SolidColor color="#FFFFFF"/>
+						</s:fill>
+					</s:Rect>
+				</s:Group>
+			</s:mask>
+			<s:Path x="0.058" y="0.918"
+					data="M 45.975 2.09 L 6.686 2.09 C 3.993 2.09 1.586 1.275 0 0 C 0.315 2.937 4.012 5.249 8.541 5.249 L 44.126 5.249 C 48.649 5.249 52.351 2.937 52.665 0 C 51.076 1.275 48.669 2.09 45.975 2.09"
+					winding="nonZero">
+				<s:fill>
+					<s:SolidColor color="#FFFFFF"/>
+				</s:fill>
+			</s:Path>
+		</s:Group>
+	</s:Group>
+	<s:Rect x="1.5" y="1.5" width="52" height="55" radiusX="8.57058" radiusY="8.57942">
+		<s:stroke>
+			<s:SolidColorStroke weight="3" caps="none" joints="miter" miterLimit="4" color="#bb0000"/>
+		</s:stroke>
+	</s:Rect>
+	<s:Rect includeIn="upAndSelected" x="13.5" y="15.5" width="27" height="26" alpha="0.8"
+			radiusX="6">
+		<s:stroke>
+			<s:SolidColorStroke caps="none" color="#FFFFFF" joints="miter" miterLimit="4" weight="1"/>
+		</s:stroke>
+		<s:fill>
+			<s:SolidColor color="#000000"/>
+		</s:fill>
+	</s:Rect>
+	<s:Rect includeIn="overAndSelected" x="13.5" y="15.5" width="27" height="26" alpha="0.8"
+			radiusX="6">
+		<s:stroke>
+			<s:SolidColorStroke caps="none" color="#FFFFFF" joints="miter" miterLimit="4" weight="1"/>
+		</s:stroke>
+		<s:fill>
+			<s:SolidColor color="#000000"/>
+		</s:fill>
+	</s:Rect>
+	<s:Rect includeIn="downAndSelected" x="13.5" y="15.5" width="27" height="26" alpha="0.8"
+			radiusX="6">
+		<s:stroke>
+			<s:SolidColorStroke caps="none" color="#FFFFFF" joints="miter" miterLimit="4" weight="1"/>
+		</s:stroke>
+		<s:fill>
+			<s:SolidColor color="#000000"/>
+		</s:fill>
+	</s:Rect>
+	<s:Rect includeIn="disabledAndSelected" x="13.5" y="15.5" width="27" height="26" alpha="0.8"
+			radiusX="6">
+		<s:stroke>
+			<s:SolidColorStroke caps="none" color="#FFFFFF" joints="miter" miterLimit="4" weight="1"/>
+		</s:stroke>
+		<s:fill>
+			<s:SolidColor color="#000000"/>
+		</s:fill>
+	</s:Rect>
+</s:Skin>

@@ -1,0 +1,148 @@
+<teams>
+<teaminfo>
+    <name>Crystel Palace</name>
+    <statistics>
+        <stat value="22" description="The number of goal Andrew Johnson scored in the 2004-2005 season" />
+        <stat value="26,193" description="THE HIGHEST NUMBER OF HOME ATTENDANCE VS ARSENAL IN 2004-05 SEASON" />
+
+    </statistics>
+
+    <top_players>
+        <player>
+            <name>Andrew Johnson</name>
+            <shirtno>8</shirtno>
+            <img src="/assets/images/players/andrew-johnson.jpg"/>
+
+            <gallery>
+                <img src="/assets/images/players/andrew-johnson1.jpg" />
+                <img src="/assets/images/players/andrew-johnson2.jpg"  />
+            </gallery>
+
+            <description>
+                <![CDATA[Whilst Johnson’s arrival was not greeted with any real excitement at Crystal Palace, the transfer turned out to be an excellent move for both Johnson and Palace. He soon made himself very popular with Palace fans with a hat-trick in the 5–0 demolition of rivals Brighton & Hove Albion on 26 October 2002, and then another, in the very next game, at Walsall.
+        
+However, manager Trevor Francis continued to play his preferred main strike partnership of Ade Akinbiyi and Dele Adebola, keeping both Johnson and Palace legend Dougie Freedman on the left-wing and bench, respectively. When Francis was dismissed, and with the Eagles mid-table, he was replaced by Steve Kember, who decided to partner Freedman with Neil Shipperley, while Johnson was left to play the role of support striker. The new strike partnership initially worked well, with Palace]]>
+            </description>
+            <statistics poy="2004-2005" goals="85"></statistics>
+        </player>
+
+        <player>
+            <name>Ian Wright</name>
+            <shirtno>10</shirtno>
+            <img src="/assets/images/players/ian-wright.jpg"/>
+            <gallery>
+                <img src="/assets/images/players/andrew-johnson1.jpg" />
+                <img src="/assets/images/players/andrew-johnson2.jpg"  />
+            </gallery>
+            <description>
+                <![CDATA[Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et nisl aliquam, interdum risus at, auctor ligula. Integer dapibus leo eu vehicula porttitor. Nunc a auctor magna, et semper arcu. Vestibulum pretium augue sed justo vestibulum varius. Phasellus metus risus, malesuada ac fermentum id, suscipit a est. Quisque ullamcorper dictum feugiat. Cras scelerisque ligula vitae elit imperdiet, id imperdiet quam blandit. Nunc suscipit ligula vitae sapien mollis, ut ultrices odio fermentum. Nam pellentesque magna lectus, vitae tempus magna vehicula in. Phasellus nec ligula tortor. Fusce suscipit congue lectus ut condimentum. Integer pharetra volutpat bibendum. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed molestie felis bibendum, feugiat leo id, tincidunt erat. Nullam lacinia pulvinar metus, bibendum adipiscing arcu accumsan sed. Curabitur est purus, congue in leo at, dictum porta odio.
+
+Sed ac urna lectus. Nulla in blandit dolor, eu aliquet quam. Donec sollicitudin massa eget sem porta posuere. Nunc id accumsan eros, quis semper nisl. Vivamus pellentesque pellentesque interdum. Etiam hendrerit sem in ligula ultrices, vel varius nunc eleifend. Praesent egestas quam id risus vehicula, id venenatis mauris vehicula.
+
+Sed vehicula faucibus odio id convallis. Vestibulum nisl lacus, fringilla eu condimentum ornare, porttitor non orci. Aenean sed laoreet purus. Cras pulvinar lectus eget porta blandit. Aliquam ultricies dui quis massa imperdiet mattis. Morbi convallis, justo et sodales sagittis, erat orci laoreet dui, nec vestibulum nulla urna a orci. Vestibulum eleifend odio eros, quis ullamcorper nibh iaculis in. Proin eget eleifend lorem, quis ultricies lorem. Duis at gravida erat. Etiam aliquet, lacus vel fermentum porttitor, nisi ligula interdum arcu, vulputate convallis lacus quam at sem. Vivamus condimentum, orci vel imperdiet accumsan, nisl purus malesuada diam, at eleifend tellus eros a felis.
+
+In venenatis sapien et sodales molestie. Duis vitae pulvinar leo. Vestibulum imperdiet semper mauris, sed tristique urna. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec at purus quis tortor consequat ornare non sed tellus. Cras condimentum eget mi nec egestas. Morbi facilisis orci ac neque vestibulum, ut sodales dui congue. In gravida laoreet nisi sit amet rhoncus. Sed congue orci eget arcu lacinia, at auctor urna fermentum. Donec dapibus convallis nunc non commodo. Suspendisse bibendum vehicula odio iaculis semper. Proin a velit pulvinar, auctor urna vel, ullamcorper ligula.]]>
+            </description>
+            <statistics poy="1990-1991" goals="90"></statistics>
+        </player>
+
+        <player>
+            <name>John Salako</name>
+            <shirtno>7</shirtno>
+            <img src="/assets/images/players/john-salako.jpg"/>
+            <gallery>
+                <img src="/assets/images/players/andrew-johnson1.jpg" />
+                <img src="/assets/images/players/andrew-johnson2.jpg"  />
+            </gallery>
+            <description>
+                <![CDATA[Whilst Johnson’s arrival was not greeted with any real excitement at Crystal Palace, the transfer turned out to be an excellent move for both Johnson and Palace. He soon made himself very popular with Palace fans with a hat-trick in the 5–0 demolition of rivals Brighton & Hove Albion on 26 October 2002, and then another, in the very next game, at Walsall.
+
+However, manager Trevor Francis continued to play his preferred main strike partnership of Ade Akinbiyi and Dele Adebola, keeping both Johnson and Palace legend Dougie Freedman on the left-wing and bench, respectively. When Francis was dismissed, and with the Eagles mid-table, he was replaced by Steve Kember, who decided to partner Freedman with Neil Shipperley, while Johnson was left to play the role of support striker. The new strike partnership initially worked well, with Palace]]>
+            </description>
+            <statistics poy="2004-2005" goals="22"></statistics>
+
+        </player>
+
+        <player>
+            <name>Jim Cannon</name>
+            <shirtno>12</shirtno>
+            <img src="/assets/images/players/jim-cannon.jpg"/>
+            <gallery>
+                <img src="/assets/images/players/andrew-johnson1.jpg" />
+                <img src="/assets/images/players/andrew-johnson2.jpg"  />
+            </gallery>
+            <description>
+                <![CDATA[Whilst Johnson’s arrival was not greeted with any real excitement at Crystal Palace, the transfer turned out to be an excellent move for both Johnson and Palace. He soon made himself very popular with Palace fans with a hat-trick in the 5–0 demolition of rivals Brighton & Hove Albion on 26 October 2002, and then another, in the very next game, at Walsall.
+
+However, manager Trevor Francis continued to play his preferred main strike partnership of Ade Akinbiyi and Dele Adebola, keeping both Johnson and Palace legend Dougie Freedman on the left-wing and bench, respectively. When Francis was dismissed, and with the Eagles mid-table, he was replaced by Steve Kember, who decided to partner Freedman with Neil Shipperley, while Johnson was left to play the role of support striker. The new strike partnership initially worked well, with Palace]]>
+            </description>
+            <statistics poy="1984-1985" goals="30"></statistics>
+        </player>
+
+        <player>
+            <name>Nigel Martyn</name>
+            <shirtno>2</shirtno>
+            <img src="/assets/images/players/nigel-martyn.jpg"/>
+            <gallery>
+                <img src="/assets/images/players/andrew-johnson1.jpg" />
+                <img src="/assets/images/players/andrew-johnson2.jpg"  />
+            </gallery>
+            <description>
+                <![CDATA[Whilst Johnson’s arrival was not greeted with any real excitement at Crystal Palace, the transfer turned out to be an excellent move for both Johnson and Palace. He soon made himself very popular with Palace fans with a hat-trick in the 5–0 demolition of rivals Brighton & Hove Albion on 26 October 2002, and then another, in the very next game, at Walsall.
+
+However, manager Trevor Francis continued to play his preferred main strike partnership of Ade Akinbiyi and Dele Adebola, keeping both Johnson and Palace legend Dougie Freedman on the left-wing and bench, respectively. When Francis was dismissed, and with the Eagles mid-table, he was replaced by Steve Kember, who decided to partner Freedman with Neil Shipperley, while Johnson was left to play the role of support striker. The new strike partnership initially worked well, with Palace]]>
+            </description>
+            <statistics poy="1990-1991" goals="0"></statistics>
+        </player>
+    </top_players>    
+    
+    <video src="/assets/video/Crystal Palace FC on YouTube.mp4" />
+    <gallery>
+            <item>
+                <img src="/assets/images/gallery/crystal_palace/01.jpg" alt="Selhurst Parl" />
+                <description><![CDATA[ The ground is a mixture of the modern and the old, with two old side stands and two more modern looking end stands. The newest edition is the two-tiered Holmesdale Road Stand at one end, which was opened in 1995. This stand has a large lower tier, with a smaller upper tier that overhangs it. The stand looks impressive and has a large curved roof, as well as windshields on either side of the upper tier. This is where the bulk of home supporters congregate. The Club have announced that they wish to redevelop Selhurst Park in a modern stadium with a capacity around 35-40,000.]]>
+                </description>
+                <statistics>
+                    <description><![CDATA[<span fontWeight="bold">Capacity:</span> 26,309<br/><br/><span fontWeight="bold">Built:</span> 1924<br/><br/><span fontWeight="bold">Architect:</span> Archibald Leitch<br/><br/><span fontWeight="bold">Other Facts:</span> Used to be shared with Wimbledon and Charlton Athletic. It cost £30,000 to build and was expanded in 1964.]]></description>
+                    <stat key="Capacity" value="26,309" />
+                    <stat key="Built" value="1924" />
+                    <stat key="Architect" value="Archibald Leitch" />
+                    <stat key="Other Facts" value="Used to be shared with Wimbledon and Charlton Athletic. It cost £30,000 to build and was expanded in 1964." />
+
+                </statistics>
+            </item>
+              <item>
+                <img src="/assets/images/gallery/crystal_palace/01.jpg" alt="Ipsum Lorem" />
+                <description><![CDATA[ The ground is a mixture of the modern and the old, with two old side stands and two more modern looking end stands. The newest edition is the two-tiered Holmesdale Road Stand at one end, which was opened in 1995. This stand has a large lower tier, with a smaller upper tier that overhangs it. The stand looks impressive and has a large curved roof, as well as windshields on either side of the upper tier. This is where the bulk of home supporters congregate. The Club have announced that they wish to redevelop Selhurst Park in a modern stadium with a capacity around 35-40,000.]]>
+                </description>
+                <statistics>
+                     <description><![CDATA[<span fontWeight="bold">Capacity:</span> 26,309<br/><br/><span fontWeight="bold">Built:</span> 1924<br/><br/><span fontWeight="bold">Architect:</span> Archibald Leitch<br/><br/><span fontWeight="bold">Other Facts:</span> Used to be shared with Wimbledon and Charlton Athletic. It cost £30,000 to build and was expanded in 1964.]]></description>
+                    <stat key="Capacity" value="26,309" />
+                    <stat key="Built" value="1924" />
+                    <stat key="Architect" value="Archibald Leitch" />
+                    <stat key="Other Facts" value="Used to be shared with Wimbledon and Charlton Athletic. It cost £30,000 to build and was expanded in 1964." />
+
+                </statistics>
+            </item>
+    </gallery>
+    <timeline>
+         <gallery>
+                <img src="/assets/images/timeline/crystal_palace/01.jpg" />
+                <img src="/assets/images/timeline/crystal_palace/02.jpg" />
+                <img src="/assets/images/timeline/crystal_palace/03.jpg" />
+            </gallery>
+        <data year="1905">Crystal Palace Football Club is formed at the venue of the glass Palace that stood at the top of Sydenham Hill.</data>
+        <data year="1914">Henry Colclough becomes the first Palace player to represent England on 16th March, making his debut in a 2-0 victory over Wales in Cardiff.</data>
+        <data year="1921">Palace win the inaugural Division Three title and secure promotion to Division Two at the first attempt.</data>
+        <data year="1924">Palace move to a new purpose built stadium named Selhurst Park, playing their first match in their new home against Sheffield Wednesday on 30th August The land for the new stadium was purchased in 1922 for £2,570 and £30,000 was spent on the stadium’s construction.</data>
+        <data year="1969">Under the leadership of Bert Head, Palace finish second in Division Two and win promotion to the top-flight for the first time in the club’s history Local boy Steve Kember was the hero, scoring the winner against Fulham on 19th April to secure a place in Division One.</data>
+        <data year="1988">Jim Cannon plays his last game for the club after 15 years of service. The defender played 660 games for Palace, which remains a club record.</data>
+        <data year="1990">The Eagles survived in Division One despite a record 9-0 league defeat against Liverpool on the opening day of the 1989/90 season. The Eagles got their revenge however, beating Liverpool 4-3 in the semi-final of the FA Cup. Palace drew 3-3 against Manchester United in the final, before losing the replay 1-0.</data>
+        <data year="1991">Palace finish third in the top flight (their highest league finish to date) and beat Everton at Wembley to win the Zenith Data Systems Cup.</data>
+        <data year="2004">At the start of the year, Palace were in the bottom four of the First Division but Iain Dowie arrived as manager and a remarkable run of results lifted Palace into a play-off place. The Eagles overcame Sunderland on penalties to reach the final in Cardiff where Neil Shipperley’s goal was enough to beat West Ham United and take Palace back into the Premier League.</data>
+        <data year="2013">Crystal Palace beat Watford in the Play off final at Wembley to win promotion to the Barclays Premier League</data>
+
+    </timeline>
+
+</teaminfo>
+</teams>

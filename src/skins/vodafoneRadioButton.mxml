@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Skin xmlns:s="library://ns.adobe.com/flex/spark"
+		xmlns:fx="http://ns.adobe.com/mxml/2009"
+		xmlns:ai="http://ns.adobe.com/ai/2009"
+		xmlns:d="http://ns.adobe.com/fxg/2008/dt"
+		xmlns:flm="http://ns.adobe.com/flame/2008"
+		width="409" height="36">
+	<fx:Metadata>[HostComponent("spark.components.RadioButton")]</fx:Metadata>
+	<s:states>
+		<s:State name="up"/>
+		<s:State name="over"/>
+		<s:State name="down"/>
+		<s:State name="disabled"/>
+		<s:State name="upAndSelected"/>
+		<s:State name="overAndSelected"/>
+		<s:State name="downAndSelected"/>
+		<s:State name="disabledAndSelected"/>
+	</s:states>
+	<s:RichText  id="labelDisplay" d:id="24" d:userLabel="Email address:" x="44" y="8" width="365" ai:aa="2"
+				color="#FFFFFF" columnCount="1"  fontFamily="StandardRegularAllCase" fontSize="31.572"
+				kerning="on" tabStops="S94.7159805297852" text=""
+				flm:variant="15" whiteSpaceCollapse="preserve"/>
+	<s:Rect x="1" y="1" width="34" height="34" radiusX="2.83446" radiusY="2.83446">
+		<s:stroke>
+			<s:SolidColorStroke weight="2" caps="none" joints="miter" miterLimit="10" color="#0071c5"/>
+		</s:stroke>
+		<s:fill>
+			<s:SolidColor color="#FFFFFF" alpha="1"/>
+		</s:fill>
+	</s:Rect>
+	<s:Rect x="5" y="5" width="25" height="25" radiusX="3" includeIn="upAndSelected, disabledAndSelected, downAndSelected, overAndSelected">
+		<s:fill>
+			<s:SolidColor color="#000000"/>
+		</s:fill>
+	</s:Rect>
+</s:Skin>

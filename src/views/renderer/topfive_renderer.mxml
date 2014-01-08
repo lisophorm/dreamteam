@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:ItemRenderer xmlns:fx="http://ns.adobe.com/mxml/2009" 
+				xmlns:s="library://ns.adobe.com/flex/spark" 
+				xmlns:mx="library://ns.adobe.com/flex/mx" 
+				autoDrawBackground="false" width="168" buttonMode="true">
+		<s:BorderContainer borderVisible="false" width="162" height="161" backgroundAlpha="0">
+			<s:Image width="161" smooth="true" source="{data.img.@src.toString()}" />
+			<s:Label  fontFamily="StandardRegular" text="{data.name.text().toUpperCase()}" lineBreak="toFit" backgroundColor="0x000000" backgroundAlpha=".5" paddingBottom="5" paddingTop="5" paddingLeft="5" paddingRight="5" bottom="0" width="100%" textAlign="center"/>
+			<s:Line right="0" top="0" height="100%" width="1">
+				<s:stroke>
+					<s:SolidColorStroke weight="1" color="0xFF0000" />
+				</s:stroke>
+			</s:Line>
+			<s:Rect id="cover" width="162" height="161" >
+				<s:fill>
+					<s:SolidColor color="0x000000" alpha=".5" />
+				</s:fill>
+			</s:Rect>
+			
+		</s:BorderContainer>
+		
+	
+	
+	
+</s:ItemRenderer>

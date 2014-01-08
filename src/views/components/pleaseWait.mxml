@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		 xmlns:s="library://ns.adobe.com/flex/spark" 
+		 xmlns:mx="library://ns.adobe.com/flex/mx" width="600" height="300">
+	<fx:Script>
+		<![CDATA[
+			import model.ML;
+			[Bindable]
+			public var message:String ="PLEASE WAIT";
+		]]>
+	</fx:Script>
+	<fx:Declarations>
+		<s:DropShadowFilter id="shadowfilter" strength=".8" distance="8" />
+	</fx:Declarations> 
+	<s:Rect id="tbFill" left="0" right="0" top="0" bottom="1" radiusX="30" filters="{[shadowfilter]}">
+		<s:fill>
+			<s:LinearGradient rotation="90">
+				<s:GradientEntry color="0x0068A9"/>
+				<s:GradientEntry color="0x0085CF"/>
+			</s:LinearGradient>
+
+		</s:fill>
+	</s:Rect>
+	<s:TextArea x="58" y="79" textAlign="center" width="484" height="140" color="0x000000" editable="false"
+				fontSize="24" verticalAlign="middle" text="{ML.t(message)}" 
+				selectable="false" />
+</s:Group>

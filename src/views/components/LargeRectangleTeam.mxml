@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:s="library://ns.adobe.com/flex/spark"
+		 xmlns:fx="http://ns.adobe.com/mxml/2009"
+		 xmlns:ai="http://ns.adobe.com/ai/2009"
+		 xmlns:d="http://ns.adobe.com/fxg/2008/dt"
+		 xmlns:flm="http://ns.adobe.com/flame/2008"
+		 width="403" height="58" addedToStage="group1_addedToStageHandler(event)">
+	
+	<fx:Script>
+		<![CDATA[
+			
+			[Bindable]
+			public var texto:String="";
+			
+			protected function group1_addedToStageHandler(event:Event):void
+			{
+				// TODO Auto-generated method stub
+				
+			}
+		]]>
+	</fx:Script>
+	
+	<s:Group x="0" y="0">
+		<s:Group x="2" y="2">
+			<s:mask>
+				<s:Group x="-0.203" y="-0.184" ai:spare="1">
+					<s:Rect x="0.00170898" y="-0.00146484" width="399.737" height="54.9478" radiusX="8.56792" radiusY="8.56792">
+						<s:fill>
+							<s:SolidColor color="#FFFFFF"/>
+						</s:fill>
+					</s:Rect>
+				</s:Group>
+			</s:mask>
+			<s:Rect d:id="38" x="0" y="0" width="400" height="55"
+					flm:variant="26">
+				<s:fill>
+					<s:LinearGradient x="199.859" y="-3.05627" scaleX="60.659" rotation="90">
+						<s:GradientEntry ratio="0" color="#7C9CBC"/>
+						<s:GradientEntry ratio="0.00567627" color="#F2F2F2"/>
+						<s:GradientEntry ratio="0.449327" color="#F1F1F1"/>
+						<s:GradientEntry ratio="0.669854" color="#EAEAEA"/>
+						<s:GradientEntry ratio="0.850835" color="#D6D6D6"/>
+						<s:GradientEntry ratio="1" color="#B3B3B3"/>
+					</s:LinearGradient>
+				</s:fill>
+			</s:Rect>
+			<s:Label id="theLabel" x="10" y="16" width="380" fontSize="22"
+					 text="{texto}" fontFamily="Zurich"/>
+		</s:Group>
+		<s:Rect x="2" y="2" width="400" height="55" radiusX="8.57058" radiusY="8.57588">
+			<s:stroke>
+				<s:SolidColorStroke weight="2" caps="none" joints="miter" miterLimit="4" color="#243E8F"/>
+			</s:stroke>
+		</s:Rect>
+		<s:Group x="1" y="2" alpha="0.089996" flm:isolated="false" flm:knockout="false">
+			<s:Group x="0" y="0">
+				<s:mask>
+					<s:Group x="0.829" y="0.201" ai:spare="1">
+						<s:Rect width="399.669" height="5.25049">
+							<s:fill>
+								<s:SolidColor color="#FFFFFF"/>
+							</s:fill>
+						</s:Rect>
+					</s:Group>
+				</s:mask>
+				<s:Path x="0.829" y="0.201"
+						data="M 6.692 3.161 L 392.987 3.161 C 395.682 3.161 398.089 3.976 399.675 5.25 C 399.361 2.315 395.664 0 391.136 0 L 8.541 0 C 4.012 0 0.315 2.315 0 5.25 C 1.589 3.976 3.996 3.161 6.692 3.161"
+						winding="nonZero">
+					<s:fill>
+						<s:SolidColor color="#FFFFFF"/>
+					</s:fill>
+				</s:Path>
+			</s:Group>
+		</s:Group>
+		<s:Group x="1" y="50" alpha="0.089996" flm:isolated="false" flm:knockout="false">
+			<s:Group x="0" y="0">
+				<s:mask>
+					<s:Group x="0.829" y="0.876" ai:spare="1">
+						<s:Rect width="399.669" height="5.25098">
+							<s:fill>
+								<s:SolidColor color="#FFFFFF"/>
+							</s:fill>
+						</s:Rect>
+					</s:Group>
+				</s:mask>
+				<s:Path x="0.829" y="0.876"
+						data="M 392.985 2.092 L 6.686 2.092 C 3.993 2.092 1.586 1.276 0 0 C 0.315 2.938 4.012 5.251 8.541 5.251 L 391.136 5.251 C 395.661 5.251 399.361 2.938 399.675 0 C 398.086 1.276 395.679 2.092 392.985 2.092"
+						winding="nonZero">
+					<s:fill>
+						<s:SolidColor color="#FFFFFF"/>
+					</s:fill>
+				</s:Path>
+			</s:Group>
+		</s:Group>
+		<s:Rect x="1.5" y="1.5" width="400" height="55" radiusX="8.57058" radiusY="8.57588">
+			<s:stroke>
+				<s:SolidColorStroke weight="3" caps="none" joints="miter" miterLimit="4" color="#bb0000"/>
+			</s:stroke>
+		</s:Rect>
+	</s:Group>
+</s:Group>

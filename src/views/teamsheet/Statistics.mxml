@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		 xmlns:s="library://ns.adobe.com/flex/spark" 
+		 xmlns:mx="library://ns.adobe.com/flex/mx" initialize="init(event)">
+	<fx:Script>
+		<![CDATA[
+			import com.alfo.DelayedExecution;
+			import com.alfo.utils.Console;
+			import com.greensock.TweenMax;
+			
+			import flash.filters.BitmapFilterQuality;
+			
+			import spark.filters.DropShadowFilter;
+			import spark.filters.GlowFilter;
+			
+			import events.TeamEvent;
+			
+			import model.TeamModel;
+			
+			[Bindable]
+			public var random_quantity:String;
+			
+			[Bindable]
+			public var random_description:String;
+			
+			protected var qualityList:Array ;
+			
+			protected var descriptionList:Array ;
+			
+			protected var isActive:Boolean = false;
+			protected var delayer:DelayedExecution;
+			
+			[Bindable]
+			protected var currentIndex:int = 0
+			
+			public function reset():void
+			{
+				Console.log("Reset", this);
+				delayer = null;
+				random_quantity = "";
+				random_description = "";
+				holder.alpha = 0;
+				qualityList = [];
+				descriptionList = [];
+				TweenMax.killChildTweensOf( this, true );
+					
+			}
+			
+			protected function init( e:Event ): void 
+			{
+				var df:spark.filters.DropShadowFilter = new spark.filters.DropShadowFilter();
+				df.angle = 45;
+				df.blurX = df.blurY = 5;
+				df.distance = 5;
+				df.strength = .22;
+				df.quality = flash.filters.BitmapFilterQuality.HIGH;				
+				df.color = 0x000000;
+				var gf:spark.filters.GlowFilter = new spark.filters.GlowFilter();
+				gf.blurX = gf.blurY = 10;
+				gf.strength = 1;
+				gf.quality = flash.filters.BitmapFilterQuality.HIGH;				
+				gf.color = 0x000000;
+				
+				quantity.filters = description.filters = [ df, gf];
+				holder.alpha = 0;
+				random_quantity = "";
+				random_description = "";
+				isActive = true;
+				TeamModel._instance.addEventListener( TeamEvent.TEAM_INFO, ready ); 
+			}
+			protected function ready( e:TeamEvent ):void
+			{
+				if (TeamEvent.TEAM_INFO == e.type )
+				{
+					Console.log( TeamModel.teaminfo, this)
+					qualityList = [];
+					descriptionList = [];
+					this.currentIndex = 0;
+					var stats:XMLList = TeamModel.getTeamStatistics();
+					if (stats.length()>0) {
+						
+					
+						for (var i:int=0; i<stats.length();i++)
+						{
+							Console.log( stats, this );
+							qualityList.push( stats[i].@value );
+							descriptionList.push( stats[i].@description.toUpperCase() )
+						}
+						populate();
+						wait();
+					} else 
+					{
+						this.dispatchEvent( new Event("EMPTY") )
+					}
+				}
+			}
+				
+			protected function wait( e:Event = null ):void
+			{
+				//Console.log("wait", this);
+				
+					if (delayer!=null)
+					{
+						delayer = null;
+					}
+					delayer = new DelayedExecution( 3000, this, rotateStatistics );
+			}
+			protected function rotateStatistics( e:Event = null):void
+			{
+				//Console.log("rotateStatistics", this);
+				TweenMax.to( holder, .5, { alpha: 0, onComplete: changeAndShow});
+			}
+			protected function changeAndShow( e:Event = null ):void
+			{
+
+				//Console.log("changeAndShow", this);
+				currentIndex = currentIndex + 1; 
+				populate();
+				TweenMax.to( holder, .5, { alpha: 1, onComplete: wait});
+			}
+			protected function populate():void
+			{
+				random_quantity= qualityList[ currentIndex % qualityList.length];
+				random_description =  descriptionList[ currentIndex % descriptionList.length];
+				
+			}
+			protected function change(e:Event):void
+			{
+				// quantity given as 0
+				holder.width = 1024;
+				description.width = 743;
+				
+			//	Console.log((quantity.width+"+"+description.width), this);
+				if ((quantity.width+description.width) > holder.width)
+				{
+					//vertical
+					holder.width = description.width = quantity.width;
+					quantity.left = (description.width-quantity.width)/2;
+					description.left = 0;
+					description.top = (quantity.top + quantity.height);
+					
+
+					
+				} else
+				{
+					//horizontal					
+					quantity.left = 0;
+					
+					description.left = quantity.width+10;
+					quantity.top = 0;
+					description.top = (quantity.height-description.height)/2
+					holder.width = quantity.width+description.width;
+				}
+			}
+				
+		]]>
+	</fx:Script>
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	<s:VGroup id="holder"  width="1024"  horizontalCenter="0">
+		
+	<s:Line width="100%">
+		<s:stroke>
+			<s:SolidColorStroke weight="5" color="0xA9172A"/>
+		</s:stroke>
+	</s:Line>
+		<s:Group width="100%" >
+	<s:Label text="{random_quantity}" fontFamily="StandardRegular" updateComplete="change(event)" textAlign="justify" fontSize="228" id="quantity" paddingTop="10"/>
+	<s:Label text="{random_description}" fontFamily="StandardRegular" updateComplete="change(event)" textAlign="justify" width="743" lineHeight="67" fontSize="59"  id="description" paddingBottom="10"/>
+		</s:Group>
+	<s:Line width="100%">
+		<s:stroke>
+			<s:SolidColorStroke weight="5" color="0xA9172A"/>
+		</s:stroke>
+	</s:Line>
+	</s:VGroup>
+
+</s:Group>

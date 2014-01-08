@@ -1,0 +1,51 @@
+@font-face
+{
+	
+	src: url("/assets/fonts/PremierLeague/PremierLeague.ttf");
+	fontFamily: "StandardRegular";
+	embedAsCFF: true;
+}
+@font-face
+{
+	src: url("/assets/fonts/ExpertSans/ExpertSans-Light.ttf");
+	fontFamily: "StandardRegularAllCase";
+	embedAsCFF: true;
+}
+@font-face
+{
+	src: url("/assets/fonts/ExpertSans/ExpertSans-Bold.ttf");
+	fontFamily: "StandardRegularAllCase";
+	fontWeight: bold;
+	embedAsCFF: true;
+}
+@font-face
+{
+	src: url("/assets/fonts/sky-text-regular.ttf");
+	fontFamily: "StandardSans";
+	embedAsCFF: true;
+}
+@font-face
+{
+	src: url("/assets/fonts/Digital/DS-DIGIB.ttf");
+	fontFamily: "Digital";
+	embedAsCFF: true;
+}
+@font-face
+{
+	src: url("/assets/fonts/sky-text-regular.ttf");
+	fontFamily: StandardRegularNoCFF;
+	embedAsCFF: false;
+}
+@font-face
+{
+	src: url("/assets/fonts/sky-text-medium.ttf");
+	fontFamily: StandardMedium;
+	embedAsCFF: true;
+}
+
+@font-face
+{
+	src: url("/assets/fonts/sky-text-bold.ttf");
+	fontFamily: StandardBold;
+	embedAsCFF: true;
+}

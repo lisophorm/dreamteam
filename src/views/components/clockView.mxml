@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		 xmlns:s="library://ns.adobe.com/flex/spark" 
+		 xmlns:mx="library://ns.adobe.com/flex/mx" width="258" height="139"
+		 creationComplete="created(event)">
+	<fx:Script>
+		<![CDATA[
+			import com.alfo.utils.Console;
+			import mx.events.FlexEvent;
+			
+			protected var countDownTimer:Timer;	
+			
+			[Bindable]
+			public var seconds:int = 90;
+			
+			[Bindable]
+			public var textColor:uint = 0xFECD0A;
+			
+			public function created(event:FlexEvent=null):void
+			{
+				this.addEventListener( Event.INIT, init);
+				init();
+			}
+			public function init(event:Event=null):void
+			{
+				reset();
+				
+				//start();
+			}
+			public function reset():void
+			{
+				Console.log("reset", this);
+				if (countDownTimer==null)
+				{
+					this.countDownTimer = new Timer(  1000, seconds);
+				}
+				this.countDownTimer.addEventListener(TimerEvent.TIMER_COMPLETE, exit);
+				this.countDownTimer.addEventListener(TimerEvent.TIMER, update);
+				update();
+			}
+			protected function update( e:TimerEvent = null ):void
+			{
+				//Console.log("update", this);
+				if (countDownTimer!=null)
+				{
+					var currSeconds:int = seconds - countDownTimer.currentCount;
+					this.txt_clock_countdown.text = "0:"+(currSeconds<10 ? "0"+currSeconds : currSeconds);
+					if (currSeconds<=10)
+					{
+				//		this.clock_bg.play();
+						bgColor.color = currSeconds%2==0 ? 0x000000 : 0xFECD0A;
+						textColor = currSeconds%2==0 ? 0xFECD0A : 0x000000;
+					}
+				}
+			}
+			public function start( e:Event = null) : void
+			{
+				
+				this.countDownTimer.start();
+			}
+			public function clearTimer():void
+			{
+				if (this.countDownTimer!=null)
+				{
+					this.countDownTimer.removeEventListener(TimerEvent.TIMER_COMPLETE, exit);
+					this.countDownTimer.removeEventListener(TimerEvent.TIMER, update);
+					this.countDownTimer = null;
+					bgColor.color = 0x000000;
+					textColor =  0xFECD0A;
+				}
+			}
+			public function exit( e:TimerEvent = null ):void
+			{
+				Console.log("exit", this);
+				loadWhisle();
+				clearTimer();
+				
+				this.dispatchEvent( new Event("EXIT") );
+			}
+			protected var whisleSound:Sound;
+			protected function loadWhisle():void
+			{
+				Console.log("loadWhisle", this);
+				if (whisleSound==null)
+				{
+					whisleSound = new Sound();
+					
+					Console.log( "assets/sounds/Sound 7.mp3", this );
+					whisleSound.addEventListener(Event.COMPLETE, playWhisle);
+					whisleSound.load(new URLRequest( "assets/sounds/Sound 7.mp3"));
+				} else {
+					playWhisle();
+				}
+				
+			}
+			protected function playWhisle(e:Event=null):void
+			{
+				Console.log("Play Whisle", this);
+				whisleSound.play();
+				
+			}
+		]]>
+	</fx:Script>
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	
+	<s:Rect radiusX="15" radiusY="15" width="258" height="139">
+		<s:filters>
+			
+		</s:filters>
+		<s:stroke>
+			<s:SolidColorStroke color="0xfffffff" caps="round" weight="2" />
+			</s:stroke>
+		<s:fill>
+			<s:SolidColor id="bgColor" color="0x000000" />
+		</s:fill>
+	</s:Rect>
+	<s:Label id="txt_clock_countdown" fontFamily="Digital" text="0:00" fontSize="80" color="{textColor}" height="128" width="258" y="40" textAlign="center" includeInLayout="false" />
+</s:Group>

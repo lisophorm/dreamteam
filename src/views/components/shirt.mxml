@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		 xmlns:s="library://ns.adobe.com/flex/spark" 
+		 xmlns:mx="library://ns.adobe.com/flex/mx" width="171" height="152"
+		  initialize="init(event)" mouseDown="beginDrag(event)" mouseUp="endDrag(event)"
+		 dragEnter="dragEnterHandler(event);" dragDrop="dragDropHandler(event);" xmlns:plugins="com.greensock.plugins.*">
+	<fx:Script>
+		<![CDATA[
+			import com.alfo.utils.Console;
+			
+			import events.TeamEvent;
+			
+			import flash.filters.BitmapFilterQuality;
+			import flash.filters.BitmapFilterType;
+			import flash.utils.getQualifiedClassName;
+			
+			import model.TeamModel;
+			
+			import mx.controls.Button;
+			import mx.core.DragSource;
+			import mx.core.UIComponent;
+			import mx.events.DragEvent;
+			import mx.events.FlexEvent;
+			import mx.managers.DragManager;
+			
+			import spark.filters.BevelFilter;
+			import spark.filters.DropShadowFilter;
+			import spark.filters.GlowFilter;
+			
+			private var icon:Image;
+			private function beginDrag( e:Event ):void
+			{
+				Console.log("beginDrag", this);
+				this.addEventListener( MouseEvent.MOUSE_MOVE, mouseMoveHandler);
+				this.stage.addEventListener( MouseEvent.MOUSE_UP, endDrag);
+			}
+			private function endDrag( e:Event ):void
+			{
+				this.removeEventListener( MouseEvent.MOUSE_MOVE, mouseMoveHandler);
+				this.stage.removeEventListener( MouseEvent.MOUSE_UP, endDrag);
+			}
+
+			private function mouseMoveHandler(event:MouseEvent):void 
+			{                
+			//	if (currentState != "player" && currentState != "goalkeeper")
+				{
+				
+//					
+					var img:Image = new Image;
+					Console.log("bg.source: "+ bg.source, this);
+					img.source = bg.bitmapData;
+					img.width =  bg.bitmapData.width*.8;
+					img.height = bg.bitmapData.height*.8;
+					img.smooth = true;
+					var _X:Number = UIComponent(event.currentTarget).mouseX-(img.width/2)
+					var _Y:Number = UIComponent(event.currentTarget).mouseY-(img.height/2)
+				//	this.addElement(img);	
+					var dragInitiator:UIComponent = UIComponent(event.currentTarget);
+					var ds:DragSource = new DragSource();
+					ds.addData(dragInitiator, "img");
+					DragManager.doDrag(dragInitiator, ds, event, img, _X, _Y, .8);
+				}				
+			}
+				
+			
+			
+			[Bindable]
+			public var label:String = "PLAYER";
+			
+			[Bindable]
+			public var data:Object;
+			
+			[Bindable]
+			public var shirtno:int = 10;
+			
+			[Bindable]
+			public var type:String = "inital";
+
+			[Bindable]
+			public var currentType:String = "inital";
+
+			protected function init( e:Event ): void 
+			{
+				this.currentType = "initial";	
+				
+				var bf:spark.filters.BevelFilter = new spark.filters.BevelFilter();
+				bf.angle = 45;
+				bf.blurX = bf.blurY = 5;
+				bf.distance = 4;
+				bf.strength = 1;
+				bf.quality = BitmapFilterQuality.HIGH;
+				bf.type = BitmapFilterType.INNER;
+				var df:spark.filters.DropShadowFilter = new spark.filters.DropShadowFilter();
+				df.angle = 45;
+				df.blurX = bf.blurY = 5;
+				df.distance = 5;
+				df.strength = .22;
+				df.quality = BitmapFilterQuality.HIGH;				
+				df.color = 0x000000;
+				var gf:spark.filters.GlowFilter = new spark.filters.GlowFilter();
+				gf.blurX = gf.blurY = 10;
+				gf.strength = 1;
+				gf.quality = BitmapFilterQuality.HIGH;				
+				gf.color = 0x000000;
+				
+				bg.filters = [bf, df, gf];
+				
+				
+				var sgf:spark.filters.GlowFilter = new spark.filters.GlowFilter();
+				sgf.blurX = sgf.blurY = 5;
+				sgf.strength = 1;
+				sgf.quality = BitmapFilterQuality.HIGH;				
+				sgf.color = 0x000000;
+				
+				
+				shirtnumber.filters = [sgf]
+			}
+			private function getClassName( c:*):String
+			{
+				var s:String =flash.utils.getQualifiedClassName( c );
+				return s.split(":")[s.split(":").length-1];
+			}
+			private function dragEnterHandler(event:DragEvent):void {
+				
+			//	Console.log( getClassName( event.dragInitiator ), this);
+				try
+				{
+					var suggestedType:String = "";
+					// we need to also accept the shirt type
+					
+				if ( getClassName( event.dragInitiator ) == "PlayerButton")
+				{
+					suggestedType = PlayerButton(event.dragInitiator).type;
+				} else if (getClassName( event.dragInitiator ) == "shirt")
+				{
+					suggestedType = shirt(event.dragInitiator).type;
+				}
+				///Console.log( suggestedType, this); 
+				if (event.dragSource.hasFormat("img") && (type==suggestedType))
+				{
+					DragManager.acceptDragDrop(UIComponent(event.currentTarget));
+				}
+				} catch(e:Error)
+				{
+					Console.log("Error"+e.toString(), this);
+				}
+			}
+			
+			// The dragDrop event handler for the Canvas container
+			// sets the Image control's position by 
+			// "dropping" it in its new location.
+			protected function getPlayerShirtName( s:String = "" ):String 
+			{
+				if (s!="" )
+				{
+					if (s.indexOf(" ")!=-1)
+						return s.split(" ")[1]
+				}
+				return s;
+			}
+			public function reset():void
+			{
+				label = this.type.toUpperCase();
+				currentType = "initial";
+				data = null;
+				Console.log("Reset", this);
+			}
+			private function dragDropHandler(event:DragEvent):void {
+				/*UIComponent(event.dragInitiator).x = 
+					UIComponent(event.currentTarget).mouseX;
+				UIComponent(event.dragInitiator).y = 
+					UIComponent(event.currentTarget).mouseY;
+				*/
+				var suggestedType:String = "";
+				
+				if ( getClassName( event.dragInitiator ) == "PlayerButton")
+				{
+					suggestedType = PlayerButton(event.dragInitiator).type;
+				} else if (getClassName( event.dragInitiator ) == "shirt")
+				{
+					suggestedType = shirt(event.dragInitiator).type;
+				}
+
+				//Console.log(type + " "+suggestedType, this)
+				if (type==suggestedType)
+				{
+					
+					if (getClassName( event.dragInitiator ) == "PlayerButton")
+					{
+						shirt(event.currentTarget).label = getPlayerShirtName( getClassName( event.dragInitiator ) == "PlayerButton" ? PlayerButton(event.dragInitiator).label : shirt(event.dragInitiator).label ).toUpperCase();
+						shirt(event.currentTarget).currentType = suggestedType=="goalkeeper" ? TeamModel.team.@id+"-GK" : TeamModel.team.@id;
+						
+						TeamModel.add( getClassName( event.dragInitiator ) == "PlayerButton" ? PlayerButton(event.dragInitiator).data : shirt(event.dragInitiator).data, shirtno );
+						this.data = PlayerButton(event.dragInitiator).data;
+					} else
+					{
+						if (this.data==null)
+						{
+							this.currentType = shirt(event.dragInitiator).currentType;
+							this.label = shirt(event.dragInitiator).label;
+							this.data = shirt(event.dragInitiator).data;
+							shirt(event.dragInitiator).reset();
+						} else 
+						{
+							//swap
+							var d:Object = { label: this.label, currentType: this.currentType, data: this.data};
+							Console.log( this.label, this);
+							this.currentType = shirt(event.dragInitiator).currentType;
+							this.label = shirt(event.dragInitiator).label;
+							this.data = shirt(event.dragInitiator).data;
+							Console.log( this.label, this);
+							//shirt
+							shirt(event.dragInitiator).label = d.label;
+							shirt(event.dragInitiator).currentType = d.currentType;
+							shirt(event.dragInitiator).data = d.data;
+							
+							
+						}
+					}
+//					dispatchEvent( new TeamEvent( TeamEvent.ADD, PlayerButton(event.dragInitiator).data ));
+				} else 
+				{
+					
+				}
+				
+				
+				
+				
+				
+			}
+			
+		]]>
+	</fx:Script>
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	<!-- fill a shape -->
+	<s:VGroup horizontalAlign="center" width="100%">
+		<s:Image smooth="true" source="assets/images/graphics-shirt-reflection.png" width="116" height="55" x="60" y="55" includeInLayout="false" />
+		
+		<s:Image smooth="true" source="{'assets/images/shirts/shirt_'+currentType+'.png'}" id="bg" name="shirt">
+			<s:filters>
+				
+				
+			</s:filters>
+			
+		</s:Image>
+		<s:Label text="{this.shirtno.toString()}" fontFamily="StandardRegular" id="shirtnumber" width="100" height="100" y="40" x="35" fontSize="44" includeInLayout="false" textAlign="center">
+			
+		</s:Label>
+		<s:Label text="{this.label}" fontFamily="StandardRegular" />	
+	</s:VGroup>
+	
+</s:Group>

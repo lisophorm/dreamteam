@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<s:SparkButtonSkin xmlns:fx="http://ns.adobe.com/mxml/2009"
+				   xmlns:s="library://ns.adobe.com/flex/spark"
+				   xmlns:fb="http://ns.adobe.com/flashbuilder/2009"
+				   minWidth="180" minHeight="28" addedToStage="init(event)"
+				   alpha.disabled="0.5"
+				   width="180" height="28" textAlign.up="center">
+     <fx:Script>
+		 <![CDATA[
+			 [Bindable]
+			 	var type:String ="";
+			 
+			 protected function getColor():uint
+			 {
+				 switch (type)
+				 {
+					 case "goalkeeper":
+						 return 0xFECD0A; 
+						break;
+					 case "player":
+						 return 0xE6001C;
+						 break;
+					 case "used":
+						 return 0x666666;
+						break;
+					case "initial":
+						return 0x999999;
+						break;
+					case "blue":
+						return 0x006699;
+						break;
+					
+				 }
+				 return 0xCCCCCC;
+			 }
+			protected function init(event:Event=null):void
+			 {
+				if (this.iconDisplay!=null)
+				{
+				 this.iconDisplay.smooth = true;
+				}
+			 }
+		 ]]>
+	 </fx:Script>
+    <fx:Metadata>
+        <![CDATA[ 
+        /** 
+         * @copy spark.skins.spark.ApplicationSkin#hostComponent
+         */
+        [HostComponent("spark.components.Button")]
+        ]]>
+		
+    </fx:Metadata>
+    
+    <!-- states -->
+    <s:states>
+        <s:State name="up" />
+        <s:State name="over" />
+        <s:State name="down" />
+        <s:State name="disabled" />
+		<s:State name="goalkeeper" />
+	
+    </s:states>
+    
+    
+   
+    
+    
+    <!-- layer 8: text -->
+    <!--- @copy spark.components.supportClasses.ButtonBase#labelDisplay  -->
+    
+	<s:Rect radiusX="10" radiusY="10" width="180" height="28">
+		<s:filters>
+			<s:BevelFilter id="bevel" angle="45" blurX="5" blurY="5" quality="10" distance="3" type="1" />
+			<s:GlowFilter id="glow" color="0x000000" blurX="10" blurY="10" strength="1" quality="10" />
+			<!--s:DropShadowFilter id="dropshadow" color="0x000000" blurX="5" blurY="5" angle="180" strength=".22" /-->
+			
+		</s:filters>
+		<s:fill>
+			<s:SolidColor color.goalkeeper="0xFECD0A" color="0x999999" />
+		</s:fill>
+	</s:Rect>
+	<s:Label id="labelDisplay" color="0xFFFFFF"
+			 textAlign="center" fontSize="14"
+			 maxDisplayedLines="1"
+			 horizontalCenter="0" verticalCenter="1" verticalAlign="middle"
+			 left="10" right="10" top="2" bottom="2" text="">
+		
+	</s:Label>
+</s:SparkButtonSkin>

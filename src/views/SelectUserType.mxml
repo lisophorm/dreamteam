@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		xmlns:s="library://ns.adobe.com/flex/spark" 
+		xmlns:components="views.components.*" 
+		xmlns:mx="library://ns.adobe.com/flex/mx" 
+		remove="exit(event)" creationComplete="created(event)"
+		width="1920" height="1080"
+		
+		>
+	<fx:Script>
+		<![CDATA[
+			import events.KioskError;
+			import events.KioskEvent;
+			import events.UserEvent;
+			import events.ViewEvent;
+			
+			import model.ML;
+			
+			import mx.events.FlexEvent;
+			import mx.validators.Validator;
+			
+			import spark.events.IndexChangeEvent;
+			
+			protected var validatorArr:Array;
+			protected var timer:Timer;
+			
+			public function created(event:FlexEvent=null):void
+			{
+				this.addEventListener( Event.INIT, init);
+				init();
+			}
+			public function init(event:Event=null):void
+			{
+				trace("*** INIT SELECTUSERTYPE ***");
+				timer = new Timer(100,1);
+				timer.addEventListener(TimerEvent.TIMER_COMPLETE, start);
+				timer.start();	
+			}
+			public function exit( e:Event = null):void
+			{
+				trace("*** EXIT SELECTUSERTYPE ***");
+			}
+			protected function start( e:TimerEvent ):void
+			{
+				timer.stop();
+				timer = null;
+			}
+			protected function isValid():Boolean
+			{
+				if (validatorArr==null)
+				{
+					return true;
+				} else {
+				var validatorErrorArray:Array = Validator.validateAll(validatorArr);
+				return validatorErrorArray.length == 0;
+				}
+			}
+			protected function restart(e:Event=null):void
+			{
+					this.parentApplication.dispatchEvent( new ViewEvent( ViewEvent.LOCATION_RESTART ));
+				
+			}
+			protected function facebook(e:Event=null):void
+			{
+				if (isValid())
+				{
+				//	this.parentApplication.dispatchEvent( new UserEvent( UserEvent.OPTIN_TERMS, termsCheck.selected ? "true" : "false" ))
+				//	this.parentApplication.dispatchEvent( new UserEvent( UserEvent.OPTIN_MARKETING, marketCheck.selected ? "true" : "false" ))
+					this.parentApplication.dispatchEvent( new ViewEvent( ViewEvent.LOCATION_FACEBOOK ));
+				}
+			}
+			protected function standard(e:Event=null):void
+			{
+					if (isValid())
+					{
+//						this.parentApplication.dispatchEvent( new UserEvent( UserEvent.OPTIN_TERMS, termsCheck.selected ? "true" : "false" ))
+					//	this.parentApplication.dispatchEvent( new UserEvent( UserEvent.OPTIN_MARKETING, marketCheck.selected ? "true" : "false" ))
+						this.parentApplication.dispatchEvent( new ViewEvent( ViewEvent.LOCATION_STANDARD_REGISTRATION ));
+					}
+			}
+			
+			protected function tandcd_clickHandler(event:MouseEvent):void
+			{
+					this.parentApplication.dispatchEvent(new KioskEvent(KioskEvent.TERMS_NOTIFY));
+			}
+		]]>
+	</fx:Script>
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+		</fx:Declarations>
+	<s:BorderContainer borderAlpha="0" width="100%" height="100%">
+		<s:backgroundFill>
+			
+			<s:LinearGradient rotation="60"  >
+				<s:GradientEntry color="0x000000"/>
+				<s:GradientEntry color="0x000000"/>
+				<s:GradientEntry color="0x8d1123"/>
+			</s:LinearGradient>
+		</s:backgroundFill>
+
+	<s:VGroup horizontalAlign="center" verticalAlign="middle" width="100%" height="100%">
+		<s:Image smooth="true" source="assets/images/logo_live.png" scaleX=".8" scaleY=".8" verticalAlign="middle"  />
+		<s:Spacer height="20" />
+		<s:Image smooth="true" source="assets/images/txt_thank_you.png" buttonMode="true" click="facebook(event)" />
+		<s:Spacer height="20" />
+		<s:Label lineBreak="explicit" fontFamily="StandardRegularAllCase" textAlign="center" fontSize="30.5" text="{ML.t('Share your Dream Team with your friends on Facebook.')}" />
+		<s:Spacer height="54"/>
+		
+		<s:VGroup width="100%" horizontalAlign="center">
+			<s:VGroup width="500" horizontalAlign="center">
+				<components:facebookBtn  click="facebook()"  />
+				
+				<s:Spacer height="20" />
+				
+				<s:Button height="60" width="400"  label="{ML.t('BACK TO START')}" click="restart(event)" skinClass="skins.vodafoneButton" />
+			
+			
+				
+			</s:VGroup>
+			
+		</s:VGroup>
+
+	</s:VGroup>
+		</s:BorderContainer>
+</s:Group>

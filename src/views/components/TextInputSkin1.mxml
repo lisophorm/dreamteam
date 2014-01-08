@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Skin xmlns:s="library://ns.adobe.com/flex/spark"
+		xmlns:fx="http://ns.adobe.com/mxml/2009"
+		xmlns:ai="http://ns.adobe.com/ai/2009"
+		xmlns:d="http://ns.adobe.com/fxg/2008/dt"
+		xmlns:flm="http://ns.adobe.com/flame/2008"
+		width="343" height="129">
+	<s:states>
+		<s:State name="normal"/>
+		<s:State name="disabled"/>
+		<s:State name="normalWithPrompt"/>
+		<s:State name="disabledWithPrompt"/>
+	</s:states>
+	<s:Group x="0" y="0">
+		<s:Group x="4" y="3">
+			<s:mask>
+				<s:Group x="-0.589" y="0.207" ai:spare="1">
+					<s:Path winding="nonZero" data="M14.2031 0C6.36328 0 0 6.35498 0 14.1973L0 103.734C0 111.582 6.36328 117.937 14.2031 117.937L322.004 117.937C329.847 117.937 336.201 111.582 336.201 103.734L336.201 14.1973C336.201 6.35498 329.847 0 322.004 0L14.2031 0Z">
+						<s:fill>
+							<s:SolidColor color="#FFFFFF"/>
+						</s:fill>
+					</s:Path>
+				</s:Group>
+			</s:mask>
+			<s:Rect d:id="77" x="0" y="0" width="336" height="118"
+					flm:variant="59">
+				<s:fill>
+					<s:LinearGradient x="168.079" y="-6.60806" scaleX="130.22" rotation="90">
+						<s:GradientEntry ratio="0" color="#7C9CBC"/>
+						<s:GradientEntry ratio="0.00567627" color="#F2F2F2"/>
+						<s:GradientEntry ratio="0.449327" color="#F1F1F1"/>
+						<s:GradientEntry ratio="0.669854" color="#EAEAEA"/>
+						<s:GradientEntry ratio="0.850835" color="#D6D6D6"/>
+						<s:GradientEntry ratio="1" color="#B3B3B3"/>
+					</s:LinearGradient>
+				</s:fill>
+			</s:Rect>
+		</s:Group>
+		<s:Path x="2.13" y="1.926" winding="nonZero" data="M 337.485 105.015 C 337.485 112.863 331.128 119.216 323.285 119.216 L 15.484 119.216 C 7.644 119.216 1.281 112.863 1.281 105.015 L 1.281 15.478 C 1.281 7.636 7.644 1.281 15.484 1.281 L 323.285 1.281 C 331.128 1.281 337.485 7.636 337.485 15.478 L 337.485 105.015 Z">
+			<s:stroke>
+				<s:SolidColorStroke weight="2.56111" caps="none" joints="miter" miterLimit="4" color="#243E8F"/>
+			</s:stroke>
+		</s:Path>
+		<s:Group x="3" y="3" alpha="0.089996" flm:isolated="false" flm:knockout="false">
+			<s:Group x.disabled="0" y.disabled="0"
+					 x.disabledWithPrompt="0" y.disabledWithPrompt="0"
+					 horizontalCenter.normal="0" verticalCenter.normal="0"
+					 x.normalWithPrompt="0" y.normalWithPrompt="0">
+				<s:mask>
+					<s:Group x="0.464" y="0.846" ai:spare="1">
+						<s:Rect width="336.089" height="8.69873">
+							<s:fill>
+								<s:SolidColor color="#FFFFFF"/>
+							</s:fill>
+						</s:Rect>
+					</s:Group>
+				</s:mask>
+				<s:Path x="0.464" y="0.846"
+						data="M 11.087 5.236 L 325.018 5.236 C 329.483 5.236 333.472 6.586 336.099 8.699 C 335.579 3.836 329.452 0 321.951 0 L 14.15 0 C 6.646 0 0.523 3.836 0 8.699 C 2.633 6.586 6.621 5.236 11.087 5.236"
+						winding="nonZero">
+					<s:fill>
+						<s:SolidColor color="#FFFFFF"/>
+					</s:fill>
+				</s:Path>
+			</s:Group>
+		</s:Group>
+		<s:Group x="3" y="111" alpha="0.089996" flm:isolated="false" flm:knockout="false">
+			<s:Group x="0" y="0">
+				<s:mask>
+					<s:Group x="0.464" y="0.39" ai:spare="1">
+						<s:Rect width="336.089" height="8.69824">
+							<s:fill>
+								<s:SolidColor color="#FFFFFF"/>
+							</s:fill>
+						</s:Rect>
+					</s:Group>
+				</s:mask>
+				<s:Path x="0.464" y="0.39"
+						data="M 325.015 3.465 L 11.076 3.465 C 6.615 3.465 2.627 2.114 0 0 C 0.523 4.865 6.646 8.698 14.15 8.698 L 321.951 8.698 C 329.447 8.698 335.579 4.865 336.099 0 C 333.467 2.114 329.479 3.465 325.015 3.465"
+						winding="nonZero">
+					<s:fill>
+						<s:SolidColor color="#FFFFFF"/>
+					</s:fill>
+				</s:Path>
+			</s:Group>
+		</s:Group>
+		<s:Path x="0.721" y="0.517" winding="nonZero" data="M 338.894 106.424 C 338.894 114.272 332.537 120.625 324.694 120.625 L 16.893 120.625 C 9.054 120.625 2.69 114.272 2.69 106.424 L 2.69 16.888 C 2.69 9.045 9.054 2.69 16.893 2.69 L 324.694 2.69 C 332.537 2.69 338.894 9.045 338.894 16.888 L 338.894 106.424 Z">
+			<s:stroke>
+				<s:SolidColorStroke weight="5.38048" caps="none" joints="miter" miterLimit="4" color="#bb0000"/>
+			</s:stroke>
+		</s:Path>
+	</s:Group>
+</s:Skin>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		xmlns:s="library://ns.adobe.com/flex/spark" 
+		remove="exit(event)" creationComplete="created(event)" 
+		xmlns:components="views.components.*">
+	
+	<fx:Script>
+		<![CDATA[
+			import events.ViewEvent;
+			
+			import flash.utils.setInterval;
+			
+			import model.ML;
+			
+			import mx.events.FlexEvent;
+			
+			
+			protected var intervallo:Number;
+			
+			public function created(event:FlexEvent=null):void
+			{
+				this.addEventListener( Event.INIT, init);
+			}
+			public function init(event:Event=null):void
+			{
+				trace("*** INIT THANKYOU ***");
+				intervallo=setInterval(close, 5000);
+				//var temp:File=File.applicationDirectory.resolvePath("/data/data/air.BarclaysFaceBook01/cache/webviewCache");
+				
+			}
+			
+			protected function exit(event:Event):void
+			{
+				// TODO Auto-generated method stub
+				clearInterval(intervallo);
+				trace("*** EXIT APPLICATIONTYPE ***");	
+			}
+			protected function close():void {
+
+				clearInterval(intervallo);
+				//navigator.popToFirstView();
+				this.parentApplication.dispatchEvent(new ViewEvent( ViewEvent.LOCATION_RESTART ));
+				
+			}
+		]]>
+	</fx:Script>
+	
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	
+	<s:VGroup width="100%" height="100%" horizontalAlign="center" verticalAlign="middle">
+		<s:Spacer width="10" height="30"/>
+		<s:Label textAlign="center" width="750" styleName="thankyou" text="{ML.t('Thank you for selecting your \nDream Team.')}"  />
+		<s:Spacer width="10" height="30"/>
+	</s:VGroup>
+</s:Group>

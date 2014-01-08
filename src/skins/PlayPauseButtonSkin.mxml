@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+
+ADOBE SYSTEMS INCORPORATED
+Copyright 2008 Adobe Systems Incorporated
+All Rights Reserved.
+
+NOTICE: Adobe permits you to use, modify, and distribute this file
+in accordance with the terms of the license agreement accompanying it.
+
+-->
+
+<!--- The default skin class for the play/pause button of a Spark VideoPlayer 
+component while in one of the <code>fullScreen</code> skin states.  
+
+@see spark.components.VideoPlayer
+
+@langversion 3.0
+@playerversion Flash 10
+@playerversion AIR 1.5
+@productversion Flex 4
+-->
+<s:Skin xmlns:fx="http://ns.adobe.com/mxml/2009" xmlns:s="library://ns.adobe.com/flex/spark" 
+		alpha.disabledStates="0.5">
+	
+	<!-- host component -->
+	<fx:Metadata>
+		/** 
+		* @copy spark.skins.spark.ApplicationSkin#hostComponent
+		*/
+		[HostComponent("spark.components.ToggleButton")]
+	</fx:Metadata>
+	
+	<!-- states -->
+	<s:states>
+		<s:State name="up" />
+		<s:State name="over" stateGroups="overStates" />
+		<s:State name="down" stateGroups="downStates" />
+		<s:State name="disabled" stateGroups="disabledStates" />
+		<s:State name="upAndSelected" stateGroups="selectedStates, selectedUpStates" />
+		<s:State name="overAndSelected" stateGroups="overStates, selectedStates" />
+		<s:State name="downAndSelected" stateGroups="downStates, selectedStates" />
+		<s:State name="disabledAndSelected" stateGroups="selectedUpStates, disabledStates, selectedStates" />
+	</s:states>
+	
+		
+	<s:Group top="0" left="0" bottom="0" right="0">
+		
+	
+	<s:Ellipse width="120" height="120" verticalCenter="0" horizontalCenter="0" >
+		<s:fill>
+			<s:SolidColor color="0x000000" alpha=".2" />
+		</s:fill>
+	</s:Ellipse>
+	<s:Path verticalCenter="0" horizontalCenter="10" data="M0 82.3696 61.8447 41.1841 0.000976562 0 0 82.3696Z" excludeFrom="selectedStates" id="playSymbol">
+		<s:fill>
+			<s:SolidColor color="#FFFFFF"/>
+		</s:fill>
+	</s:Path>
+	<s:HGroup verticalCenter="0" horizontalCenter="0" id="pauseSymbol"  includeIn="selectedStates">
+		<s:Rect width="18" height="65">
+			<s:fill>
+				<s:SolidColor color="0xFFFFFF" />
+			</s:fill>
+		</s:Rect>
+		<s:Spacer width="5" />
+		<s:Rect width="18" height="65">
+			<s:fill>
+				<s:SolidColor color="0xFFFFFF" />
+			</s:fill>
+		</s:Rect>
+		
+	</s:HGroup>
+		
+	<s:Path verticalCenter="0" horizontalCenter="0"  data="M131.076 76.207C131.076 106.511 106.511 131.076 76.207 131.076 45.9033 131.076 21.3379 106.511 21.3379 76.207 21.3379 45.9028 45.9033 21.3379 76.207 21.3379 106.511 21.3379 131.076 45.9028 131.076 76.207M152.414 76.207C152.414 34.1191 118.296
+		  0 76.207 0 34.1182 0 0 34.1191 0 76.207 0 118.296 34.1182 152.415 76.207 152.415 118.296 152.415 152.414 118.296 152.414 76.207">
+		<s:fill>
+			<s:SolidColor color="#FFFFFF"/>
+		</s:fill>
+	</s:Path>
+	</s:Group>
+
+</s:Skin>

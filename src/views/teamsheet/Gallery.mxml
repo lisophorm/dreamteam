@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		 xmlns:s="library://ns.adobe.com/flex/spark" 
+		 xmlns:mx="library://ns.adobe.com/flex/mx" creationComplete="created(event)">
+	<fx:Script>
+		<![CDATA[
+			import com.alfo.utils.Console;
+			import com.greensock.TweenMax;
+			
+			import mx.events.DragEvent;
+			import mx.events.FlexEvent;
+			
+			import spark.utils.TextFlowUtil;
+			
+			import events.KioskError;
+			import events.TeamEvent;
+			
+			import model.TeamModel;
+			
+			import views.renderer.gallery_renderer;
+			
+			[Bindable]
+			public var gallery:XMLList;
+			
+			[Bindable]
+			public var currentIndex:int=0;
+			
+			[Bindable]
+			protected var teamColor:uint = 0xFFFFFF;
+			
+			[Bindable]
+			protected var description:String = "";
+
+			[Bindable]
+			protected var statistics:String = "";
+
+			public function created(event:FlexEvent=null):void
+			{
+				this.addEventListener( Event.INIT, init);
+				init();
+			}
+			public function init(event:Event=null):void
+			{
+				Console.log("*** INIT GALLERY ***", this);
+				
+				TeamModel._instance.addEventListener( TeamEvent.TEAM_INFO, ready);
+			}	
+			protected function ready( e:TeamEvent ):void
+			{
+				if (TeamEvent.TEAM_INFO == e.type )
+				{
+					gallery = TeamModel.getGallery();
+					teamColor = TeamModel.getTeamColor();
+					showInfo();
+				}
+			}
+			protected function showInfo():void
+			{
+				for (var i:int=0;i<galleryGroup.numElements;i++)
+				{
+					try {
+						gallery_renderer(galleryGroup.getElementAt( i )).teamColor = teamColor;	
+					} catch (e:Error)
+					{
+						
+					}
+				}
+				
+				update();
+				Multitouch.inputMode = MultitouchInputMode.GESTURE;
+				holder.mask = getMask();
+				btn_next.addEventListener( MouseEvent.CLICK, gotoNext );
+				btn_previous.addEventListener( MouseEvent.CLICK, gotoPrevious );
+				stage.addEventListener(TransformGestureEvent.GESTURE_SWIPE, onSwipe);
+			
+					
+			}
+			
+			protected function onSwipe( e:TransformGestureEvent ):void
+			{
+				//this.parentApplication.dispatchEvent(new KioskError(KioskError.ERROR, "Swiping ", "Swipe"));
+				Console.log("Swipe", this);
+				if (e.offsetX==1)
+				{
+					gotoNext();	
+				} else {
+					gotoPrevious();
+				}
+			}
+			protected function gotoNext( e:Event = null ):void
+			{
+				//this.currentIndex = (this.currentIndex+1) % galleryGroup.numElements;
+				this.currentIndex = Math.min((this.currentIndex+1), galleryGroup.numElements-1);
+				Console.log( "next: "+this.currentIndex+" "+galleryGroup.getElementAt( this.currentIndex ).x, this)
+				update();
+			}
+			protected function gotoPrevious( e:Event=null ):void
+			{
+				this.currentIndex = Math.max((this.currentIndex-1),0);
+				update();
+				
+			}
+			protected function update():void
+			{
+				try
+				{
+				TweenMax.to(galleryGroup, 1, {x: -galleryGroup.getElementAt( this.currentIndex ).x});
+				} catch (e:Error)
+				{
+					
+				}
+				description = this.gallery[this.currentIndex].description;
+				statistics = this.gallery[this.currentIndex].statistics.description;
+				
+			
+			}
+			protected function getMask():Sprite
+			{
+				var s:Sprite = new Sprite();
+				s.graphics.beginFill(0xFF0000,1);
+				s.graphics.drawRect(0,0, 1243, 666);
+				s.graphics.endFill()
+					return s;
+					
+			}
+		]]>
+	</fx:Script>
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+		
+	</fx:Declarations>
+	<s:VGroup>
+		
+	<s:BorderContainer  backgroundAlpha=".5" backgroundColor="0x00000" borderVisible="false" width="1243" height="666">
+		<s:Group id="holder"  width="1243" height="666">
+			
+		
+		<s:DataGroup id="galleryGroup"  itemRenderer="views.renderer.gallery_renderer">
+			<s:layout>
+				<s:HorizontalLayout/>
+			</s:layout> 
+			<s:XMLListCollection  id="galleryList"  source="{gallery}"/>
+		</s:DataGroup>
+		</s:Group>
+		<s:HGroup top="620" left="1140">
+			<s:Image width="40" height="40" smooth="true"  source="/assets/images/arrow_left.png" id="btn_previous" buttonMode="true"/>
+			<s:Image width="40" height="40" smooth="true"  source="/assets/images/arrow_right.png" id="btn_next" buttonMode="true"/>
+		</s:HGroup>	
+	</s:BorderContainer>
+	<s:Spacer height="20" />
+	<s:BorderContainer backgroundAlpha=".5" backgroundColor="0x00000" width="100%" borderVisible="false" >
+		<s:HGroup paddingBottom="20" paddingTop="20" verticalAlign="top">
+			
+		<s:Label text="{description}" fontFamily="StandardRegularAllCase" height="200" width="900" paddingBottom="10" paddingTop="10" paddingLeft="20" paddingRight="20">
+		</s:Label>
+		<s:Line height="80%" verticalCenter="0" top="40">
+			<s:stroke>
+				<s:SolidColorStroke weight="1" color="{teamColor}"/>
+			</s:stroke>
+		</s:Line>
+			<s:VGroup paddingLeft="20" paddingBottom="10" verticalAlign="top" paddingTop="10">
+				
+				<s:Label text="STATISTICS" color="{teamColor}"/>
+				<s:RichEditableText id="richTxt" editable="false" paddingTop="10" selectable="false" fontFamily="StandardRegularAllCase" color="0xFFFFFF" width="300" fontSize="18"
+							textFlow="{TextFlowUtil.importFromString(statistics)}"
+							  />
+
+				
+								
+			</s:VGroup>
+
+		</s:HGroup>
+		
+		</s:BorderContainer>
+	</s:VGroup>
+</s:Group>

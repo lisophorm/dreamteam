@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		 xmlns:s="library://ns.adobe.com/flex/spark" 
+		 xmlns:mx="library://ns.adobe.com/flex/mx" 
+		 creationComplete="created(event)" xmlns:views="views.*" xmlns:teamsheet="views.teamsheet.*">
+	<fx:Script>
+		<![CDATA[
+			import com.alfo.utils.Console;
+			
+			import flash.filters.BitmapFilterQuality;
+			
+			import mx.core.UIComponent;
+			import mx.events.FlexEvent;
+			import mx.events.IndexChangedEvent;
+			import mx.rpc.events.FaultEvent;
+			import mx.rpc.events.ResultEvent;
+			
+			import spark.events.IndexChangeEvent;
+			import spark.filters.DropShadowFilter;
+			import spark.filters.GlowFilter;
+			
+			import events.KioskError;
+			import events.ViewEvent;
+			
+			import model.TeamModel;
+			[Bindable]
+			public var teamlogo:String;
+			
+			[Bindable]
+			public var teamname:String="";
+
+			[Bindable]
+			public var teamid:String = "Crystal-Palace";
+			
+			[Bindable]
+			public var teamColor:uint = 0xFF0000;
+
+			public var data:Object;
+			protected var selectedTeam:String;
+			protected var defaultFontsize:Number = 100;
+
+			
+			public function created(event:FlexEvent=null):void
+			{
+				this.addEventListener( Event.INIT, init);
+				Stack.addEventListener(IndexChangedEvent.CHANGE, change);
+				
+				init();
+			}
+			protected function goHome( e:Event=null ):void
+			{
+				this.parentApplication.dispatchEvent( new ViewEvent( ViewEvent.LOCATION_RESTART ));
+			}
+			public function init(event:Event=null):void
+			{
+				Console.log("*** INIT TEAMSHEETS ***", this);
+				
+				if (this.parentApplication.data!=null)
+				{
+					data = this.parentApplication.data;
+					selectedTeam = data.team;
+					TeamModel.selectedTeam = selectedTeam;
+					teamname = data.team;
+					Console.log( data.team, this );
+					timeline.selectedTeam = selectedTeam;
+					stats.addEventListener( "EMPTY", statEmpty);
+					
+
+				}
+				reset();
+				gameData.send();
+				
+				setTeamNameStyle()
+			//	Stack.selectedIndex = 4
+				
+				
+			}
+			protected function statEmpty( e:Event = null ):void
+			{
+				Stack.selectedIndex = 1;
+				
+			}
+			protected function setTeamNameStyle():void
+			{
+				var df:spark.filters.DropShadowFilter = new spark.filters.DropShadowFilter();
+				df.angle = 45;
+				df.blurX = df.blurY = 5;
+				df.distance = 5;
+				df.strength = .22;
+				df.quality = flash.filters.BitmapFilterQuality.HIGH;				
+				df.color = 0x000000;
+				var gf:spark.filters.GlowFilter = new spark.filters.GlowFilter();
+				gf.blurX = gf.blurY = 10;
+				gf.strength = 1;
+				gf.quality = flash.filters.BitmapFilterQuality.HIGH;				
+				gf.color = 0x000000;
+				
+				teamname_text.filters = [ df, gf];
+
+			}
+			protected function reset():void
+			{
+				defaultFontsize = 100;
+				teamname_text.setStyle("fontSize", defaultFontsize);
+				Stack.selectedIndex = 0;
+				stats.reset();
+				
+			}
+			
+			protected function populate(e:ResultEvent=null):void
+			{
+				
+				if (selectedTeam!=null)
+				{
+					var xml:XML = new XML(e.result);
+					TeamModel.team = xml..team.(@name==selectedTeam);
+					var allPlayers:XMLList = TeamModel.team..player;
+					teamid = TeamModel.team.@id;
+					teamlogo = TeamModel.team.@logo;
+					teamColor = TeamModel.getTeamColor();					
+					this.teamData.send();
+					Console.log(teamid, this)
+						
+				}
+			}
+			protected function populateInfo(e:ResultEvent=null):void
+			{
+				
+				if (selectedTeam!=null)
+				{
+					var xml:XML = new XML(e.result);
+					
+					TeamModel.teaminfo =  xml..teaminfo;
+					Console.log( TeamModel.teaminfo, this);
+					
+					
+				}
+			}
+			protected function error(e:FaultEvent):void
+			{
+				
+				this.parentApplication.dispatchEvent(new KioskError(KioskError.ERROR, e.fault.message.toString(), "COMMUNICATION ERROR"));
+				
+			}
+			protected function errorTeam(e:FaultEvent):void
+			{
+				this.parentApplication.dispatchEvent(new KioskError(KioskError.ERROR, e.statusCode.toString(), "COMMUNICATION TEAM ERROR"));
+				if (e.statusCode==0)
+				{
+					this.parentApplication.dispatchEvent(new KioskError(KioskError.ERROR, selectedTeam.toUpperCase()+" assets not implemented (Please try again, i.e. Aston Villa or Crystal Palace)", "TEAM NOT IMPLEMENTED", goHome));
+					
+				} else 
+				{
+					this.parentApplication.dispatchEvent(new KioskError(KioskError.ERROR, e.fault.message.toString(), "COMMUNICATION TEAM ERROR"));
+				}
+			}
+			protected function change(e:IndexChangedEvent):void
+			{
+				if (e.oldIndex!=e.newIndex && e.oldIndex>=0)
+				{
+					Console.log(Stack.getChildAt(e.oldIndex), this)
+					Stack.getChildAt(e.oldIndex).dispatchEvent(new Event("EXIT") );
+				}
+			}
+			
+			protected function resizeTeamName( e:Event ) : void
+			{
+				teamname_text.text = teamname.toString().toUpperCase();
+				teamname_text.invalidateSize();
+				teamname_text.validateNow();
+				
+				
+				if (teamname_text.height>150)
+				{
+					defaultFontsize -=5;
+					teamname_text.setStyle("fontSize", defaultFontsize);
+					
+				}
+		//		Console.log("wxh:"+teamname_text.width+"x"+teamname_text.height, this);
+		//		Console.log("wxh:"+teamname_text.measuredWidth+"x"+teamname_text.measuredHeight, this);
+		//		Console.log("wxh:"+tm.width+"x"+tm.height, this);
+			}
+				
+				
+		]]>
+	</fx:Script>
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+		
+		<s:Parallel id="hideFX" duration="400">
+			
+			<mx:Blur blurXFrom="100.0" blurXTo="5.0" />
+			<mx:Move xTo="{Stack.width}"/>
+			
+		</s:Parallel>
+		
+		<s:Parallel id="showFX" duration="400">
+			
+			<mx:Blur blurXFrom="100.0" blurXTo="0.0" />
+			<mx:Move xFrom="{-Stack.width}"/>
+			
+		</s:Parallel>
+		
+		<s:HTTPService id="gameData" resultFormat="xml" url="{'/assets/xml/game_full.xml'}" result="populate(event)" fault="error(event)" />
+		<s:HTTPService id="teamData" resultFormat="xml" url="{'/assets/xml/'+teamid+'.xml'}" result="populateInfo(event)"  fault="errorTeam(event)" />
+		
+	</fx:Declarations>
+	
+	<s:Image smooth="true" source="assets/images/stadiums/{teamid}.jpg" x="0" y="0" width="1920" height="1080"  />
+
+		<s:BorderContainer borderAlpha="0" width="100%" height="100%" >
+		<s:backgroundFill>
+			<s:SolidColor color="0x000000" alpha=".1" />	
+		</s:backgroundFill>
+		
+		<s:HGroup width="100%" height="100%">
+			<s:Spacer width="100" />
+			
+			<s:Group height="100%" width="400">
+				<s:VGroup width="250" left="100" height="100%">
+					<s:BorderContainer borderAlpha="0" width="100%" height="100%">
+						<s:backgroundFill>
+							<s:SolidColor color="0x000000" alpha=".7" />
+						</s:backgroundFill>
+						
+						<s:VGroup verticalAlign="middle" textAlign="center" verticalCenter="100" width="100%" >
+							<s:Label width="100%" textAlign="center" text="TOP 5 PLAYERS" click="{Stack.selectedIndex = 1}" fontFamily="StandardRegular" color="{ (Stack.selectedIndex == 1) ? teamColor : 0xFFFFFF }" fontSize="26" paddingBottom="5" paddingTop="5" paddingLeft="10" buttonMode="true" />
+							<s:Line width="100%"><s:stroke><s:SolidColorStroke weight="1"  color="{teamColor}" /></s:stroke></s:Line>
+							<s:Label width="100%" textAlign="center" text="VIDEO" click="{Stack.selectedIndex = 2}" fontFamily="StandardRegular"  fontSize="26" paddingBottom="5" paddingTop="5" paddingLeft="10"  buttonMode="true"  color="{ (Stack.selectedIndex == 2) ? teamColor : 0xFFFFFF }"/>
+							<s:Line width="100%"><s:stroke><s:SolidColorStroke weight="1" color="{teamColor}" /></s:stroke></s:Line>
+							<s:Label width="100%" textAlign="center" text="IMAGE GALLERY" click="{Stack.selectedIndex = 3}" fontFamily="StandardRegular"  fontSize="26" paddingBottom="5" paddingTop="5" paddingLeft="10"  buttonMode="true"  color="{ (Stack.selectedIndex == 3) ? teamColor : 0xFFFFFF }"/>
+							<s:Line width="100%"><s:stroke><s:SolidColorStroke weight="1"  color="{teamColor}" /></s:stroke></s:Line>
+							<s:Label width="100%" textAlign="center" text="HISTORY" click="{Stack.selectedIndex = 4}"  fontFamily="StandardRegular"  fontSize="26" paddingLeft="10" paddingBottom="5" paddingTop="5"  buttonMode="true"  color="{ (Stack.selectedIndex == 4) ? teamColor : 0xFFFFFF }"/>
+							<s:Line width="100%"><s:stroke><s:SolidColorStroke weight="1" color="{teamColor}" /></s:stroke></s:Line>
+						</s:VGroup>
+						<s:Button icon="/assets/images/arrow_left.png" bottom="0" skinClass="skins.ButtonSkinMainMenu" click="goHome();" buttonMode="true" id="btn_back">
+							<s:label>BACK TO MENU</s:label>
+						</s:Button>
+						
+						</s:BorderContainer>
+				</s:VGroup>
+				
+				<s:Image horizontalCenter="-100" smooth="true" 
+						 source="{'/assets/images/logos/medium-shaded/'+teamlogo}" height="242"   top="200" />
+				<s:Label text="{teamname.toString().toUpperCase()}"  color="0xFFFFFF" resize="resizeTeamName(event)"  rotation="-90" top="440" fontFamily="StandardRegular" textAlign="right" width="620" maxWidth="620"  fontSize="100" id="teamname_text" />
+				
+			</s:Group>
+			
+			
+			<mx:ViewStack id="Stack" height="100%" width="100%"  creationPolicy="all">
+				<mx:VBox hideEffect="{hideFX}"  showEffect="{showFX}">
+					<teamsheet:Statistics id="stats" />
+				</mx:VBox>
+				<mx:VBox hideEffect="{hideFX}"  showEffect="{showFX}">
+					<teamsheet:TopFivePlayers/>
+				</mx:VBox>
+				<mx:VBox hideEffect="{hideFX}"  showEffect="{showFX}">
+					<teamsheet:Video verticalCenter="0"/>
+				</mx:VBox>
+				<mx:VBox hideEffect="{hideFX}"  showEffect="{showFX}">
+					<teamsheet:Gallery />
+				</mx:VBox>
+				<mx:VBox hideEffect="{hideFX}"  showEffect="{showFX}">
+					<teamsheet:Timeline id="timeline" verticalCenter="0"/>
+				</mx:VBox>
+			</mx:ViewStack>
+			
+			
+			</s:HGroup>
+		</s:BorderContainer>
+</s:Group>
