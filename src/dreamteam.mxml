@@ -278,7 +278,7 @@
 					if (navigationVisible)
 					{
 					//	Console.log("Hide Navigation", this)
-						hideNavigation()
+						//hideNavigation()
 					}
 				}
 

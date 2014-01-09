@@ -114,8 +114,6 @@
 				
 				<s:Button height="60" width="400"  label="{ML.t('BACK TO START')}" click="restart(event)" skinClass="skins.vodafoneButton" />
 			
-			
-				
 			</s:VGroup>
 			
 		</s:VGroup>

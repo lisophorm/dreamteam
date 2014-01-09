@@ -74,14 +74,16 @@
 			public var shirtno:int = 10;
 			
 			[Bindable]
-			public var type:String = "inital";
+			public var type:String = "initial2";
 
 			[Bindable]
-			public var currentType:String = "inital";
+			public var currentType:String = "initial2";
 
 			protected function init( e:Event ): void 
 			{
-				this.currentType = "initial";	
+				//this.currentType = "initial";	
+				
+				trace("shirt :: init :: " + currentType);
 				
 				var bf:spark.filters.BevelFilter = new spark.filters.BevelFilter();
 				bf.angle = 45;
@@ -161,7 +163,7 @@
 			public function reset():void
 			{
 				label = this.type.toUpperCase();
-				currentType = "initial";
+				currentType = "initial2";
 				data = null;
 				Console.log("Reset", this);
 			}
