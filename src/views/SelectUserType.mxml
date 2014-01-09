@@ -108,7 +108,7 @@
 		
 		<s:VGroup width="100%" horizontalAlign="center">
 			<s:VGroup width="500" horizontalAlign="center">
-				<components:facebookBtn  click="facebook()"  />
+				<!--components:facebookBtn  click="facebook()"  /-->
 				
 				<s:Spacer height="20" />
 				
