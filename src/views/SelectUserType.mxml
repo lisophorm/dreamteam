@@ -103,8 +103,8 @@
 		<s:Spacer height="20" />
 		<s:Image smooth="true" source="assets/images/txt_thank_you.png" buttonMode="true" click="facebook(event)" />
 		<s:Spacer height="20" />
-		<s:Label lineBreak="explicit" fontFamily="StandardRegularAllCase" textAlign="center" fontSize="30.5" text="{ML.t('Share your Dream Team with your friends on Facebook.')}" />
-		<s:Spacer height="54"/>
+		<!--<s:Label lineBreak="explicit" fontFamily="StandardRegularAllCase" textAlign="center" fontSize="30.5" text="{ML.t('Share your Dream Team with your friends on Facebook.')}" />
+		<s:Spacer height="54"/>-->
 		
 		<s:VGroup width="100%" horizontalAlign="center">
 			<s:VGroup width="500" horizontalAlign="center">
