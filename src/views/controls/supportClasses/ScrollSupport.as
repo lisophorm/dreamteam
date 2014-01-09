@@ -31,7 +31,9 @@ package views.controls.supportClasses
 		public var isTouching:Boolean = false;
 		protected var timer:Timer;
 		public var tapEnabled:Boolean = false;
+		
 		protected var totalDegree:Number=0;
+		
 		protected var currentDegree:Number=0;
 		protected var stage:Stage;
 		protected var width:Number = 0
@@ -58,17 +60,24 @@ package views.controls.supportClasses
 		}
 		public function destroy():void
 		{
-			stage.removeEventListener(MouseEvent.MOUSE_DOWN, onMouseDown);
-			stage.removeEventListener( MouseEvent.MOUSE_MOVE, onMouseMove );
-			stage.removeEventListener(MouseEvent.MOUSE_UP, onMouseUp);
-			timer.removeEventListener( TimerEvent.TIMER, onListTimer);
-			timer.stop();
-			timer=null;
+			if(stage)
+			{
+				stage.removeEventListener(MouseEvent.MOUSE_DOWN, onMouseDown);
+				stage.removeEventListener( MouseEvent.MOUSE_MOVE, onMouseMove );
+				stage.removeEventListener(MouseEvent.MOUSE_UP, onMouseUp);
+			}
+			if(timer)
+			{
+				timer.removeEventListener( TimerEvent.TIMER, onListTimer);
+				timer.stop();
+				timer=null;
+			}
 			tapEnabled = false;
 			
 		}
 		protected function onMouseDown( e:MouseEvent ):void 
 		{
+			trace("ScrollSupport :: onMouseDown :: " + totalDegree);
 			// Set up listener - using stage - for global x,y
 			stage.addEventListener( MouseEvent.MOUSE_MOVE, onMouseMove );
 			stage.addEventListener( MouseEvent.MOUSE_UP, onMouseUp );
@@ -85,7 +94,8 @@ package views.controls.supportClasses
 		}
 		protected function onMouseUp( e:MouseEvent ):void 
 		{
-			
+			trace("ScrollSupport :: onMouseUp");
+			totalDegree += currentDegree;
 			stage.addEventListener(MouseEvent.MOUSE_DOWN, onMouseDown );
 			stage.removeEventListener( MouseEvent.MOUSE_MOVE, onMouseMove );
 			stage.removeEventListener(MouseEvent.MOUSE_UP, onMouseUp);
