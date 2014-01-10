@@ -3,6 +3,7 @@
 					   xmlns:s="library://ns.adobe.com/flex/spark" 
 					   xmlns:mx="library://ns.adobe.com/flex/mx" xmlns:views="views.*"
 					   horizontalCenter="center" width="100%" height="100%" backgroundColor="#000000"
+					   initialize="videoSettings(event)"
 					   creationComplete="init(event)"  resize="onresize()"
 					   addedToStage="fullscreen()" showStatusBar="false">
 
@@ -36,6 +37,8 @@
 			import model.Config;
 			import model.ML;
 			import model.MonitorConnection;
+			
+			import org.osmf.utils.OSMFSettings;
 			
 			import skins.vodafoneFormItem;
 			
@@ -299,10 +302,9 @@
 				this.loggedIn = false;
 				
 			}
+			
 			protected function notifyApplicationTypeUpdate( e:ApplicationEvent ):void
 			{
-				
-				
 				pref.saveApplicationVariables( e.value );
 				trace(pref.prefsXML);
 				baseURL =  "http://"+pref.prefsXML..serverIP+"/";
@@ -397,29 +399,27 @@
 			protected function centerPopups(e:Event=null):void
 			{
 				var p:Array = this.getActivePopup();
-				for (var i:int=0;i<p.length;i++)
+				
+				for (var i:int=0; i<p.length; i++)
 				{
-					
 					p[i].height *= scale;
 					p[i].width *= scale;
 					PopUpManager.centerPopUp(p[i]);
 					p[i].height *= 1/scale;
 					p[i].width *= 1/scale;
 					p[i].scaleX = p[i].scaleY = scale;
+					
+					if("onsresize" in p[i])
+					{
+					}else
 					try {
 						p[i].onresize();
 					} catch (e:Error)
 					{
-						
+						trace("Dreamteam :: centerPopups :: uncaught :: " + e.name + " :: " + p[i]);
 					}
-					
-					
-					
-					
 				}
-				
 			}
-			
 			
 			protected function notifyWaiting( e:KioskWaitEvent = null ):void
 			{
@@ -806,16 +806,17 @@
 				//Alert.show(msg, title, 4, null, exitApplicationFunction);
 				
 				clearPopups();
+				
 				alertbox = new ErrorAlert();
 				alertbox.message = msg;
 				alertbox.windowTitle = title;
 				alertbox.exitFunction = exitFunction;
 				
-				PopUpManager.addPopUp(alertbox, this, true);
+				PopUpManager.addPopUp(alertbox, this);
 				PopUpManager.centerPopUp(alertbox);
 				centerPopups();
-				
 			}
+			
 			protected function showPassword(title:String="", password:String=null, exitFunction:Function=null):void
 			{
 				clearPopups();
@@ -988,6 +989,11 @@
 			
 			
 
+			protected function videoSettings(event:FlexEvent):void
+			{
+				OSMFSettings.enableStageVideo = false;	
+			}
+			
 		]]>
 	</fx:Script>
 	<fx:Declarations>
@@ -995,15 +1001,17 @@
 
 	<s:Parallel id="hideFX" duration="400">
 		
-		<mx:Blur blurXFrom="100.0" blurXTo="5.0" />
-		<mx:Move xTo="{Stack.width}"/>
+		<s:Fade alphaTo="0.0"/>
+		<!--<mx:Blur blurXFrom="100.0" blurXTo="5.0" />
+		<mx:Move xTo="{Stack.width}"/> -->
 		
 	</s:Parallel>
 	
 	<s:Parallel id="showFX" duration="400">
 		
-		<mx:Blur blurXFrom="100.0" blurXTo="0.0" />
-		<mx:Move xFrom="{-Stack.width}"/>
+		<s:Fade alphaTo="1.0"/>
+		<!--<mx:Blur blurXFrom="100.0" blurXTo="0.0" />
+		<mx:Move xFrom="{-Stack.width}"/>-->
 		
 	</s:Parallel>
 	

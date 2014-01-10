@@ -7,11 +7,13 @@
 		<![CDATA[
 			import com.alfo.utils.Console;
 			
+			import mx.events.FlexEvent;
+			
 			import events.TeamEvent;
 			
 			import model.TeamModel;
 			
-			import mx.events.FlexEvent;
+			import org.osmf.utils.OSMFSettings;
 			
 			[Bindable]
 			protected var teamColor:uint = 0xFFFFFF;
@@ -28,6 +30,7 @@
 			public function init(event:Event=null):void
 			{
 				Console.log("*** INIT TOPFIVEPLAYERS ***", this);
+				
 				
 				if (this.parentApplication.data!=null)
 				{
@@ -54,7 +57,7 @@
 			
 			protected function exit( e:Event=null ):void
 			{
-				video.stop();
+			//	video.stop();
 				
 			}
 				
@@ -67,8 +70,8 @@
 		<s:borderStroke>
 			<s:SolidColorStroke weight="15" color="0x000000" />
 		</s:borderStroke>
-		<s:VideoPlayer source="{videoSource}" skinClass="skins.VideoPlayerSkin" autoDisplayFirstFrame="true" autoPlay="false" id="video">
-		</s:VideoPlayer>	
+		<s:VideoPlayer source="/assets/video/Crystal Palace FC on YouTube.f4v" skinClass="skins.VideoPlayerSkin" autoDisplayFirstFrame="true" autoPlay="true" id="blah"/>
+		<!--<s:VideoPlayer source="{videoSource}" skinClass="skins.VideoPlayerSkin" autoDisplayFirstFrame="true" autoPlay="true" id="video"/>-->
 	</s:BorderContainer>
 	
 </s:Group>

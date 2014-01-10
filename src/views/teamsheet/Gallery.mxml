@@ -62,7 +62,6 @@
 						gallery_renderer(galleryGroup.getElementAt( i )).teamColor = teamColor;	
 					} catch (e:Error)
 					{
-						
 					}
 				}
 				
@@ -72,12 +71,11 @@
 				btn_next.addEventListener( MouseEvent.CLICK, gotoNext );
 				btn_previous.addEventListener( MouseEvent.CLICK, gotoPrevious );
 				stage.addEventListener(TransformGestureEvent.GESTURE_SWIPE, onSwipe);
-			
-					
 			}
 			
 			protected function onSwipe( e:TransformGestureEvent ):void
 			{
+				trace("Gallery :: onSwipe");
 				//this.parentApplication.dispatchEvent(new KioskError(KioskError.ERROR, "Swiping ", "Swipe"));
 				Console.log("Swipe", this);
 				if (e.offsetX==1)

@@ -189,7 +189,7 @@ package views.controls.supportClasses
 		}
 		public function calculateDistance( e:MouseEvent ):Number
 		{
-			distance = e.stageX - this._startPoint.x; // distance mouse has moved since beginning of recording
+			distance = (e.stageX - this._startPoint.x) / 4; // distance mouse has moved since beginning of recording
 			
 			// if distance moved is beyond a scrollDetectionDistance - let's consider it a touch
 			if(Math.abs(distance) > scrollDetectionDistance)

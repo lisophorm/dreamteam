@@ -42,6 +42,8 @@
 			
 			public function created(event:FlexEvent=null):void
 			{
+				
+				
 				this.addEventListener( Event.INIT, init);
 				Stack.addEventListener(IndexChangedEvent.CHANGE, change);
 				
@@ -64,13 +66,13 @@
 					Console.log( data.team, this );
 					timeline.selectedTeam = selectedTeam;
 					stats.addEventListener( "EMPTY", statEmpty);
-					
-
 				}
+				
 				reset();
+				
 				gameData.send();
 				
-				setTeamNameStyle()
+				setTeamNameStyle();
 			//	Stack.selectedIndex = 4
 				
 				
@@ -126,6 +128,8 @@
 			protected function populateInfo(e:ResultEvent=null):void
 			{
 				
+				
+				
 				if (selectedTeam!=null)
 				{
 					var xml:XML = new XML(e.result);
@@ -144,7 +148,7 @@
 			}
 			protected function errorTeam(e:FaultEvent):void
 			{
-				this.parentApplication.dispatchEvent(new KioskError(KioskError.ERROR, e.statusCode.toString(), "COMMUNICATION TEAM ERROR"));
+			//	this.parentApplication.dispatchEvent(new KioskError(KioskError.ERROR, e.statusCode.toString(), "COMMUNICATION TEAM ERROR"));
 				if (e.statusCode==0)
 				{
 					this.parentApplication.dispatchEvent(new KioskError(KioskError.ERROR, selectedTeam.toUpperCase()+" assets not implemented (Please try again, i.e. Aston Villa or Crystal Palace)", "TEAM NOT IMPLEMENTED", goHome));
@@ -153,7 +157,9 @@
 				{
 					this.parentApplication.dispatchEvent(new KioskError(KioskError.ERROR, e.fault.message.toString(), "COMMUNICATION TEAM ERROR"));
 				}
+				
 			}
+			
 			protected function change(e:IndexChangedEvent):void
 			{
 				if (e.oldIndex!=e.newIndex && e.oldIndex>=0)
@@ -264,7 +270,6 @@
 					<teamsheet:Timeline id="timeline" verticalCenter="0"/>
 				</mx:VBox>
 			</mx:ViewStack>
-			
 			
 			</s:HGroup>
 		</s:BorderContainer>
