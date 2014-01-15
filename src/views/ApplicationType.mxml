@@ -24,7 +24,7 @@
 			
 			public function init(event:Event=null):void
 			{
-				trace("*** INIT APPLICATIONTYPE ***");
+			//	trace("*** INIT APPLICATIONTYPE ***");
 				if ( this.parentApplication.data!=null )
 				{
 					data = this.parentApplication.data;
@@ -38,7 +38,7 @@
 			
 			protected function exit(event:Event=null):void
 			{
-				trace("*** EXIT APPLICATIONTYPE ***");
+			//	trace("*** EXIT APPLICATIONTYPE ***");
 				this.parentApplication.dispatchEvent( new ApplicationEvent ( ApplicationEvent.LOGOUT ));
 			}
 			protected function submit(e:MouseEvent):void
