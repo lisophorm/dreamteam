@@ -18,7 +18,7 @@ package views.controls.supportClasses.swipemanager
 		
 		private var positionsMaxLength : int = 18;
 		private var zeroTime:int;
-		private var clickInterval : int = 130;
+		private var clickInterval : int = 80;
 		private var swipeThreshold : Number = 100;
 		
 		public function SwipeDetector()
@@ -28,10 +28,10 @@ package views.controls.supportClasses.swipemanager
 			mouseRecorderTimer = new Timer(20);
 			mouseRecorderTimer.addEventListener(TimerEvent.TIMER, recordMouse);
 			
-			addEventListener(Event.ADDED_TO_STAGE, enable);
+			//addEventListener(Event.ADDED_TO_STAGE, enable);
 		}
 		
-		public function enable(event : Event):void
+		public function enable(event : Event = null):void
 		{
 			if(stage)
 			{

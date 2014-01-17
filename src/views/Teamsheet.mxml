@@ -119,7 +119,8 @@
 					var allPlayers:XMLList = TeamModel.team..player;
 					teamid = TeamModel.team.@id;
 					teamlogo = TeamModel.team.@logo;
-					teamColor = TeamModel.getTeamColor();					
+					teamColor = TeamModel.getTeamColor();	
+					trace("sending out:"+teamData.url);
 					this.teamData.send();
 					Console.log(teamid, this)
 						
@@ -208,7 +209,7 @@
 		</s:Parallel>
 		
 		<s:HTTPService id="gameData" resultFormat="xml" url="{'/assets/xml/game_full.xml'}" result="populate(event)" fault="error(event)" />
-		<s:HTTPService id="teamData" resultFormat="xml" url="{'/assets/xml/'+teamid+'.xml'}" result="populateInfo(event)"  fault="errorTeam(event)" />
+		<s:HTTPService id="teamData" resultFormat="xml" url="{'/assets/xml/'+teamid+'.xml'}"  result="populateInfo(event)"  fault="errorTeam(event)" />
 		
 	</fx:Declarations>
 	
@@ -230,13 +231,14 @@
 						</s:backgroundFill>
 						
 						<s:VGroup verticalAlign="middle" textAlign="center" verticalCenter="100" width="100%" >
-							<s:Label width="100%" textAlign="center" text="TOP 5 PLAYERS" click="{Stack.selectedIndex = 1}" fontFamily="StandardRegular" color="{ (Stack.selectedIndex == 1) ? teamColor : 0xFFFFFF }" fontSize="26" paddingBottom="5" paddingTop="5" paddingLeft="10" buttonMode="true" />
+							<s:Label width="100%" textAlign="center" text="HALL OF FAME" click="{Stack.selectedIndex = 1}" fontFamily="StandardRegular" color="{ (Stack.selectedIndex == 1) ? teamColor : 0xFFFFFF }" fontSize="26" paddingBottom="5" paddingTop="5" paddingLeft="10" buttonMode="true" />
 							<s:Line width="100%"><s:stroke><s:SolidColorStroke weight="1"  color="{teamColor}" /></s:stroke></s:Line>
-							<s:Label width="100%" textAlign="center" text="VIDEO" click="{Stack.selectedIndex = 2}" fontFamily="StandardRegular"  fontSize="26" paddingBottom="5" paddingTop="5" paddingLeft="10"  buttonMode="true"  color="{ (Stack.selectedIndex == 2) ? teamColor : 0xFFFFFF }"/>
+							<s:Label width="100%" textAlign="center" text="STADIUM" click="{Stack.selectedIndex = 3}" fontFamily="StandardRegular"  fontSize="26" paddingBottom="5" paddingTop="5" paddingLeft="10"  buttonMode="true"  color="{ (Stack.selectedIndex == 3) ? teamColor : 0xFFFFFF }"/>
 							<s:Line width="100%"><s:stroke><s:SolidColorStroke weight="1" color="{teamColor}" /></s:stroke></s:Line>
-							<s:Label width="100%" textAlign="center" text="IMAGE GALLERY" click="{Stack.selectedIndex = 3}" fontFamily="StandardRegular"  fontSize="26" paddingBottom="5" paddingTop="5" paddingLeft="10"  buttonMode="true"  color="{ (Stack.selectedIndex == 3) ? teamColor : 0xFFFFFF }"/>
+							<s:Label width="100%" textAlign="center" text="VIDEO" click="{Stack.selectedIndex = 2}" fontFamily="StandardRegular"  fontSize="26" paddingBottom="5" paddingTop="5" paddingLeft="10"  buttonMode="true"  color="{ (Stack.selectedIndex == 2) ? teamColor : 0xFFFFFF }"/>
+
 							<s:Line width="100%"><s:stroke><s:SolidColorStroke weight="1"  color="{teamColor}" /></s:stroke></s:Line>
-							<s:Label width="100%" textAlign="center" text="HISTORY" click="{Stack.selectedIndex = 4}"  fontFamily="StandardRegular"  fontSize="26" paddingLeft="10" paddingBottom="5" paddingTop="5"  buttonMode="true"  color="{ (Stack.selectedIndex == 4) ? teamColor : 0xFFFFFF }"/>
+							<s:Label width="100%" textAlign="center" text="DID YOU KNOW..." click="{Stack.selectedIndex = 4}"  fontFamily="StandardRegular"  fontSize="26" paddingLeft="10" paddingBottom="5" paddingTop="5"  buttonMode="true"  color="{ (Stack.selectedIndex == 4) ? teamColor : 0xFFFFFF }"/>
 							<s:Line width="100%"><s:stroke><s:SolidColorStroke weight="1" color="{teamColor}" /></s:stroke></s:Line>
 						</s:VGroup>
 						<s:Button icon="/assets/images/arrow_left.png" bottom="0" skinClass="skins.ButtonSkinMainMenu" click="goHome();" buttonMode="true" id="btn_back">

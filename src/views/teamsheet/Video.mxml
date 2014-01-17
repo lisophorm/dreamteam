@@ -13,6 +13,8 @@
 			
 			import model.TeamModel;
 			
+			import org.osmf.events.MediaPlayerStateChangeEvent;
+			import org.osmf.events.TimeEvent;
 			import org.osmf.utils.OSMFSettings;
 			
 			[Bindable]
@@ -61,16 +63,54 @@
 				
 			}
 				
+			protected function blah_clickHandler(event:MouseEvent):void
+			{
+				trace("you clicked videoplayer");
+				if(blah.playing) {
+					blah.pause();
+				} else {
+					blah.play();
+				}
+			}
+			
+			protected function blah_mediaPlayerStateChangeHandler(event:MediaPlayerStateChangeEvent):void
+			{
+				trace("video player state"+event.state);
+				
+				/*blah.playPauseButton.enabled=false;
+				blah.playButton.visible=false;
+				blah.pauseButton.visible=false;
+				blah.playPauseButton.enabled=false;
+				blah.playerControls.visible=false;*/
+				
+			}
+			
+			protected function blah_creationCompleteHandler(event:FlexEvent):void
+			{
+				//blah.playButton.visible=false;
+				//blah.pauseButton.visible=false;
+				//blah.playPauseButton.enabled=false;
+				//blah.playerControls.visible=false;
+			}
+			
+			protected function blah_completeHandler(event:TimeEvent):void
+			{
+				blah.seek(0);
+				
+			}
+			
 		]]>
 			</fx:Script>
 	<fx:Declarations>
 		<!-- Place non-visual elements (e.g., services, value objects) here -->
 	</fx:Declarations>
+	<!-- skinClass="skins.VideoPlayerSkin" -->
 	<s:BorderContainer borderColor="0x000000" cornerRadius="0" backgroundColor="0x000000" >
 		<s:borderStroke>
 			<s:SolidColorStroke weight="15" color="0x000000" />
 		</s:borderStroke>
-		<s:VideoPlayer source="/assets/video/Crystal Palace FC on YouTube.f4v" skinClass="skins.VideoPlayerSkin" autoDisplayFirstFrame="true" autoPlay="true" id="blah"/>
+		
+		<s:VideoDisplay visible="true" complete="blah_completeHandler(event)" creationComplete="blah_creationCompleteHandler(event)" mediaPlayerStateChange="blah_mediaPlayerStateChangeHandler(event)" source="/assets/video/Crystal Palace FC on YouTube.f4v"  click="blah_clickHandler(event)" autoDisplayFirstFrame="true" autoPlay="true" id="blah"/>
 		<!--<s:VideoPlayer source="{videoSource}" skinClass="skins.VideoPlayerSkin" autoDisplayFirstFrame="true" autoPlay="true" id="video"/>-->
 	</s:BorderContainer>
 	

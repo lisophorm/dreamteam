@@ -53,6 +53,7 @@
 					gallery = TeamModel.getGallery();
 					teamColor = TeamModel.getTeamColor();
 					showInfo();
+					swipeDetector.enable();
 				}
 			}
 			protected function showInfo():void
