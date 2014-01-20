@@ -52,7 +52,6 @@ package model
 			} catch (error:Error)
 			{
 			}
-			trace("translated: '"+str+"' => '"+translated+"'");
 			return translated;
 		}
 		

@@ -42,12 +42,12 @@
 			}
 			public function init(event:Event=null):void
 			{
-				Console.log("*** INIT GAME ***", this);
+//				Console.log("*** INIT GAME ***", this);
 				if (this.parentApplication.data!=null)
 				{
 					data = this.parentApplication.data;
 					selectedTeam = data.team;
-					Console.log( data.team, this );
+//					Console.log( data.team, this );
 				}
 				
 				populateShirtNo();
@@ -64,7 +64,7 @@
 			}
 			protected function redrawTeamConfigurations( e:TeamEvent = null ):void
 			{
-				Console.log("Redraw Team", this);
+//				Console.log("Redraw Team", this);
 				resetList( goalkeeperData );
 				resetList( defenderData )
 				resetList( midfielderData )
@@ -98,7 +98,7 @@
 						if (itm!=null)
 						{
 							itm.@playertype = "player";
-							Console.log( itm, this );
+//							Console.log( itm, this );
 						}
 					}
 					if (TeamModel.list[i].type=="forward")
@@ -212,7 +212,7 @@
 			
 			protected function doStart(e:Event):void
 			{
-				Console.log( "doStart", this);
+//				Console.log( "doStart", this);
 				//fade and hide
 				
 				TweenMax.to( start_overlay, .5, {alpha:0, onComplete: hide_start_overlay});
@@ -221,7 +221,7 @@
 			
 			protected function hide_start_overlay(e:Event=null):void
 			{
-				Console.log("hide_start_overlay", this);
+//				Console.log("hide_start_overlay", this);
 				start_overlay.visible = false;
 				clock.start();
 				clock.addEventListener( "EXIT", confirmTeam);
@@ -230,7 +230,7 @@
 			
 			protected function doReStart(e:Event):void
 			{
-				Console.log( "Start", this);
+//				Console.log( "Start", this);
 				//fade and hide
 				
 				TweenMax.to( incomplete_overlay, .5, {alpha:0, onComplete: hide_restart_overlay});
@@ -238,7 +238,7 @@
 			}
 			protected function reset():void
 			{
-				Console.log("reset", this);
+//				Console.log("reset", this);
 				//TeamModel.reset();
 				// reset()
 				//clock.reset();
@@ -256,7 +256,7 @@
 			}
 			protected function resetAndRestart():void
 			{
-				Console.log("resetAndRestart", this);
+//				Console.log("resetAndRestart", this);
 				reset();
 				clock.start();
 				clock.addEventListener( "EXIT", confirmTeam);
@@ -276,13 +276,13 @@
 				clock.clearTimer();
 				if (!TeamModel.isTeamComplete())
 				{
-					Console.log("Team was not complete - show overlay to try again", this);
+//					Console.log("Team was not complete - show overlay to try again", this);
 					incomplete_overlay.visible = true;
 					incomplete_overlay.alpha = 0;
 					TweenMax.to( incomplete_overlay, .5, {alpha:0.85});
 				} else 
 				{
-					Console.log("Clear all events and lets move on", this);
+//					Console.log("Clear all events and lets move on", this);
 					saveScreenshot();
 					
 					this.parentApplication.dispatchEvent( new ViewEvent( ViewEvent.LOCATION_SELECT_USER_TYPE ));

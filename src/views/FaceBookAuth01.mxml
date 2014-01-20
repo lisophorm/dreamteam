@@ -81,7 +81,7 @@
 			}
 			public function init(event:Event=null):void
 			{
-				Console.log("*** INIT FACBOOKAUTH01 ***", this);
+//				Console.log("*** INIT FACBOOKAUTH01 ***", this);
 				if (this.parentApplication.data!=null)
 				{
 					//this.fbAppID = this.parentApplication.facebookAppID
@@ -125,7 +125,7 @@
 				
 				
 				clearWebContainer();
-				Console.log("*** EXIT FACEBOOKAUTH01 ***", this);
+//				Console.log("*** EXIT FACEBOOKAUTH01 ***", this);
 			}
 			protected function clearWebContainer():void
 			{
@@ -143,10 +143,10 @@
 			protected function onURLChanging(event:LocationChangeEvent):void
 			{
 				if(event.location.indexOf("skip_api_login=1") != -1) {
-					Console.log("activating cookies on urlchange", this);
+//					Console.log("activating cookies on urlchange", this);
 					//URLRequestDefaults.manageCookies=true;
 				}
-				Console.log("URL changing: "+event.location, this);
+//				Console.log("URL changing: "+event.location, this);
 				status_label.text = "URL CHANGING "+event.location;
 				this.webContainer.visible = false;
 				this.parentApplication.dispatchEvent( new Event("hideDropShadow"));
@@ -155,10 +155,10 @@
 			protected function onURLChange(event:LocationChangeEvent):void
 			{
 				if(event.location.indexOf("facebook.com/login.php") != -1) {
-					Console.log("activating cookies", this);
+//					Console.log("activating cookies", this);
 					//URLRequestDefaults.manageCookies=true;
 				}
-				Console.log("URL change "+event.location, this);
+//				Console.log("URL change "+event.location, this);
 				var punto:Point=container.localToGlobal(new Point());
 				status_label.text = "URL changed: "+event.location;
 				this.webContainer.visible = false;
@@ -168,7 +168,7 @@
 			{
 				URLRequestDefaults.manageCookies=true;
 				status_label.text = "URL LOADING COMPLETE";
-				Console.log("URL loading complete: "+htmlLoader.location, this);
+//				Console.log("URL loading complete: "+htmlLoader.location, this);
 				showURL();
 			}
 			
@@ -178,7 +178,7 @@
 				var URI:String=htmlLoader.location;
 				var canDisplay:Boolean = true;
 				// access token exists in location
-				Console.log("htmlLoader.location: "+htmlLoader.location, this);
+//				Console.log("htmlLoader.location: "+htmlLoader.location, this);
 				
 				if(htmlLoader.location.indexOf("completop.php")!=-1) 
 				{
@@ -187,17 +187,17 @@
 				} else if(htmlLoader.location.indexOf("access_token")!=-1) 
 				{
 					canDisplay = false;
-					Console.log("ACCESS TOKEN OBTAINED", this);
+//					Console.log("ACCESS TOKEN OBTAINED", this);
 					
 					//webView.viewPort = new Rectangle(0, 0, 0, 0);
 					//webView.stage=null;
 					//URI=URI.replace("#","?");
-					Console.log("URI:"+URI, this);
+//					Console.log("URI:"+URI, this);
 					URI=URI.substr(URI.indexOf("#")+1);
 					var vars:URLVariables = new URLVariables();
 					vars.decode(URI);
 					access_token=vars.access_token;
-					Console.log("Access token:"+vars.access_token, this);
+//					Console.log("Access token:"+vars.access_token, this);
 					htmlLoader.removeEventListener( Event.COMPLETE, onURLCompleted);    
 					
 					
@@ -215,7 +215,7 @@
 				// error
 				//htmlLoader.location.indexOf("authorize?type=user_agent&display=popup")!=-1 ||
 				if( ( htmlLoader.location.indexOf("landed.php?error_reason=user_denied")!=-1 && htmlLoader.location.indexOf("facebook.com/login.php")==-1)) {
-					Console.log("An error occured: "+htmlLoader.location, this);
+//					Console.log("An error occured: "+htmlLoader.location, this);
 					
 					canDisplay = false;
 					//webView.viewPort = new Rectangle(0, 0, 0, 0);
@@ -236,7 +236,7 @@
 			}
 			protected function logoutCompleted(e:Event=null):void
 			{
-				Console.log("**** LOGOUT COMPLETED ****", this);
+//				Console.log("**** LOGOUT COMPLETED ****", this);
 				
 				//htmlLoader.removeEventListener(LocationChangeEvent.LOCATION_CHANGING,onURLChanging);
 				htmlLoader.removeEventListener(LocationChangeEvent.LOCATION_CHANGE,onURLChange);    
@@ -273,7 +273,7 @@
 			
 			protected function createBrowser():void 
 			{
-				Console.log("CREATING BROWSER", this);
+//				Console.log("CREATING BROWSER", this);
 				URLRequestDefaults.manageCookies=false;
 				
 				
@@ -293,7 +293,7 @@
 				
 				//backend - force logout/login
 				var logoutURL:String = "http://"+pref.prefsXML..serverIP+"/facebook/forceloggaout.php";
-				Console.log("Loading URL: " +logoutURL, this);
+//				Console.log("Loading URL: " +logoutURL, this);
 				htmlLoader.load( new URLRequest(logoutURL) );
 				
 			}
@@ -323,7 +323,7 @@
 				
 				if (htmlLoader!=null)
 				{
-					Console.log("*** RESIZED WEB BROWSER", this);
+//					Console.log("*** RESIZED WEB BROWSER", this);
 				}
 			}
 			
@@ -332,7 +332,7 @@
 			protected function httpservice1_resultHandler(event:ResultEvent):void
 			{
 				
-				Console.log("TOKEN RESULT FROM DATABASE "+setToken.lastResult.result+" "+currentURN, this);
+//				Console.log("TOKEN RESULT FROM DATABASE "+setToken.lastResult.result+" "+currentURN, this);
 				
 				switch (setToken.lastResult.result)
 				{

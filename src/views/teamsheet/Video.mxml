@@ -16,7 +16,7 @@
 			
 			import org.osmf.events.MediaPlayerStateChangeEvent;
 			import org.osmf.events.TimeEvent;
-			import org.osmf.utils.OSMFSettings;
+//			import org.osmf.utils.OSMFSettings;
 			
 			[Bindable]
 			protected var teamColor:uint = 0xFFFFFF;
@@ -32,7 +32,7 @@
 			}
 			public function init(event:Event=null):void
 			{
-				Console.log("*** INIT TOPFIVEPLAYERS ***", this);
+//				Console.log("*** INIT TOPFIVEPLAYERS ***", this);
 				
 				
 				if (this.parentApplication.data!=null)
