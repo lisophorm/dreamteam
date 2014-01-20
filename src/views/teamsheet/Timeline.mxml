@@ -44,12 +44,12 @@
 			}
 			public function init(event:Event=null):void
 			{
-				Console.log("*** INIT TIMELINE ***", this);
+//				Console.log("*** INIT TIMELINE ***", this);
 				if (this.parentApplication.data!=null)
 				{
 					data = this.parentApplication.data;
 					selectedTeam = data.team;
-					Console.log( data.team, this );
+//					Console.log( data.team, this );
 					
 					
 				}

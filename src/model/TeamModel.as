@@ -32,18 +32,18 @@ package model
 		}
 		public static function add( data:Object, shirtno:int ):void
 		{
-			Console.log("add", TeamModel);
-			Console.log( "was found?"+exists(data)+" "+data, TeamModel);
+//			Console.log("add", TeamModel);
+//			Console.log( "was found?"+exists(data)+" "+data, TeamModel);
 			if (!exists(data))
 			{
-				Console.log( "existed?", TeamModel);
+//				Console.log( "existed?", TeamModel);
 				var player:Object = getShirtNo( shirtno );
 				
 				if (player!=null)
 				{
 					
 					player.data = data;
-					Console.log("Adding "+data.toString()+" as "+player.type, TeamModel );
+//					Console.log("Adding "+data.toString()+" as "+player.type, TeamModel );
 					update();
 				}
 			}
@@ -132,7 +132,7 @@ package model
 		}
 		public static function set teaminfo( t:XMLList ): void
 		{
-			Console.log("teaminfo", TeamModel);
+//			Console.log("teaminfo", TeamModel);
 			_teaminfo = t;
 			_instance.dispatchEvent( new TeamEvent(TeamEvent.TEAM_INFO) );
 		}

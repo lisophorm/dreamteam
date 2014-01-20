@@ -55,7 +55,7 @@
 			}
 			public function init(event:Event=null):void
 			{
-				Console.log("*** INIT TEAMSHEETS ***", this);
+//				Console.log("*** INIT TEAMSHEETS ***", this);
 				
 				if (this.parentApplication.data!=null)
 				{
@@ -63,7 +63,7 @@
 					selectedTeam = data.team;
 					TeamModel.selectedTeam = selectedTeam;
 					teamname = data.team;
-					Console.log( data.team, this );
+//					Console.log( data.team, this );
 					timeline.selectedTeam = selectedTeam;
 					stats.addEventListener( "EMPTY", statEmpty);
 				}
@@ -122,7 +122,7 @@
 					teamColor = TeamModel.getTeamColor();	
 					trace("sending out:"+teamData.url);
 					this.teamData.send();
-					Console.log(teamid, this)
+//					Console.log(teamid, this)
 						
 				}
 			}
@@ -136,7 +136,7 @@
 					var xml:XML = new XML(e.result);
 					
 					TeamModel.teaminfo =  xml..teaminfo;
-					Console.log( TeamModel.teaminfo, this);
+//					Console.log( TeamModel.teaminfo, this);
 					
 					
 				}
@@ -165,7 +165,7 @@
 			{
 				if (e.oldIndex!=e.newIndex && e.oldIndex>=0)
 				{
-					Console.log(Stack.getChildAt(e.oldIndex), this)
+//					Console.log(Stack.getChildAt(e.oldIndex), this)
 					Stack.getChildAt(e.oldIndex).dispatchEvent(new Event("EXIT") );
 				}
 			}
@@ -175,7 +175,6 @@
 				teamname_text.text = teamname.toString().toUpperCase();
 				teamname_text.invalidateSize();
 				teamname_text.validateNow();
-				
 				
 				if (teamname_text.height>150)
 				{

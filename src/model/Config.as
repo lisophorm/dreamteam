@@ -33,7 +33,6 @@ package model
 			}
 			else //Otherwise make a file and save it
 			{
-				trace("no file");
 				saveData();
 			}
 			

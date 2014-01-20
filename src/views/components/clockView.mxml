@@ -29,7 +29,7 @@
 			}
 			public function reset():void
 			{
-				Console.log("reset", this);
+//				Console.log("reset", this);
 				if (countDownTimer==null)
 				{
 					this.countDownTimer = new Timer(  1000, seconds);
@@ -71,7 +71,7 @@
 			}
 			public function exit( e:TimerEvent = null ):void
 			{
-				Console.log("exit", this);
+//				Console.log("exit", this);
 				loadWhisle();
 				clearTimer();
 				
@@ -80,12 +80,12 @@
 			protected var whisleSound:Sound;
 			protected function loadWhisle():void
 			{
-				Console.log("loadWhisle", this);
+//				Console.log("loadWhisle", this);
 				if (whisleSound==null)
 				{
 					whisleSound = new Sound();
 					
-					Console.log( "assets/sounds/Sound 7.mp3", this );
+//					Console.log( "assets/sounds/Sound 7.mp3", this );
 					whisleSound.addEventListener(Event.COMPLETE, playWhisle);
 					whisleSound.load(new URLRequest( "assets/sounds/Sound 7.mp3"));
 				} else {
@@ -95,7 +95,7 @@
 			}
 			protected function playWhisle(e:Event=null):void
 			{
-				Console.log("Play Whisle", this);
+//				Console.log("Play Whisle", this);
 				whisleSound.play();
 				
 			}

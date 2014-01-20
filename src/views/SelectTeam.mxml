@@ -53,13 +53,13 @@
 			}
 			public function init(event:Event=null):void
 			{
-				trace("*** INIT SELECTTEAM ***");
+//				trace("*** INIT SELECTTEAM ***");
 		
 				if (this.parentApplication.data!=null)
 				{
 					data = this.parentApplication.data;
 					type = data.type;
-					Console.log( data.type, this );
+//					Console.log( data.type, this );
 					
 				}
 				this.backgroundimage.visible = true;
@@ -71,7 +71,7 @@
 			}
 			public function exit( e:Event = null):void
 			{
-				trace("*** EXIT SELECTTEAM ***");
+//				trace("*** EXIT SELECTTEAM ***");
 				CarouselGroup.invalidateDisplayList();
 				/*
 				//Touch
@@ -223,12 +223,9 @@
 			
 			protected function beginScroll( e:MouseEvent ):void
 			{
-				Console.log("MouseDown recorded", this);
+//				Console.log("MouseDown recorded", this);
 				if (recorded==null)
 				{
-					
-					
-					
 					if (! wrapper.contains( gs) )
 						wrapper.addChild( gs );
 					
@@ -240,8 +237,8 @@
 					recorded = new Point( e.stageX, e.stageY);
 					recorded = this.wrapper.globalToLocal( recorded );
 					scrollPercentage = scroll.horizontalScrollBar.value / ( scroll.horizontalScrollBar.maximum - scroll.horizontalScrollBar.minimum );
-					Console.log("adding MouseMove listener", this);
-					Console.log("beginScroll value: "+scroll.horizontalScrollBar.value+" = "+Math.round(scrollPercentage*100)+"%", this);
+//					Console.log("adding MouseMove listener", this);
+//					Console.log("beginScroll value: "+scroll.horizontalScrollBar.value+" = "+Math.round(scrollPercentage*100)+"%", this);
 					//	recordScroll( e );
 					
 					//TouchEvent					
@@ -249,17 +246,13 @@
 					
 					//MouseEvent
 					stage.addEventListener(MouseEvent.MOUSE_MOVE, onScroll);
-					
 				}
-				
-				
-				
 			}
 			
 			protected function endScroll( e:MouseEvent ):void
 			{
-				Console.log("endScroll", this);
-				Console.log("removing MouseMove listener", this);
+//				Console.log("endScroll", this);
+//				Console.log("removing MouseMove listener", this);
 
 				//TouchEvent
 				stage.removeEventListener(TouchEvent.TOUCH_MOVE, onScroll)
@@ -333,7 +326,7 @@
 			{
 				
 				
-				Console.log( "rotateCarousel "+speed+" "+scroll.horizontalScrollBar.value+" "+scroll.horizontalScrollBar.maximum, this); 
+//				Console.log( "rotateCarousel "+speed+" "+scroll.horizontalScrollBar.value+" "+scroll.horizontalScrollBar.maximum, this); 
 			}
 				
 			//Roll Over ... Add Glow
@@ -364,7 +357,7 @@
 					var angle:Number = CarouselLayout(CarouselGroup.layout).getFreeRotationAngleFromIndex(currentIndex);
 					//angle =162;
 					//Console.log("currentIndex "+currentIndex, this);
-					Console.log( "angle"+angle, this);
+//					Console.log( "angle"+angle, this);
 					scrollValues.destroy();
 					TweenMax.to(CarouselLayout(CarouselGroup.layout), (.5+((Math.abs(angle)%360)/180)*1), 
 						{ freeRotationDegree: angle, ease: com.greensock.easing.Sine.easeOut, 
@@ -381,10 +374,10 @@
 					if (CarouselGroup.getElementAt( j )==event.currentTarget)
 					{
 						currentIndex = j;
-						Console.log(j, this);
+//						Console.log(j, this);
 					}
 				}
-				Console.log(  currentIndex + "  " +CarouselGroup.numElements, this);
+//				Console.log(  currentIndex + "  " +CarouselGroup.numElements, this);
 				CarouselLayout(CarouselGroup.layout).selectedIndex = currentIndex;
 				
 				
@@ -400,7 +393,7 @@
 				{
 				
 					this.removeEventListener( Event.ENTER_FRAME, checkAnimation );
-					Console.log("data:"+ teamDataList[ CarouselLayout(CarouselGroup.layout).selectedIndex ].@name, this );
+//					Console.log("data:"+ teamDataList[ CarouselLayout(CarouselGroup.layout).selectedIndex ].@name, this );
 					gotoTeam(teamDataList[CarouselLayout(CarouselGroup.layout).selectedIndex].@name.toString())
 				}
 			}
@@ -419,7 +412,6 @@
 					//Console.log("*** CarouselGroup SELECTTEAM ***"+CarouselGroup.getElementAt( j ), this);
 					if (t!=null)
 					{
-							
 						t.filters =[noGlowIs];
 						
 					}

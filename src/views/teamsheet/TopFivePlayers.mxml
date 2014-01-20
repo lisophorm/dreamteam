@@ -33,7 +33,7 @@
 			}
 			public function init(event:Event=null):void
 			{
-				Console.log("*** INIT TOPFIVEPLAYERS ***", this);
+//				Console.log("*** INIT TOPFIVEPLAYERS ***", this);
 				
 				if (this.parentApplication.data!=null)
 				{
@@ -51,11 +51,11 @@
 				
 				if (TeamEvent.TEAM_INFO == e.type )
 				{
-					Console.log("*** READY TOPFIVEPLAYERS ***", this);
+//					Console.log("*** READY TOPFIVEPLAYERS ***", this);
 					topfiveData = TeamModel.getTopPlayers();
 					teamColor = TeamModel.getTeamColor();
 					showInfo();
-					Console.log( topfiveData, this );
+//					Console.log( topfiveData, this );
 					
 					
 				}
@@ -63,11 +63,11 @@
 			}
 			protected function createListeners(event:Event = null):void
 			{
-				Console.log("*** createListeners TOPFIVEPLAYERS ***"+players.numElements, this);
+//				Console.log("*** createListeners TOPFIVEPLAYERS ***"+players.numElements, this);
 					for(var j:uint = 0; j < players.numElements; j++)
 					{
 						var t:topfive_renderer = topfive_renderer(players.getElementAt( j ))
-							Console.log("*** createListeners TOPFIVEPLAYERS ***"+players.getElementAt( j ), this);
+//							Console.log("*** createListeners TOPFIVEPLAYERS ***"+players.getElementAt( j ), this);
 						if (players.getElementAt( j )!=null)
 						{
 							
@@ -129,7 +129,7 @@
 				
 				showStatistics()				
 				var gallery:XMLList = topfiveData[currentIndex].gallery..img;
-				Console.log( gallery, this);
+//				Console.log( gallery, this);
 				teamshot1.source = gallery[0].@src.toString();
 				teamshot2.source = gallery[1].@src.toString();
 				
@@ -147,7 +147,7 @@
 			protected function showKeyStat():void
 			{
 				
-				Console.log("showKeyStat", this);
+//				Console.log("showKeyStat", this);
 				try
 				{
 					if ( statistics[statisticsIndex].hasOwnProperty("@key") )
@@ -173,7 +173,7 @@
 					}
 				} catch (e:Error)
 				{
-					Console.log("Error:"+e.message, this);
+//					Console.log("Error:"+e.message, this);
 				}
 				
 				
@@ -185,7 +185,7 @@
 			//	statA_2.explicitWidth
 				TweenMax.to( statRoller, .5, { alpha:1, width: statA_1.explicitWidth + secondPart, onComplete: nextStat});
 
-				Console.log("statisticsIndex:"+statisticsIndex, this);
+//				Console.log("statisticsIndex:"+statisticsIndex, this);
 				
 			}
 			protected function nextStat( e:Event = null ):void
@@ -217,10 +217,10 @@
 				for(var j:uint = 0; j < players.numElements; j++)
 				{
 					topfive_renderer(players.getElementAt( j )).cover.visible = true;
-					Console.log( "Click "+e.currentTarget+" = " +players.getElementAt( j ), this);
+//					Console.log( "Click "+e.currentTarget+" = " +players.getElementAt( j ), this);
 					if (e.currentTarget == players.getElementAt( j ))
 					{
-						Console.log( "Click "+j, this);
+//						Console.log( "Click "+j, this);
 						if (currentIndex!=j)
 						{
 							currentIndex = j;

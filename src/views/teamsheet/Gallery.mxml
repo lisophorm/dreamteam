@@ -41,7 +41,7 @@
 			}
 			public function init(event:Event=null):void
 			{
-				Console.log("*** INIT GALLERY ***", this);
+//				Console.log("*** INIT GALLERY ***", this);
 				
 				TeamModel._instance.addEventListener( TeamEvent.TEAM_INFO, ready);
 			}	
@@ -79,7 +79,7 @@
 			{
 				trace("Gallery :: onSwipe");
 				//this.parentApplication.dispatchEvent(new KioskError(KioskError.ERROR, "Swiping ", "Swipe"));
-				Console.log("Swipe", this);
+//				Console.log("Swipe", this);
 				if (e.offsetX==1)
 				{
 					gotoNext();	
@@ -91,7 +91,7 @@
 			{
 				//this.currentIndex = (this.currentIndex+1) % galleryGroup.numElements;
 				this.currentIndex = Math.min((this.currentIndex+1), galleryGroup.numElements-1);
-				Console.log( "next: "+this.currentIndex+" "+galleryGroup.getElementAt( this.currentIndex ).x, this)
+//				Console.log( "next: "+this.currentIndex+" "+galleryGroup.getElementAt( this.currentIndex ).x, this)
 				update();
 			}
 			protected function gotoPrevious( e:Event=null ):void

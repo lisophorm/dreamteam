@@ -373,8 +373,8 @@ package views.layouts
 		{
 			var index:int = findIndex( IVisualElement(vi) );
 			var d:Number = vElements[index].degrees;
-			Console.log("current degrees:"+d, this);
-			Console.log("descision"+(Math.abs(d+this.axisYAngle)>180), this)
+//			Console.log("current degrees:"+d, this);
+//			Console.log("descision"+(Math.abs(d+this.axisYAngle)>180), this)
 			return Math.abs(d+this.axisYAngle)>180 ? (360+d+this.axisYAngle)%360 : (d+this.axisYAngle);
 		}
 		private function findIndex( vi:IVisualElement ):int
