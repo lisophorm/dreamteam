@@ -189,6 +189,32 @@
 			}
 				
 				
+			protected function vbox1_hideHandler(event:FlexEvent):void
+			{
+				// TODO Auto-generated method stub
+				
+			}
+			
+			protected function vbox1_showHandler(event:FlexEvent):void
+			{
+				// TODO Auto-generated method stub
+				
+			}
+			
+			protected function vbox2_hideHandler(event:FlexEvent):void
+			{
+				trace("hide video");
+				videoElemento.blah.stop();
+				
+			}
+			
+			protected function vbox2_showHandler(event:FlexEvent):void
+			{
+				trace("show video");
+				videoElemento.blah.play();
+				
+			}
+			
 		]]>
 	</fx:Script>
 	<fx:Declarations>
@@ -262,10 +288,10 @@
 				<mx:VBox hideEffect="{hideFX}"  showEffect="{showFX}">
 					<teamsheet:TopFivePlayers/>
 				</mx:VBox>
-				<mx:VBox hideEffect="{hideFX}"  showEffect="{showFX}">
-					<teamsheet:Video verticalCenter="0"/>
+				<mx:VBox hideEffect="{hideFX}" hide="vbox2_hideHandler(event)" show="vbox2_showHandler(event)" showEffect="{showFX}">
+					<teamsheet:Video id="videoElemento" verticalCenter="0"/>
 				</mx:VBox>
-				<mx:VBox hideEffect="{hideFX}"  showEffect="{showFX}">
+				<mx:VBox hideEffect="{hideFX}"   showEffect="{showFX}">
 					<teamsheet:Gallery />
 				</mx:VBox>
 				<mx:VBox hideEffect="{hideFX}"  showEffect="{showFX}">

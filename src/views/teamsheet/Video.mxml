@@ -8,6 +8,7 @@
 			import com.alfo.utils.Console;
 			
 			import mx.events.FlexEvent;
+			import mx.events.ResizeEvent;
 			
 			import events.TeamEvent;
 			
@@ -99,18 +100,25 @@
 				
 			}
 			
+			protected function bordo_resizeHandler(event:ResizeEvent):void
+			{
+				//blah.width=bordo.width;
+				//blah.height=bordo.height;
+				blah.setActualSize(300,300);
+			}
+			
 		]]>
 			</fx:Script>
 	<fx:Declarations>
 		<!-- Place non-visual elements (e.g., services, value objects) here -->
 	</fx:Declarations>
 	<!-- skinClass="skins.VideoPlayerSkin" -->
-	<s:BorderContainer borderColor="0x000000" cornerRadius="0" backgroundColor="0x000000" >
+	<s:BorderContainer borderColor="0x000000" cornerRadius="0" id="bordo" backgroundColor="0x000000" resize="bordo_resizeHandler(event)" >
 		<s:borderStroke>
 			<s:SolidColorStroke weight="15" color="0x000000" />
 		</s:borderStroke>
-		
-		<s:VideoDisplay visible="true" complete="blah_completeHandler(event)" creationComplete="blah_creationCompleteHandler(event)" mediaPlayerStateChange="blah_mediaPlayerStateChangeHandler(event)" source="/assets/video/Crystal Palace FC on YouTube.f4v"  click="blah_clickHandler(event)" autoDisplayFirstFrame="true" autoPlay="true" id="blah"/>
+		<!--width="{bordo.width}" height="{bordo.height}"-->
+		<s:VideoDisplay pauseWhenHidden="true" autoRewind="true" visible="true" scaleMode="letterbox" complete="blah_completeHandler(event)" creationComplete="blah_creationCompleteHandler(event)" mediaPlayerStateChange="blah_mediaPlayerStateChangeHandler(event)" source="{videoSource}"  click="blah_clickHandler(event)"  autoDisplayFirstFrame="true" autoPlay="true" id="blah"/>
 		<!--<s:VideoPlayer source="{videoSource}" skinClass="skins.VideoPlayerSkin" autoDisplayFirstFrame="true" autoPlay="true" id="video"/>-->
 	</s:BorderContainer>
 	
