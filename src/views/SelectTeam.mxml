@@ -8,418 +8,226 @@
 	
 	<fx:Script>
 		<![CDATA[
-			import com.alfo.utils.Console;
-			import com.greensock.TweenLite;
 			import com.greensock.TweenMax;
-			import com.greensock.easing.Bounce;
-			import com.greensock.easing.Ease;
-			import com.greensock.easing.Elastic;
-			import com.greensock.events.TweenEvent;
+			import com.greensock.easing.Sine;
 			
-			import mx.core.ILayoutElement;
-			import mx.core.IVisualElement;
+			import events.CarouselItemEvent;
+			import events.KioskError;
+			import events.ViewEvent;
+			
+			import model.entity.TeamDTO;
+			
+			import mx.collections.ArrayCollection;
 			import mx.core.UIComponent;
 			import mx.events.FlexEvent;
 			import mx.rpc.events.FaultEvent;
 			import mx.rpc.events.ResultEvent;
 			
-			import spark.effects.easing.EasingFraction;
 			import spark.filters.GlowFilter;
 			
-			import events.KioskError;
-			import events.KioskEvent;
-			import events.ScrollSupportEvent;
-			import events.UserEvent;
-			import events.ViewEvent;
-			
-			import model.ML;
-			
 			import views.controls.supportClasses.ScrollSupport;
-			import views.renderer.logoItemRenderer;
+			import views.layouts.Carousel;
+			import views.renderer.CarouseltemRenderer;
 			
 			public var data:Object;
+
+			protected var wrapper : UIComponent = new UIComponent();
+
+			// NEW
 			
+			private var mousePositions : Array;
+			private var mouseRecorderTimer:Timer;
+			
+			private var positionsMaxLength : int = 18;
+			private var zeroTime:int;
+			private var clickInterval : int = 80;
+			private var swipeThreshold : Number = 100;
+			
+			private var initialCarouselPosition:int;
+			private var mouseZero:Number;
+			
+			private var carouselSensitivity : Number = .06;
+
 			[Bindable]
 			public var type:String = "Game";
 			
 			[Bindable]
 			public var teamDataList:XMLList;
 			
+			[Bindable]
+			public var carouselDataProvider : ArrayCollection;
 			
 			public function created(event:FlexEvent=null):void
 			{
 				this.addEventListener( Event.INIT, init);
 				init();
 			}
+			
 			public function init(event:Event=null):void
 			{
-//				trace("*** INIT SELECTTEAM ***");
-		
 				if (this.parentApplication.data!=null)
 				{
 					data = this.parentApplication.data;
 					type = data.type;
-//					Console.log( data.type, this );
-					
 				}
+
 				this.backgroundimage.visible = true;
 				
-				scroll.horizontalScrollBar.visible = false
 				teamData.send();
+
+				///////////////////				
+				mouseRecorderTimer = new Timer(20);
+				mouseRecorderTimer.addEventListener(TimerEvent.TIMER, recordMouse);
+				addEventListener(MouseEvent.MOUSE_DOWN, mouseDownHandler);
+				addEventListener(MouseEvent.MOUSE_UP, mouseUpHandler, true);
 				
-				
+				CarouselGroup.addEventListener(CarouselItemEvent.ITEM_SELECTED, itemSelectedHandler);
 			}
+
 			public function exit( e:Event = null):void
 			{
-//				trace("*** EXIT SELECTTEAM ***");
 				CarouselGroup.invalidateDisplayList();
-				/*
-				//Touch
-				stage.removeEventListener(TouchEvent.TOUCH_BEGIN, beginScroll);
-				stage.removeEventListener(TouchEvent.TOUCH_MOVE, onScroll);
-				stage.removeEventListener(TouchEvent.TOUCH_END, endScroll);
-				
-				//Mouse
-				stage.removeEventListener(MouseEvent.MOUSE_DOWN, beginScroll);
-				stage.removeEventListener(MouseEvent.MOUSE_UP, endScroll);
-				stage.removeEventListener(MouseEvent.MOUSE_MOVE, onScroll);
-				*/
-				if (scrollValues!=null)
-					scrollValues.destroy();
 			}
 			
 			protected function game(e:Event=null):void
 			{
 				this.parentApplication.dispatchEvent( new ViewEvent( ViewEvent.LOCATION_GAME ));
-				
 			}
 			
-			
-			private var myGlowIs:GlowFilter = new GlowFilter(0xffffff,1,12,12,2);
-			private var noGlowIs:GlowFilter = new GlowFilter(0xffffff,0,0,0,0);
 			protected function populate(e:ResultEvent=null):void
 			{
+				carouselDataProvider = new ArrayCollection();
 				var xml:XML = new XML(e.result);
-				teamDataList = (xml..team);
-				createListeners();
-				Console.log(teamDataList, this);
-			}
-			
-			// this function was attempting to add a series of dummy elements to thin out the scrollbar by increasing the number of elements.
-			// issues is that it is process intensive
-			protected function modify(list:XMLList):XMLList
-			{
-				if (list.length()>0)
+				var teamData : XMLList = (xml..team);
+				for each(var x : XML in teamData)
 				{
-					
-					Console.log( list[0].toString(), this);
-					var itemNo:int = 40;
-					var node:XML = XML(list[0]).copy();
-					node.@logo = ""; 
-					var addinsNo:Number = Math.round(itemNo/list.length());
-					var xmlCopy:XML = new XML(<mylist/>);
-						
-					var count:int = 0;
-					for (var i:int=0;i<itemNo;i++)
-					{
-						if (i%addinsNo==0 || addinsNo<=1)
-						{
-							xmlCopy.appendChild( XML(list[count]).copy() );
-							count++;
-						} else {
-							xmlCopy.appendChild( node.copy() );
-						}
-						
-					}
-					return xmlCopy..team;
-				} else {
-					return list;
+					var teamDTO : TeamDTO = new TeamDTO();
+					teamDTO.teamID = x.@id;
+					teamDTO.teamName = x.@name;
+					teamDTO.logoImage = x.@logo;
+					carouselDataProvider.addItem(teamDTO);
 				}
 			}
 
 			protected function error(e:FaultEvent):void
 			{
 				this.parentApplication.dispatchEvent(new KioskError(KioskError.ERROR, e.fault.message.toString(), "COMMUNICATION ERROR"));
-				
-			}
-			
-			
-			private function createListeners():void{
-				
-				
-				Multitouch.inputMode=MultitouchInputMode.TOUCH_POINT; 
-
-				
-				for(var j:uint = 0; j < CarouselGroup.numElements; j++)
-				{
-					if (CarouselGroup.getElementAt( j )!=null)
-					{
-					//CarouselGroup.getElementAt( j ).alpha = .2;
-						//Console.log( CarouselGroup.getElementAt( j ), this);
-					//TOUCH EVENT
-						/*
-					CarouselGroup.getElementAt( j ).addEventListener( TouchEvent.TOUCH_TAP, mySelect);
-					CarouselGroup.getElementAt( j ).addEventListener( TouchEvent.TOUCH_ROLL_OVER,myRollOver);
-					CarouselGroup.getElementAt( j ).addEventListener( TouchEvent.TOUCH_ROLL_OUT,myRollOut);
-					*/
-					//MOUSE EVENT
-					CarouselGroup.getElementAt( j ).addEventListener(MouseEvent.CLICK, mySelect);
-					CarouselGroup.getElementAt( j ).addEventListener(MouseEvent.ROLL_OVER, myRollOver);
-					CarouselGroup.getElementAt( j ).addEventListener(MouseEvent.ROLL_OUT, myRollOut);
-					
-					
-					}
-				}
-				var indexBased:Boolean = false
-				if (indexBased)
-				{
-				stage.addEventListener( TouchEvent.TOUCH_BEGIN, beginScroll);
-				stage.addEventListener( TouchEvent.TOUCH_END, endScroll);
-			//	stage.addEventListener( TouchEvent.TOUCH_TAP, beginScroll);
-				
-				stage.addEventListener(MouseEvent.MOUSE_DOWN, beginScroll);
-				stage.addEventListener(MouseEvent.MOUSE_UP, endScroll);
-				
-				} else 
-				{
-					
-					//Method used
-					if (! this.containsElement( wrapper ))
-					{ 
-						this.addElement( wrapper );
-						wrapper.includeInLayout = false;
-					}
-					
-					if (scrollValues==null)
-					{
-						scrollValues = new ScrollSupport( stage, scroll.width, wrapper );
-						(this.CarouselGroup.layout as CarouselLayout).freeRotationDegree = 0;
-						scrollValues.addEventListener( ScrollSupportEvent.UPDATE, rotateTheCarousel );
-					} else {
-						scrollValues.init();
-						(this.CarouselGroup.layout as CarouselLayout).freeRotationDegree = 0;
-					}
-					
-					//stage.addEventListener(Event.ENTER_FRAME, rotateTheCarousel)
-				}
-					
-			}
-			protected var degreeNo:int = 0;
-			protected function rotateTheCarousel( e:ScrollSupportEvent ):void
-			{
-			Console.log("degree:"+e.degree, this );				
-				(this.CarouselGroup.layout as CarouselLayout).freeRotationDegree = e.degree ;
-//				Console.log("index:"+(this.CarouselGroup.layout as CarouselLayout).freeRotationIndex, this );
-			}
-			protected var currentIndex:int = 0
-			protected var recorded:Point;
-			protected var speed:Number = 0;
-			
-			/*
-			 * Alternative Implementation :: We might be able to separate this out completely and just dispatch events back when needed 
-			*/
-			protected var scrollValues:ScrollSupport;
-			
-			
-			protected function beginScroll( e:MouseEvent ):void
-			{
-//				Console.log("MouseDown recorded", this);
-				if (recorded==null)
-				{
-					if (! wrapper.contains( gs) )
-						wrapper.addChild( gs );
-					
-					if (! this.containsElement( wrapper ))
-					{
-						this.addElement( wrapper );
-						wrapper.includeInLayout = false;
-					}
-					recorded = new Point( e.stageX, e.stageY);
-					recorded = this.wrapper.globalToLocal( recorded );
-					scrollPercentage = scroll.horizontalScrollBar.value / ( scroll.horizontalScrollBar.maximum - scroll.horizontalScrollBar.minimum );
-//					Console.log("adding MouseMove listener", this);
-//					Console.log("beginScroll value: "+scroll.horizontalScrollBar.value+" = "+Math.round(scrollPercentage*100)+"%", this);
-					//	recordScroll( e );
-					
-					//TouchEvent					
-					stage.addEventListener(TouchEvent.TOUCH_MOVE, onScroll);
-					
-					//MouseEvent
-					stage.addEventListener(MouseEvent.MOUSE_MOVE, onScroll);
-				}
-			}
-			
-			protected function endScroll( e:MouseEvent ):void
-			{
-//				Console.log("endScroll", this);
-//				Console.log("removing MouseMove listener", this);
-
-				//TouchEvent
-				stage.removeEventListener(TouchEvent.TOUCH_MOVE, onScroll)
-				
-				//MouseEvent	
-				stage.removeEventListener(MouseEvent.MOUSE_MOVE, onScroll);
-				
-				recorded = null;
-				speed = 0;
-			}
-			
-			protected var wrapper : UIComponent = new UIComponent();
-			protected var gs:Sprite = new Sprite();
-			protected var scrollPercentage:Number = 0;
-			
-			protected function onScroll( e:MouseEvent ):void
-			{
-				var percentagePoint:Number = this.calculateScrollPercentage( e );
-				var proposedValue : Number =  Math.round(percentagePoint * ( scroll.horizontalScrollBar.maximum - scroll.horizontalScrollBar.minimum ));
-				if ( Math.min( proposedValue, scroll.horizontalScrollBar.minimum ) == proposedValue )
-				{
-					proposedValue = scroll.horizontalScrollBar.maximum-(scroll.horizontalScrollBar.minimum - proposedValue);
-					
-				} else if ( Math.max( proposedValue, scroll.horizontalScrollBar.maximum ) == proposedValue  )
-				{
-					proposedValue = scroll.horizontalScrollBar.minimum + (proposedValue % scroll.horizontalScrollBar.maximum);					
-				}
-				
-				scroll.horizontalScrollBar.value = proposedValue; 
-				//Console.log(Math.round(percentagePoint*100)+"%  "+proposedValue+" E [ "+scroll.horizontalScrollBar.minimum+" , "+scroll.horizontalScrollBar.maximum+" ]", this);
-				//Console.log("min: "+minX+" max: "+maxX+" recordedX: "+recorded.x+" scrollWidth: "+scrollWidth+" scrollPercentage: "+scrollPercentage+" value: "+scroll.horizontalScrollBar.value, this);
-				
-				//updateScrollbar(e);
-				//Console.log("proposedValue:"+proposedValue+"PercentagePoint:"+percentagePoint+"scrollPercentage: "+scrollPercentage+" "+scroll.horizontalScrollBar.minimum+" : "+scroll.horizontalScrollBar.value+" : "+scroll.horizontalScrollBar.maximum, this);
 			}
 
-			protected function calculateScrollPercentage(e:MouseEvent):Number
-			{
-				var scrollWidth:Number = scroll.width;
-				
-				
-				var minX:Number = (scrollWidth)*scrollPercentage;
-				var maxX:Number = (scrollWidth)*(1-scrollPercentage);
-				
-				var scaleDown:Number = 1;
-				var scrollPoint:Point = new Point( e.stageX, e.stageY );
-				scrollPoint = wrapper.globalToContent( scrollPoint );
-				
-				if (false)
-				{
-					// draw virtual scrollbar
-					gs.graphics.clear();
-					gs.graphics.lineStyle(1, 0xFFFFFF,.8);
-					//bar
-					gs.graphics.moveTo( (recorded.x-minX)*scaleDown, scrollPoint.y );
-					gs.graphics.lineTo( (recorded.x+maxX)*scaleDown, scrollPoint.y );
-					gs.graphics.beginFill(0xFF0000,.8)
-					//end
-					gs.graphics.drawCircle( scrollPoint.x*scaleDown, scrollPoint.y, 10);
-					gs.graphics.beginFill(0x0000FF,.6)
-					//start
-					gs.graphics.drawCircle( recorded.x*scaleDown, scrollPoint.y, 5);
-					gs.graphics.endFill();
-				}
-				
-				// We keep it in the direction of the scroll bar - but this could be flipped / inverted
-				return scrollPercentage+((scrollPoint.x-recorded.x)/((recorded.x+maxX)-(recorded.x-minX)));
-			}
+			// LOGO HANDLERS
 
-			protected function rotateCarousel( e:Event ):void
-			{
-				
-				
-//				Console.log( "rotateCarousel "+speed+" "+scroll.horizontalScrollBar.value+" "+scroll.horizontalScrollBar.maximum, this); 
-			}
-				
-			//Roll Over ... Add Glow
-			private function myRollOver(event:MouseEvent):void{	
-				event.currentTarget.filters =[myGlowIs];
-			}
-			//Roll Out ... Remove Glow
-			private function myRollOut(event:MouseEvent):void{	
-				event.currentTarget.filters = null;
-			}
-			//Select and add alpha
 			private function mySelect(event:MouseEvent):void
 			{
-				if (scrollValues!=null)
-				{
-					if (!scrollValues.tapEnabled)
-						return;
-					
-					var currentIndex:int = -1;
-					for(var j:uint = 0; j < CarouselGroup.numElements; j++)
-					{
-						if (CarouselGroup.getElementAt( j )==event.currentTarget)
-						{
-							currentIndex = j;
-							Console.log(j, this);
-						}
-					}
-					var angle:Number = CarouselLayout(CarouselGroup.layout).getFreeRotationAngleFromIndex(currentIndex);
-					//angle =162;
-					//Console.log("currentIndex "+currentIndex, this);
-//					Console.log( "angle"+angle, this);
-					scrollValues.destroy();
-					TweenMax.to(CarouselLayout(CarouselGroup.layout), (.5+((Math.abs(angle)%360)/180)*1), 
-						{ freeRotationDegree: angle, ease: com.greensock.easing.Sine.easeOut, 
-							onComplete: function():void { gotoTeam(teamDataList[currentIndex].@name.toString()) }  }); 
-				}
-			}
-			private function mySelectIndex(event:MouseEvent):void
-			{
-			
-				
 				var currentIndex:int = -1;
 				for(var j:uint = 0; j < CarouselGroup.numElements; j++)
 				{
 					if (CarouselGroup.getElementAt( j )==event.currentTarget)
 					{
 						currentIndex = j;
-//						Console.log(j, this);
 					}
 				}
-//				Console.log(  currentIndex + "  " +CarouselGroup.numElements, this);
-				CarouselLayout(CarouselGroup.layout).selectedIndex = currentIndex;
 				
-				
-				this.addEventListener( Event.ENTER_FRAME, checkAnimation );				
-//				Need to find the degree of this instant and rotate into view
-//				TweenLite.to( this, .5, {degree: 20, onUpdate: function(e:TweenEvent) {Carousel(CarouselGroup.layout).axisYAngle=(e.target)}});
-	
+				var angle:Number = CarouselLayout(CarouselGroup.layout).getFreeRotationAngleFromIndex(currentIndex);
+				TweenMax.to(CarouselLayout(CarouselGroup.layout), (.5+((Math.abs(angle)%360)/180)*1), 
+					{ freeRotationDegree: angle, ease: com.greensock.easing.Sine.easeOut, 
+						onComplete: function():void { gotoTeam(teamDataList[currentIndex].@name.toString()) }  }); 
 			}
+			
+			/*
+			private function mySelectIndex(event:MouseEvent):void
+			{
+				var currentIndex:int = -1;
+				for(var j:uint = 0; j < CarouselGroup.numElements; j++)
+				{
+					if (CarouselGroup.getElementAt( j )==event.currentTarget)
+					{
+						currentIndex = j;
+					}
+				}
+				CarouselLayout(CarouselGroup.layout).selectedIndex = currentIndex;
+				this.addEventListener( Event.ENTER_FRAME, checkAnimation );				
+			}
+			*/
+
 			private function checkAnimation( e:Event=null ):void
 			{
-				
 				if (!CarouselLayout(CarouselGroup.layout).isAnimating())
 				{
-				
 					this.removeEventListener( Event.ENTER_FRAME, checkAnimation );
-//					Console.log("data:"+ teamDataList[ CarouselLayout(CarouselGroup.layout).selectedIndex ].@name, this );
 					gotoTeam(teamDataList[CarouselLayout(CarouselGroup.layout).selectedIndex].@name.toString())
 				}
 			}
+
 			private function gotoTeam( team:String ):void
 			{
 				backgroundimage.visible = false;
 				this.parentApplication.dispatchEvent( new ViewEvent( type=="GAME" ? ViewEvent.LOCATION_GAME : ViewEvent.LOCATION_TEAMSHEETS, {team: team } ));
 			}
-			protected function update( e:Event = null ):void
+			
+			// :::::::::: NEW :::::::::::::::
+			
+			protected function mouseDownHandler(event : MouseEvent) : void
 			{
-				//Console.log("update", this);
+				trace("SelectTeam :: mouseDownHandler");
 				
-				for(var j:uint = 0; j < CarouselGroup.numElements; j++)
+				initialCarouselPosition = CarouselLayout(CarouselGroup.layout).freeRotationDegree;
+				mouseZero = mouseX;
+				
+				zeroTime = getTimer();	
+				mouseRecorderTimer.start();
+				mousePositions = [];
+			}
+			
+			protected function mouseUpHandler(event : MouseEvent) : void
+			{
+				trace("SelectTeam :: mouseUpHandler");
+				
+				
+				mouseRecorderTimer.stop();
+				var elapsed : int = getTimer() - zeroTime;
+				if(elapsed > clickInterval)
 				{
-					var t:logoItemRenderer = logoItemRenderer(CarouselGroup.getElementAt( j ))
-					//Console.log("*** CarouselGroup SELECTTEAM ***"+CarouselGroup.getElementAt( j ), this);
-					if (t!=null)
+					event.stopPropagation();
+					var lastSafePosition : int = Math.min(12, mousePositions.length);
+					var positionOne : Number = mousePositions[0];
+					var positionTwo : Number = mousePositions[lastSafePosition - 1];
+					var deltaX : Number = positionTwo - positionOne;
+					if(Math.abs(deltaX) > swipeThreshold)
 					{
-						t.filters =[noGlowIs];
-						
 					}
 				}
-
+			}
+			
+			protected function recordMouse(event : TimerEvent) : void
+			{
+				var mouseDelta : Number = (mouseX - mouseZero) * carouselSensitivity;
+				var newCarouselPosition : Number = initialCarouselPosition + mouseDelta;
+				
+				newCarouselPosition %= 360;
+				
+				CarouselLayout(CarouselGroup.layout).freeRotationDegree = initialCarouselPosition + mouseDelta;				
+				
+				mousePositions.push(mouseX);
+				if(mousePositions.length > positionsMaxLength)
+				{
+					mousePositions.shift();
+				}
+			}
+			
+			protected function itemSelectedHandler(event : CarouselItemEvent):void
+			{
+				trace("SelectTeam :: itemSelectedHandler :: " + event.teamDTO.teamName);
+				executeNavigation(event.teamDTO.teamName);
+			}
+			
+			private function executeNavigation( team:String ):void
+			{
+				backgroundimage.visible = false;
+				this.parentApplication.dispatchEvent( new ViewEvent( type=="GAME" ? ViewEvent.LOCATION_GAME : ViewEvent.LOCATION_TEAMSHEETS, {team: team } ));
 			}
 		]]>
 	</fx:Script>
+	
 	<fx:Declarations>
 		<!-- Place non-visual elements (e.g., services, value objects) here -->
 		<s:HTTPService id="teamData" resultFormat="xml" url="{(this.parentApplication).baseURL+'assets/xml/game_full.xml'}" result="populate(event)" fault="error(event)" />		
@@ -429,60 +237,41 @@
 		<s:Sine id="sineEasing" easeInFraction="0.3"/>
 		<s:Linear id="slowDown" easeInFraction=".1" easeOutFraction=".1"  />
 	</fx:Declarations>
-	<!-- Menu -->
-	<!-- Field -->
+
 	<s:Image smooth="true" id="backgroundimage" source="assets/images/bg_choose_your_dream_team.jpg" includeInLayout="true" x="0" y="0"  />
 	<s:VGroup left="100" top="110" width="100%" height="100%">
-		
 		<s:HGroup width="100%" height="1080" horizontalAlign="left">
-			
-		
-		<s:VGroup width="337" height="1080" horizontalAlign="center">
-			<s:Spacer height="130" />
-			<s:Image smooth="true" scaleX=".6" scaleY=".6" source="assets/images/logo_live.png" />
-			<s:Spacer height="10" />
-			<s:Image smooth="true" source="{'assets/images/'+(type=='GAME' ? 'txt_dream_team' : 'txt_select_your_teamsheet' )+'.png'}"  />			
-			<s:Label fontSize="20" textAlign="center" paddingTop="15" width="330" text="{(type=='GAME') ? game_subtext : teamsheet_subtext}" color="0x29b1f0"  />
-			
-		</s:VGroup>
+			<s:VGroup width="337" height="1080" horizontalAlign="center">
+				<s:Spacer height="130" />
+				<s:Image smooth="true" scaleX=".6" scaleY=".6" source="assets/images/logo_live.png" />
+				<s:Spacer height="10" />
+				<s:Image smooth="true" source="{'assets/images/'+(type=='GAME' ? 'txt_dream_team' : 'txt_select_your_teamsheet' )+'.png'}"  />			
+				<s:Label fontSize="20" textAlign="center" paddingTop="15" width="330" text="{(type=='GAME') ? game_subtext : teamsheet_subtext}" color="0x29b1f0"  />
+			</s:VGroup>
 			<s:Spacer width="100" />
-		<s:VGroup width="1400" >
+			<s:VGroup width="1400" >
 				<s:VGroup  paddingTop="10" horizontalAlign="center" width="100%">
-				<s:BorderContainer backgroundAlpha="0" borderVisible="false" height="800" width="100%">
-					<s:Image smooth="true" source="assets/images/graphics_trophy.png" width="618" height="860" horizontalCenter="-20" />
-					
-					<s:Scroller  liveScrolling="false" scrollSnappingMode="none"  id="scroll" width="1370" height="100%"  >
-					<s:DataGroup id="CarouselGroup" width="100%" height="800"   itemRenderer="views.renderer.logoItemRenderer">
-						
-						<s:layout>
-							<layouts:CarouselLayout  useScrollBarForNavigation="true" scrollBarDirection="horizontal" radiusX="1000" angle="360" radiusY="0" radiusZ="1000" rotateY="standard" horizontalAlign="center" verticalAlign="middle" projectionCenterY="300" fieldOfView="20" duration="500" easer="{slowDown}"  />	
-							<!--layouts:Carousel gap="80" axisAngle="0" axisYAngle="0" /-->
-						</s:layout>
-						<s:XMLListCollection  id="teamList"   source="{teamDataList}"/>	
-					</s:DataGroup>
-						</s:Scroller>
-				</s:BorderContainer>
-				<!--
-				<s:Image smooth="true" source="assets/images/guide_carousel.png"  click="game(event)" buttonMode="true"   />
-				-->
-				<s:VGroup height="330" width="100%" horizontalAlign="center"  paddingTop="40">
-					
-					<s:Spacer height="10" />
-					<s:Image smooth="true" verticalAlign="bottom" source="assets/images/graphics_arrow.png"  />
-					<s:Spacer height="3" />
-					<s:Label fontSize="22" textAlign="center" width="330" text="SWIPE TO SELECT YOUR TEAM" color="0x29b1f0"  />
-					
-				</s:VGroup>
+					<s:BorderContainer backgroundAlpha="0" borderVisible="false" height="800" width="100%">
+						<s:Image smooth="true" source="assets/images/graphics_trophy.png" width="618" height="860" horizontalCenter="-20" />
+						<s:DataGroup id="CarouselGroup" width="100%" height="800" itemRenderer="views.renderer.CarouseltemRenderer"
+									 dataProvider="{carouselDataProvider}">
+							<s:layout>
+								<layouts:CarouselLayout  useScrollBarForNavigation="true" scrollBarDirection="horizontal" radiusX="1000" angle="360" radiusY="0" radiusZ="1000" rotateY="standard" horizontalAlign="center" verticalAlign="middle" projectionCenterY="300" fieldOfView="20" duration="500" easer="{slowDown}"  />	
+							</s:layout>
+							<!--s:XMLListCollection  id="teamList"   source="{teamDataList}"/-->	
+						</s:DataGroup>
+					</s:BorderContainer>
+					<s:VGroup height="330" width="100%" horizontalAlign="center"  paddingTop="40">
+						<s:Spacer height="10" />
+						<s:Image smooth="true" verticalAlign="bottom" source="assets/images/graphics_arrow.png"  />
+						<s:Spacer height="3" />
+						<s:Label fontSize="22" textAlign="center" width="330" text="SWIPE TO SELECT YOUR TEAM" color="0x29b1f0"  />
+					</s:VGroup>
 				</s:VGroup>
 			</s:VGroup>
-	
 			<s:VGroup verticalAlign="bottom" horizontalAlign="right" width="420" height="925">
 				<s:Image smooth="true" source="assets/images/txt_brought_to_you_by.png"  />	
-				
 			</s:VGroup>			  
-					
-			
 		</s:HGroup>
-		
 	</s:VGroup>
 </s:Group>

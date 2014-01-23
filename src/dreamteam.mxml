@@ -137,12 +137,9 @@
 				
 				//this.navigationbar.scaleX = Math.min(1,scale);
 				//this.navigationbar.scaleY = Math.min(1,scale);
-				trace("SCALING TO:"+scale);
 				//background
-				trace("window TO:"+this.stage.stageHeight+" "+(this.holder.height+navigationbar.height));
 				//background.y = scale*(this.holder.height+navigationbar.height-background.height);
 				//background.bottom=0;
-				trace("alfo TO:"+background.height+" "+(this.stage.stageHeight));
 				//background.y=this.stage.stageHeight-background.height;
 				//background.y=0;
 				//horizontal scaling of navigation?
@@ -155,7 +152,6 @@
 			}
 			protected function onresize(e:Event=null):void
 			{
-				trace("*** RESIZE");
 				try
 				{
 					this.reScaleMainContent();
@@ -172,9 +168,6 @@
 				{
 					MAX_HEIGHT = MAX_HEIGHT;
 					
-					trace("INITIAL MAX_WIDTH:"+MAX_WIDTH);
-					trace("INITIAL MAX_HEIGHT:"+MAX_HEIGHT);
-					
 					// if screen capability is smaller than design resolution do inital scale
 					if (MAX_WIDTH > Capabilities.screenResolutionX || MAX_HEIGHT > Capabilities.screenResolutionY)
 					{
@@ -182,20 +175,12 @@
 					}
 					MAX_RES_X = Capabilities.screenResolutionX;
 					MAX_RES_Y = Capabilities.screenResolutionY;
-					trace("RELATIVE_SCALE:"+RELATIVE_SCALE);
-					trace("screenResolutionX:"+Capabilities.screenResolutionX);
-					trace("screenResolutionY:"+Capabilities.screenResolutionY);
 					MAX_WIDTH  = MAX_WIDTH * RELATIVE_SCALE;
 					MAX_HEIGHT = MAX_HEIGHT * RELATIVE_SCALE;
-					trace("MAX_WIDTH:"+MAX_WIDTH);
-					trace("MAX_HEIGHT:"+MAX_HEIGHT);
 				}
 			}
 			protected function init(e:Event = null):void
 			{
-				Console.log("init", this);
-				trace(File.applicationDirectory.nativePath);
-				
 				// navigation bar must be on top
 				if (this.getElementIndex( navigationbar )< this.getElementIndex( contentholder) )
 				{
@@ -247,7 +232,6 @@
 				
 				this.addEventListener( "showDropShadow", showDropshadow );
 				this.addEventListener( "hideDropShadow", hideDropshadow );
-				trace(baseURL);
 				this.dispatchEvent( new ViewEvent( ViewEvent.LOCATION_RESTART ));
 				
 				navigationTimer = new Timer(200, 0);
@@ -306,13 +290,11 @@
 			protected function notifyApplicationTypeUpdate( e:ApplicationEvent ):void
 			{
 				pref.saveApplicationVariables( e.value );
-				trace(pref.prefsXML);
 				baseURL =  "http://"+pref.prefsXML..serverIP+"/";
 				facebookAppID = pref.prefsXML..facebookAppID;
 				ApplicationType = pref.prefsXML..applicationtype.toString().toUpperCase();
 				urn = int(pref.prefsXML..urnLength);
 				scoreFormat = pref.prefsXML..scoreFormat;
-				trace("scoreformat is now: "+scoreFormat);
 				this.dispatchEvent( new ViewEvent( ViewEvent.LOCATION_RESTART ));
 			}
 			
@@ -320,8 +302,6 @@
 			{
 				try
 				{
-					trace("*** CLEARING POPUPS");
-					
 					if (alertbox!=null)
 					{
 						if (!alertbox.isRemoving)
@@ -363,7 +343,6 @@
 				var popups : Array = [];
 				try
 				{
-					trace("*** CLEARING POPUPS");
 					if (alertbox!=null)
 					{
 						popups.push(alertbox);
@@ -466,8 +445,6 @@
 			}
 			protected function openTermsAndCondtions( e:KioskEvent = null):void
 			{
-				trace("openTermsAndCondtions");
-				
 				clearPopups();
 				tcWindow = new tandcWindow();
 				tcWindow.scaleX = tcWindow.scaleY = this.scale;
@@ -545,7 +522,6 @@
 						}
 						if (stackStr == "Teamsheets")
 						{
-							Console.log( "Here", this );
 							nextScreen = Teamsheets;
 						}
 						
@@ -560,16 +536,13 @@
 				// ENSURE LAST SCREEN CALLS EXIT
 				if (lastScreen!=null)
 				{
-					Console.log("We are dispatching an EXIT event to "+getQualifiedClassName(lastScreen), this);	
 					lastScreen.dispatchEvent( new FlexEvent(FlexEvent.REMOVE) );
 				}
 				
 				// ENSURE NEXT SCREEN CALLS INIT
 				if (nextScreen!=null)
 				{
-					Console.log("We dispatching an INIT event to "+getQualifiedClassName(nextScreen), this);
 					nextScreen.dispatchEvent( new Event( Event.INIT ) );
-					
 				}
 				
 				// GO TO NEXT STACK ITEM
@@ -582,14 +555,12 @@
 			//NAVIGATION HANDLING BETWEEN VIEWS
 			protected function doNavigation(e:ViewEvent):void
 			{
-				Console.log(e.location, this);
 				clearPopups();
 				hideDropshadow();
 				switch (e.location)
 				{
 					case ViewEvent.LOCATION_RESTART:
 						//this.navigator.popToFirstView(fadeTrans);
-						trace("*** RESTART WAS CALLED ***");
 						//	gotoView("ScanWristBand");
 						if (this.ApplicationType == APPLICATION_TYPE_REGISTRATION || this.ApplicationType == APPLICATION_TYPE_REGISTER_GAME)
 						{
@@ -669,7 +640,6 @@
 						//	this.navigator.pushView(views.ExtraInfo, {urn: barcode});
 						break;
 					case ViewEvent.LOCATION_REGISTRATION_COMPLETE:
-						trace("Registration of user is complete");
 						
 						if (this.ApplicationType == APPLICATION_TYPE_REGISTRATION)
 						{
@@ -694,7 +664,6 @@
 						showError("RESULTS TO BE IMPLEMENTED");
 						break;
 					case ViewEvent.LOCATION_GAME:
-						trace("ENTERING THE GAME "+ApplicationType);
 						
 						if (ApplicationType == APPLICATION_TYPE_GAME)
 						{
@@ -833,7 +802,6 @@
 			}
 			protected function defaultView(e:Event=null):void
 			{
-				trace("default view")
 				this.dispatchEvent( new ViewEvent( ViewEvent.LOCATION_RESTART ));
 				
 			}
@@ -931,7 +899,6 @@
 			public function isEmbedded(fontName:String):Boolean {
 				var tf:TextFormat = new TextFormat();
 				tf.font = fontName;
-				trace(fontName+": "+FlexGlobals.topLevelApplication.systemManager.isFontFaceEmbedded(tf).toString());
 				return FlexGlobals.topLevelApplication.systemManager.isFontFaceEmbedded(tf);
 			}
 			
@@ -939,7 +906,6 @@
 			/// code for the update
 			
 			private function checkUpdate():void {
-				Console.log("Checking for update...", this);
 				setApplicationVersion();
 				// we set the URL for the update.xml file
 //				appUpdater.configurationFile = new File("app:/updateConfig.xml");
@@ -963,7 +929,6 @@
 			 */
 			private function onUpdate(event:UpdateEvent):void {
 				//start the process of checking for a new update and to install
-				Console.log("Start update check", this);
 				appUpdater.checkNow();
 				
 			}

@@ -19,7 +19,7 @@ package model
 		{
 			prefsFile = File.applicationDirectory;
 			prefsFile = prefsFile.resolvePath("assets/xml/preferences.xml"); 
-			trace("preferences: "+prefsFile.nativePath);
+//			trace("preferences: "+prefsFile.nativePath);
 			readXML();
 		}
 		private function readXML():void 
@@ -27,7 +27,7 @@ package model
 			stream = new FileStream();
 			// If it exists read it 
 			if (prefsFile.exists) {
-				trace("preference file exists");
+//				trace("preference file exists");
 				stream.open(prefsFile, FileMode.READ);
 				processXMLData();
 			}
@@ -46,7 +46,7 @@ package model
 		
 		private function processXMLData():void 
 		{
-			trace("file size:"+stream.bytesAvailable);
+//			trace("file size:"+stream.bytesAvailable);
 			prefsXML = XML(stream.readUTFBytes(stream.bytesAvailable));
 			stream.close();
 			
@@ -55,7 +55,7 @@ package model
 			urnLength		= prefsXML.urnLength;
 			applicationType = prefsXML.applicationtype;
 			
-			trace("Preferences: (serverIP: '"+ serverIP + "' , urnLength: '"+urnLength+"' , applicationType: '"+applicationType+"')");
+//			trace("Preferences: (serverIP: '"+ serverIP + "' , urnLength: '"+urnLength+"' , applicationType: '"+applicationType+"')");
 		}
 		
 		public function saveApplicationVariables(values:Object):void
@@ -84,7 +84,7 @@ package model
 			}
 			else
 			{
-				trace("no file");
+//				trace("no file");
 			}
 		}
 		/**

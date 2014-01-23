@@ -24,11 +24,9 @@
 			}
 			public function init(event:Event=null):void
 			{
-				trace("*** INIT SELECTGAMEORRESULT ***");
 			}
 			public function exit( e:Event = null):void
 			{
-				trace("*** EXIT SELECTGAMEORRESULT ***");
 			}
 			
 			protected function selectGame(e:Event=null):void
