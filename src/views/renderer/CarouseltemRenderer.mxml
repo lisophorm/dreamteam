@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:ItemRenderer xmlns:fx="http://ns.adobe.com/mxml/2009" 
+				xmlns:s="library://ns.adobe.com/flex/spark" 
+				xmlns:mx="library://ns.adobe.com/flex/mx" 
+				autoDrawBackground="false" xmlns:components="views.components.*"  
+				clipAndEnableScrolling="false" 
+				xmlns:renderer="views.renderer.*" 
+				resizeMode="scale" autoLayout="true"
+				addedToStage="initialise(event)" removedFromStage="finalise(event)">
+	<fx:Script>
+		<![CDATA[
+			import events.CarouselItemEvent;
+			
+			import flash.filters.BitmapFilterQuality;
+			
+			import model.entity.TeamDTO;
+			
+			import mx.events.FlexEvent;
+			
+			import spark.filters.GlowFilter;
+			
+			protected function initialise(event : Event):void
+			{
+				addEventListener(MouseEvent.MOUSE_UP, mouseUpHandler);
+			}
+			
+			protected function mouseUpHandler(event : MouseEvent):void
+			{
+				dispatchEvent(new CarouselItemEvent(CarouselItemEvent.ITEM_SELECTED, data as TeamDTO, true));
+			}
+			
+			protected function finalise(event : Event):void
+			{
+				removeEventListener(MouseEvent.MOUSE_UP, mouseUpHandler);
+			}
+		]]>
+	</fx:Script>
+	<s:Image smooth="true" id="logo" source="{'/assets/images/logos/medium-shaded/'+data.logoImage}" verticalCenter="0" horizontalCenter="0">
+		<s:filters>
+			
+		</s:filters>
+	</s:Image>
+</s:ItemRenderer>
