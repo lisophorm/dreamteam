@@ -13,7 +13,6 @@
 			
 			import events.CarouselItemEvent;
 			import events.KioskError;
-			import events.ViewEvent;
 			
 			import model.entity.TeamDTO;
 			
@@ -23,10 +22,6 @@
 			import mx.rpc.events.FaultEvent;
 			import mx.rpc.events.ResultEvent;
 			
-			import spark.filters.GlowFilter;
-			
-			import views.controls.supportClasses.ScrollSupport;
-			import views.layouts.Carousel;
 			import views.renderer.CarouseltemRenderer;
 			
 			public var data:Object;
@@ -41,13 +36,16 @@
 			private var positionsMaxLength : int = 18;
 			private var zeroTime:int;
 			private var clickInterval : int = 80;
-			private var swipeThreshold : Number = 100;
+			private var swipeThreshold : Number = 1;
 			
 			private var initialCarouselPosition:int;
 			private var mouseZero:Number;
 			
 			private var carouselSensitivity : Number = .06;
-
+			private var velocity:Number;
+			private var friction : Number = .96;
+			private var velocityCutoff : Number = .05;
+			
 			[Bindable]
 			public var type:String = "Game";
 			
@@ -59,11 +57,11 @@
 			
 			public function created(event:FlexEvent=null):void
 			{
-				this.addEventListener( Event.INIT, init);
-				init();
+				this.addEventListener( Event.INIT, initialise);
+				initialise();
 			}
 			
-			public function init(event:Event=null):void
+			public function initialise(event:Event=null):void
 			{
 				if (this.parentApplication.data!=null)
 				{
@@ -82,6 +80,7 @@
 				addEventListener(MouseEvent.MOUSE_UP, mouseUpHandler, true);
 				
 				CarouselGroup.addEventListener(CarouselItemEvent.ITEM_SELECTED, itemSelectedHandler);
+				CarouselLayout(CarouselGroup.layout).freeRotationDegree = 0;
 			}
 
 			public function exit( e:Event = null):void
@@ -89,23 +88,22 @@
 				CarouselGroup.invalidateDisplayList();
 			}
 			
-			protected function game(e:Event=null):void
-			{
-				this.parentApplication.dispatchEvent( new ViewEvent( ViewEvent.LOCATION_GAME ));
-			}
-			
 			protected function populate(e:ResultEvent=null):void
 			{
 				carouselDataProvider = new ArrayCollection();
 				var xml:XML = new XML(e.result);
 				var teamData : XMLList = (xml..team);
+				var i : int = 0;
+				
 				for each(var x : XML in teamData)
 				{
 					var teamDTO : TeamDTO = new TeamDTO();
+					teamDTO.index = i;
 					teamDTO.teamID = x.@id;
 					teamDTO.teamName = x.@name;
 					teamDTO.logoImage = x.@logo;
 					carouselDataProvider.addItem(teamDTO);
+					i++;
 				}
 			}
 
@@ -114,62 +112,9 @@
 				this.parentApplication.dispatchEvent(new KioskError(KioskError.ERROR, e.fault.message.toString(), "COMMUNICATION ERROR"));
 			}
 
-			// LOGO HANDLERS
-
-			private function mySelect(event:MouseEvent):void
-			{
-				var currentIndex:int = -1;
-				for(var j:uint = 0; j < CarouselGroup.numElements; j++)
-				{
-					if (CarouselGroup.getElementAt( j )==event.currentTarget)
-					{
-						currentIndex = j;
-					}
-				}
-				
-				var angle:Number = CarouselLayout(CarouselGroup.layout).getFreeRotationAngleFromIndex(currentIndex);
-				TweenMax.to(CarouselLayout(CarouselGroup.layout), (.5+((Math.abs(angle)%360)/180)*1), 
-					{ freeRotationDegree: angle, ease: com.greensock.easing.Sine.easeOut, 
-						onComplete: function():void { gotoTeam(teamDataList[currentIndex].@name.toString()) }  }); 
-			}
-			
-			/*
-			private function mySelectIndex(event:MouseEvent):void
-			{
-				var currentIndex:int = -1;
-				for(var j:uint = 0; j < CarouselGroup.numElements; j++)
-				{
-					if (CarouselGroup.getElementAt( j )==event.currentTarget)
-					{
-						currentIndex = j;
-					}
-				}
-				CarouselLayout(CarouselGroup.layout).selectedIndex = currentIndex;
-				this.addEventListener( Event.ENTER_FRAME, checkAnimation );				
-			}
-			*/
-
-			private function checkAnimation( e:Event=null ):void
-			{
-				if (!CarouselLayout(CarouselGroup.layout).isAnimating())
-				{
-					this.removeEventListener( Event.ENTER_FRAME, checkAnimation );
-					gotoTeam(teamDataList[CarouselLayout(CarouselGroup.layout).selectedIndex].@name.toString())
-				}
-			}
-
-			private function gotoTeam( team:String ):void
-			{
-				backgroundimage.visible = false;
-				this.parentApplication.dispatchEvent( new ViewEvent( type=="GAME" ? ViewEvent.LOCATION_GAME : ViewEvent.LOCATION_TEAMSHEETS, {team: team } ));
-			}
-			
-			// :::::::::: NEW :::::::::::::::
-			
 			protected function mouseDownHandler(event : MouseEvent) : void
 			{
-				trace("SelectTeam :: mouseDownHandler");
-				
+				removeEventListener(Event.ENTER_FRAME, enterFrameHandler);
 				initialCarouselPosition = CarouselLayout(CarouselGroup.layout).freeRotationDegree;
 				mouseZero = mouseX;
 				
@@ -180,20 +125,19 @@
 			
 			protected function mouseUpHandler(event : MouseEvent) : void
 			{
-				trace("SelectTeam :: mouseUpHandler");
-				
-				
 				mouseRecorderTimer.stop();
 				var elapsed : int = getTimer() - zeroTime;
+				
 				if(elapsed > clickInterval)
 				{
 					event.stopPropagation();
 					var lastSafePosition : int = Math.min(12, mousePositions.length);
 					var positionOne : Number = mousePositions[0];
 					var positionTwo : Number = mousePositions[lastSafePosition - 1];
-					var deltaX : Number = positionTwo - positionOne;
-					if(Math.abs(deltaX) > swipeThreshold)
+					velocity = (positionTwo - positionOne) / mousePositions.length * carouselSensitivity * 2;
+					if(Math.abs(velocity) > swipeThreshold)
 					{
+						addEventListener(Event.ENTER_FRAME, enterFrameHandler);
 					}
 				}
 			}
@@ -214,16 +158,36 @@
 				}
 			}
 			
+			protected function enterFrameHandler(event : Event):void
+			{
+				var newAngle : Number = CarouselLayout(CarouselGroup.layout).freeRotationDegree + velocity;
+				newAngle %= 360;
+				CarouselLayout(CarouselGroup.layout).freeRotationDegree = newAngle;
+				velocity *= friction;
+				if(Math.abs(velocity) < velocityCutoff)
+				{
+					removeEventListener(Event.ENTER_FRAME, enterFrameHandler);
+				}
+			}
+			
 			protected function itemSelectedHandler(event : CarouselItemEvent):void
 			{
-				trace("SelectTeam :: itemSelectedHandler :: " + event.teamDTO.teamName);
-				executeNavigation(event.teamDTO.teamName);
+				var n : int = CarouselGroup.numElements;
+				for(var i : int = 0; i < n; i ++)
+				{
+					CarouseltemRenderer(CarouselGroup.getElementAt(i)).selected = false;
+				}
+				CarouseltemRenderer(event.target).selected = true;
+				
+				var angle:Number = CarouselLayout(CarouselGroup.layout).getFreeRotationAngleFromIndex(event.teamDTO.index);
+				TweenMax.to(CarouselLayout(CarouselGroup.layout), (.5+((Math.abs(angle)%360)/180)*1), 
+					{ freeRotationDegree: angle, ease: com.greensock.easing.Sine.easeOut, onComplete:executeNavigation, onCompleteParams:[event.teamDTO.teamName]});
 			}
 			
 			private function executeNavigation( team:String ):void
 			{
-				backgroundimage.visible = false;
-				this.parentApplication.dispatchEvent( new ViewEvent( type=="GAME" ? ViewEvent.LOCATION_GAME : ViewEvent.LOCATION_TEAMSHEETS, {team: team } ));
+//				backgroundimage.visible = false;
+//				this.parentApplication.dispatchEvent( new ViewEvent( type=="GAME" ? ViewEvent.LOCATION_GAME : ViewEvent.LOCATION_TEAMSHEETS, {team: team } ));
 			}
 		]]>
 	</fx:Script>

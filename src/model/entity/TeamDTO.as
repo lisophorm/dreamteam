@@ -5,6 +5,8 @@ package model.entity
 		public function TeamDTO()
 		{
 		}
+		public var index : int;
+		
 		[Bindable]
 		public var teamID : String;
 		

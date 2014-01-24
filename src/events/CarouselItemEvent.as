@@ -12,6 +12,8 @@ package events
 		
 		public var teamDTO:TeamDTO;
 		
+		public var index : int = 0;
+		
 		public function CarouselItemEvent(type:String, data:TeamDTO, bubbles:Boolean=false, cancelable:Boolean=false)
 		{
 			super(type, bubbles, cancelable);

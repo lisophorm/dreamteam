@@ -3,7 +3,8 @@
 		xmlns:s="library://ns.adobe.com/flex/spark" 
 		xmlns:components="views.components.*" 
 		xmlns:mx="library://ns.adobe.com/flex/mx" 
-		remove="exit(event)" creationComplete="created(event)"
+		remove="exit(event)" 
+		creationComplete="created(event)"
 		
 		>
 	<fx:Script>

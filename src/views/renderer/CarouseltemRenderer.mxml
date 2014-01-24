@@ -26,6 +26,7 @@
 			
 			protected function mouseUpHandler(event : MouseEvent):void
 			{
+				trace("CarouselItemRenderer :: mouseUpHandler");
 				dispatchEvent(new CarouselItemEvent(CarouselItemEvent.ITEM_SELECTED, data as TeamDTO, true));
 			}
 			
@@ -35,9 +36,16 @@
 			}
 		]]>
 	</fx:Script>
+	
+	<s:states>
+		<s:State name="normal"/>
+		<s:State name="selected"/>
+		<s:State name="hovered"/>
+	</s:states>
+	
 	<s:Image smooth="true" id="logo" source="{'/assets/images/logos/medium-shaded/'+data.logoImage}" verticalCenter="0" horizontalCenter="0">
 		<s:filters>
-			
+			<s:GlowFilter blurX="16" blurY="16" color="0xFFFFFF" alpha="1" includeIn="selected"/>
 		</s:filters>
 	</s:Image>
 </s:ItemRenderer>
