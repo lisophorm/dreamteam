@@ -13,6 +13,7 @@
 			
 			import events.CarouselItemEvent;
 			import events.KioskError;
+			import events.ViewEvent;
 			
 			import model.entity.TeamDTO;
 			
@@ -186,8 +187,8 @@
 			
 			private function executeNavigation( team:String ):void
 			{
-//				backgroundimage.visible = false;
-//				this.parentApplication.dispatchEvent( new ViewEvent( type=="GAME" ? ViewEvent.LOCATION_GAME : ViewEvent.LOCATION_TEAMSHEETS, {team: team } ));
+				backgroundimage.visible = false;
+				this.parentApplication.dispatchEvent( new ViewEvent( type=="GAME" ? ViewEvent.LOCATION_GAME : ViewEvent.LOCATION_TEAMSHEETS, {team: team } ));
 			}
 		]]>
 	</fx:Script>

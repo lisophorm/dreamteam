@@ -9,22 +9,11 @@
 
 	<fx:Script>
 		<![CDATA[
-			import com.alfo.utils.Console;
-			import com.greensock.TweenMax;
-			
-			import flash.events.ErrorEvent;
-			
-			import mx.controls.Alert;
-			import mx.core.FlexGlobals;
-			import mx.core.UIComponent;
-			import mx.events.FlexEvent;
-			import mx.managers.PopUpManager;
-			import mx.managers.SystemManager;
-			
-			import spark.filters.DropShadowFilter;
-			
 			import air.update.ApplicationUpdaterUI;
 			import air.update.events.UpdateEvent;
+			
+			import com.alfo.utils.Console;
+			import com.greensock.TweenMax;
 			
 			import events.ApplicationEvent;
 			import events.KioskError;
@@ -34,13 +23,24 @@
 			import events.UserEvent;
 			import events.ViewEvent;
 			
+			import flash.events.ErrorEvent;
+			
 			import model.Config;
 			import model.ML;
 			import model.MonitorConnection;
 			
+			import mx.controls.Alert;
+			import mx.core.FlexGlobals;
+			import mx.core.UIComponent;
+			import mx.events.FlexEvent;
+			import mx.managers.PopUpManager;
+			import mx.managers.SystemManager;
+			
 			import org.osmf.utils.OSMFSettings;
 			
 			import skins.vodafoneFormItem;
+			
+			import spark.filters.DropShadowFilter;
 			
 			import views.ApplicationType;
 			import views.FaceBookAuth01;
@@ -48,12 +48,12 @@
 			import views.SelectUserType;
 			import views.Thankyou;
 			import views.UserForm;
-			import views.test;
 			import views.components.ErrorAlert;
 			import views.components.PasswordAlert;
 			import views.components.ProgressPopUp;
 			import views.components.pleaseWait;
 			import views.components.tandcWindow;
+			import views.test;
 			
 			public var baseURL:String ="";
 			public var facebookAppID:String ="";
@@ -417,7 +417,6 @@
 			}
 			protected function notifyProgress( e:KioskProgressEvent = null):void
 			{
-				
 				clearPopups();
 				
 				progressWindow = new ProgressPopUp();
@@ -431,8 +430,6 @@
 			
 			protected function notifyProgressUpdate( e:KioskProgressEvent = null):void
 			{
-				
-				
 				if (progressWindow==null)
 				{
 					notifyProgress(e);
@@ -639,6 +636,7 @@
 						
 						//	this.navigator.pushView(views.ExtraInfo, {urn: barcode});
 						break;
+					
 					case ViewEvent.LOCATION_REGISTRATION_COMPLETE:
 						
 						if (this.ApplicationType == APPLICATION_TYPE_REGISTRATION)
@@ -651,8 +649,8 @@
 							
 							this.dispatchEvent( new ViewEvent( ViewEvent.LOCATION_GAME ));
 						}
-						
 						break;
+					
 					case ViewEvent.LOCATION_PHOTO_SELECTED_USER:
 						gotoView("CameraCapture", e.object);
 						break;
@@ -702,15 +700,14 @@
 					default:
 						
 				}
-				
-				
-				
 			}
+			
 			protected function error(e:KioskError=null):void
 			{
 				trace("Error: "+e.message);
 				showError(e.message, e.title, e.exitFunction);
 			}
+			
 			protected function toggleConnectIcon(e:Event):void
 			{
 				if ( connStatus.visible )
@@ -737,8 +734,6 @@
 			}
 			protected function notifyNoInternet(e:Event):void
 			{
-				
-				//defaultState();
 				defaultView();
 				monitor.removeEventListener( MonitorConnection.EVENT_INTERNET_NOT_AVAILABLE, notifyNoInternet);
 				monitor.addEventListener( MonitorConnection.EVENT_INTERNET_AVAILABLE, notifyInternet);
@@ -772,8 +767,6 @@
 			}
 			protected function showError(msg:String="", title:String="", exitFunction:Function=null):void
 			{
-				//Alert.show(msg, title, 4, null, exitApplicationFunction);
-				
 				clearPopups();
 				
 				alertbox = new ErrorAlert();
@@ -800,11 +793,12 @@
 				this.dispatchEvent( new ApplicationEvent( ApplicationEvent.POPUP_OPEN ) );
 				centerPopups();
 			}
+			
 			protected function defaultView(e:Event=null):void
 			{
 				this.dispatchEvent( new ViewEvent( ViewEvent.LOCATION_RESTART ));
-				
 			}
+			
 			protected function config(event:MouseEvent=null):void
 			{
 				if (loggedIn)
@@ -815,25 +809,29 @@
 					showPassword("Please enter password", password, login)
 				}
 			}
+			
 			protected function login( e:Event=null ):void
 			{
 				this.loggedIn = true;
 				config();
-				
 			}
+			
 			protected function exitApplication(event:MouseEvent=null):void
 			{
 				NativeApplication.nativeApplication.exit();
 			}
+			
 			protected function setBarCode(e:UserEvent):void
 			{
 				barcode = e.urn;
 				trace("recorded barcode:"+barcode);
 			}
+			
 			protected function setScore(e:UserEvent):void
 			{
 				score = e.score;
 			}
+			
 			protected function setIsRegistered(e:UserEvent):void
 			{
 				this.isRegistered =  (e.userType)
@@ -841,10 +839,12 @@
 				this.userName = e.name;
 				trace("recorded isRegistered: "+this.isRegistered.toString());
 			}
+			
 			public function get isFacebookRegistered():Boolean
 			{
 				return this.isRegistered =="facebook";
 			}
+			
 			public function get isStandardRegistered():Boolean
 			{
 				return this.isRegistered =="classic";
@@ -861,7 +861,6 @@
 						return -1;
 				}
 			}
-			
 			
 			protected function setMarketingOptin( e:UserEvent ):void
 			{
@@ -892,18 +891,13 @@
 			protected function setLogin( e:Event ):void
 			{
 				this.loggedIn = (e.type=="login");
-				
 			}
-			
 			
 			public function isEmbedded(fontName:String):Boolean {
 				var tf:TextFormat = new TextFormat();
 				tf.font = fontName;
 				return FlexGlobals.topLevelApplication.systemManager.isFontFaceEmbedded(tf);
 			}
-			
-			
-			/// code for the update
 			
 			private function checkUpdate():void {
 				setApplicationVersion();
@@ -985,7 +979,6 @@
 	<fx:Style source="assets/css/Fonts.css" />
 	
 	
-	
 	<s:VGroup id="background"  width="100%" height="100%" verticalAlign="bottom" >
 		<s:Image verticalAlign="bottom"  width="100%" height="100%" click="fullscreen()"
 				 smooth="true" smoothingQuality="high" alpha="0" source="assets/images/BG.jpg"/>
@@ -1019,15 +1012,11 @@
 		
 	</s:BorderContainer>
 	
-	
 	<s:VGroup id="contentholder" width="100%" height="100%" verticalAlign="middle" horizontalAlign="center">
-		
 		
 		<s:Group id="holder" width="{MAX_WIDTH}" height="{MAX_HEIGHT}">
 			
 			<s:BorderContainer id="borderHolder" width="100%"  height="100%" backgroundAlpha="0" borderVisible="false">
-				
-				
 				
 				<mx:ViewStack id="Stack" height="100%" width="100%"  creationPolicy="all">
 					

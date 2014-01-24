@@ -2,12 +2,19 @@
 <s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
 		 xmlns:s="library://ns.adobe.com/flex/spark" 
 		 xmlns:mx="library://ns.adobe.com/flex/mx" 
-		 creationComplete="created(event)" xmlns:views="views.*" xmlns:teamsheet="views.teamsheet.*">
+		 creationComplete="created(event)" 
+		 xmlns:views="views.*" xmlns:teamsheet="views.teamsheet.*"
+		 removedFromStage="finalise(event)">
 	<fx:Script>
 		<![CDATA[
 			import com.alfo.utils.Console;
 			
+			import events.KioskError;
+			import events.ViewEvent;
+			
 			import flash.filters.BitmapFilterQuality;
+			
+			import model.TeamModel;
 			
 			import mx.core.UIComponent;
 			import mx.events.FlexEvent;
@@ -18,11 +25,6 @@
 			import spark.events.IndexChangeEvent;
 			import spark.filters.DropShadowFilter;
 			import spark.filters.GlowFilter;
-			
-			import events.KioskError;
-			import events.ViewEvent;
-			
-			import model.TeamModel;
 			[Bindable]
 			public var teamlogo:String;
 			
@@ -42,8 +44,6 @@
 			
 			public function created(event:FlexEvent=null):void
 			{
-				
-				
 				this.addEventListener( Event.INIT, init);
 				Stack.addEventListener(IndexChangedEvent.CHANGE, change);
 				
@@ -53,17 +53,15 @@
 			{
 				this.parentApplication.dispatchEvent( new ViewEvent( ViewEvent.LOCATION_RESTART ));
 			}
+			
 			public function init(event:Event=null):void
 			{
-//				Console.log("*** INIT TEAMSHEETS ***", this);
-				
 				if (this.parentApplication.data!=null)
 				{
 					data = this.parentApplication.data;
 					selectedTeam = data.team;
 					TeamModel.selectedTeam = selectedTeam;
 					teamname = data.team;
-//					Console.log( data.team, this );
 					timeline.selectedTeam = selectedTeam;
 					stats.addEventListener( "EMPTY", statEmpty);
 				}
@@ -111,7 +109,6 @@
 			
 			protected function populate(e:ResultEvent=null):void
 			{
-				
 				if (selectedTeam!=null)
 				{
 					var xml:XML = new XML(e.result);
@@ -120,36 +117,27 @@
 					teamid = TeamModel.team.@id;
 					teamlogo = TeamModel.team.@logo;
 					teamColor = TeamModel.getTeamColor();	
-					trace("sending out:"+teamData.url);
 					this.teamData.send();
-//					Console.log(teamid, this)
-						
 				}
 			}
+			
 			protected function populateInfo(e:ResultEvent=null):void
 			{
-				
-				
-				
 				if (selectedTeam!=null)
 				{
 					var xml:XML = new XML(e.result);
 					
 					TeamModel.teaminfo =  xml..teaminfo;
-//					Console.log( TeamModel.teaminfo, this);
-					
-					
 				}
 			}
+			
 			protected function error(e:FaultEvent):void
 			{
-				
 				this.parentApplication.dispatchEvent(new KioskError(KioskError.ERROR, e.fault.message.toString(), "COMMUNICATION ERROR"));
 				
 			}
 			protected function errorTeam(e:FaultEvent):void
 			{
-			//	this.parentApplication.dispatchEvent(new KioskError(KioskError.ERROR, e.statusCode.toString(), "COMMUNICATION TEAM ERROR"));
 				if (e.statusCode==0)
 				{
 					this.parentApplication.dispatchEvent(new KioskError(KioskError.ERROR, selectedTeam.toUpperCase()+" assets not implemented (Please try again, i.e. Aston Villa or Crystal Palace)", "TEAM NOT IMPLEMENTED", goHome));
@@ -158,7 +146,6 @@
 				{
 					this.parentApplication.dispatchEvent(new KioskError(KioskError.ERROR, e.fault.message.toString(), "COMMUNICATION TEAM ERROR"));
 				}
-				
 			}
 			
 			protected function change(e:IndexChangedEvent):void
@@ -182,9 +169,6 @@
 					teamname_text.setStyle("fontSize", defaultFontsize);
 					
 				}
-		//		Console.log("wxh:"+teamname_text.width+"x"+teamname_text.height, this);
-		//		Console.log("wxh:"+teamname_text.measuredWidth+"x"+teamname_text.measuredHeight, this);
-		//		Console.log("wxh:"+tm.width+"x"+tm.height, this);
 			}
 				
 				
@@ -211,7 +195,11 @@
 			{
 				trace("show video");
 				videoElemento.blah.play();
-				
+			}
+			
+			protected function finalise(event : Event) : void
+			{
+				trace("Teamsheet :: finalise");
 			}
 			
 		]]>
