@@ -428,8 +428,6 @@
 		</s:VGroup>
 		</s:BorderContainer>
 	
-	
-	
 	<s:BorderContainer id="start_overlay" borderAlpha="0" x="0" y="0" width="1920" height="1080" includeInLayout="false">
 		<s:backgroundFill>
 			<s:SolidColor alpha=".85" color="0x000000" />
