@@ -4,7 +4,7 @@
 		 xmlns:mx="library://ns.adobe.com/flex/mx" 
 		 creationComplete="created(event)" 
 		 xmlns:views="views.*" xmlns:teamsheet="views.teamsheet.*"
-		 removedFromStage="finalise(event)">
+		 remove="finalise(event)">
 	<fx:Script>
 		<![CDATA[
 			import com.alfo.utils.Console;
@@ -46,9 +46,9 @@
 			{
 				this.addEventListener( Event.INIT, init);
 				Stack.addEventListener(IndexChangedEvent.CHANGE, change);
-				
 				init();
 			}
+			
 			protected function goHome( e:Event=null ):void
 			{
 				this.parentApplication.dispatchEvent( new ViewEvent( ViewEvent.LOCATION_RESTART ));
@@ -104,7 +104,6 @@
 				teamname_text.setStyle("fontSize", defaultFontsize);
 				Stack.selectedIndex = 0;
 				stats.reset();
-				
 			}
 			
 			protected function populate(e:ResultEvent=null):void
@@ -152,7 +151,6 @@
 			{
 				if (e.oldIndex!=e.newIndex && e.oldIndex>=0)
 				{
-//					Console.log(Stack.getChildAt(e.oldIndex), this)
 					Stack.getChildAt(e.oldIndex).dispatchEvent(new Event("EXIT") );
 				}
 			}
@@ -200,6 +198,7 @@
 			protected function finalise(event : Event) : void
 			{
 				trace("Teamsheet :: finalise");
+				gallery.finalise();
 			}
 			
 		]]>
@@ -267,7 +266,6 @@
 				
 			</s:Group>
 			
-			
 			<mx:ViewStack id="Stack" height="100%" width="100%"  creationPolicy="all">
 				<mx:VBox hideEffect="{hideFX}"  showEffect="{showFX}">
 					<teamsheet:Statistics id="stats" />
@@ -279,7 +277,7 @@
 					<teamsheet:Video id="videoElemento" verticalCenter="0"/>
 				</mx:VBox>
 				<mx:VBox hideEffect="{hideFX}"   showEffect="{showFX}">
-					<teamsheet:Gallery />
+					<teamsheet:Gallery id="gallery"/>
 				</mx:VBox>
 				<mx:VBox hideEffect="{hideFX}"  showEffect="{showFX}">
 					<teamsheet:Timeline id="timeline" verticalCenter="0"/>
