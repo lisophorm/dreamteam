@@ -161,8 +161,7 @@
 				
 				<s:Label text="STATISTICS" color="{teamColor}"/>
 				<s:RichEditableText id="richTxt" editable="false" paddingTop="10" selectable="false" fontFamily="StandardRegularAllCase" color="0xFFFFFF" width="300" fontSize="18"
-							textFlow="{TextFlowUtil.importFromString(statistics)}"
-							  />
+							textFlow="{TextFlowUtil.importFromString(statistics)}"/>
 
 				
 								

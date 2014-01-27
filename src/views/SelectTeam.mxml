@@ -195,7 +195,7 @@
 	<fx:Declarations>
 		<!-- Place non-visual elements (e.g., services, value objects) here -->
 		<s:HTTPService id="teamData" resultFormat="xml" url="{(this.parentApplication).baseURL+'assets/xml/game_full.xml'}" result="populate(event)" fault="error(event)" />		
-		<fx:String id="game_subtext"><![CDATA[CHOOSE OUR FAVORITE PLAYERS TO MAKE UP YOUR CLUB’S ULTIMATE DREAM TEAM]]></fx:String>
+		<fx:String id="game_subtext"><![CDATA[CHOOSE YOUR FAVORITE PLAYERS TO MAKE UP YOUR CLUB’S ULTIMATE DREAM TEAM]]></fx:String>
 		<fx:String id="teamsheet_subtext"><![CDATA[A FEW THINGS YOU MIGHT NOT HAVE KNOWN ABOUT YOUR FAVOURITE CLUB]]></fx:String>
 		<s:Power id="powerEasing" exponent="4"/>
 		<s:Sine id="sineEasing" easeInFraction="0.3"/>

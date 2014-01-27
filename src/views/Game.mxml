@@ -326,10 +326,10 @@
 	
 		<s:VGroup horizontalAlign="center" width="100%" paddingTop="0">
 			<s:Group>
-				<s:HGroup horizontalCenter="0" verticalCenter="60">
-					<s:Label fontFamily="StandardRegularAllCase" text="{'You\'ve got '+clock.seconds.toString()+' seconds to select your Dream Team'}" color="0x97393A" fontSize="19" />
-					<s:Spacer width="200" />
-					<s:Label fontFamily="StandardRegularAllCase" text="Highlight your selected players from the list below"  color="0x97393A" fontSize="19"/>					
+				<s:HGroup horizontalCenter="50" verticalCenter="60">
+					<s:Label fontFamily="StandardRegularAllCase" text="{'You\'ve got '+clock.seconds.toString()+' seconds to select your Dream Team.\n'}" color="0x97393A" fontSize="19" />
+					<s:Spacer width="280" />
+					<s:Label fontFamily="StandardRegularAllCase" text="Use your finger to drag and drop players into the Team Sheet."  color="0x97393A" fontSize="19"/>					
 					
 				</s:HGroup>
 				
@@ -435,9 +435,10 @@
 			<s:SolidColor alpha=".85" color="0x000000" />
 		</s:backgroundFill>
 		<s:VGroup horizontalCenter="0" verticalCenter="-100" horizontalAlign="center">
-		<s:Label fontFamily="StandardRegularAllCase" textAlign="center" text="{'You’ve got '+this.clock.seconds+' seconds to select your Dream Team Highlight your selected players from the list below'}" fontSize="42" width="1139" >
-		</s:Label>
-			<s:Spacer height="20" />
+		<s:Label fontFamily="StandardRegularAllCase" textAlign="center" text="{'You’ve got '+this.clock.seconds+' seconds to select your Dream Team.'}" fontSize="42" width="1139"/>
+		<s:Spacer height="5"/>
+		<s:Label fontFamily="StandardRegularAllCase" textAlign="center" fontSize="42" color="0x00AEEF" text="Use your finger to drag and drop players into the Team Sheet."/>
+		<s:Spacer height="20" />
 	  <components:LargeButton label="START" click="doStart(event)" />
 	</s:VGroup>
 		

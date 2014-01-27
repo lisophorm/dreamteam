@@ -32,9 +32,6 @@
 			}
 			public function init(event:Event=null):void
 			{
-//				Console.log("*** INIT TOPFIVEPLAYERS ***", this);
-				
-				
 				if (this.parentApplication.data!=null)
 				{
 					/*	data = this.parentApplication.data;
@@ -43,60 +40,39 @@
 					Console.log( data.team, this );
 					*/
 				}
+				playPauseButton.skin.currentState = "upAndSelected";
 				this.parent.addEventListener( "EXIT", exit);
 				TeamModel._instance.addEventListener( TeamEvent.TEAM_INFO, ready);
 			}	
+			
 			protected function ready( e:TeamEvent ):void
 			{
 				if (TeamEvent.TEAM_INFO == e.type )
 				{
 					teamColor = TeamModel.getTeamColor();
 					videoSource = TeamModel.getVideo();		
-					//video.playerControls.visible = false;
-					
 				}
-				
 			}
 			
 			protected function exit( e:Event=null ):void
 			{
 			//	video.stop();
-				
 			}
-				
-			protected function blah_clickHandler(event:MouseEvent):void
+			
+			protected function videoClickHandler(event:MouseEvent):void
 			{
-				trace("you clicked videoplayer");
-				if(blah.playing) {
-					blah.pause();
+				if(videoPlayer.playing) {
+					videoPlayer.pause();
+					playPauseButton.skin.currentState = "up";
 				} else {
-					blah.play();
+					videoPlayer.play();
+					playPauseButton.skin.currentState = "upAndSelected";
 				}
 			}
 			
-			protected function blah_mediaPlayerStateChangeHandler(event:MediaPlayerStateChangeEvent):void
+			protected function videoCompleteHandler(event:TimeEvent):void
 			{
-				trace("video player state"+event.state);
-				
-				/*blah.playPauseButton.enabled=false;
-				blah.playButton.visible=false;
-				blah.pauseButton.visible=false;
-				blah.playPauseButton.enabled=false;
-				blah.playerControls.visible=false;*/
-				
-			}
-			
-			protected function blah_creationCompleteHandler(event:FlexEvent):void
-			{
-				//blah.playButton.visible=false;
-				//blah.pauseButton.visible=false;
-				//blah.playPauseButton.enabled=false;
-				//blah.playerControls.visible=false;
-			}
-			
-			protected function blah_completeHandler(event:TimeEvent):void
-			{
-				blah.seek(0);
+				videoPlayer.seek(0);
 				
 			}
 			
@@ -104,7 +80,7 @@
 			{
 				//blah.width=bordo.width;
 				//blah.height=bordo.height;
-				blah.setActualSize(300,300);
+				videoPlayer.setActualSize(300,300);
 			}
 			
 		]]>
@@ -117,9 +93,8 @@
 		<s:borderStroke>
 			<s:SolidColorStroke weight="15" color="0x000000" />
 		</s:borderStroke>
-		<!--width="{bordo.width}" height="{bordo.height}"-->
-		<s:VideoDisplay pauseWhenHidden="true" autoRewind="true" visible="true" scaleMode="letterbox" complete="blah_completeHandler(event)" creationComplete="blah_creationCompleteHandler(event)" mediaPlayerStateChange="blah_mediaPlayerStateChangeHandler(event)" source="{videoSource}"  click="blah_clickHandler(event)"  autoDisplayFirstFrame="true" autoPlay="true" id="blah"/>
-		<!--<s:VideoPlayer source="{videoSource}" skinClass="skins.VideoPlayerSkin" autoDisplayFirstFrame="true" autoPlay="true" id="video"/>-->
+		<s:VideoDisplay id="videoPlayer" pauseWhenHidden="true" autoRewind="true" visible="true" scaleMode="letterbox" complete="videoCompleteHandler(event)" source="{videoSource}"  click="videoClickHandler(event)"  autoDisplayFirstFrame="true" autoPlay="true"/>
+		<s:ToggleButton skinClass="skins.PlayPauseButtonSkin" id="playPauseButton"/>
 	</s:BorderContainer>
 	
 </s:Group>

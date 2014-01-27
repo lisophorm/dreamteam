@@ -135,6 +135,7 @@
 				this.parentApplication.dispatchEvent(new KioskError(KioskError.ERROR, e.fault.message.toString(), "COMMUNICATION ERROR"));
 				
 			}
+			
 			protected function errorTeam(e:FaultEvent):void
 			{
 				if (e.statusCode==0)
@@ -185,14 +186,14 @@
 			protected function vbox2_hideHandler(event:FlexEvent):void
 			{
 				trace("hide video");
-				videoElemento.blah.stop();
+				videoElemento.videoPlayer.stop();
 				
 			}
 			
 			protected function vbox2_showHandler(event:FlexEvent):void
 			{
 				trace("show video");
-				videoElemento.blah.play();
+				videoElemento.videoPlayer.play();
 			}
 			
 			protected function finalise(event : Event) : void
