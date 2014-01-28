@@ -118,10 +118,12 @@ package model
 		{
 			return _teaminfo.gallery..item;
 		}
-		public static function getTimeline():XMLList
+		
+		public static function getTimelineFilename():String
 		{
-			return _teaminfo.timeline..data;
+			return _teaminfo.timeline.swfFilename[0];
 		}
+		
 		public static function getTimelineGallery():XMLList
 		{
 			return _teaminfo.timeline.gallery..img;

@@ -35,7 +35,7 @@
 			
 			public function reset():void
 			{
-				Console.log("Reset", this);
+//				Console.log("Reset", this);
 				delayer = null;
 				random_quantity = "";
 				random_description = "";
@@ -72,7 +72,7 @@
 			{
 				if (TeamEvent.TEAM_INFO == e.type )
 				{
-					Console.log( TeamModel.teaminfo, this)
+//					Console.log( TeamModel.teaminfo, this)
 					qualityList = [];
 					descriptionList = [];
 					this.currentIndex = 0;
