@@ -342,7 +342,6 @@
 		</s:VGroup>
 		
 		<s:HGroup width="100%" paddingTop="0">
-	
 
 		<s:Spacer width="46" />
 		<s:VGroup width="400" id="buttonLists">

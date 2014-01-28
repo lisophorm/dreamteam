@@ -94,7 +94,7 @@
 			<s:SolidColorStroke weight="15" color="0x000000" />
 		</s:borderStroke>
 		<s:VideoDisplay id="videoPlayer" pauseWhenHidden="true" autoRewind="true" visible="true" scaleMode="letterbox" complete="videoCompleteHandler(event)" source="{videoSource}"  click="videoClickHandler(event)"  autoDisplayFirstFrame="true" autoPlay="true"/>
-		<s:ToggleButton skinClass="skins.PlayPauseButtonSkin" id="playPauseButton"/>
+		<s:ToggleButton skinClass="skins.PlayPauseButtonSkin" id="playPauseButton" click="videoClickHandler(event)"/>
 	</s:BorderContainer>
 	
 </s:Group>

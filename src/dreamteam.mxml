@@ -212,7 +212,6 @@
 				
 				checkUpdate();
 				
-				
 				if (!monitor.hasEventListener( MonitorConnection.EVENT_INTERNET_NOT_AVAILABLE))
 					monitor.addEventListener( MonitorConnection.EVENT_INTERNET_NOT_AVAILABLE, notifyNoInternet);
 				if (!monitor.hasEventListener( MonitorConnection.EVENT_USER_IDLE_TIMEOUT))
