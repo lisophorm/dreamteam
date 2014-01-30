@@ -121,7 +121,7 @@ package model
 		
 		public static function getTimelineFilename():String
 		{
-			return _teaminfo.timeline.swfFilename[0];
+			return _teaminfo.timeline;
 		}
 		
 		public static function getTimelineGallery():XMLList

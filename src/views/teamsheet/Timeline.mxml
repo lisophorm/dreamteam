@@ -57,7 +57,8 @@
 				if (TeamEvent.TEAM_INFO == e.type )
 				{
 					var timelineURL : String = TeamModel.getTimelineFilename();
-					timelineLoader.load("/assets/swf/" + timelineURL);
+					trace("Timeline :: ready :: " + timelineURL);
+					timelineLoader.load(timelineURL);
 					teamColor = TeamModel.getTeamColor();
 				}
 			}
