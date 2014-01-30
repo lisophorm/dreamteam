@@ -6,13 +6,14 @@
 	<fx:Script>
 		<![CDATA[
 			import com.alfo.utils.Console;
-			
-			import mx.events.FlexEvent;
-			import mx.events.ResizeEvent;
+			import com.greensock.TweenMax;
 			
 			import events.TeamEvent;
 			
 			import model.TeamModel;
+			
+			import mx.events.FlexEvent;
+			import mx.events.ResizeEvent;
 			
 			import org.osmf.events.MediaPlayerStateChangeEvent;
 			import org.osmf.events.TimeEvent;
@@ -40,7 +41,7 @@
 					Console.log( data.team, this );
 					*/
 				}
-				playPauseButton.skin.currentState = "upAndSelected";
+//				playPauseButton.skin.currentState = "upAndSelected";
 				this.parent.addEventListener( "EXIT", exit);
 				TeamModel._instance.addEventListener( TeamEvent.TEAM_INFO, ready);
 			}	
@@ -63,10 +64,10 @@
 			{
 				if(videoPlayer.playing) {
 					videoPlayer.pause();
-					playPauseButton.skin.currentState = "up";
+//					playPauseButton.skin.currentState = "up";
 				} else {
 					videoPlayer.play();
-					playPauseButton.skin.currentState = "upAndSelected";
+//					playPauseButton.skin.currentState = "upAndSelected";
 				}
 			}
 			
@@ -94,7 +95,12 @@
 			<s:SolidColorStroke weight="15" color="0x000000" />
 		</s:borderStroke>
 		<s:VideoDisplay id="videoPlayer" pauseWhenHidden="true" autoRewind="true" visible="true" scaleMode="letterbox" complete="videoCompleteHandler(event)" source="{videoSource}"  click="videoClickHandler(event)"  autoDisplayFirstFrame="true" autoPlay="true"/>
-		<s:ToggleButton skinClass="skins.PlayPauseButtonSkin" id="playPauseButton" click="videoClickHandler(event)"/>
+		<!--<s:ToggleButton horizontalCenter="0" verticalCenter="0"
+			skinClass="skins.PlayPauseButtonSkin" id="playPauseButton" click="videoClickHandler(event)">
+			<s:filters>
+				<s:DropShadowFilter alpha="0.5" distance="0" blurX="16" blurY="16"/>
+			</s:filters>
+		</s:ToggleButton>-->
 	</s:BorderContainer>
 	
 </s:Group>
