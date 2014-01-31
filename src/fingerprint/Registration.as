@@ -1,4 +1,4 @@
-package model
+package fingerprint
 {
 	import flash.desktop.NativeProcess;
 	import flash.desktop.NativeProcessStartupInfo;

@@ -68,12 +68,7 @@
 		<!-- Place non-visual elements (e.g., services, value objects) here -->
 	</fx:Declarations>
 	
-	<s:BorderContainer backgroundAlpha="0.7"  backgroundColor="0x000000" width="1280"  borderVisible="false">
-		<s:HGroup>
-			<s:VGroup paddingBottom="20">
-				<s:Label text="{selectedTeam.toUpperCase()+' HISTORY'}" width="100%" height="100" fontSize="76" color="{teamColor}" paddingLeft="50" paddingTop="10"/>
-				<s:SWFLoader id="timelineLoader"/>
-			</s:VGroup>
-		</s:HGroup>
+	<s:BorderContainer backgroundAlpha="0.7"  backgroundColor="0x000000" borderVisible="false" width="100%" height="100%">
+		<s:SWFLoader id="timelineLoader" width="100%" height="100%" top="20"/>
 	</s:BorderContainer>	
 </s:Group>

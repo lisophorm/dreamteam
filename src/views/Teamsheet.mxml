@@ -259,7 +259,7 @@
 					<teamsheet:Video id="videoElemento" verticalCenter="0"/>
 				</mx:VBox>
 				<mx:VBox hideEffect="{hideFX}"  showEffect="{showFX}">
-					<teamsheet:Timeline id="timeline" verticalCenter="0"/>
+					<teamsheet:Timeline id="timeline" verticalCenter="0" width="1240" height="850"/>
 				</mx:VBox>
 			</mx:ViewStack>
 			

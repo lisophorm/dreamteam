@@ -36,7 +36,6 @@
 			import events.UserEvent;
 			import events.ViewEvent;
 			
-			import model.Registration;
 			import model.Settings;
 			import model.UserData;
 			
