@@ -34,7 +34,7 @@
 			private var mousePositions : Array;
 			private var mouseRecorderTimer:Timer;
 			
-			private var positionsMaxLength : int = 4;
+			private var positionsMaxLength : int = 18;
 			private var zeroTime:int;
 			private var clickInterval : int = 80;
 			private var swipeThreshold : Number = 1;
@@ -132,9 +132,10 @@
 				if(elapsed > clickInterval)
 				{
 					event.stopPropagation();
+					var lastSafePosition : int = Math.min(12, mousePositions.length);
 					var positionOne : Number = mousePositions[0];
-					var positionTwo : Number = mousePositions[mousePositions.length - 1];
-					velocity = (positionTwo - positionOne) / mousePositions.length * carouselSensitivity * 1.5;
+					var positionTwo : Number = mousePositions[lastSafePosition - 1];
+					velocity = (positionTwo - positionOne) / mousePositions.length * carouselSensitivity * 2;
 					if(Math.abs(velocity) > swipeThreshold)
 					{
 						addEventListener(Event.ENTER_FRAME, enterFrameHandler);
@@ -195,7 +196,7 @@
 	<fx:Declarations>
 		<!-- Place non-visual elements (e.g., services, value objects) here -->
 		<s:HTTPService id="teamData" resultFormat="xml" url="{(this.parentApplication).baseURL+'assets/xml/game_full.xml'}" result="populate(event)" fault="error(event)" />		
-		<fx:String id="game_subtext"><![CDATA[CHOOSE YOUR FAVORITE PLAYERS TO MAKE UP YOUR CLUB’S ULTIMATE DREAM TEAM]]></fx:String>
+		<fx:String id="game_subtext"><![CDATA[CHOOSE OUR FAVORITE PLAYERS TO MAKE UP YOUR CLUB’S ULTIMATE DREAM TEAM]]></fx:String>
 		<fx:String id="teamsheet_subtext"><![CDATA[A FEW THINGS YOU MIGHT NOT HAVE KNOWN ABOUT YOUR FAVOURITE CLUB]]></fx:String>
 		<s:Power id="powerEasing" exponent="4"/>
 		<s:Sine id="sineEasing" easeInFraction="0.3"/>
