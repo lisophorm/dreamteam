@@ -18,6 +18,9 @@ SOFTWARE.
 
 package views.layouts    
 {
+	
+	import com.alfo.utils.Console;
+	
 	import flash.geom.ColorTransform;
 	import flash.geom.Point;
 	import flash.geom.Vector3D;

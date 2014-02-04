@@ -19,13 +19,13 @@ package model
 			stream = new FileStream();
 			// If it exists read it 
 			if (langFile.exists) {
-//				trace("preference file exists");
+				trace("preference file exists");
 				stream.open(langFile, FileMode.READ);
 				processXMLData();
 			}
 			else //Otherwise make a file and save it
 			{
-//				trace("no file");
+				trace("no file");
 				
 			}
 			}
