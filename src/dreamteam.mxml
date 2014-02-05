@@ -1007,7 +1007,7 @@
 					</mx:VBox>
 					
 					<mx:VBox hideEffect="{hideFX}"  showEffect="{showFX}">
-						<views:SelectTeam id="SelectTeam" />
+						<views:TeamCarousel id="SelectTeam" />
 					</mx:VBox>
 
 					<mx:VBox hideEffect="{hideFX}"  showEffect="{showFX}">
