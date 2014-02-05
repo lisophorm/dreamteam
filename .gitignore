@@ -19,6 +19,7 @@ local.properties
 .settings/
 .loadpath
 src/assets/swf/panoramas/
+.actionScriptProperties
 
 # External tool builders
 .externalToolBuilders/
