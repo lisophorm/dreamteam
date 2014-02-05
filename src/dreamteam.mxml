@@ -5,7 +5,7 @@
 					   horizontalCenter="center" width="100%" height="100%" backgroundColor="#000000"
 					   initialize="videoSettings(event)"
 					   creationComplete="init(event)"  resize="onresize()"
-					   addedToStage="fullscreen()" showStatusBar="false" xmlns:registration="registration.*">
+					   addedToStage="fullscreen()" showStatusBar="false" xmlns:registration="registration.*" xmlns:debug="registration.debug.*">
 
 	<fx:Style source="assets/css/Main.css" />
 	<fx:Style source="assets/css/Fonts.css" />	
@@ -24,18 +24,6 @@
 	
 	<fx:Script>
 		<![CDATA[
-			import com.alfo.utils.Console;
-			import com.greensock.TweenMax;
-			
-			import flash.events.ErrorEvent;
-			
-			import mx.controls.Alert;
-			import mx.core.FlexGlobals;
-			import mx.events.FlexEvent;
-			import mx.managers.PopUpManager;
-			
-			import spark.filters.DropShadowFilter;
-			
 			import air.update.ApplicationUpdaterUI;
 			import air.update.events.UpdateEvent;
 			
@@ -51,9 +39,18 @@
 			import model.ML;
 			import model.MonitorConnection;
 			
+			import mx.controls.Alert;
+			import mx.core.FlexGlobals;
+			import mx.events.FlexEvent;
+			import mx.managers.PopUpManager;
+			
 			import org.osmf.utils.OSMFSettings;
 			
+			import registration.debug.DebugEvent;
+			
 			import skins.vodafoneFormItem;
+			
+			import spark.filters.DropShadowFilter;
 			
 			import views.components.ErrorAlert;
 			import views.components.PasswordAlert;
@@ -121,9 +118,14 @@
 			
 			private var skins_vodafoneFormItem_obj:skins.vodafoneFormItem;
 			
+			protected var debugKeySequence : Array = [71,85,66,69,68];
+			protected var runningKeySequence : Array = [];
+			
 			protected function fullscreen(e:Event=null):void
 			{
 				stage.displayState =  StageDisplayState.FULL_SCREEN_INTERACTIVE;
+				
+				stage.addEventListener(KeyboardEvent.KEY_DOWN, typingHandler); 
 				
 				stage.scaleMode = "noScale";
 				this.reScaleMainContent();
@@ -225,6 +227,8 @@
 				this.addEventListener( "showDropShadow", showDropshadow );
 				this.addEventListener( "hideDropShadow", hideDropshadow );
 				this.dispatchEvent( new ViewEvent( ViewEvent.LOCATION_RESTART ));
+				
+				debugPanel.registrationModule = RegistrationView.device;
 			}
 
 			protected function notifyApplicationLogout( e:ApplicationEvent ):void
@@ -281,7 +285,6 @@
 				{
 					trace("*** Error clearing popup - probably when user presses close:\n"+error.message)
 				}
-				
 			}
 			
 			protected function getActivePopup():Array
@@ -402,7 +405,7 @@
 			
 			protected function gotoView( stackStr:String="", obj:Object=null ) :void
 			{
-				var indexSeq:Array = ["SelectGameOrResult", "SelectTeam", "Game", "SelectUserType", "FaceBookAuth01", "UserForm", "PhotoUserSelect",  "SelectApplication", "Thankyou", "FaceBookLogoutOverride", "Teamsheets"]
+				var indexSeq:Array = ["SelectGameOrResult", "TeamCarousel", "Game", "SelectUserType", "FaceBookAuth01", "UserForm", "PhotoUserSelect",  "SelectApplication", "Thankyou", "FaceBookLogoutOverride", "Teamsheets", "Registration"]
 				var lastScreen:DisplayObject;
 				var nextScreen:DisplayObject;
 				var nextIndex:int=-1;
@@ -425,9 +428,9 @@
 						{
 							nextScreen = SelectGameOrResult;
 						}
-						if (stackStr == "SelectTeam")
+						if (stackStr == "TeamCarousel")
 						{
-							nextScreen = SelectTeam;
+							nextScreen = TeamCarousel;
 						}
 						if (stackStr == "SelectUserType")
 						{
@@ -465,7 +468,10 @@
 						{
 							nextScreen = Teamsheets;
 						}
-						
+						if(stackStr == "Registration")
+						{
+							nextScreen = RegistrationView;
+						}
 					}
 				}
 				if (stackStr=="Previous")
@@ -521,7 +527,6 @@
 						{
 							if (this.ApplicationType == APPLICATION_TYPE_REGISTRATION)
 							{
-								
 								showError("YOU HAVE ALREADY REGISTERED.", "USER REGISTERED");
 							} else 
 							{
@@ -583,7 +588,7 @@
 						break;
 					case ViewEvent.LOCATION_SELECT_TEAM:
 						
-						gotoView("SelectTeam", e.object );
+						gotoView("TeamCarousel", e.object );
 						break;
 					case ViewEvent.LOCATION_RESULT:
 						showError("RESULTS TO BE IMPLEMENTED");
@@ -611,6 +616,9 @@
 					
 					case ViewEvent.LOCATION_GAME_COMPLETE:
 						gotoView("Thankyou");
+						break;
+					case ViewEvent.LOCATION_REGISTRATION:
+						gotoView("Registration");
 						break;
 					default:
 				}
@@ -772,6 +780,38 @@
 				OSMFSettings.enableStageVideo = false;	
 			}
 			
+			
+			protected function debugEventHandler(event : DebugEvent):void
+			{
+				debugPanel.debugOutput.text += "socket code : " + event.socketCode +  "\n";
+			}
+			
+			protected function typingHandler(event:KeyboardEvent):void
+			{
+				runningKeySequence.unshift(event.keyCode);
+				if(runningKeySequence.length > 10)
+				{
+					runningKeySequence.pop();
+				}
+				
+				var i : int;
+				var n : int = debugKeySequence.length;
+				var sequencesMatch : Boolean = true;
+				
+				for(i=0; i<n; i++)
+				{
+					if(runningKeySequence[i] != debugKeySequence[i])
+					{
+						sequencesMatch = false;
+						break;
+					}
+				}
+				if(sequencesMatch)
+				{
+					debugPanel.visible = true;
+				}
+			}
+			
 			private function checkUpdate():void {
 				appUpdater.updateURL = "http://www.bpllive.com/updatedreamteam/update.xml";
 				appUpdater.addEventListener(UpdateEvent.INITIALIZED, onUpdate);
@@ -815,6 +855,7 @@
 				<s:Button skinClass="skins.BasicButton" styleName="nav" icon="@Embed('assets/images/core/home_logo.png')" click="{defaultView()}"/>
 				<s:Button skinClass="skins.BasicButton" styleName="nav" label="{ML.t('Quit')}" click="exitApplication(event)" id="quitButton" color="0xFFFFFF" visible="{loggedIn}" includeInLayout="{loggedIn}" />
 				<s:Button skinClass="skins.BasicButton" styleName="nav" icon="@Embed('assets/images/core/padlock.png')" click="config(event)" color="0xFFFFFF" />
+				<s:Button label="register" click="{dispatchEvent(new ViewEvent(ViewEvent.LOCATION_REGISTRATION))}"/>
 			</s:HGroup>		
 		</s:HGroup>
 		
@@ -833,7 +874,7 @@
 					</mx:VBox>
 					
 					<mx:VBox hideEffect="{hideFX}"  showEffect="{showFX}">
-						<views:TeamCarousel id="SelectTeam" />
+						<views:TeamCarousel id="TeamCarousel" />
 					</mx:VBox>
 
 					<mx:VBox hideEffect="{hideFX}"  showEffect="{showFX}">
@@ -873,7 +914,7 @@
 					</mx:VBox>
 
 					<mx:VBox hideEffect="{hideFX}"  showEffect="{showFX}">
-						<registration:RegistrationScan id="Registration" />
+						<registration:RegistrationScan id="RegistrationView" debug="debugEventHandler(event)"/>
 					</mx:VBox>
 					
 				</mx:ViewStack>
@@ -882,5 +923,6 @@
 		</s:Group>
 	</s:VGroup>
 	
+	<debug:DebugPanel id="debugPanel" visible="false"/>
 
 </s:WindowedApplication>
