@@ -11,23 +11,15 @@
 	<fx:Style source="assets/css/Fonts.css" />	
 
 	<fx:Declarations>
-		
+
 		<s:Parallel id="hideFX" duration="400">
-			
 			<s:Fade alphaTo="0.0"/>
-			<!--<mx:Blur blurXFrom="100.0" blurXTo="5.0" />
-			<mx:Move xTo="{Stack.width}"/> -->
-			
 		</s:Parallel>
 		
 		<s:Parallel id="showFX" duration="400">
-			
 			<s:Fade alphaTo="1.0"/>
-			<!--<mx:Blur blurXFrom="100.0" blurXTo="0.0" />
-			<mx:Move xFrom="{-Stack.width}"/>-->
-			
 		</s:Parallel>
-		
+
 	</fx:Declarations>
 	
 	<fx:Script>
@@ -129,7 +121,6 @@
 			
 			private var skins_vodafoneFormItem_obj:skins.vodafoneFormItem;
 			
-			
 			protected function fullscreen(e:Event=null):void
 			{
 				stage.displayState =  StageDisplayState.FULL_SCREEN_INTERACTIVE;
@@ -142,6 +133,7 @@
 			{
 				screenScale();
 				centerPopups();
+				
 				this.holder.scaleX = Math.min(1,scale);
 				this.holder.scaleY = Math.min(1,scale);
 				
@@ -165,13 +157,13 @@
 					
 				}
 			}
+			
 			protected function screenScale():void
 			{
 				if (Capabilities.screenResolutionX!=MAX_RES_X || Capabilities.screenResolutionY!=MAX_RES_Y)
 				{
 					MAX_HEIGHT = MAX_HEIGHT;
 					
-					// if screen capability is smaller than design resolution do inital scale
 					if (MAX_WIDTH > Capabilities.screenResolutionX || MAX_HEIGHT > Capabilities.screenResolutionY)
 					{
 						RELATIVE_SCALE = Math.min(1, Math.min(MAX_WIDTH/ Capabilities.screenResolutionX, MAX_HEIGHT/ (Capabilities.screenResolutionY)));
@@ -182,6 +174,7 @@
 					MAX_HEIGHT = MAX_HEIGHT * RELATIVE_SCALE;
 				}
 			}
+			
 			protected function init(e:Event = null):void
 			{
 				
@@ -192,9 +185,8 @@
 					trace("update not supported");
 				}
 				
-//				Mouse.hide();
+				/*Mouse.hide();*/
 				
-				// navigation bar must be on top
 				if (this.getElementIndex( navigationbar )< this.getElementIndex( contentholder) )
 				{
 					this.swapElements( navigationbar, contentholder);
@@ -212,16 +204,6 @@
 				monitor =  new MonitorConnection(baseURL+"ping.php");
 				
 				checkUpdate();
-				
-				if (!monitor.hasEventListener( MonitorConnection.EVENT_INTERNET_NOT_AVAILABLE))
-					monitor.addEventListener( MonitorConnection.EVENT_INTERNET_NOT_AVAILABLE, notifyNoInternet);
-				if (!monitor.hasEventListener( MonitorConnection.EVENT_USER_IDLE_TIMEOUT))
-					monitor.addEventListener( MonitorConnection.EVENT_USER_IDLE_TIMEOUT, notifyIdle);
-				
-				//Display connect symbol
-				blinkTimer = new Timer( 1000 , 0 );
-				blinkTimer.addEventListener( "timer" , toggleConnectIcon);
-				blinkTimer.start();
 				
 				this.addEventListener( ApplicationEvent.SAVE_TYPE, notifyApplicationTypeUpdate );
 				this.addEventListener( ApplicationEvent.LOGOUT, notifyApplicationLogout );
@@ -243,58 +225,11 @@
 				this.addEventListener( "showDropShadow", showDropshadow );
 				this.addEventListener( "hideDropShadow", hideDropshadow );
 				this.dispatchEvent( new ViewEvent( ViewEvent.LOCATION_RESTART ));
-				
-				navigationTimer = new Timer(200, 0);
-				navigationTimer.addEventListener( TimerEvent.TIMER, checkNavigationHover );
-				navigationTimer.start();
-			}
-			protected var navigationTimer:Timer;
-			protected var navigationTimerCount:int=0;
-			protected var navigationVisible:Boolean = false;
-			protected function checkNavigationHover( e:Event = null ):void
-			{
-			//	Console.log(this.stage.mouseY+"<"+navigationbar.height+" "+navigationTimerCount, this)
-				if (this.stage.mouseY<navigationbar.height)
-				{
-					navigationTimerCount = Math.min(navigationTimerCount+1,1);
-				} else 
-				{
-					navigationTimerCount = Math.max(navigationTimerCount-1,0); 
-				}
-				if (navigationTimerCount==1)
-				{
-					if (!navigationVisible)
-					{
-					//	Console.log("Show Navigation", this)
-						showNavigation();
-						navigationVisible = true;
-					}
-				}
-				if (navigationTimerCount==0)
-				{
-					if (navigationVisible)
-					{
-					//	Console.log("Hide Navigation", this)
-						//hideNavigation()
-					}
-				}
-
-			}
-			protected function showNavigation( e:Event = null ):void
-			{
-				navigationVisible = true;
-				TweenMax.to( navigationbar, .5, { alpha: 1, y: 0});
-			}
-			protected function hideNavigation( e:Event = null ):void
-			{
-				navigationVisible = false;
-				TweenMax.to( navigationbar, .5, { alpha: 0, y:-navigationbar.height});
 			}
 
 			protected function notifyApplicationLogout( e:ApplicationEvent ):void
 			{
 				this.loggedIn = false;
-				
 			}
 			
 			protected function notifyApplicationTypeUpdate( e:ApplicationEvent ):void
@@ -348,6 +283,7 @@
 				}
 				
 			}
+			
 			protected function getActivePopup():Array
 			{
 				var popups : Array = [];
@@ -401,11 +337,13 @@
 					if("onsresize" in p[i])
 					{
 					}else
-					try {
-						p[i].onresize();
-					} catch (e:Error)
-					{
-						trace("Dreamteam :: centerPopups :: uncaught :: " + e.name + " :: " + p[i]);
+					{	
+						try {
+							p[i].onresize();
+						} catch (e:Error)
+						{
+							trace("Dreamteam :: centerPopups :: uncaught error!!");
+						}
 					}
 				}
 			}
@@ -413,18 +351,18 @@
 			protected function notifyWaiting( e:KioskWaitEvent = null ):void
 			{
 				clearPopups();
-				
 				popupWait = new pleaseWait();
 				popupWait.message = e.message;
 				PopUpManager.addPopUp(popupWait, this, true) ;
 				PopUpManager.centerPopUp(popupWait);
 				centerPopups();
-				
 			}
+			
 			protected function notifyProgressComplete( e:KioskProgressEvent = null):void
 			{
 				clearPopups();
 			}
+			
 			protected function notifyProgress( e:KioskProgressEvent = null):void
 			{
 				clearPopups();
@@ -461,6 +399,7 @@
 				PopUpManager.centerPopUp(tcWindow);
 				centerPopups();
 			}
+			
 			protected function gotoView( stackStr:String="", obj:Object=null ) :void
 			{
 				var indexSeq:Array = ["SelectGameOrResult", "SelectTeam", "Game", "SelectUserType", "FaceBookAuth01", "UserForm", "PhotoUserSelect",  "SelectApplication", "Thankyou", "FaceBookLogoutOverride", "Teamsheets"]
@@ -529,32 +468,27 @@
 						
 					}
 				}
-				//Console.log("Nextscreen "+getQualifiedClassName(nextScreen), this);
 				if (stackStr=="Previous")
 				{
 					gotoView( indexSeq[ Stack.selectedIndex-1], obj );
 				}
 				
-				// ENSURE LAST SCREEN CALLS EXIT
 				if (lastScreen!=null)
 				{
 					lastScreen.dispatchEvent( new FlexEvent(FlexEvent.REMOVE) );
 				}
 				
-				// ENSURE NEXT SCREEN CALLS INIT
 				if (nextScreen!=null)
 				{
 					nextScreen.dispatchEvent( new Event( Event.INIT ) );
 				}
 				
-				// GO TO NEXT STACK ITEM
 				if (nextIndex>-1)
 				{
 					Stack.selectedIndex = nextIndex;
 				}
 			}
 			
-			//NAVIGATION HANDLING BETWEEN VIEWS
 			protected function doNavigation(e:ViewEvent):void
 			{
 				clearPopups();
@@ -562,22 +496,13 @@
 				switch (e.location)
 				{
 					case ViewEvent.LOCATION_RESTART:
-						//this.navigator.popToFirstView(fadeTrans);
-						//	gotoView("ScanWristBand");
 						if (this.ApplicationType == APPLICATION_TYPE_REGISTRATION || this.ApplicationType == APPLICATION_TYPE_REGISTER_GAME)
 						{
 							isRegistered = null;
 							gotoView("SelectGameOrResult");
-							
 						} else
 						{
-							
 							this.dispatchEvent( new ViewEvent( ViewEvent.LOCATION_SELECT_GAME_OR_RESULT ));
-							
-//							this.dispatchEvent( new ViewEvent( ViewEvent.LOCATION_SELECT_USER_TYPE ));
-							//this.dispatchEvent( new ViewEvent( ViewEvent.LOCATION_TEAMSHEETS, {team: "Aston Villa"} ));
-							//this.dispatchEvent( new ViewEvent( ViewEvent.LOCATION_GAME, {team: "West Brom"} ));
-							//this.dispatchEvent( new ViewEvent( ViewEvent.LOCATION_FACEBOOK, {urn: 'XXXXXX', optin_marketing: false, optin_terms: true} ));
 						}
 						
 						break;
@@ -598,7 +523,6 @@
 							{
 								
 								showError("YOU HAVE ALREADY REGISTERED.", "USER REGISTERED");
-								//ScanWristBand.init();
 							} else 
 							{
 								this.dispatchEvent( new ViewEvent( ViewEvent.LOCATION_GAME ));
@@ -635,11 +559,9 @@
 						break;
 					
 					case ViewEvent.LOCATION_FACEBOOK_REGISTERED:
-						trace("User has registered on facebook");
 						this.dispatchEvent( new UserEvent(UserEvent.REGISTERED, "facebook"));
 						this.dispatchEvent( new ViewEvent( ViewEvent.LOCATION_REGISTRATION_COMPLETE ));
 						
-						//	this.navigator.pushView(views.ExtraInfo, {urn: barcode});
 						break;
 					
 					case ViewEvent.LOCATION_REGISTRATION_COMPLETE:
@@ -670,22 +592,10 @@
 						
 						if (ApplicationType == APPLICATION_TYPE_GAME)
 						{
-							//showError("GAME TO BE IMPLEMENTED");
 							gotoView("Game", e.object);
-						/*	
-							if (this.isFacebookRegistered)
-							{
-								gotoView("CameraCapture", {urn: barcode, type: ApplicationTypeNumber, facebook: this.isFacebookRegistered});
-							} else
-							{
-								//gotoView("ScanWristBand");
-								showError("USER NOT REGISTERED WITH FACEBOOK ACCOUNT", "FACEBOOK ACCOUNT REQUIRED", this.defaultView);
-							}
-							*/
 							
 						} else if  (ApplicationType == APPLICATION_TYPE_GAME_SELECT_USER )
 						{
-							//showError("GAME: BRAND AMBASSADOR TAKES NOTES DOWN WHEN USER COMPLETES AN ACTIVITY", "NOT IMPLEMENTED");
 							gotoView("PhotoUserSelect",  {urn: barcode, type: ApplicationTypeNumber, facebook: this.isFacebookRegistered});
 							
 						} else if  ( this.ApplicationType == APPLICATION_TYPE_REGISTER_GAME)
@@ -696,80 +606,31 @@
 						{
 							gotoView("ScanWristBand");
 							showError("UNKNOWN ACTIVTIY : '"+e.location+"'", "NOT IMPLEMENTED");
-							
 						}
 						break;
+					
 					case ViewEvent.LOCATION_GAME_COMPLETE:
 						gotoView("Thankyou");
 						break;
 					default:
-						
 				}
 			}
 			
 			protected function error(e:KioskError=null):void
 			{
-				trace("Error: "+e.message);
 				showError(e.message, e.title, e.exitFunction);
-			}
-			
-			protected function toggleConnectIcon(e:Event):void
-			{
-				if ( connStatus.visible )
-				{            
-					connStatus.visible = false;                
-				} else if (!monitor.isConnected()) 
-				{            
-					connStatus.visible = true;                
-				}      
 			}
 			
 			protected function notifyIdle(e:Event):void
 			{
-				//defaultState();
 				if (this.ApplicationType == APPLICATION_TYPE_GAME)
 				{
-					Console.log("Timeout but in GAME so not resetting", this);
 				} else 
 				{
 					defaultView();
-					Console.log("Idle too long - resetting", this);
-	
 				}
 			}
-			protected function notifyNoInternet(e:Event):void
-			{
-				defaultView();
-				monitor.removeEventListener( MonitorConnection.EVENT_INTERNET_NOT_AVAILABLE, notifyNoInternet);
-				monitor.addEventListener( MonitorConnection.EVENT_INTERNET_AVAILABLE, notifyInternet);
-				//showError("SORRY - NO INTERNET CONNECTION", "CONNECTION ERROR");
-			}
-			protected function notifyInternet(e:Event):void
-			{
-				monitor.addEventListener( MonitorConnection.EVENT_INTERNET_NOT_AVAILABLE, notifyNoInternet);
-				monitor.removeEventListener( MonitorConnection.EVENT_INTERNET_AVAILABLE, notifyInternet);
-				
-				
-				if (alertbox!=null)
-				{
-					if (alertbox.windowTitle == "CONNECTION ERROR")
-					{
-						PopUpManager.removePopUp(alertbox);
-						
-						/*
-						if (currentState == "Scan")
-						{
-						if (highscore!=null)
-						{
-						highscore.init();
-						}
-						}
-						*/
-					}
-				}
-				defaultView();
-				
-			}
+			
 			protected function showError(msg:String="", title:String="", exitFunction:Function=null):void
 			{
 				clearPopups();
@@ -829,7 +690,6 @@
 			protected function setBarCode(e:UserEvent):void
 			{
 				barcode = e.urn;
-				trace("recorded barcode:"+barcode);
 			}
 			
 			protected function setScore(e:UserEvent):void
@@ -842,7 +702,6 @@
 				this.isRegistered =  (e.userType)
 				this.userId = e.id;
 				this.userName = e.name;
-				trace("recorded isRegistered: "+this.isRegistered.toString());
 			}
 			
 			public function get isFacebookRegistered():Boolean
@@ -869,12 +728,11 @@
 			
 			protected function setMarketingOptin( e:UserEvent ):void
 			{
-				trace("markting:"+e.optin_marketing);
 				optin_marketing = e.optin_marketing
 			}
+			
 			protected function setTermsOptin( e:UserEvent ):void
 			{
-				trace("terms:"+e.optin_terms);
 				optin_terms = e.optin_terms;
 			}
 			
@@ -904,61 +762,30 @@
 				return FlexGlobals.topLevelApplication.systemManager.isFontFaceEmbedded(tf);
 			}
 
-			
-			/**
-			 * A simple code just to read the current version of the application 
-			 * and display it in a label. 
-			 */
 			private function setApplicationVersion():void {
 				var appXML:XML = NativeApplication.nativeApplication.applicationDescriptor;
 				var ns:Namespace = appXML.namespace();
-				//lblAppVersion.text = "App version: " + appXML.ns::version;
 			}
-			
-			
 
 			protected function videoSettings(event:FlexEvent):void
 			{
 				OSMFSettings.enableStageVideo = false;	
 			}
 			
-			/**
-			 * This function is triggered when the application finished to load;
-			 * Here we initialize <code>appUpdater</code> and set some properties
-			 */ 
 			private function checkUpdate():void {
-				// we set the URL for the update.xml file
 				appUpdater.updateURL = "http://www.bpllive.com/updatedreamteam/update.xml";
-				//we set the event handlers for INITIALIZED and ERROR
 				appUpdater.addEventListener(UpdateEvent.INITIALIZED, onUpdate);
 				appUpdater.addEventListener(ErrorEvent.ERROR, onError);
-				//we can hide the dialog asking for permission for checking for a new update;
-				//if you want to see it just leave the default value (or set true).
 				appUpdater.isCheckForUpdateVisible = true;
-				//if isFileUpdateVisible is set to true, File Update, File No Update, 
-				//and File Error dialog boxes will be displayed
 				appUpdater.isFileUpdateVisible = true;
-				//if isInstallUpdateVisible is set to true, the dialog box for installing the update is visible
 				appUpdater.isInstallUpdateVisible = true;
-				//we initialize the updater
 				appUpdater.initialize();
 			}
 			
-			/**
-			 * Handler function triggered by the ApplicationUpdater.initialize;
-			 * The updater was initialized and it is ready to take commands 
-			 * (such as <code>checkNow()</code>
-			 * @param UpdateEvent 
-			 */ 
 			private function onUpdate(event:UpdateEvent):void {
-				//start the process of checking for a new update and to install
 				appUpdater.checkNow();
 			}
 			
-			/**
-			 * Handler function for error events triggered by the ApplicationUpdater.initialize
-			 * @param ErrorEvent 
-			 */ 
 			private function onError(event:ErrorEvent):void {
 				Alert.show(event.toString());
 			}
@@ -972,9 +799,9 @@
 				 smooth="true" smoothingQuality="high" alpha="0" source="assets/images/BG.jpg"/>
 	</s:VGroup>
 	
-	<s:BorderContainer id="navigationbar" alpha="0" includeInLayout="false" borderAlpha="0" width="{this.stage.stageWidth}" height="90" click="fullscreen(event)">
+	<s:BorderContainer id="navigationbar" includeInLayout="false" borderAlpha="0" width="{this.stage.stageWidth}" height="90" click="fullscreen(event)">
 		<s:backgroundFill>
-						<s:LinearGradient rotation="90">
+				<s:LinearGradient rotation="90">
 				<s:GradientEntry color="0x000000" alpha=".5"/>
 				<s:GradientEntry color="0x000000" alpha=".1"/>
 			</s:LinearGradient>
@@ -986,7 +813,6 @@
 			<s:HGroup width="100%" horizontalAlign="right" paddingRight="0" verticalAlign="middle" height="90">
 				<s:Button skinClass="skins.BasicButton" styleName="nav" icon="@Embed('assets/images/core/nm-no-connection.gif')" id="connStatus" label="{ML.t('NO CONNECTION')}" color="0xFFFFFF" visible="false" />
 				<s:Button skinClass="skins.BasicButton" styleName="nav" icon="@Embed('assets/images/core/home_logo.png')" click="{defaultView()}"/>
-				
 				<s:Button skinClass="skins.BasicButton" styleName="nav" label="{ML.t('Quit')}" click="exitApplication(event)" id="quitButton" color="0xFFFFFF" visible="{loggedIn}" includeInLayout="{loggedIn}" />
 				<s:Button skinClass="skins.BasicButton" styleName="nav" icon="@Embed('assets/images/core/padlock.png')" click="config(event)" color="0xFFFFFF" />
 			</s:HGroup>		
