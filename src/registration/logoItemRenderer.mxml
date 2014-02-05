@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<renderer:logoRenderer xmlns:fx="http://ns.adobe.com/mxml/2009" 
+				xmlns:s="library://ns.adobe.com/flex/spark" 
+				xmlns:mx="library://ns.adobe.com/flex/mx" 
+				autoDrawBackground="false" xmlns:components="views.components.*"  
+				clipAndEnableScrolling="false" 
+				xmlns:renderer="views.renderer.*" 
+				resizeMode="scale" autoLayout="true" visible="{data.@logo!=''}">
+	<fx:Script>
+		<![CDATA[
+			import spark.filters.GlowFilter;
+			import  flash.filters.BitmapFilterQuality;
+			
+			protected function filterSet():Array
+			{
+				
+			var df:spark.filters.DropShadowFilter = new spark.filters.DropShadowFilter();
+			df.angle = 45;
+			df.blurX = df.blurY = 5;
+			df.distance = 5;
+			df.strength = .22;
+			df.quality = flash.filters.BitmapFilterQuality.HIGH;				
+			df.color = 0x000000;
+			var gf:spark.filters.GlowFilter = new spark.filters.GlowFilter();
+			gf.blurX = gf.blurY = 10;
+			gf.strength = 1;
+			gf.quality = flash.filters.BitmapFilterQuality.HIGH;				
+			gf.color = 0x000000;
+				return [df, gf];
+			}
+			
+		]]>
+	</fx:Script>
+	
+	<s:BorderContainer  width="118" height="100" visible="{data.@logo!=''}" backgroundAlpha="0" borderVisible="false">
+		
+	
+		<s:Image smooth="true"  width="118" height="100" visible="{data.@logo!=''}" id="logo" source="{'/assets/images/logos/'+data.@logo.toString()}" verticalCenter="0" horizontalCenter="0"      />
+	</s:BorderContainer>
+		
+
+	</renderer:logoRenderer>

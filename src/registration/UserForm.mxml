@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		xmlns:s="library://ns.adobe.com/flex/spark" 
+		xmlns:mx="library://ns.adobe.com/flex/mx"
+		remove="exit(event)" creationComplete="created(event)" 
+		>
+	<fx:Script>
+		<![CDATA[
+			import com.alfo.utils.VirtualKeyboard;
+			
+			import events.KioskError;
+			import events.KioskEvent;
+			import events.UserEvent;
+			import events.ViewEvent;
+			
+			import model.Settings;
+			
+			import mx.events.FlexEvent;
+			import mx.rpc.events.FaultEvent;
+			import mx.rpc.events.ResultEvent;
+			import mx.validators.Validator;
+			
+			[Bindable]
+			protected var validatorArr:Array;
+			
+			[Bindable]
+			public var data:Object;
+			
+			
+			protected var currentURN:String;
+			public var optin_marketing:Boolean;
+			public var optin_terms:Boolean;
+			private var virtualKeyboard:VirtualKeyboard;
+			private var settings:Settings;
+			
+			public function created(event:FlexEvent=null):void
+			{
+				this.addEventListener( Event.INIT, init);
+			}
+			public function init(event:Event=null):void
+			{
+				clearData();
+				settings = Settings.instance;
+				if (this.parentApplication.data!=null)
+				{
+					//this.userFirstName.setFocus();
+					data = this.parentApplication.data;
+					this.currentURN = data.urn;
+					optin_marketing = data.optin_marketing;
+					optin_terms = data.optin_terms;
+
+				} else
+				{				
+					//Console.log("NO CURRENT URN", this);
+				}
+				validatorArr = new Array();
+				validatorArr.push(validateName);
+				validatorArr.push(validateSurname);
+				validatorArr.push(validateEmail);
+				saveData.url = (this.parentApplication).localURL+'register.php';
+			}
+			
+			protected function clearData():void
+			{
+				userFirstName.text = ""; 
+				userLastName.text = ""; 
+				userEmail.text = ""; 
+				
+				termsCheck.selected = false;
+				premierLeagueCheck.selected = false;
+				clubCheck.selected = false;
+				barclaysCheck.selected = false;
+								
+			}
+			protected function exit(event:Event=null):void
+			{
+				trace("*** INIT USERFORM ***");
+			}
+
+			protected function submit(event:MouseEvent):void 
+			{
+				var validatorErrorArray:Array = Validator.validateAll(validatorArr);
+				var isValidForm:Boolean = validatorErrorArray.length == 0;
+				if (isValidForm) 
+				{
+					//send data
+					saveData.send({urn: settings.userData.urn, 
+
+						firstname:userFirstName.text, 
+						lastname: userLastName.text, 
+						email: userEmail.text, 
+						optInTerms: termsCheck.selected ? 1 : 0, 
+						optInPremier: premierLeagueCheck.selected ? 1 : 0,
+						optInClub:premierLeagueCheck.selected ? 1 : 0,
+						optInBarclays:barclaysCheck.selected ? 1 : 0
+					});
+				//	save();
+				} 
+			}
+			
+			protected function clearForm():void
+			{
+				userEmail.text="";
+				userEmail.errorString="";
+				userFirstName.text="";
+				userFirstName.errorString="";
+				userLastName.text="";
+				userLastName.errorString="";
+				termsCheck.selected = false;
+				premierLeagueCheck.selected = false;
+				clubCheck.selected = false;
+				barclaysCheck.selected = false;
+			}
+			
+			protected function save(e:ResultEvent=null):void
+			{
+				// -> Do we need to send an isRegistered? We should divide Facebook and Direct registration perhaps
+				if(e.result)
+				{
+					if (e.result.result=="OK")
+					{
+						this.parentApplication.dispatchEvent( new UserEvent(UserEvent.REGISTERED, "classic"));
+						this.parentApplication.dispatchEvent( new ViewEvent( ViewEvent.LOCATION_REGISTRATION_COMPLETE ) );
+					} else
+					{
+						this.parentApplication.dispatchEvent(new KioskError(KioskError.ERROR, e.result.message.toString(), "COMMUNICATION ERROR"));
+					}
+				}else
+				{
+					this.parentApplication.dispatchEvent( new UserEvent(UserEvent.REGISTERED, "classic"));
+					this.parentApplication.dispatchEvent( new ViewEvent( ViewEvent.LOCATION_REGISTRATION_COMPLETE ) );
+					//this.parentApplication.dispatchEvent(new KioskError(KioskError.ERROR, "THE SERVER SENT AN EMPTY RESPONSE", "COMMUNICATION ERROR"));
+				}
+			}
+			
+			protected function error(e:FaultEvent):void
+			{
+				this.parentApplication.dispatchEvent(new KioskError(KioskError.ERROR, e.fault.message.toString(), "COMMUNICATION ERROR"));
+			}
+			
+			protected function tandcd_clickHandler(event:MouseEvent):void
+			{
+				this.parentApplication.dispatchEvent(new KioskEvent(KioskEvent.TERMS_NOTIFY));
+			}
+			
+			protected function keyHandler(event : KeyboardEvent):void
+			{
+				if(event.keyCode == 13)
+				{
+					if(stage)
+					{
+						stage.focus = null;
+					}
+				}
+			}
+			
+		]]>
+	</fx:Script>
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+		
+		<mx:StringValidator id="validateName" 
+							source="{userFirstName}"
+							property="text"
+							minLength="2">
+		</mx:StringValidator>
+		<mx:StringValidator id="validateSurname" 
+							source="{userLastName}"
+							property="text"
+							minLength="2">
+		</mx:StringValidator>
+		<mx:EmailValidator id="validateEmail"
+						   source="{userEmail}"
+						   property="text">
+		</mx:EmailValidator>
+
+		<s:HTTPService id="saveData" resultFormat="flashvars" method="POST" url="{(this.parentApplication).localURL+'register.php'}" result="save(event)" fault="error(event)" />
+	</fx:Declarations>
+	
+	<s:Form width="100%" id="userform" horizontalCenter="105" verticalCenter="-10">
+		<s:layout>
+			<s:FormLayout/>
+		</s:layout>
+		<s:FormHeading id="frontMessage" label="PLEASE ENTER YOUR DETAILS" />
+		<s:Spacer height="30" />
+		<s:FormItem label="First Name:" skinClass="skins.BarclaysFormItem" >				
+			<s:TextInput id="userFirstName" width="500" height="54" skinClass="skins.BarclaysTextInput" keyDown="keyHandler(event)"/>
+		</s:FormItem>
+		
+		<s:FormItem label="Last Name:" skinClass="skins.BarclaysFormItem">
+			<s:TextInput id="userLastName" width="500" height="54" skinClass="skins.BarclaysTextInput" keyDown="keyHandler(event)"/>
+		</s:FormItem>
+		
+		<s:FormItem label="Email address:" skinClass="skins.BarclaysFormItem">
+			<s:TextInput id="userEmail" width="500" height="54" skinClass="skins.BarclaysTextInput" keyDown="keyHandler(event)"/>
+		</s:FormItem>
+		
+		<s:Spacer height="30"/>
+		
+		<s:HGroup width="417">
+			<s:CheckBox id="termsCheck" width="145" styleName="tcaccept" label="ACCEPT " skinClass="skins.BarclaysCheckBox" />
+			<s:Label color="0x00AEEF" styleName="tclink" paddingTop="4" buttonMode="true" text="TERMS AND CONDITIONS" click="tandcd_clickHandler(event)" />
+		</s:HGroup>
+		
+		<s:Spacer height="20"/>
+		
+		<s:CheckBox id="premierLeagueCheck" width="145" styleName="tcaccept" label="I WOULD LIKE TO RECEIVE INFORMATION FROM THE PREMIER LEAGUE " skinClass="skins.BarclaysCheckBox" />
+
+		<s:Spacer height="20"/>
+		
+		<s:CheckBox id="clubCheck" width="145" styleName="tcaccept" label="I WOULD LIKE TO RECEIVE INFORMATION FROM MY CLUB " skinClass="skins.BarclaysCheckBox" />
+		
+		<s:Spacer height="20"/>
+		
+		<s:CheckBox id="barclaysCheck" width="145" styleName="tcaccept" label="I WOULD LIKE TO RECEIVE INFORMATION FROM BARCLAYS " skinClass="skins.BarclaysCheckBox" />
+	
+		<s:Spacer height="30"/>
+		
+	<s:HGroup width="100%" horizontalAlign="center">
+		
+		<s:Button label="CANCEL" click="clearForm()" skinClass="skins.barclaysButton"/>
+		<s:Spacer width="50" />
+		
+		<s:Button label="SUBMIT" click="submit(event)" skinClass="skins.barclaysButton"/>
+	</s:HGroup>
+	
+	</s:Form>
+	
+</s:Group>

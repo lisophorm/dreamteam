@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		 xmlns:s="library://ns.adobe.com/flex/spark" 
+		 xmlns:mx="library://ns.adobe.com/flex/mx" 
+		 xmlns:views="views.*" width="100%" height="100%"
+		 xmlns:layouts= "views.layouts.*"
+		 
+		 creationComplete="created(event)">
+	
+	<fx:Script>
+		<![CDATA[
+			import mx.core.IVisualElement;
+			import mx.core.UIComponent;
+			import mx.events.FlexEvent;
+			import mx.rpc.events.FaultEvent;
+			import mx.rpc.events.ResultEvent;
+			
+			import spark.filters.GlowFilter;
+			
+			import events.KioskError;
+			import events.KioskProgressEvent;
+			import events.ViewEvent;
+			
+			import model.Settings;
+			
+			public var data:Object;
+			protected var currentIndex:int
+			
+			[Bindable]
+			public var type:String = "Game";
+			
+			[Bindable]
+			public var teamDataList:XMLList;
+			
+			protected var teamFile:File;
+			protected var stream:FileStream;
+			private var myGlowIs:GlowFilter = new GlowFilter(0xffffff,1,12,12,2);
+			private var noGlowIs:GlowFilter = new GlowFilter(0xffffff,0,0,0,0);
+			
+			protected var currentURN:String;
+			private var settings:Settings;
+			
+			
+			public function created(event:FlexEvent=null):void
+			{
+				this.addEventListener( Event.INIT, init);
+			}
+			
+			public function init(event:Event=null):void
+			{
+				currentIndex = -1;
+				if (this.parentApplication.data!=null)
+				{
+					data = this.parentApplication.data;
+					currentURN = data.urn;
+				}
+				teamFile = File.applicationDirectory.resolvePath('assets/xml/teams.xml')
+				readXML();
+				
+				settings = Settings.instance;
+			}
+			private function readXML():void 
+			{
+				// If it exists read it 
+				if (teamFile.exists) {
+					//Console.log("team file exists", this);
+					stream = new FileStream();
+					stream.open(teamFile, FileMode.READ);
+					processXMLData();
+				}
+				else //Otherwise make a file and save it
+				{
+					this.parentApplication.dispatchEvent(new KioskError(KioskError.ERROR, teamFile.url+" NOT FOUND", "COMMUNICATION ERROR", this.init));
+				}
+				
+			}
+			public function exit( e:Event = null):void
+			{
+				trace("*** EXIT SELECTTEAM ***");
+			}
+			
+			protected function game(e:Event=null):void
+			{
+				this.parentApplication.dispatchEvent( new ViewEvent( ViewEvent.LOCATION_GAME ));
+			}
+			
+			private function processXMLData():void 
+			{
+				var xml:XML = XML(stream.readUTFBytes(stream.bytesAvailable));
+				stream.close();
+				teamDataList = (xml..team);
+			}
+			
+			// this function was attempting to add a series of dummy elements to thin out the scrollbar by increasing the number of elements.
+			// issues is that it is process intensive
+			protected function modify(list:XMLList):XMLList
+			{
+				if (list.length()>0)
+				{
+					var itemNo:int = 40;
+					var node:XML = XML(list[0]).copy();
+					node.@logo = ""; 
+					var addinsNo:Number = Math.round(itemNo/list.length());
+					var xmlCopy:XML = new XML(<mylist/>);
+						
+					var count:int = 0;
+					for (var i:int=0;i<itemNo;i++)
+					{
+						if (i%addinsNo==0 || addinsNo<=1)
+						{
+							xmlCopy.appendChild( XML(list[count]).copy() );
+							count++;
+						} else {
+							xmlCopy.appendChild( node.copy() );
+						}
+						
+					}
+					return xmlCopy..team;
+				} else {
+					return list;
+				}
+			}
+
+			
+			private function createListeners( e:Event= null ):void
+			{
+				for(var j:uint = 0; j < CarouselGroup.numElements; j++)
+				{
+					var item:IVisualElement = CarouselGroup.getElementAt( j );
+					if (item!=null)
+					{
+						//Console.log("item:"+item, this);
+						//MOUSE EVENT
+						item.removeEventListener(MouseEvent.CLICK, mySelect);
+						item.removeEventListener(MouseEvent.ROLL_OVER, myRollOver);
+						item.removeEventListener(MouseEvent.ROLL_OUT, myRollOut);
+						
+						item.addEventListener(MouseEvent.CLICK, mySelect);
+						item.addEventListener(MouseEvent.ROLL_OVER, myRollOver);
+						item.addEventListener(MouseEvent.ROLL_OUT, myRollOut);
+					}
+				}
+			}
+			
+			private function mySelect(event:MouseEvent):void
+			{
+					 
+					if ( this.currentIndex> 0 )
+						(CarouselGroup.getElementAt( this.currentIndex ) as UIComponent).filters = null;
+					
+					for(var j:uint = 0; j < CarouselGroup.numElements; j++)
+					{
+						if (CarouselGroup.getElementAt( j )==event.currentTarget)
+						{
+							currentIndex = j;
+							//Console.log("currentIndex: "+currentIndex,this)
+						}
+					}
+					/*
+					
+					TweenMax.to(CarouselGroup.getElementAt( currentIndex ), .5, 
+						{ scaleX: 1.2, scaleY: 1.2, ease: com.greensock.easing.Sine.easeOut, 
+							onComplete: function():void { gotoTeam(teamDataList[currentIndex].@name.toString()) 
+							} 
+						}); 
+					*/
+					//Console.log( "currentIndex: "+ teamDataList[currentIndex].@name, this );
+					
+			}
+			protected function accept( e:Event ):void
+			{
+				if (this.currentIndex>=0)
+				{
+					publish( teamDataList[currentIndex].@id - 1)
+				} else
+				{
+					this.parentApplication.dispatchEvent( new KioskError( KioskError.ERROR,  "No team selected. Please select your team and try again.", "Please select team"));
+				}
+			}
+			
+			protected function publish( teamID:int ):void
+			{
+				//this.parentApplication.dispatchEvent( new KioskProgressEvent( KioskProgressEvent.NOTIFY, "Publishing..." ));
+				
+				publishSelectTeam.url = this.parentApplication.localURL+'userteam.php';
+				//Console.log("publishing to "+publishSelectTeam.url, this);
+				var passVars:Object=new Object();
+				passVars.urn = settings.userData.urn;
+				//passVars.urn=currentURN;
+				passVars.team_id= teamID;
+				settings.userData.teamID = teamID;
+				publishSelectTeam.send(passVars);
+				//this.parentApplication.dispatchEvent( new KioskProgressEvent( KioskProgressEvent.UPDATE_COMPLETE ));
+			}
+			
+			protected function publish_success(event:ResultEvent):void
+			{
+				//this.parentApplication.dispatchEvent( new KioskProgressEvent( KioskProgressEvent.UPDATE_COMPLETE ));
+				//Console.log("publish_success: "+event.result.result, this);
+				if(event.result.result!="SUCCESS") 
+				{
+					this.parentApplication.dispatchEvent(new KioskError(KioskError.ERROR, unescape(event.result.message), "ERROR", init));
+				} else 
+				{
+					complete();
+				}
+			}
+			protected function publish_failed(event:FaultEvent):void
+			{
+				this.parentApplication.dispatchEvent(new KioskError(KioskError.ERROR, event.fault.faultString, "NETWORK ERROR"));
+				
+			}
+			protected function complete():void
+			{
+				this.parentApplication.dispatchEvent( new ViewEvent( ViewEvent.LOCATION_STANDARD_REGISTRATION ) );
+			}
+			
+			//Roll Over ... Add Glow
+			private function myRollOver(event:MouseEvent):void
+			{	
+				//Console.log("Rollover", this);
+				
+				event.currentTarget.filters =[myGlowIs];
+			}
+			//Roll Out ... Remove Glow
+			private function myRollOut(event:MouseEvent):void
+			{
+				if (CarouselGroup.getElementAt( currentIndex )!=event.currentTarget)
+				event.currentTarget.filters = null;
+			}
+			]]>
+	</fx:Script>
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+		<s:Power id="powerEasing" exponent="4"/>
+		<s:Sine id="sineEasing" easeInFraction="0.3"/>
+		<s:Linear id="slowDown" easeInFraction=".1" easeOutFraction=".1"  />
+		<s:HTTPService id="publishSelectTeam" resultFormat="flashvars" method="POST" url="{this.parentApplication.localURL+'userteam.php'}" result="publish_success(event)" fault="publish_failed(event)" />
+
+	</fx:Declarations>
+	<!-- Menu -->
+	<!-- Field -->
+	
+		<s:VGroup horizontalAlign="center" width="100%" verticalCenter="0">
+			<s:Spacer height="80" />
+			<s:Label id="frontMessage" horizontalCenter="0"  text="PLEASE SELECT YOUR TEAM" />
+			<s:Spacer height="70" />
+			<s:DataGroup id="CarouselGroup" updateComplete="createListeners(event)" horizontalCenter="0"  width="1200" itemRenderer="registration.logoItemRenderer">			
+				<s:layout>
+					<s:TileLayout orientation="rows" clipAndEnableScrolling="true"
+								  requestedColumnCount="-1" requestedRowCount="-1"
+								  verticalGap="50" horizontalGap="0" useVirtualLayout="true" />
+				</s:layout>
+				<s:XMLListCollection  id="teamList"   source="{teamDataList}"/>	
+			</s:DataGroup>
+			<s:Spacer height="90" />
+			<s:Button label="CONTINUE" click="accept(event)" skinClass="skins.barclaysButton" />
+		</s:VGroup>
+			
+			
+</s:Group>
