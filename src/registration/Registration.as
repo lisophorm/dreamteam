@@ -10,7 +10,6 @@ package registration
 	import flash.utils.Timer;
 	
 	import registration.debug.DebugEvent;
-	import events.RegistrationEvent;
 
 	public class Registration extends EventDispatcher
 	{
@@ -22,7 +21,7 @@ package registration
 		import be.aboutme.airserver.messages.Message;
 		import by.blooddy.crypto.serialization.JSON;
 		
-		import com.utils.Console;
+//		import com.utils.Console;
 		
 		private var server:AIRServer;
 		private var msg:String ="";

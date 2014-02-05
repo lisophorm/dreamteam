@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		 xmlns:s="library://ns.adobe.com/flex/spark" 
+		 xmlns:mx="library://ns.adobe.com/flex/mx" width="1920" height="1080" 
+		 xmlns:views="views.*"
+		 xmlns:layouts= "views.layouts.*"
+		 creationComplete="created(event)">
+	
+	<fx:Script>
+		<![CDATA[
+			import com.greensock.TweenMax;
+			import com.greensock.easing.Sine;
+			
+			import events.CarouselItemEvent;
+			import events.KioskError;
+			import events.ViewEvent;
+			
+			import model.entity.TeamDTO;
+			
+			import mx.collections.ArrayCollection;
+			import mx.core.UIComponent;
+			import mx.events.FlexEvent;
+			import mx.rpc.events.FaultEvent;
+			import mx.rpc.events.ResultEvent;
+			
+			import views.renderer.CarouseltemRenderer;
+			
+			public var data:Object;
+
+			protected var wrapper : UIComponent = new UIComponent();
+
+			// NEW
+			
+			private var mousePositions : Array;
+			private var mouseRecorderTimer:Timer;
+			
+			private var positionsMaxLength : int = 18;
+			private var zeroTime:int;
+			private var clickInterval : int = 80;
+			private var swipeThreshold : Number = 1;
+			
+			private var initialCarouselPosition:int;
+			private var mouseZero:Number;
+			
+			private var carouselSensitivity : Number = .06;
+			private var velocity:Number;
+			private var friction : Number = .96;
+			private var velocityCutoff : Number = .05;
+			
+			[Bindable]
+			public var type:String = "Game";
+			
+			[Bindable]
+			public var teamDataList:XMLList;
+			
+			[Bindable]
+			public var carouselDataProvider : ArrayCollection;
+			
+			public function created(event:FlexEvent=null):void
+			{
+				this.addEventListener( Event.INIT, initialise);
+				initialise();
+			}
+			
+			public function initialise(event:Event=null):void
+			{
+				if (this.parentApplication.data!=null)
+				{
+					data = this.parentApplication.data;
+					type = data.type;
+				}
+
+				this.backgroundimage.visible = true;
+				
+				teamData.send();
+
+				///////////////////				
+				mouseRecorderTimer = new Timer(20);
+				mouseRecorderTimer.addEventListener(TimerEvent.TIMER, recordMouse);
+				addEventListener(MouseEvent.MOUSE_DOWN, mouseDownHandler);
+				addEventListener(MouseEvent.MOUSE_UP, mouseUpHandler, true);
+				
+				CarouselGroup.addEventListener(CarouselItemEvent.ITEM_SELECTED, itemSelectedHandler);
+				CarouselLayout(CarouselGroup.layout).freeRotationDegree = 0;
+			}
+
+			public function exit( e:Event = null):void
+			{
+				CarouselGroup.invalidateDisplayList();
+			}
+			
+			protected function populate(e:ResultEvent=null):void
+			{
+				carouselDataProvider = new ArrayCollection();
+				var xml:XML = new XML(e.result);
+				var teamData : XMLList = (xml..team);
+				var i : int = 0;
+				
+				for each(var x : XML in teamData)
+				{
+					var teamDTO : TeamDTO = new TeamDTO();
+					teamDTO.index = i;
+					teamDTO.teamID = x.@id;
+					teamDTO.teamName = x.@name;
+					teamDTO.logoImage = x.@logo;
+					carouselDataProvider.addItem(teamDTO);
+					i++;
+				}
+			}
+
+			protected function error(e:FaultEvent):void
+			{
+				this.parentApplication.dispatchEvent(new KioskError(KioskError.ERROR, e.fault.message.toString(), "COMMUNICATION ERROR"));
+			}
+
+			protected function mouseDownHandler(event : MouseEvent) : void
+			{
+				removeEventListener(Event.ENTER_FRAME, enterFrameHandler);
+				initialCarouselPosition = CarouselLayout(CarouselGroup.layout).freeRotationDegree;
+				mouseZero = mouseX;
+				
+				zeroTime = getTimer();	
+				mouseRecorderTimer.start();
+				mousePositions = [];
+			}
+			
+			protected function mouseUpHandler(event : MouseEvent) : void
+			{
+				mouseRecorderTimer.stop();
+				var elapsed : int = getTimer() - zeroTime;
+				
+				if(elapsed > clickInterval)
+				{
+					event.stopPropagation();
+					var lastSafePosition : int = Math.min(12, mousePositions.length);
+					var positionOne : Number = mousePositions[0];
+					var positionTwo : Number = mousePositions[lastSafePosition - 1];
+					velocity = (positionTwo - positionOne) / mousePositions.length * carouselSensitivity * 2;
+					if(Math.abs(velocity) > swipeThreshold)
+					{
+						addEventListener(Event.ENTER_FRAME, enterFrameHandler);
+					}
+				}
+			}
+			
+			protected function recordMouse(event : TimerEvent) : void
+			{
+				var mouseDelta : Number = (mouseX - mouseZero) * carouselSensitivity;
+				var newCarouselPosition : Number = initialCarouselPosition + mouseDelta;
+				
+				newCarouselPosition %= 360;
+				
+				CarouselLayout(CarouselGroup.layout).freeRotationDegree = initialCarouselPosition + mouseDelta;				
+				
+				mousePositions.push(mouseX);
+				if(mousePositions.length > positionsMaxLength)
+				{
+					mousePositions.shift();
+				}
+			}
+			
+			protected function enterFrameHandler(event : Event):void
+			{
+				var newAngle : Number = CarouselLayout(CarouselGroup.layout).freeRotationDegree + velocity;
+				newAngle %= 360;
+				CarouselLayout(CarouselGroup.layout).freeRotationDegree = newAngle;
+				velocity *= friction;
+				if(Math.abs(velocity) < velocityCutoff)
+				{
+					removeEventListener(Event.ENTER_FRAME, enterFrameHandler);
+				}
+			}
+			
+			protected function itemSelectedHandler(event : CarouselItemEvent):void
+			{
+				var n : int = CarouselGroup.numElements;
+				for(var i : int = 0; i < n; i ++)
+				{
+					CarouseltemRenderer(CarouselGroup.getElementAt(i)).selected = false;
+				}
+				CarouseltemRenderer(event.target).selected = true;
+				
+				var angle:Number = CarouselLayout(CarouselGroup.layout).getFreeRotationAngleFromIndex(event.teamDTO.index);
+				TweenMax.to(CarouselLayout(CarouselGroup.layout), (.5+((Math.abs(angle)%360)/180)*1), 
+					{ freeRotationDegree: angle, ease: com.greensock.easing.Sine.easeOut, onComplete:executeNavigation, onCompleteParams:[event.teamDTO.teamName]});
+			}
+			
+			private function executeNavigation( team:String ):void
+			{
+				backgroundimage.visible = false;
+				this.parentApplication.dispatchEvent( new ViewEvent( type=="GAME" ? ViewEvent.LOCATION_GAME : ViewEvent.LOCATION_TEAMSHEETS, {team: team } ));
+			}
+		]]>
+	</fx:Script>
+	
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+		<s:HTTPService id="teamData" resultFormat="xml" url="{(this.parentApplication).baseURL+'assets/xml/game_full.xml'}" result="populate(event)" fault="error(event)" />		
+		<fx:String id="game_subtext"><![CDATA[CHOOSE OUR FAVORITE PLAYERS TO MAKE UP YOUR CLUB’S ULTIMATE DREAM TEAM]]></fx:String>
+		<fx:String id="teamsheet_subtext"><![CDATA[A FEW THINGS YOU MIGHT NOT HAVE KNOWN ABOUT YOUR FAVOURITE CLUB]]></fx:String>
+		<s:Power id="powerEasing" exponent="4"/>
+		<s:Sine id="sineEasing" easeInFraction="0.3"/>
+		<s:Linear id="slowDown" easeInFraction=".1" easeOutFraction=".1"  />
+	</fx:Declarations>
+
+	<s:Image smooth="true" id="backgroundimage" source="assets/images/bg_choose_your_dream_team.jpg" includeInLayout="true" x="0" y="0"  />
+	<s:VGroup left="100" top="110" width="100%" height="100%">
+		<s:HGroup width="100%" height="1080" horizontalAlign="left">
+			<s:VGroup width="337" height="1080" horizontalAlign="center">
+				<s:Spacer height="130" />
+				<s:Image smooth="true" scaleX=".6" scaleY=".6" source="assets/images/logo_live.png" />
+				<s:Spacer height="10" />
+				<s:Image smooth="true" source="{'assets/images/'+(type=='GAME' ? 'txt_dream_team' : 'txt_select_your_teamsheet' )+'.png'}"  />			
+				<s:Label fontSize="20" textAlign="center" paddingTop="15" width="330" text="{(type=='GAME') ? game_subtext : teamsheet_subtext}" color="0x29b1f0"  />
+			</s:VGroup>
+			<s:Spacer width="100" />
+			<s:VGroup width="1400" >
+				<s:VGroup  paddingTop="10" horizontalAlign="center" width="100%">
+					<s:BorderContainer backgroundAlpha="0" borderVisible="false" height="800" width="100%">
+						<s:Image smooth="true" source="assets/images/graphics_trophy.png" width="618" height="860" horizontalCenter="-20" />
+						<s:DataGroup id="CarouselGroup" width="100%" height="800" itemRenderer="views.renderer.CarouseltemRenderer"
+									 dataProvider="{carouselDataProvider}">
+							<s:layout>
+								<layouts:CarouselLayout  useScrollBarForNavigation="true" scrollBarDirection="horizontal" radiusX="1000" angle="360" radiusY="0" radiusZ="1000" rotateY="standard" horizontalAlign="center" verticalAlign="middle" projectionCenterY="300" fieldOfView="20" duration="500" easer="{slowDown}"  />	
+							</s:layout>
+							<!--s:XMLListCollection  id="teamList"   source="{teamDataList}"/-->	
+						</s:DataGroup>
+					</s:BorderContainer>
+					<s:VGroup height="330" width="100%" horizontalAlign="center"  paddingTop="40">
+						<s:Spacer height="10" />
+						<s:Image smooth="true" verticalAlign="bottom" source="assets/images/graphics_arrow.png"  />
+						<s:Spacer height="3" />
+						<s:Label fontSize="22" textAlign="center" width="330" text="SWIPE TO SELECT YOUR TEAM" color="0x29b1f0"  />
+					</s:VGroup>
+				</s:VGroup>
+			</s:VGroup>
+			<s:VGroup verticalAlign="bottom" horizontalAlign="right" width="420" height="925">
+				<s:Image smooth="true" source="assets/images/txt_brought_to_you_by.png"  />	
+			</s:VGroup>			  
+		</s:HGroup>
+	</s:VGroup>
+</s:Group>

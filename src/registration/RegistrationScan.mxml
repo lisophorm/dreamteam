@@ -17,7 +17,6 @@
 			
 			import registration.debug.DebugEvent;
 			import events.KioskError;
-			import events.RegistrationEvent;
 			import events.UserEvent;
 			import events.ViewEvent;
 			
@@ -29,7 +28,6 @@
 			import flash.events.SoftKeyboardEvent;
 			
 			import model.Settings;
-			import model.UserData;
 			
 			import mx.events.FlexEvent;
 			import mx.events.StateChangeEvent;
