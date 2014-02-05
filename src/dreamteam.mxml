@@ -32,11 +32,20 @@
 	
 	<fx:Script>
 		<![CDATA[
-			import air.update.ApplicationUpdaterUI;
-			import air.update.events.UpdateEvent;
-			
 			import com.alfo.utils.Console;
 			import com.greensock.TweenMax;
+			
+			import flash.events.ErrorEvent;
+			
+			import mx.controls.Alert;
+			import mx.core.FlexGlobals;
+			import mx.events.FlexEvent;
+			import mx.managers.PopUpManager;
+			
+			import spark.filters.DropShadowFilter;
+			
+			import air.update.ApplicationUpdaterUI;
+			import air.update.events.UpdateEvent;
 			
 			import events.ApplicationEvent;
 			import events.KioskError;
@@ -46,37 +55,19 @@
 			import events.UserEvent;
 			import events.ViewEvent;
 			
-			import flash.events.ErrorEvent;
-			
 			import model.Config;
 			import model.ML;
 			import model.MonitorConnection;
-			
-			import mx.controls.Alert;
-			import mx.core.FlexGlobals;
-			import mx.core.UIComponent;
-			import mx.events.FlexEvent;
-			import mx.managers.PopUpManager;
-			import mx.managers.SystemManager;
 			
 			import org.osmf.utils.OSMFSettings;
 			
 			import skins.vodafoneFormItem;
 			
-			import spark.filters.DropShadowFilter;
-			
-			import views.ApplicationType;
-			import views.FaceBookAuth01;
-			import views.Game;
-			import views.SelectUserType;
-			import views.Thankyou;
-			import views.UserForm;
 			import views.components.ErrorAlert;
 			import views.components.PasswordAlert;
 			import views.components.ProgressPopUp;
 			import views.components.pleaseWait;
 			import views.components.tandcWindow;
-			import views.test;
 			
 			public var baseURL:String ="";
 			public var facebookAppID:String ="";
@@ -193,6 +184,16 @@
 			}
 			protected function init(e:Event = null):void
 			{
+				
+				if(Updater.isSupported) {
+					trace("checking update")
+					checkUpdate();
+				} else {
+					trace("update not supported");
+				}
+				
+				Mouse.hide();
+				
 				// navigation bar must be on top
 				if (this.getElementIndex( navigationbar )< this.getElementIndex( contentholder) )
 				{
@@ -902,43 +903,7 @@
 				tf.font = fontName;
 				return FlexGlobals.topLevelApplication.systemManager.isFontFaceEmbedded(tf);
 			}
-			
-			private function checkUpdate():void {
-				setApplicationVersion();
-				// we set the URL for the update.xml file
-//				appUpdater.configurationFile = new File("app:/updateConfig.xml");
-//				appUpdater.initialize();
-				appUpdater.updateURL = "http://c-lab.co.uk/clients/dreamteam/update.xml";//this.baseURL+"air/update.xml";
-				//we set the event handlers for INITIALIZED nad ERROR
-				appUpdater.addEventListener(UpdateEvent.INITIALIZED, onUpdate);
-				appUpdater.addEventListener(ErrorEvent.ERROR, onError);
-				//we can hide the dialog asking for permission for checking for a new update;
-				//if you want to see it just leave the default value (or set true).
-				appUpdater.isCheckForUpdateVisible = false;
-				//we initialize the updater
-				appUpdater.initialize();
-			}
-			
-			/**
-			 * Handler function triggered by the ApplicationUpdater.initialize;
-			 * The updater was initialized and it is ready to take commands 
-			 * (such as <code>checkNow()</code>
-			 * @param UpdateEvent 
-			 */
-			private function onUpdate(event:UpdateEvent):void {
-				//start the process of checking for a new update and to install
-				appUpdater.checkNow();
-				
-			}
-			
-			/**
-			 * Handler function for error events triggered by the ApplicationUpdater.initialize
-			 * @param ErrorEvent 
-			 */
-			private function onError(event:ErrorEvent):void {
-				Console.log("Error during update", this);
-				Alert.show(event.toString());
-			}
+
 			
 			/**
 			 * A simple code just to read the current version of the application 
@@ -957,6 +922,48 @@
 				OSMFSettings.enableStageVideo = false;	
 			}
 			
+			/**
+			 * This function is triggered when the application finished to load;
+			 * Here we initialize <code>appUpdater</code> and set some properties
+			 */ 
+			private function checkUpdate():void {
+				// we set the URL for the update.xml file
+				appUpdater.updateURL = "http://www.bpllive.com/updatedreamteam/update.xml";
+				//we set the event handlers for INITIALIZED and ERROR
+				appUpdater.addEventListener(UpdateEvent.INITIALIZED, onUpdate);
+				appUpdater.addEventListener(ErrorEvent.ERROR, onError);
+				//we can hide the dialog asking for permission for checking for a new update;
+				//if you want to see it just leave the default value (or set true).
+				appUpdater.isCheckForUpdateVisible = true;
+				//if isFileUpdateVisible is set to true, File Update, File No Update, 
+				//and File Error dialog boxes will be displayed
+				appUpdater.isFileUpdateVisible = true;
+				//if isInstallUpdateVisible is set to true, the dialog box for installing the update is visible
+				appUpdater.isInstallUpdateVisible = true;
+				//we initialize the updater
+				appUpdater.initialize();
+			}
+			
+			/**
+			 * Handler function triggered by the ApplicationUpdater.initialize;
+			 * The updater was initialized and it is ready to take commands 
+			 * (such as <code>checkNow()</code>
+			 * @param UpdateEvent 
+			 */ 
+			private function onUpdate(event:UpdateEvent):void {
+				//start the process of checking for a new update and to install
+				appUpdater.checkNow();
+			}
+			
+			/**
+			 * Handler function for error events triggered by the ApplicationUpdater.initialize
+			 * @param ErrorEvent 
+			 */ 
+			private function onError(event:ErrorEvent):void {
+				Alert.show(event.toString());
+			}
+			
+			
 		]]>
 	</fx:Script>
 	
@@ -967,8 +974,7 @@
 	
 	<s:BorderContainer id="navigationbar" alpha="0" includeInLayout="false" borderAlpha="0" width="{this.stage.stageWidth}" height="90" click="fullscreen(event)">
 		<s:backgroundFill>
-			
-			<s:LinearGradient rotation="90">
+						<s:LinearGradient rotation="90">
 				<s:GradientEntry color="0x000000" alpha=".5"/>
 				<s:GradientEntry color="0x000000" alpha=".1"/>
 			</s:LinearGradient>
@@ -979,16 +985,11 @@
 			</s:HGroup>
 			<s:HGroup width="100%" horizontalAlign="right" paddingRight="0" verticalAlign="middle" height="90">
 				<s:Button skinClass="skins.BasicButton" styleName="nav" icon="@Embed('assets/images/core/nm-no-connection.gif')" id="connStatus" label="{ML.t('NO CONNECTION')}" color="0xFFFFFF" visible="false" />
-				
 				<s:Button skinClass="skins.BasicButton" styleName="nav" icon="@Embed('assets/images/core/home_logo.png')" click="{defaultView()}"/>
 				
 				<s:Button skinClass="skins.BasicButton" styleName="nav" label="{ML.t('Quit')}" click="exitApplication(event)" id="quitButton" color="0xFFFFFF" visible="{loggedIn}" includeInLayout="{loggedIn}" />
 				<s:Button skinClass="skins.BasicButton" styleName="nav" icon="@Embed('assets/images/core/padlock.png')" click="config(event)" color="0xFFFFFF" />
 			</s:HGroup>		
-			
-			
-			
-			
 		</s:HGroup>
 		
 	</s:BorderContainer>

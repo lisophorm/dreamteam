@@ -213,8 +213,6 @@
 							shirt(event.dragInitiator).label = d.label;
 							shirt(event.dragInitiator).currentType = d.currentType;
 							shirt(event.dragInitiator).data = d.data;
-							
-							
 						}
 					}
 //					dispatchEvent( new TeamEvent( TeamEvent.ADD, PlayerButton(event.dragInitiator).data ));
