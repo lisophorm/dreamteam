@@ -192,7 +192,7 @@
 					trace("update not supported");
 				}
 				
-				Mouse.hide();
+//				Mouse.hide();
 				
 				// navigation bar must be on top
 				if (this.getElementIndex( navigationbar )< this.getElementIndex( contentholder) )
