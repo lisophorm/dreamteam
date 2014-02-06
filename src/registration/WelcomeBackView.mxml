@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		 xmlns:s="library://ns.adobe.com/flex/spark" 
+		 xmlns:mx="library://ns.adobe.com/flex/mx"
+		 creationComplete="onCreationComplete(event)"
+		 >
+	
+	<fx:Script>
+		<![CDATA[
+			import com.greensock.TweenMax;
+			
+			import events.ViewEvent;
+			
+			import model.Settings;
+			
+			import mx.events.FlexEvent;
+			
+			protected var loader : URLLoader;
+			protected var parameters:URLVariables;
+			protected var request:URLRequest;
+			private var settings:Settings;
+			
+			public var nextScreen : String;
+			
+			protected function onCreationComplete(event : FlexEvent):void
+			{
+				addEventListener(Event.INIT, onInitialise);
+
+				settings = Settings.instance;
+			}
+			
+			public function onInitialise(event : Event):void
+			{
+				parameters = new URLVariables();
+				
+				request = new URLRequest();
+				request.url =  this.parentApplication.localURL+'getuser.php';		
+				request.method = URLRequestMethod.POST;
+				
+				loader = new URLLoader();
+				loader.addEventListener(Event.COMPLETE, onLoadComplete);
+				loader.addEventListener(IOErrorEvent.IO_ERROR, onLoadError);
+				
+				TweenMax.delayedCall(3, hide);
+				parameters.urn = settings.userData.urn;
+				request.data = parameters;
+				loader.load(request);
+				welcomeBackUser.alpha = 0;
+			}
+			
+			protected function onLoadComplete(event : Event):void
+			{
+				trace("WelcomeBackView :: onLoadComplete :: " + loader.data);
+				
+				var result : Object = JSON.parse(loader.data);
+				
+				if(result["result"] == "OK")
+				{
+					settings.userData.firstName = result["firstname"];
+					settings.userData.lastName = result["lastname"];
+					settings.userData.teamID = int(result["team_id"]);
+					
+					welcomeBackUser.text = result["firstname"] + " " + result["lastname"];
+					TweenMax.to(welcomeBackUser, .3, {alpha : 1});
+				}
+			}
+			
+			protected function onLoadError(event : IOErrorEvent):void
+			{
+				trace("WelcomeBackView :: onLoadError :: " + event.errorID);
+			}
+			
+			protected function hide():void
+			{
+				parentApplication.dispatchEvent( new ViewEvent( nextScreen ));
+			}
+		]]>
+		
+		
+	</fx:Script>
+	<s:VGroup horizontalAlign="center">
+		<s:Label id="frontMessage" text="WELCOME BACK" />
+		<s:Spacer height="65"/>
+		<s:Label id="welcomeBackUser"/>
+	</s:VGroup>
+</s:Group>
