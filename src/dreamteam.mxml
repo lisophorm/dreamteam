@@ -405,7 +405,7 @@
 			
 			protected function gotoView( stackStr:String="", obj:Object=null ) :void
 			{
-				var indexSeq:Array = ["SelectGameOrResult", "TeamCarousel", "Game", "SelectUserType", "FaceBookAuth01", "UserForm", "PhotoUserSelect",  "SelectApplication", "Thankyou", "FaceBookLogoutOverride", "Teamsheets", "Registration"]
+				var indexSeq:Array = ["SelectGameOrResult", "TeamCarousel", "Game", "SelectUserType", "FaceBookAuth01", "UserForm", "PhotoUserSelect",  "SelectApplication", "Thankyou", "FaceBookLogoutOverride", "Teamsheets", "Registration", "SelectRegistrationTeam"]
 				var lastScreen:DisplayObject;
 				var nextScreen:DisplayObject;
 				var nextIndex:int=-1;
@@ -471,6 +471,10 @@
 						if(stackStr == "Registration")
 						{
 							nextScreen = RegistrationView;
+						}
+						if(stackStr == "SelectRegistrationTeam")
+						{
+							nextScreen = SelectRegistrationTeam;
 						}
 					}
 				}
@@ -586,10 +590,12 @@
 					case ViewEvent.LOCATION_PHOTO_SELECTED_USER:
 						gotoView("CameraCapture", e.object);
 						break;
-					case ViewEvent.LOCATION_SELECT_TEAM:
-						
+					case ViewEvent.LOCATION_SELECT_GAME_TEAM:
 						gotoView("TeamCarousel", e.object );
 						break;
+					case ViewEvent.LOCATION_SELECT_REGISTRATION_TEAM:
+						gotoView("SelectRegistrationTeam");
+						break;					
 					case ViewEvent.LOCATION_RESULT:
 						showError("RESULTS TO BE IMPLEMENTED");
 						break;
@@ -916,6 +922,10 @@
 					<mx:VBox hideEffect="{hideFX}"  showEffect="{showFX}">
 						<registration:RegistrationScan id="RegistrationView" debug="debugEventHandler(event)"/>
 					</mx:VBox>
+					
+					<mx:VBox hideEffect="{hideFX}"  showEffect="{showFX}">
+						<registration:SelectTeam id="SelectRegistrationTeam"/>
+					</mx:VBox>					
 					
 				</mx:ViewStack>
 			</s:BorderContainer>

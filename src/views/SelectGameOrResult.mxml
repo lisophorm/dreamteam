@@ -32,12 +32,12 @@
 			
 			protected function selectGame(e:Event=null):void
 			{
-					this.parentApplication.dispatchEvent( new ViewEvent( ViewEvent.LOCATION_SELECT_TEAM, {type: "GAME" } ));
+					this.parentApplication.dispatchEvent( new ViewEvent( ViewEvent.LOCATION_SELECT_GAME_TEAM, {type: "GAME" } ));
 			
 			}
 			protected function selectTeamSheet(e:Event=null):void
 			{
-				this.parentApplication.dispatchEvent( new ViewEvent( ViewEvent.LOCATION_SELECT_TEAM, {type: "SHEET" } ));
+				this.parentApplication.dispatchEvent( new ViewEvent( ViewEvent.LOCATION_SELECT_GAME_TEAM, {type: "SHEET" } ));
 				
 			}
 					]]>

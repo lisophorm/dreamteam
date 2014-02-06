@@ -310,7 +310,7 @@
 				trace("RegistrationScan :: onAlreadyRegistered :: " + URN);
 				this.parentApplication.dispatchEvent( new UserEvent(UserEvent.URN, URN));
 				this.parentApplication.dispatchEvent( new UserEvent(UserEvent.REGISTERED, type));
-				this.parentApplication.dispatchEvent(new ViewEvent(ViewEvent.LOCATION_SELECT_USER_TYPE));
+				this.parentApplication.dispatchEvent(new ViewEvent(ViewEvent.LOCATION_WELCOME_BACK));
 			}
 			
 			protected function onDuplicate():void
