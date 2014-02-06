@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:VGroup xmlns:fx="http://ns.adobe.com/mxml/2009" 
+			xmlns:s="library://ns.adobe.com/flex/spark" 
+			xmlns:mx="library://ns.adobe.com/flex/mx" fontSize="10" 
+			width="100">
+	
+	<fx:Script>
+		<![CDATA[
+			import registration.Registration;
+			
+			public var registrationModule : Registration;
+			
+			public function fireSocketCode(socketCode : int):void
+			{
+				registrationModule.debugHandleCode({code:socketCode});
+			}
+		]]>
+	</fx:Script>
+	
+	<s:TextArea id="debugOutput" width="100%" height="200"/>
+	<s:Button label="101" click="{fireSocketCode(101)}" skinClass="spark.skins.spark.ButtonSkin" width="100%"/>
+	<s:Button label="102" click="{fireSocketCode(102)}" skinClass="spark.skins.spark.ButtonSkin" width="100%"/>
+	<s:Button label="103" click="{fireSocketCode(103)}" skinClass="spark.skins.spark.ButtonSkin" width="100%"/>
+	<s:Button label="104" click="{fireSocketCode(104)}" skinClass="spark.skins.spark.ButtonSkin" width="100%"/>
+	<s:Button label="105" click="{fireSocketCode(105)}" skinClass="spark.skins.spark.ButtonSkin" width="100%"/>
+	<s:Button label="106" click="{fireSocketCode(106)}" skinClass="spark.skins.spark.ButtonSkin" width="100%"/>
+	<s:Button label="107" click="{fireSocketCode(107)}" skinClass="spark.skins.spark.ButtonSkin" width="100%"/>
+	<s:Button label="108" click="{fireSocketCode(108)}" skinClass="spark.skins.spark.ButtonSkin" width="100%"/>
+	<s:Button label="201" click="{fireSocketCode(201)}" skinClass="spark.skins.spark.ButtonSkin" width="100%"/>
+	<s:Button label="202" click="{fireSocketCode(202)}" skinClass="spark.skins.spark.ButtonSkin" width="100%"/>
+	<s:Button label="203" click="{fireSocketCode(203)}" skinClass="spark.skins.spark.ButtonSkin" width="100%"/>
+	<s:Button label="301" click="{fireSocketCode(301)}" skinClass="spark.skins.spark.ButtonSkin" width="100%"/>
+	<s:Button label="302" click="{fireSocketCode(302)}" skinClass="spark.skins.spark.ButtonSkin" width="100%"/>
+	<s:Button label="303" click="{fireSocketCode(303)}" skinClass="spark.skins.spark.ButtonSkin" width="100%"/>
+</s:VGroup>
