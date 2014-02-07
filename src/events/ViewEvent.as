@@ -16,7 +16,7 @@ package events
 		public static var LOCATION_SELECT_REGISTRATION_TEAM : String = "SelectRegistrationTeam";
 		public static var LOCATION_FACEBOOK:String = "Facebook";
 		public static var LOCATION_FACEBOOK_REGISTERED:String = "Facebook registered";
-		public static var LOCATION_SELECT_TEAM:String = "Select team";
+		public static var LOCATION_SELECT_TEAM:String = "SelectTeam";
 		public static var LOCATION_SELECT_GAME_TEAM : String = "SelectGameTeam";
 		public static var LOCATION_TEAM_SELECTED:String = "Team selected";
 		public static var LOCATION_REGISTRATION_COMPLETE:String = "Registration complete";

@@ -34,7 +34,7 @@
 				parameters = new URLVariables();
 				
 				request = new URLRequest();
-				request.url =  this.parentApplication.localURL+'getuser.php';		
+				request.url =  this.parentApplication.localURL+'getuser.php';
 				request.method = URLRequestMethod.POST;
 				
 				loader = new URLLoader();

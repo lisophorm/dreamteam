@@ -5,7 +5,9 @@
 					   horizontalCenter="center" width="100%" height="100%" backgroundColor="#000000"
 					   initialize="videoSettings(event)"
 					   creationComplete="init(event)"  resize="onresize()"
-					   addedToStage="fullscreen()" showStatusBar="false" xmlns:registration="registration.*" xmlns:debug="registration.debug.*">
+					   addedToStage="fullscreen()" showStatusBar="false" 
+					   xmlns:registration="registration.*" 
+					   xmlns:debug="registration.debug.*">
 
 	<fx:Style source="assets/css/Main.css" />
 	<fx:Style source="assets/css/Fonts.css" />	
@@ -120,6 +122,10 @@
 			
 			protected var debugKeySequence : Array = [71,85,66,69,68];
 			protected var runningKeySequence : Array = [];
+			public var localURL:String;
+			
+			
+			
 			
 			protected function fullscreen(e:Event=null):void
 			{
@@ -198,6 +204,7 @@
 				screenScale();
 				
 				baseURL =  "http://"+pref.prefsXML..serverIP+"/";
+				localURL = "http://"+pref.prefsXML..localIP+"/";
 				facebookAppID = pref.prefsXML..facebookAppID;
 				ApplicationType = pref.prefsXML..applicationtype.toUpperCase();
 				urn = int(pref.prefsXML..urnLength);
@@ -326,6 +333,7 @@
 			
 			protected function centerPopups(e:Event=null):void
 			{
+				
 				var p:Array = this.getActivePopup();
 				
 				for (var i:int=0; i<p.length; i++)
@@ -336,19 +344,14 @@
 					p[i].height *= 1/scale;
 					p[i].width *= 1/scale;
 					p[i].scaleX = p[i].scaleY = scale;
-					
-					if("onsresize" in p[i])
+					try {
+						p[i].onresize();
+					} catch (e:Error)
 					{
-					}else
-					{	
-						try {
-							p[i].onresize();
-						} catch (e:Error)
-						{
-							trace("Dreamteam :: centerPopups :: uncaught error!!");
-						}
+						
 					}
 				}
+			
 			}
 			
 			protected function notifyWaiting( e:KioskWaitEvent = null ):void
@@ -405,7 +408,7 @@
 			
 			protected function gotoView( stackStr:String="", obj:Object=null ) :void
 			{
-				var indexSeq:Array = ["SelectGameOrResult", "TeamCarousel", "Game", "SelectUserType", "FaceBookAuth01", "UserForm", "PhotoUserSelect",  "SelectApplication", "Thankyou", "FaceBookLogoutOverride", "Teamsheets", "Registration", "SelectRegistrationTeam"]
+				var indexSeq:Array = ["SelectGameOrResult", "TeamCarousel", "Game", "SelectUserType", "FaceBookAuth01", "UserForm", "PhotoUserSelect",  "SelectApplication", "Thankyou", "FaceBookLogoutOverride", "Teamsheets", "Registration", "SelectRegistrationTeam", "WelcomeBack"]
 				var lastScreen:DisplayObject;
 				var nextScreen:DisplayObject;
 				var nextIndex:int=-1;
@@ -417,6 +420,8 @@
 				{
 					
 				}
+				
+				trace("dreamteam :: gotoView :: " + stackStr);
 				
 				for (var i:int=0;i<indexSeq.length;i++)
 				{
@@ -475,6 +480,10 @@
 						if(stackStr == "SelectRegistrationTeam")
 						{
 							nextScreen = SelectRegistrationTeam;
+						}
+						if(stackStr == "WelcomeBack")
+						{
+							nextScreen = WelcomeBack;
 						}
 					}
 				}
@@ -574,17 +583,7 @@
 						break;
 					
 					case ViewEvent.LOCATION_REGISTRATION_COMPLETE:
-						
-						if (this.ApplicationType == APPLICATION_TYPE_REGISTRATION)
-						{
-							gotoView("Thankyou", {urn: barcode});
-						} else if (this.ApplicationType == APPLICATION_TYPE_REGISTER_GAME)
-						{
-							this.dispatchEvent( new ViewEvent( ViewEvent.LOCATION_GAME ));
-						} else {
-							
-							this.dispatchEvent( new ViewEvent( ViewEvent.LOCATION_GAME ));
-						}
+						gotoView("Thankyou");
 						break;
 					
 					case ViewEvent.LOCATION_PHOTO_SELECTED_USER:
@@ -593,7 +592,7 @@
 					case ViewEvent.LOCATION_SELECT_GAME_TEAM:
 						gotoView("TeamCarousel", e.object );
 						break;
-					case ViewEvent.LOCATION_SELECT_REGISTRATION_TEAM:
+					case ViewEvent.LOCATION_SELECT_TEAM:
 						gotoView("SelectRegistrationTeam");
 						break;					
 					case ViewEvent.LOCATION_RESULT:
@@ -626,6 +625,10 @@
 					case ViewEvent.LOCATION_REGISTRATION:
 						gotoView("Registration");
 						break;
+					case ViewEvent.LOCATION_WELCOME_BACK:
+						gotoView("WelcomeBack");
+						break;
+						
 					default:
 				}
 			}
@@ -896,7 +899,7 @@
 					</mx:VBox>
 					
 					<mx:VBox hideEffect="{hideFX}"  showEffect="{showFX}">
-						<views:UserForm id="UserForm" />
+						<registration:UserForm id="UserForm" />
 					</mx:VBox>
 					
 					<mx:VBox hideEffect="{hideFX}"  showEffect="{showFX}">
@@ -926,6 +929,10 @@
 					<mx:VBox hideEffect="{hideFX}"  showEffect="{showFX}">
 						<registration:SelectTeam id="SelectRegistrationTeam"/>
 					</mx:VBox>					
+					
+					<mx:VBox hideEffect="{hideFX}"  showEffect="{showFX}">
+						<registration:WelcomeBackView id="WelcomeBack"/>
+					</mx:VBox>									
 					
 				</mx:ViewStack>
 			</s:BorderContainer>
