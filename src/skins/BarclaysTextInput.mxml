@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Skin xmlns:s="library://ns.adobe.com/flex/spark"
+		xmlns:fx="http://ns.adobe.com/mxml/2009"
+		xmlns:ai="http://ns.adobe.com/ai/2009"
+		xmlns:d="http://ns.adobe.com/fxg/2008/dt"
+		xmlns:flm="http://ns.adobe.com/flame/2008"
+		 height="54" width="100%" minWidth="469">
+	<fx:Metadata>[HostComponent("spark.components.TextInput")]</fx:Metadata>
+	<s:states>
+		<s:State name="normal"/>
+		<s:State name="disabled"/>
+		<s:State name="normalWithPrompt"/>
+		<s:State name="disabledWithPrompt"/>
+	</s:states>
+	<s:RichText d:id="54" d:userLabel="enter text..."
+				includeIn="disabledWithPrompt,normalWithPrompt" x="21" y="15" width="100%"
+				ai:aa="2" color="#00AEEF" columnCount="1" fontFamily="Vodafone Rg" fontSize="30"
+				kerning="on" tabStops="S94.7159805297852"  flm:variant="38"
+				whiteSpaceCollapse="preserve"/>
+	<s:Rect height="54" radiusX="8.50515" radiusY="8.50515"
+			x.disabled="1" y.disabled="1"
+			x.disabledWithPrompt="1" y.disabledWithPrompt="1" width="100%"
+			y.normal="1" left.normal="0"
+			x.normalWithPrompt="1" y.normalWithPrompt="1" >
+		<s:stroke>
+			<s:SolidColorStroke weight="2" caps="none" joints="miter" miterLimit="10" color="#00AEEF"/>
+		</s:stroke>
+		<s:fill>
+			<s:SolidColor color="0xffffff" />
+		</s:fill>
+	</s:Rect>
+	<s:RichText id="promptDisplay" includeIn="disabledWithPrompt,normalWithPrompt"
+				fontFamily="StandardRegularAllCaseBold" fontSize="31.572" width="100%"
+				x.disabledWithPrompt="21" y.disabledWithPrompt="19"  
+				left.normalWithPrompt="21" right.normalWithPrompt="13" top.normalWithPrompt="19"
+				bottom.normalWithPrompt="17"/>
+	<s:RichText id="textDisplay1" d:id="54" d:userLabel="enter text..."
+				includeIn="normal" x="21" y="15" width="100%"
+				ai:aa="2" color="#000000" columnCount="1" fontFamily="StandardRegularAllCaseBold" fontSize="30"
+				kerning="on" tabStops="S94.7159805297852" flm:variant="38"
+				whiteSpaceCollapse="preserve"/>
+	<s:RichEditableText id="textDisplay" d:id="54" d:userLabel="enter text..."
+						includeIn="disabled,normal" ai:aa="2" color="#000000" columnCount="1"
+						fontFamily="StandardRegularAllCaseBold" fontSize="30" heightInLines="1" kerning="on"
+						tabStops="S94.7159805297852" flm:variant="38" whiteSpaceCollapse="preserve"
+						width="100%"  x="21" y="15"
+						/>
+</s:Skin>
