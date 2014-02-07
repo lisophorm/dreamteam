@@ -120,7 +120,7 @@
 					if (e.result.result=="OK")
 					{
 						this.parentApplication.dispatchEvent( new UserEvent(UserEvent.REGISTERED, "classic"));
-						this.parentApplication.dispatchEvent( new ViewEvent( ViewEvent.LOCATION_REGISTRATION_COMPLETE ) );
+						this.parentApplication.dispatchEvent( new ViewEvent( ViewEvent.LOCATION_SELECT_GAME_TEAM, {type: "GAME" } ));
 					} else
 					{
 						this.parentApplication.dispatchEvent(new KioskError(KioskError.ERROR, e.result.message.toString(), "COMMUNICATION ERROR"));

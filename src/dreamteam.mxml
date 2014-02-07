@@ -421,7 +421,7 @@
 					
 				}
 				
-				trace("dreamteam :: gotoView :: " + stackStr);
+//				trace("dreamteam :: gotoView :: " + stackStr + " :: " + obj["type"]);
 				
 				for (var i:int=0;i<indexSeq.length;i++)
 				{
