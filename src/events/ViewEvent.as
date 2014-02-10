@@ -13,9 +13,11 @@ package events
 		public static var LOCATION_REGISTRATION : String = "LocationRegistration";
 		public static var LOCATION_STANDARD_REGISTRATION:String = "Standard registration";
 		public static var LOCATION_SELECT_USER_TYPE:String = "Select user type";
+		public static var LOCATION_SELECT_REGISTRATION_TEAM : String = "SelectRegistrationTeam";
 		public static var LOCATION_FACEBOOK:String = "Facebook";
 		public static var LOCATION_FACEBOOK_REGISTERED:String = "Facebook registered";
-		public static var LOCATION_SELECT_TEAM:String = "Select team";
+		public static var LOCATION_SELECT_TEAM:String = "SelectTeam";
+		public static var LOCATION_SELECT_GAME_TEAM : String = "SelectGameTeam";
 		public static var LOCATION_TEAM_SELECTED:String = "Team selected";
 		public static var LOCATION_REGISTRATION_COMPLETE:String = "Registration complete";
 		public static var LOCATION_PHOTO_SELECTED_USER:String = "location photo selected user";
@@ -24,6 +26,7 @@ package events
 		public static var LOCATION_RESULT:String = "Result";
 		public static var LOCATION_SELECT_GAME_OR_RESULT:String = "Select Game or Result";
 		public static var LOCATION_TEAMSHEETS:String = "Teamsheets"
+		public static var LOCATION_WELCOME_BACK : String = "WelcomeBack";
 		
 		
 

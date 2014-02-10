@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Skin xmlns:s="library://ns.adobe.com/flex/spark"
+		xmlns:fx="http://ns.adobe.com/mxml/2009"
+		xmlns:flm="http://ns.adobe.com/flame/2008"
+		xmlns:ai="http://ns.adobe.com/ai/2009"
+		xmlns:d="http://ns.adobe.com/fxg/2008/dt"
+		width="700" height="36">
+	<fx:Metadata>[HostComponent("spark.components.CheckBox")]</fx:Metadata>
+	<s:states>
+		<s:State name="up"/>
+		<s:State name="over"/>
+		<s:State name="down"/>
+		<s:State name="disabled"/>
+		<s:State name="upAndSelected"/>
+		<s:State name="overAndSelected"/>
+		<s:State name="downAndSelected"/>
+		<s:State name="disabledAndSelected"/>
+	</s:states>
+	<s:Rect x="1" y="1" width="30" height="30" radiusX="2.83446" radiusY="2.83446">
+		<s:stroke>
+			<s:SolidColorStroke weight="2" caps="none" joints="miter" miterLimit="10" color="#00AEEF"/>
+		</s:stroke>
+		<s:fill>
+			<s:SolidColor color="0xffffff" />
+		</s:fill>
+	</s:Rect>
+	<s:Group includeIn="disabledAndSelected,downAndSelected,overAndSelected,upAndSelected"
+			 x="3" y="6" flm:knockout="false">
+		<s:Path x="0.814" y="0.003" width="24.086" height="21.897"
+				data="M 7.922 0 L 8.127 0.293 C 7.291 0.922 6.361 1.891 5.338 3.199 C 4.314 4.508 3.533 5.73 2.994 6.867 L 2.561 7.16 C 2.201 7.41 1.957 7.596 1.828 7.717 C 1.777 7.533 1.666 7.232 1.494 6.814 L 1.33 6.434 C 1.096 5.887 0.878 5.482 0.677 5.221 C 0.476 4.959 0.25 4.785 0 4.699 C 0.422 4.254 0.809 4.031 1.16 4.031 C 1.461 4.031 1.795 4.439 2.162 5.256 L 2.344 5.666 C 3.004 4.553 3.852 3.471 4.887 2.42 C 5.922 1.369 6.934 0.563 7.922 0 Z"
+				winding="nonZero">
+			<s:fill>
+				<s:SolidColor color="0x00AEEF"/>
+			</s:fill>
+		</s:Path>
+	</s:Group>
+	<s:RichText id="labelDisplay" d:id="54" d:userLabel="enter text..." x="50" y="4"
+				ai:aa="2" color="#00AEEF" columnCount="1" fontFamily="StandardRegularAllCase" fontSize="28"
+				kerning="on" tabStops="S94.7159805297852" flm:variant="38"
+				whiteSpaceCollapse="preserve"/>
+</s:Skin>

@@ -34,7 +34,7 @@
 				parameters = new URLVariables();
 				
 				request = new URLRequest();
-				request.url =  this.parentApplication.localURL+'getuser.php';		
+				request.url =  this.parentApplication.localURL+'getuser.php';
 				request.method = URLRequestMethod.POST;
 				
 				loader = new URLLoader();
@@ -72,11 +72,9 @@
 			
 			protected function hide():void
 			{
-				parentApplication.dispatchEvent( new ViewEvent( nextScreen ));
+				this.parentApplication.dispatchEvent( new ViewEvent( ViewEvent.LOCATION_SELECT_GAME_TEAM, {type: "GAME" } ));
 			}
 		]]>
-		
-		
 	</fx:Script>
 	<s:VGroup horizontalAlign="center">
 		<s:Label id="frontMessage" text="WELCOME BACK" />

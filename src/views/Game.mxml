@@ -232,7 +232,7 @@
 			{
 //				Console.log( "Start", this);
 				//fade and hide
-				
+//				
 				TweenMax.to( incomplete_overlay, .5, {alpha:0, onComplete: hide_restart_overlay});
 				
 			}
@@ -249,11 +249,9 @@
 				for (var i:int=0;i<players.length;i++)
 				{
 					shirt(players[i]).reset();
-
 				}
-				
-				
 			}
+			
 			protected function resetAndRestart():void
 			{
 //				Console.log("resetAndRestart", this);
@@ -285,7 +283,7 @@
 //					Console.log("Clear all events and lets move on", this);
 					saveScreenshot();
 					
-					this.parentApplication.dispatchEvent( new ViewEvent( ViewEvent.LOCATION_SELECT_USER_TYPE ));
+					this.parentApplication.dispatchEvent( new ViewEvent( ViewEvent.LOCATION_GAME_COMPLETE));
 				}
 			}
 			protected function saveScreenshot():void
