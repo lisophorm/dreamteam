@@ -620,7 +620,7 @@
 						break;
 					
 					case ViewEvent.LOCATION_GAME_COMPLETE:
-						gotoView("Thankyou");
+						gotoView("SelectUserType");
 						break;
 					case ViewEvent.LOCATION_REGISTRATION:
 						gotoView("Registration");

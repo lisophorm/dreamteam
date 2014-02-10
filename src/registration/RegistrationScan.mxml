@@ -324,6 +324,7 @@
 				this.parentApplication.dispatchEvent(new KioskError(KioskError.ERROR, "ERROR - RETURNED:"+msg, "ERROR", init));
 				//init();
 			}
+			
 			protected function userValidCheck(e:ResultEvent):void
 			{
 				service.removeEventListener(ResultEvent.RESULT, userValidCheck);
