@@ -395,9 +395,6 @@
 				settings.userData = user;
 				
 				device.registerUser( user.urn );
-				
-				dispatchEvent(new DebugEvent(DebugEvent.DEBUG, 666));
-				trace("RegistrationScan :: onBeginRegister :: " + user.urn);
 			}
 			
 			protected function onStateChange( e:StateChangeEvent ):void

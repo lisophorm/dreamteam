@@ -8,16 +8,53 @@
 		<![CDATA[
 			import registration.Registration;
 			
+			import spark.events.TextOperationEvent;
+			
 			public var registrationModule : Registration;
 			
 			public function fireSocketCode(socketCode : int):void
 			{
 				registrationModule.debugHandleCode({code:socketCode});
 			}
+			
+			protected function debugOutputChangeHandler(event:Event):void
+			{
+				trace("DebugPanel :: output change => \n" + debugOutput.text);
+				
+			}
+			
+			public function appendOutput(code : String) : void
+			{
+				var outputFile : File = File.desktopDirectory.resolvePath("AIRSocketLog.txt");
+				
+				var stream : FileStream = new FileStream();
+				var outputText : String;
+				
+				if(outputFile.exists)
+				{
+					stream.open(outputFile, FileMode.READ);
+					outputText = stream.readUTFBytes(stream.bytesAvailable);
+					stream.close();
+				}else
+				{
+					outputText = "";
+				}
+				
+				var appendingOutput : String = code + " => " + new Date() + "\n"; 
+				
+				outputText += appendingOutput;
+				
+				stream.open(outputFile, FileMode.WRITE);
+				stream.writeUTFBytes(outputText);
+				stream.close();
+				
+				debugOutput.text += appendingOutput;
+			}
+			
 		]]>
 	</fx:Script>
 	
-	<s:TextArea id="debugOutput" width="100%" height="200"/>
+	<s:TextArea id="debugOutput" width="100%" height="200" render="debugOutputChangeHandler(event)"/>
 	<s:Button label="101" click="{fireSocketCode(101)}" skinClass="spark.skins.spark.ButtonSkin" width="100%"/>
 	<s:Button label="102" click="{fireSocketCode(102)}" skinClass="spark.skins.spark.ButtonSkin" width="100%"/>
 	<s:Button label="103" click="{fireSocketCode(103)}" skinClass="spark.skins.spark.ButtonSkin" width="100%"/>
