@@ -17,6 +17,8 @@
 			import mx.core.UIComponent;
 			import mx.events.DragEvent;
 			import mx.events.FlexEvent;
+			import mx.graphics.codec.JPEGEncoder;
+			import mx.graphics.codec.PNGEncoder;
 			import mx.managers.DragManager;
 			import mx.rpc.events.FaultEvent;
 			import mx.rpc.events.ResultEvent;
@@ -25,15 +27,24 @@
 			
 			import events.KioskError;
 			import events.KioskEvent;
+			import events.KioskWaitEvent;
 			import events.TeamEvent;
 			import events.UserEvent;
 			import events.ViewEvent;
 			
 			import model.ML;
+			import model.Settings;
 			import model.TeamModel;
+			
+			import ru.inspirit.image.encoder.JPGAsyncEncoder;
+			import ru.inspirit.image.encoder.JPGEncoder;
 			
 			public var data:Object;
 			protected var selectedTeam:String;
+			private var encoder:JPGAsyncEncoder;
+			
+			protected var imageSave : URLLoader;
+			private var settings:Settings;
 			
 			public function created(event:FlexEvent=null):void
 			{
@@ -60,7 +71,9 @@
 				TeamModel.reset();
 				TeamModel.selectedTeam = selectedTeam;
 				
+				settings = Settings.instance;
 				
+				encoder = new JPGAsyncEncoder(85);
 			}
 			protected function redrawTeamConfigurations( e:TeamEvent = null ):void
 			{
@@ -282,24 +295,61 @@
 				{
 //					Console.log("Clear all events and lets move on", this);
 					saveScreenshot();
-					
-					this.parentApplication.dispatchEvent( new ViewEvent( ViewEvent.LOCATION_GAME_COMPLETE));
 				}
 			}
+			
 			protected function saveScreenshot():void
 			{
-				//create screenshot
-				//buttonLists.visible = false;
-				var bd:BitmapData = new BitmapData(gamecontainer.width, gamecontainer.height, true,0xFFFFFFFF);
-				bd.draw(gamecontainer);
-				var b:Bitmap = new Bitmap(bd, "auto", true);
-				TeamModel.addBitmap(b);
-				//var ss:BitmapImage = new BitmapImage();
-				//ss.source = b;
-				//this.addElement(ss);
-				//gamecontainer.visible = false;
+				//this.parentApplication.dispatchEvent(new KioskWaitEvent("Saving your dream team"));
 				
+				var bd:BitmapData = new BitmapData(teamcontainer.width, teamcontainer.height, true,0x00FFFFFF);
+				bd.draw(teamcontainer);
+//				encoder.addEventListener(Event.COMPLETE, encodeScreenshotCompleteHandler);
+//				encoder.encodeAsync(bd);	
+				var pngEncoder : PNGEncoder = new PNGEncoder();
 				
+				var newencoder : JPEGEncoder = new JPEGEncoder();
+				var imageByteArray : ByteArray = pngEncoder.encode(bd);
+				
+				var uniqueCode : String = Math.random().toString().substr(2,5);
+				var imageName : String = settings.userData.urn + "_" + uniqueCode + ".png";
+				
+				var teamFile : File = File.desktopDirectory.resolvePath(imageName);
+				var stream : FileStream = new FileStream();
+				stream.open(teamFile, FileMode.WRITE);
+				stream.writeBytes(imageByteArray);
+				stream.close();
+				
+				var imageUploadUrl : String = this.parentApplication.localURL + "uploader_dreamteam.php";
+				var request : URLRequest = new URLRequest(imageUploadUrl);
+				request.method = URLRequestMethod.POST;
+				
+				teamFile.addEventListener(Event.COMPLETE, imageUploadCompleteHandler);
+				teamFile.addEventListener(IOErrorEvent.IO_ERROR, imageUploadErrorHandler);
+				teamFile.upload(request);
+				
+//				var header:URLRequestHeader = new URLRequestHeader("Content-type", "application/octet-stream");
+//				var request:URLRequest = new URLRequest(this.parentApplication.localURL + "uploader_dreamteam.php" + "?urn=" +settings.userData.urn + "&imageName=" + settings.userData.urn + "_" + uniqueCode + ".jpg" );
+//				request.requestHeaders.push(header);
+//				request.method = URLRequestMethod.POST;
+//				request.data = imageByteArray;
+//				imageSave.load(request);
+			}
+			
+			protected function encodeScreenshotCompleteHandler(event : Event) : void
+			{
+				encoder.removeEventListener(Event.COMPLETE, encodeScreenshotCompleteHandler);
+			}
+			
+			protected function imageUploadCompleteHandler(event : Event) : void
+			{
+				this.parentApplication.dispatchEvent( new ViewEvent( ViewEvent.LOCATION_GAME_COMPLETE));
+			}
+			
+			protected function imageUploadErrorHandler(event : IOErrorEvent) : void
+			{
+				this.parentApplication.dispatchEvent(new KioskError(KioskError.ERROR, "Sorry! There was a problem saving your dreamteam."));
+				trace("Game :: imageUploadErrorHandler");
 			}
 		]]>
 	</fx:Script>
@@ -382,28 +432,29 @@
 			</s:DataGroup>
 			
 		</s:VGroup>
-	
-	<s:VGroup width="1000" height="700" horizontalAlign="center">
-		<s:Spacer height="60" />
-		<s:Image visible="true" source="assets/images/graphics_pitch.png" smooth="true" width="882" height="684" includeInLayout="false" y="70" x="65"  />
+	<s:VGroup>
 		
-		<components:shirt id="goalkeeper"  type="goalkeeper" label="GOALKEEPER" x="420" y="8"  includeInLayout="false" />
-		
-		<components:shirt id="defender_0" type="defender" x="175" y="160.95" label="DEFENDER"  includeInLayout="false"/>
-		<components:shirt id="defender_1" type="defender" x="332" y="160.95" label="DEFENDER"   includeInLayout="false"/>
-		<components:shirt id="defender_2" type="defender" x="516.95" y="160.95" label="DEFENDER"   includeInLayout="false"/>
-		<components:shirt id="defender_3" type="defender" x="673.95" y="160.95" label="DEFENDER"   includeInLayout="false"/>
-
-		<components:shirt id="midfielder_0" type="midfielder" x="175" y="314.95" label="MIDFIELDER"  includeInLayout="false"/>
-		<components:shirt id="midfielder_1" type="midfielder" x="332" y="314.95" label="MIDFIELDER"   includeInLayout="false"/>
-		<components:shirt id="midfielder_2" type="midfielder" x="516.95" y="314.95" label="MIDFIELDER"   includeInLayout="false"/>
-		<components:shirt id="midfielder_3" type="midfielder" x="673.95" y="314.95" label="MIDFIELDER"   includeInLayout="false"/>
-
-		<components:shirt id="forward_0" type="forward" x="332" y="475.95" label="FORWARD"   includeInLayout="false"/>
-		<components:shirt id="forward_1" type="forward" x="516.95" y="475.95" label="FORWARD"   includeInLayout="false"/>
+		<s:VGroup width="1000" height="700" horizontalAlign="center" id="teamcontainer">
+			<s:Spacer height="60" />
+			<s:Image visible="true" source="assets/images/graphics_pitch.png" smooth="true" width="882" height="684" includeInLayout="false" y="70" x="65"  />
 			
+			<components:shirt id="goalkeeper"  type="goalkeeper" label="GOALKEEPER" x="420" y="8"  includeInLayout="false" />
+			
+			<components:shirt id="defender_0" type="defender" x="175" y="160.95" label="DEFENDER"  includeInLayout="false"/>
+			<components:shirt id="defender_1" type="defender" x="332" y="160.95" label="DEFENDER"   includeInLayout="false"/>
+			<components:shirt id="defender_2" type="defender" x="516.95" y="160.95" label="DEFENDER"   includeInLayout="false"/>
+			<components:shirt id="defender_3" type="defender" x="673.95" y="160.95" label="DEFENDER"   includeInLayout="false"/>
+	
+			<components:shirt id="midfielder_0" type="midfielder" x="175" y="314.95" label="MIDFIELDER"  includeInLayout="false"/>
+			<components:shirt id="midfielder_1" type="midfielder" x="332" y="314.95" label="MIDFIELDER"   includeInLayout="false"/>
+			<components:shirt id="midfielder_2" type="midfielder" x="516.95" y="314.95" label="MIDFIELDER"   includeInLayout="false"/>
+			<components:shirt id="midfielder_3" type="midfielder" x="673.95" y="314.95" label="MIDFIELDER"   includeInLayout="false"/>
+	
+			<components:shirt id="forward_0" type="forward" x="332" y="475.95" label="FORWARD"   includeInLayout="false"/>
+			<components:shirt id="forward_1" type="forward" x="516.95" y="475.95" label="FORWARD"   includeInLayout="false"/>
+				
+		</s:VGroup>
 		<s:Image click="confirmTeam(event)" width="567" height="106" source="assets/images/btn_confirm_team_sheet.png" smooth="true" includeInLayout="false" x="220" y="680" />
-		
 	</s:VGroup>
 	
 	<s:VGroup horizontalAlign="center" verticalCenter="0">
