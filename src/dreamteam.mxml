@@ -327,7 +327,8 @@
 			protected function centerPopups(e:Event=null):void
 			{
 				var p:Array = this.getActivePopup();
-				for (var i:int=0;i<p.length;i++)
+				
+				for (var i:int=0; i<p.length; i++)
 				{
 					p[i].height *= scale;
 					p[i].width *= scale;
@@ -335,14 +336,19 @@
 					p[i].height *= 1/scale;
 					p[i].width *= 1/scale;
 					p[i].scaleX = p[i].scaleY = scale;
-					try {
-						p[i].onresize();
-					} catch (e:Error)
+					
+					if("onsresize" in p[i])
 					{
-						
+					}else
+					{	
+						try {
+							p[i].onresize();
+						} catch (e:Error)
+						{
+							trace("Dreamteam :: centerPopups :: uncaught error!!");
+						}
 					}
 				}
-				//hello
 			}
 			
 			protected function notifyWaiting( e:KioskWaitEvent = null ):void
