@@ -792,7 +792,7 @@
 			
 			protected function debugEventHandler(event : DebugEvent):void
 			{
-				debugPanel.debugOutput.text += "socket code : " + event.socketCode +  "\n";
+				debugPanel.appendOutput(String(event.socketCode));
 			}
 			
 			protected function typingHandler(event:KeyboardEvent):void
