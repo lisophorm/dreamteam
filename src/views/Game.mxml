@@ -36,12 +36,8 @@
 			import model.Settings;
 			import model.TeamModel;
 			
-			import ru.inspirit.image.encoder.JPGAsyncEncoder;
-			import ru.inspirit.image.encoder.JPGEncoder;
-			
 			public var data:Object;
 			protected var selectedTeam:String;
-			private var encoder:JPGAsyncEncoder;
 			
 			protected var imageSave : URLLoader;
 			private var settings:Settings;
@@ -72,9 +68,8 @@
 				TeamModel.selectedTeam = selectedTeam;
 				
 				settings = Settings.instance;
-				
-				encoder = new JPGAsyncEncoder(85);
 			}
+			
 			protected function redrawTeamConfigurations( e:TeamEvent = null ):void
 			{
 //				Console.log("Redraw Team", this);
@@ -334,11 +329,6 @@
 //				request.method = URLRequestMethod.POST;
 //				request.data = imageByteArray;
 //				imageSave.load(request);
-			}
-			
-			protected function encodeScreenshotCompleteHandler(event : Event) : void
-			{
-				encoder.removeEventListener(Event.COMPLETE, encodeScreenshotCompleteHandler);
 			}
 			
 			protected function imageUploadCompleteHandler(event : Event) : void
