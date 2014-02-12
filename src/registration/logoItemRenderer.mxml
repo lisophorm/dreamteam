@@ -32,10 +32,10 @@
 		]]>
 	</fx:Script>
 	
-	<s:BorderContainer  width="118" height="100" visible="{data.@logo!=''}" backgroundAlpha="0" borderVisible="false">
+	<s:BorderContainer  width="150" height="150" visible="{data.@logo!=''}" backgroundAlpha="0" borderVisible="false">
 		
 	
-		<s:Image smooth="true"  width="118" height="100" visible="{data.@logo!=''}" id="logo" source="{'/assets/images/logos/'+data.@logo.toString()}" verticalCenter="0" horizontalCenter="0"      />
+		<s:Image smooth="true" smoothingQuality="high" width="150" height="150" visible="{data.@logo!=''}" id="logo" source="{'/assets/images/logos/'+data.@logo.toString()}" verticalCenter="0" horizontalCenter="0"      />
 	</s:BorderContainer>
 		
 

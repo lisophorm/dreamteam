@@ -156,6 +156,9 @@
 							//Console.log("currentIndex: "+currentIndex,this)
 						}
 					}
+					
+					accept();
+					
 					/*
 					
 					TweenMax.to(CarouselGroup.getElementAt( currentIndex ), .5, 
@@ -167,7 +170,7 @@
 					//Console.log( "currentIndex: "+ teamDataList[currentIndex].@name, this );
 					
 			}
-			protected function accept( e:Event ):void
+			protected function accept( e:Event = null ):void
 			{
 				if (this.currentIndex>=0)
 				{
@@ -253,8 +256,8 @@
 				</s:layout>
 				<s:XMLListCollection  id="teamList"   source="{teamDataList}"/>	
 			</s:DataGroup>
-			<s:Spacer height="90" />
-			<s:Button label="CONTINUE" click="accept(event)" skinClass="skins.barclaysButton" />
+			<!--s:Spacer height="90" />
+			<s:Button label="CONTINUE" click="accept(event)" skinClass="skins.barclaysButton" /-->
 		</s:VGroup>
 			
 			
