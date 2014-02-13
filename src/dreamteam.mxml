@@ -2,7 +2,7 @@
 <s:WindowedApplication xmlns:fx="http://ns.adobe.com/mxml/2009" 
 					   xmlns:s="library://ns.adobe.com/flex/spark" 
 					   xmlns:mx="library://ns.adobe.com/flex/mx" xmlns:views="views.*"
-					   horizontalCenter="center" width="100%" height="100%" backgroundColor="#000000"
+					   horizontalCenter="center" width="1024" height="768" backgroundColor="#000000"
 					   initialize="videoSettings(event)"
 					   creationComplete="init(event)"  resize="onresize()"
 					   addedToStage="fullscreen()" showStatusBar="false" 
@@ -209,7 +209,8 @@
 				ApplicationType = pref.prefsXML..applicationtype.toUpperCase();
 				urn = int(pref.prefsXML..urnLength);
 				scoreFormat = pref.prefsXML..scoreFormat;
-				password = pref.prefsXML..password;
+				//password = pref.prefsXML..password;
+				password="123";
 				monitor =  new MonitorConnection(localURL+"ping.php");
 				checkUpdate();
 				
@@ -672,9 +673,9 @@
 				passwordbox.password = password;
 				passwordbox.exitFunction = exitFunction;
 				
-				PopUpManager.addPopUp(passwordbox, this, true);
+				PopUpManager.addPopUp(passwordbox, this, false);
 				PopUpManager.centerPopUp(passwordbox);
-				this.dispatchEvent( new ApplicationEvent( ApplicationEvent.POPUP_OPEN ) );
+				//this.dispatchEvent( new ApplicationEvent( ApplicationEvent.POPUP_OPEN ) );
 				centerPopups();
 			}
 			
