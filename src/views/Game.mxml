@@ -27,6 +27,7 @@
 			
 			import events.KioskError;
 			import events.KioskEvent;
+			import events.KioskProgressEvent;
 			import events.KioskWaitEvent;
 			import events.TeamEvent;
 			import events.UserEvent;
@@ -307,7 +308,7 @@
 				var imageByteArray : ByteArray = pngEncoder.encode(bd);
 				
 				var uniqueCode : String = Math.random().toString().substr(2,5);
-				var imageName : String = settings.userData.urn + "_" + uniqueCode + ".png";
+				var imageName : String = settings.userData.urn + "_" + uniqueCode + "_dreamteam.png";
 				
 				var teamFile : File = File.desktopDirectory.resolvePath(imageName);
 				var stream : FileStream = new FileStream();
@@ -320,8 +321,11 @@
 				request.method = URLRequestMethod.POST;
 				
 				teamFile.addEventListener(Event.COMPLETE, imageUploadCompleteHandler);
+				teamFile.addEventListener(DataEvent.UPLOAD_COMPLETE_DATA,uploadDataComplete);
 				teamFile.addEventListener(IOErrorEvent.IO_ERROR, imageUploadErrorHandler);
 				teamFile.upload(request);
+				
+				this.parentApplication.dispatchEvent( new KioskProgressEvent(KioskProgressEvent.NOTIFY, "Uploading file" ) );
 				
 //				var header:URLRequestHeader = new URLRequestHeader("Content-type", "application/octet-stream");
 //				var request:URLRequest = new URLRequest(this.parentApplication.localURL + "uploader_dreamteam.php" + "?urn=" +settings.userData.urn + "&imageName=" + settings.userData.urn + "_" + uniqueCode + ".jpg" );
@@ -333,13 +337,33 @@
 			
 			protected function imageUploadCompleteHandler(event : Event) : void
 			{
-				this.parentApplication.dispatchEvent( new ViewEvent( ViewEvent.LOCATION_GAME_COMPLETE));
+				this.parentApplication.dispatchEvent( new KioskProgressEvent( KioskProgressEvent.UPDATE_COMPLETE ));
 			}
 			
 			protected function imageUploadErrorHandler(event : IOErrorEvent) : void
 			{
-				this.parentApplication.dispatchEvent(new KioskError(KioskError.ERROR, "Sorry! There was a problem saving your dreamteam."));
+				this.parentApplication.dispatchEvent(new KioskError(KioskError.ERROR,event.text, "I/O Error"));
 				trace("Game :: imageUploadErrorHandler");
+			}
+			
+			protected function uploadDataComplete(event:DataEvent):Boolean
+			{
+				
+				try {
+					var result:XML = new XML(event.data);
+				} catch (e:Error) {
+					this.parentApplication.dispatchEvent( new KioskError(KioskError.ERROR, e.message+"\r\n"+event.data.toString(), "Malformed xml result" ) );
+					return false;
+				}
+				trace("result from upload:"+result.toString());
+				trace("message:"+result.message);
+				trace("status:"+result.status);
+				if(result.status!="OK") {
+					this.parentApplication.dispatchEvent( new KioskError(KioskError.ERROR, result.message, "Problem after file upload" ) );
+				} else {
+					this.parentApplication.dispatchEvent( new ViewEvent( ViewEvent.LOCATION_GAME_COMPLETE));
+				}
+				return true;
 			}
 		]]>
 	</fx:Script>

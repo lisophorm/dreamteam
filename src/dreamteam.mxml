@@ -210,8 +210,7 @@
 				urn = int(pref.prefsXML..urnLength);
 				scoreFormat = pref.prefsXML..scoreFormat;
 				password = pref.prefsXML..password;
-				monitor =  new MonitorConnection(baseURL+"ping.php");
-				
+				monitor =  new MonitorConnection(localURL+"ping.php");
 				checkUpdate();
 				
 				this.addEventListener( ApplicationEvent.SAVE_TYPE, notifyApplicationTypeUpdate );
