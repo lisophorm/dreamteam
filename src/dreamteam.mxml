@@ -514,6 +514,8 @@
 				switch (e.location)
 				{
 					case ViewEvent.LOCATION_RESTART:
+						this.loggedIn=false;
+						quitButton.visible=false;
 						if (this.ApplicationType == APPLICATION_TYPE_REGISTRATION || this.ApplicationType == APPLICATION_TYPE_REGISTER_GAME)
 						{
 							isRegistered = null;

@@ -290,12 +290,33 @@
 				} else 
 				{
 //					Console.log("Clear all events and lets move on", this);
+					//showEmailOverlay();
 					saveScreenshot();
 				}
 			}
 			
+			protected function showEmailOverlay():void {
+				trace("show email overlay");
+				email_overlay.visible=true;
+				TweenMax.to( email_overlay, .5, {alpha:1});
+			}
+			
+			protected function hideEmailOverlay():void {
+				TweenMax.to( email_overlay, .5, {alpha:0, onComplete: completeGame});
+			}
+			
+			protected function hideEmailOverlayAndEmail():void {
+				TweenMax.to( email_overlay, .5, {alpha:0, onComplete: saveScreenshot});
+			}
+			
+			protected function completeGame():void {
+				email_overlay.visible=false;
+				this.parentApplication.dispatchEvent( new ViewEvent( ViewEvent.LOCATION_GAME_COMPLETE));
+			}
+			
 			protected function saveScreenshot():void
 			{
+				email_overlay.visible=false;
 				//this.parentApplication.dispatchEvent(new KioskWaitEvent("Saving your dream team"));
 				
 				var bd:BitmapData = new BitmapData(teamcontainer.width, teamcontainer.height, true,0x00FFFFFF);
@@ -373,6 +394,7 @@
 	</fx:Declarations>
 	<!-- Menu -->
 	<!-- Field -->
+
 	
 	<s:BorderContainer borderAlpha="0" width="100%" height="100%" id="gamecontainer">
 	<s:backgroundFill>
@@ -489,6 +511,23 @@
 			
 		</s:VGroup>
 		</s:BorderContainer>
+
+	<s:BorderContainer id="email_overlay" alpha="0" visible="false" borderAlpha="0" width="1920" height="1080" includeInLayout="false">
+		<s:backgroundFill>
+			<s:SolidColor alpha=".85" color="0x000000" />
+		</s:backgroundFill>
+		<s:VGroup horizontalCenter="0" verticalCenter="-100" horizontalAlign="center">
+			<s:Label fontFamily="StandardRegularAllCase" textAlign="center" text="Would you like your Dream Team emailed to you?" fontSize="84" width="1280" />
+			<s:Spacer height="20" />
+			<s:HGroup>
+				<components:LargeButton label="YES" click="hideEmailOverlayAndEmail()" />
+				<s:Spacer width="20" />
+				<components:LargeButton label="NO" click="hideEmailOverlay()" />
+			</s:HGroup>
+			
+		</s:VGroup>
+		
+	</s:BorderContainer>
 	
 	<s:BorderContainer id="start_overlay" borderAlpha="0" x="0" y="0" width="1920" height="1080" includeInLayout="false">
 		<s:backgroundFill>

@@ -102,17 +102,19 @@
 		<s:Image smooth="true" source="assets/images/logo_live.png" scaleX=".8" scaleY=".8" verticalAlign="middle"  />
 		<s:Spacer height="20" />
 		<s:Image smooth="true" source="assets/images/txt_thank_you.png" buttonMode="true" click="facebook(event)" />
-		<s:Spacer height="20" />
+		<s:Spacer height="60" />
 		<!--<s:Label lineBreak="explicit" fontFamily="StandardRegularAllCase" textAlign="center" fontSize="30.5" text="{ML.t('Share your Dream Team with your friends on Facebook.')}" />
 		<s:Spacer height="54"/>-->
 		
 		<s:VGroup width="100%" horizontalAlign="center">
 			<s:VGroup width="500" horizontalAlign="center">
-				<!--components:facebookBtn  click="facebook()"  /-->
+				<s:Label fontFamily="StandardRegularAllCase" fontSize="64" text="Your team will be emailed to you shortly" />
 				
-				<s:Spacer height="20" />
+				<s:Spacer height="60" />
 				
 				<s:Button height="60" width="400"  label="{ML.t('BACK TO START')}" click="restart(event)" skinClass="skins.vodafoneButton" />
+				
+				
 			
 			</s:VGroup>
 			

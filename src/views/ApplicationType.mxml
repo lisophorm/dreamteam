@@ -27,6 +27,8 @@
 			//	trace("*** INIT APPLICATIONTYPE ***");
 				if ( this.parentApplication.data!=null )
 				{
+					stage.displayState=StageDisplayState.NORMAL;
+					NativeApplication.nativeApplication.activeWindow.alwaysInFront=false;
 					data = this.parentApplication.data;
 					this.server.text = data.xml.serverIP;
 					this.facebookAPI_ID.text = data.xml.facebookAppID;
@@ -38,7 +40,8 @@
 			
 			protected function exit(event:Event=null):void
 			{
-			//	trace("*** EXIT APPLICATIONTYPE ***");
+				stage.displayState=StageDisplayState.FULL_SCREEN_INTERACTIVE;
+				NativeApplication.nativeApplication.activeWindow.alwaysInFront=true;
 				this.parentApplication.dispatchEvent( new ApplicationEvent ( ApplicationEvent.LOGOUT ));
 			}
 			protected function submit(e:MouseEvent):void
