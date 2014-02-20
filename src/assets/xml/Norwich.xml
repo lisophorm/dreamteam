@@ -1,0 +1,128 @@
+<teams>
+<teaminfo>
+    <name>Norwich City FC</name>
+    <top_players>
+        <player>
+            <name>Sebastien Bassong</name>
+            <shirtno>5</shirtno>
+            <img src="/assets/teamsheets/norwich/players/Sebastien-Bassong1.jpg"/>
+
+            <gallery>
+                <img src="/assets/teamsheets/norwich/players/Sebastien-Bassong2.jpg" />
+                <img src="/assets/teamsheets/norwich/players/Sebastien-Bassong3.jpg"  />
+            </gallery>
+
+            <description>
+                <![CDATA[On 21st August 2012, Bassong signed with Norwich City for a £5.5m fee. Bassong made his Canaries debut against QPR in a 1–1 draw at Carrow Road.
+On 17th May 2013, Bassong was named Norwich City's Player of the Season for 2012/13, winning the Barry Butler Memorial Trophy. In doing so he became the first player from outside the British Isles to win the prestigious award. With continued success, he was named team captain on 10th August 2013. ]]>
+            </description>
+            <statistics poy="2012-Present Day" goals="3">
+                <data key="15 international caps for Nigeria" />
+                <data key="Norwich Player of the Season" value="2012/13" />
+                <data key="First non-British player to win Norwich Player of the Season"  />
+                <data key="Named Norwich City captain for 2013/14 season"  />
+            </statistics>
+        </player>
+
+      <player>
+        <name>John Ruddy</name>
+        <shirtno>1</shirtno>
+        	<img src="/assets/teamsheets/norwich/players/John-Ruddy1.jpg"/>
+        <gallery> 
+	        <img src="/assets/teamsheets/norwich/players/John-Ruddy2.jpg"/> 
+	        <img src="/assets/teamsheets/norwich/players/John-Ruddy3.jpg"/> 
+        </gallery>
+            <description>
+                <![CDATA[On 5th July 2010, Ruddy signed for Championship side Norwich City for an undisclosed fee and was given the number 1 shirt. Ruddy was voted Player's Player of the Season following Norwich's twelfth-place finish in the 2011/12 season. For the 2012/13 season, Ruddy found himself first choice again ahead of Declan Rudd, Jed Steer and new goalkeeper, Mark Bunn. 
+Ruddy kept memorable clean sheets against Arsenal and Manchester United as Norwich won 1-0 on both occasions.]]>
+            </description>
+            <statistics poy="2010 - Present Day" goals="0">
+                <data key="1 international cap for England" />
+                <data key="14 clean sheets in his first season for Norwich City" /> 
+                <data key="Football League Championship runner-up" />
+                <data key="Norwich City Player’s Player of the Year" value="2012/13" />
+            </statistics>
+      </player>
+
+      <player>
+        <name>Darren Huckerby</name>
+        <shirtno>6</shirtno>
+        <img src="/assets/teamsheets/norwich/players/Darren-Huckerby1.jpg"/>
+        <gallery> 
+        	<img src="/assets/teamsheets/norwich/players/Darren-Huckerby2.jpg"/> 
+        	<img src="/assets/teamsheets/norwich/players/Darren-Huckerby3.jpg"/> 
+        </gallery>
+            <description>
+                <![CDATA[Huckerby signed for Norwich City in December 2003, after a successful loan spell with the Club.
+
+Huckerby went on to play 161 times for the Canaries, scoring 36 goals in a career spanning four and a half years at the Club. He was also voted the Club’s Player of the Year twice during this period.]]>
+            </description>
+            <statistics poy="2003-2008" goals="36">
+                <data key="2 Time Norwich City Player of the Year" />
+                <data key="First Division winner" value="2003" />
+            </statistics>
+      </player>
+
+      <player>
+        <name>Robert Snodgrass</name>
+        <shirtno>7</shirtno>
+        <img src="/assets/teamsheets/norwich/players/Robert-Snodgrass1.jpg"/>
+        <gallery> 
+        	<img src="/assets/teamsheets/norwich/players/Robert-Snodgrass2.jpg"/> 
+        	<img src="/assets/teamsheets/norwich/players/Robert-Snodgrass3.jpg"/> 
+        </gallery>
+            <description>
+                <![CDATA[Snodgrass signed for Norwich City on a three year contract in July 2012 for an undisclosed fee.
+
+Snodgrass would go on to establish himself as a regular in the first team squad. 
+After a successful campaign in which the Club finished 11th in the table, he was voted 2nd place in the Player of the Season by Norwich City fans. ]]>
+            </description>
+            <statistics poy="2012-Present Day" goals="6">
+                <data key="Football League Championship Player of the Month" value="Jan 2011" />    
+                <data key="PFA League 1 Team of the Year " value="2009/10" />
+                <data key="11 international Caps for Scotland"  />
+                <data key="2 International goals"  />
+            </statistics>
+      </player>
+
+      <player>
+        <name>Grant Holt</name>
+        <shirtno>10</shirtno>
+        <img src="/assets/teamsheets/norwich/players/Grant-Holt1.jpg"/>
+        <gallery> 
+        	<img src="/assets/teamsheets/norwich/players/Grant-Holt2.jpg"/> 
+        	<img src="/assets/teamsheets/norwich/players/Grant-Holt3.jpg"  /> 
+        </gallery>
+            <description>
+                <![CDATA[On 24th July 2009, Holt transferred to Norwich City after Shrewsbury Town accepted an undisclosed bid. Holt signed a three-year contract with the option of a further year at Carrow Road. He won the League One Player of the Month award for October 2009, for "excellent performances throughout October", a month in which he scored an impressive five goals in as many League fixtures.
+Holt was inducted into the Norwich City Hall of Fame on 20th March 2012. Holt's impressive opening season in the Barclays Premier League earned him much acclaim by pundits and managers alike.]]>
+            </description>
+            <statistics poy="2009-2013" goals="68">
+                <data key="3 Time Norwich City Player of the Year " />
+                <data key="Football League 1 winner " value="2009/10" />
+                <data key="PFA Championship Team of the Year" value="2010/11" />
+                <data key="PFA League One Team of the Year " value="2009/10" />
+            </statistics>
+      </player>
+    </top_players>     
+    
+    <video src="" />
+    
+    <gallery>
+            <item>
+                <img src="" alt="Carrow Road" />
+                <description><![CDATA[Norwich City’s home stadium Carrow Road, which takes the name from the road the ground is on, was built in 1935. In fact the construction of the stadium took only 82 days.  The Stadium seats 27,250, however, in the days of the standing terraces, Carrow road had its greatest attendance of 43,984. The main stands at Carrow road are, The Barclay Stand, Geoffrey Watling City Stand, Thorpe Corner and the Jarrold stand. The Norwich & Peterborough Stand and the Aviva Community Corner. Carrow Road site also includes a Club superstore, catering facilities and a Holiday Inn Hotel. Carrow Road hasn’t been exclusive to Norwich City; England U21 and musical acts such as Elton John have also been hosted at the stadium.]]>
+                </description>
+                <statistics>
+                    <description><![CDATA[<span fontWeight="bold">Capacity:</span> 27,250 <br/><br/><span fontWeight="bold">Field Dimensions:</span> 105m x 68m<br/><br/><span fontWeight="bold">Surface:</span> Desso GrassMaster.]]></description>
+                    <stat key="Capacity" value="27,250" />
+                    <stat key="Field Dimensions" value="105m x 68m" />
+                    <stat key="Surface" value="Desso GrassMaster" />   
+                </statistics>
+            </item>
+    </gallery>
+    
+     <timeline><![CDATA[/assets/teamsheets/arsenal/timeline/DidYouKnow]]></timeline>
+
+</teaminfo>
+</teams>

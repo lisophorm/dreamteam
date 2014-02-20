@@ -7,13 +7,13 @@
 
     <top_players>
         <player>
-            <name>ASteven Gerrard</name>
+            <name>Steven Gerrard</name>
             <shirtno>8</shirtno>
-            <img src=""/>
+            <img src="assets/teamsheets/liverpool/players/Steven-Gerrard1.jpg"/>
 
             <gallery>
-                <img src="" />
-                <img src=""  />
+                <img src="assets/teamsheets/liverpool/players/Steven-Gerrard2.jpg" />
+                <img src="assets/teamsheets/liverpool/players/Steven-Gerrard3.jpg"  />
             </gallery>
 
             <description>
@@ -33,10 +33,10 @@ In 2005, Gerrard was honoured as the UEFA Club Footballer of the Year and won th
         <player>
             <name>Jamie Carragher</name>
             <shirtno>23</shirtno>
-            <img src=""/>
+            <img src="assets/teamsheets/liverpool/players/Jamie-Carragher1.jpg"/>
             <gallery>
-                <img src="" />
-                <img src=""  />
+                <img src="assets/teamsheets/liverpool/players/Jamie-Carragher2.jpg" />
+                <img src="assets/teamsheets/liverpool/players/Jamie-Carragher3.jpg"  />
             </gallery>
             <description>
                 <![CDATA[Carragher started his footballing career at the Liverpool Academy, making his professional debut in the 1996/97 season. He then became a first-team regular in the following seasons.
@@ -56,17 +56,17 @@ Carragher also holds the record for the most appearances in European competition
         <player>
             <name>Robbie Fowler</name>
             <shirtno>9</shirtno>
-            <img src=""/>
+            <img src="assets/teamsheets/liverpool/Robbie-Fowler1.jpg"/>
             <gallery>
-                <img src="" />
-                <img src=""  />
+                <img src="assets/teamsheets/liverpool/players/Robbie-Fowler2.jpg"/>
+                <img src="assets/teamsheets/liverpool/players/Robbie-Fowler3.jpg"/>
             </gallery>
             <description>
                 <![CDATA[Fowler's career began with Liverpool. He signed as a youth team player after leaving school in the summer of 1991, signing professional terms on his 17th birthday, 9 April 1992.
 In the 1994/95 season, Fowler was ever-present for Liverpool, playing in all of their 57 competitive matches; including the victory in the 1995 League Cup final and a match against Arsenal in which he scored the Premier League's fastest ever hat-trick, 4 minutes and 33 seconds, a record that still stands. 
 2000/01 was Fowler's most successful season. He appeared in three finals, scoring 17 goals and lifting three trophies in a unique cup treble.]]>
             </description>
-            <statistics poy="1993 – 2001 & 2006 - 2007" goals="128">
+            <statistics poy="1993 – 2001  2006 - 2007" goals="128">
                 <data key="1 FA Cup win" />
                 <data key="1 UEFA Cup win" />
                 <data key="2 PFA Young Player of the Year awards" />
@@ -80,10 +80,10 @@ In the 1994/95 season, Fowler was ever-present for Liverpool, playing in all of
         <player>
             <name>John BArnes</name>
             <shirtno>10</shirtno>
-            <img src=""/>
+            <img src="assets/teamsheets/liverpool/players/John-Barnes1.jpg"/>
             <gallery>
-                <img src="" />
-                <img src=""  />
+                <img src="assets/teamsheets/liverpool/players/John-Barnes2.jpg" />
+                <img src="assets/teamsheets/liverpool/players/John-Barnes3.jpg"  />
             </gallery>
             <description>
                 <![CDATA[Barnes left Watford on 9th June 1987 in a £900,000 deal to join Kenny Dalglish's Liverpool. In his first season at Anfield, Liverpool coasted to the league title, remaining undefeated for the first 29 games of the season and ending up with just two defeats.
@@ -105,10 +105,10 @@ The Liverpool fans adoration for "Digger" (he was nicknamed after the character 
         <player>
             <name>Luis Suarez</name>
             <shirtno>7</shirtno>
-            <img src=""/>
+            <img src="assets/teamsheets/liverpool/players/Luis-Suarez1.jpg"/>
             <gallery>
-                <img src="" />
-                <img src=""  />
+                <img src="assets/teamsheets/liverpool/players/Luis-Suarez2.jpg" />
+                <img src="assets/teamsheets/liverpool/players/Luis-Suarez3.jpg"  />
             </gallery>
             <description>
                 <![CDATA[Suárez signed a five-and-a-half-year deal until 2016 and was Liverpool's most expensive signing (£22.8 million). Suárez made his Liverpool debut on 2nd February against Stoke City at Anfield in a 2–0 win. He came on as a substitute and scored Liverpool's second goal in front of the Kop in the sixty-third minute. On 7th August 2012, Suárez signed a new long-term contract with Liverpool. On 26th August, he scored his first goal of the 2012/13 season in a 2–2 draw with champions Manchester City. Then, at Anfield 6 weeks later, he got a hat-trick against Norwich City for the second consecutive season. He was second-top goalscorer in the Barclays Premier League for 2012/13 with 23 goals and Liverpool's top scorer in all competitions]]>
@@ -125,10 +125,10 @@ The Liverpool fans adoration for "Digger" (he was nicknamed after the character 
         </player>
     </top_players>    
     
-    <video src="" />
+    <video src="assets/teamsheets/liverpool/gallery/Anfield1.jpg" />
     <gallery>
             <item>
-                <img src="" alt="Anfield" />
+                <img src="assets/teamsheets/liverpool/gallery/Anfield1.jpg" alt="Anfield" />
                 <description><![CDATA[Anfield is one of the oldest stadiums in the Barclays Premier League after being opened in 1884. Although once the home of bitter rivals Everton FC, after Everton moved to Goodison Park in 1892, newly formed Liverpool secured it as their permanent home. The record attendance of 61,905 was set at a match between Liverpool and Wolverhampton Wanderers in 1952. With the loudest fans in the League, Liverpool use the great fan support in Anfield to their advantage in their games. Liverpool were undefeated at Anfield in 7 separate seasons, the last of which being the 2008/2009 season.
 ]]>
                 </description>
@@ -138,24 +138,10 @@ The Liverpool fans adoration for "Digger" (he was nicknamed after the character 
                     <stat key="Capacity" value="45,276" />
                     <stat key="Field Dimensions" value="105× 68" />
                     <stat key="Surface" value="Grass" />
-                    
-                    
                 </statistics>
             </item>
     </gallery>
-    <timeline>
-         <gallery>
-                <img src="" />
-                <img src="" />
-                <img src="" />
-            </gallery>
-        <data value="">Liverpool has one of the most famous football terraces in the world, the Kop. The name came about in 1906 after the Battle of Spion Kop in the Second Boer War. </data>
-        <data value="Bill Shankly">Liverpool were the most successful English Club of the 20th century and the foundation of that success were the legends created by manager Bill Shankly. </data>
-        <data value="1964">The team’s home colours have been all red since 1964, when manager Bill Shankly changed them from a red shirt and white shorts so the players would appear bigger and more dangerous. </data>
-        <data value="‘You’ll Never Walk Alone’">This became the Club’s anthem after the ‘Merseybeat’ group Gerry & The Pacemakers made the song a number one record in the UK in 1963 and it was regularly played before the start of each game. The words are immortalised on the Shankly Gates at Anfield and on the Club crest.  </data>
-
-
-    </timeline>
+    <timeline><![CDATA[/assets/teamsheets/arsenal/timeline/DidYouKnow]]></timeline>
 
 </teaminfo>
 </teams>

@@ -1,0 +1,124 @@
+<teams>
+<teaminfo>
+    <name>Sunderland FC</name>
+    <top_players>
+        <player>
+            <name>Michael Gray</name>
+            <shirtno>7</shirtno>
+            <img src="/assets/teamsheets/sunderland/players/Michael-Gray1.jpg"/>
+
+            <gallery>
+                <img src="/assets/teamsheets/sunderland/players/Michael-Gray2.jpg" />
+                <img src="/assets/teamsheets/sunderland/players/Michael-Gray3.jpg"  />
+            </gallery>
+
+            <description>
+                <![CDATA[On leaving school in 1990, Gray signed as an apprentice with Sunderland.  At the age of 18 he was called up to the first team for the 1992/93 season.
+Known for his talent in many position on the field, he was at home in the left-back or left-wing position.
+Following the conclusion of his playing career Gray moved into the media, working as a pundit for the BBC and working for radio station TalkSport.]]>
+            </description>
+            <statistics poy="1992 - 2004" goals="16">
+                <data key="3 international caps for England" />
+                <data key="363 League appearances for Sunderland" />
+            </statistics>
+        </player>
+
+      <player>
+        <name>Kevin Ball</name>
+        <shirtno>5</shirtno>
+        	<img src="/assets/teamsheets/sunderland/players/Kevin-Ball1.jpg"/>
+        <gallery> 
+	        <img src="/assets/teamsheets/sunderland/players/Kevin-Ball2.jpg"/> 
+	        <img src="/assets/teamsheets/sunderland/players/Kevin-Ball3.jpg"/> 
+        </gallery>
+            <description>
+                <![CDATA[Having played nearly 400 games for Sunderland between 1990/99, Kevin Ball found the net 27 times from midfield. Ball was known for his tenacious style of play and featured in Sunderland’s FA Cup final loss to Liverpool in 1992. Ball did taste success with Sunderland by winning the Division 1 title with them in the 1995/96 season, to reach the Barclays Premier League for the first time. More recently, Ball has been in charge of the youth and reserve teams at Sunderland and has been caretaker manager of the club on two occasions.]]>
+            </description>
+            <statistics poy="1990-1999" goals="27">
+                <data key="Football League First Division winner" value="1995/96, 1998/99" />
+                <data key="FA Cup runner-up" value="1991/92" />
+                <data key="Sunderland Player of the Year" value="1996/97" />
+            </statistics>
+      </player>
+
+      <player>
+        <name>Julio Arca</name>
+        <shirtno>33</shirtno>
+        <img src="/assets/teamsheets/sunderland/players/Julio-Arca1.jpg"/>
+        <gallery> 
+        	<img src="/assets/teamsheets/sunderland/players/Julio-Arca2.jpg"/> 
+        	<img src="/assets/teamsheets/sunderland/players/Julio-Arca3.jpg"/> 
+        </gallery>
+            <description>
+                <![CDATA[Julio Arca joined Sunderland for £3.5 million from Argentinos Juniors and the former Argentina Under-20 captain celebrated his debut with a goal against West Ham United. The attack-minded left-back found the net 17 times during his 6 year spell with Sunderland and was also selected for the PFA Team of the Year for two consecutive seasons between 2003/2005. Arca was admired by Sunderland fans for his determined style of play, which helped the club back into the Barclays Premier League, having won the Football League Championship in the 2004/05 season.]]>
+            </description>
+            <statistics poy="2000 - 2006" goals="17">
+                <data key="FIFA Under-20 World Cup Winner" value="2001" />
+                <data key="PFA Team of the Year" value="2003/04, 2004/05" />
+                <data key="Football League Championship winner" value="2004/05" />
+            </statistics>
+      </player>
+
+      <player>
+        <name>Kevin Phillips</name>
+        <shirtno>11</shirtno>
+        <img src="/assets/teamsheets/sunderland/players/Kevin-Phillips1.jpg"/>
+        <gallery> 
+        	<img src="/assets/teamsheets/sunderland/players/Kevin-Phillips2.jpg"/> 
+        	<img src="/assets/teamsheets/sunderland/players/Kevin-Phillips3.jpg"/> 
+        </gallery>
+            <description>
+                <![CDATA[Phillips signed for Sunderland just after their relegation from the Barclays Premier League. Fifteen matches into the Division One season, the club were in mid-table and Phillips had four goals.
+Phillips scored eight goals in the opening weeks of the 1998/99 season as Sunderland reached the top of the Division One table.
+His form earned him an international call-up for England and he made his debut in the starting eleven in a friendly against Hungary.]]>
+            </description>
+            <statistics poy="1997 - 2003" goals="113">
+                <data key="5 international caps for England" />
+                <data key="Premier League Player of the Season " value="1998/99" />
+                <data key="BPL Player of the Month" value="Oct 1999" />
+                <data key="" value="2006, 2007" />
+            </statistics>
+      </player>
+
+      <player>
+        <name>Niall Quinn</name>
+        <shirtno>9</shirtno>
+        <img src="/assets/teamsheets/sunderland/players/Niall-Quinn1.jpg"/>
+        <gallery> 
+        	<img src="/assets/teamsheets/sunderland/players/Niall-Quinn2.jpg"/> 
+        	<img src="/assets/teamsheets/sunderland/players/Niall-Quinn3.jpg"  /> 
+        </gallery>
+            <description>
+                <![CDATA[Quinn finished his career with a highly successful spell at Sunderland joining the North-East club in August 1996 for a club record £1.3million.
+His partnership with striker Kevin Phillips was one of the most prolific in the Football League in the late 1990s and helped the club’s promotion to the Barclays Premier League. 
+He became a local legend at Sunderland, winning both the Sunderland and North-East Sportswriters' Player of the Year awards in 1999.]]>
+            </description>
+            <statistics poy="1996-2002" goals="61">
+                <data key="Football League Division 1 winner " value="1998/99" />    
+                <data key="North East Writers Player of the Season" value="1999" />
+                <data key="5 international caps for Republic of Ireland"  />
+                <data key="League Cup winner " value="1986/87" />
+            </statistics>
+      </player>
+    </top_players>     
+    
+    <video src="" />
+    
+    <gallery>
+            <item>
+                <img src="" alt="Stadium of Light" />
+                <description><![CDATA[The Stadium of Light was opened in 1997 and has a maximum capacity for football matches of 49,000 people. It is the fifth-largest capacity of all of the English football stadiums. As well as Sunderland, the Stadium of Light has also hosted football matches for the England National team who have won both games they have played at the stadium.The highest recorded League attendance at the Stadium of Light is 48,335 set on 13th April 2002 for Sunderland vs Liverpool. However, this number was trumped by the 57,000 attendees that watched Rihanna perform in the stadium in 2013!]]>
+                </description>
+                <statistics>
+                    <description><![CDATA[<span fontWeight="bold">Capacity:</span> 49,000 <br/><br/><span fontWeight="bold">Field Dimensions:</span> 10m x 64m<br/><br/><span fontWeight="bold">Surface:</span> Desso GrassMaster.]]></description>
+                    <stat key="Capacity" value="49,000 " />
+                    <stat key="Field Dimensions" value="100m x 64m" />
+                    <stat key="Surface" value="Desso GrassMaster" />
+                </statistics>
+            </item>
+    </gallery>
+    
+     <timeline><![CDATA[/assets/teamsheets/arsenal/timeline/DidYouKnow]]></timeline>
+
+</teaminfo>
+</teams>

@@ -1,0 +1,134 @@
+<teams>
+<teaminfo>
+    <name>Newcastle United FC</name>
+    <top_players>
+        <player>
+            <name>Alan Shearer</name>
+            <shirtno>9</shirtno>
+            <img src="/assets/teamsheets/newcastle/players/Alan-Shearer1.jpg"/>
+
+            <gallery>
+                <img src="/assets/teamsheets/newcastle/players/Alan-Shearer2.jpg" />
+                <img src="/assets/teamsheets/newcastle/players/Alan-Shearer3.jpg"  />
+            </gallery>
+
+            <description>
+                <![CDATA[On 30th July 1996, for a world transfer record-breaking £15 million Shearer joined his hometown Club and Premier League runners-up Newcastle United, managed by his hero Kevin Keegan.
+He is considered as one of England's best ever strikers, being both Newcastle's and the Premier League's record goalscorer. 
+As a player, Shearer was often styled as a classic English centre-forward, owing to his strength, physical stature, heading ability and strong shot. Of his 206 Newcastle goals, 49 were scored with his head.]]>
+            </description>
+        <statistics poy="1996 - 2006" goals="148">
+          <data key="1 Premier League title" />
+          <data key="Highest ever goals in the Premier League" value="260" />
+          <data key="Ballon d’OR Bronze prize"  />
+          <data key="5 Premier League Player of the Month awards"  />
+          <data key="3 Premier League Golden Boots"  />
+        </statistics>
+        </player>
+
+      <player>
+        <name>Nolberto Solano</name>
+        <shirtno>4</shirtno>
+        	<img src="/assets/teamsheets/newcastle/players/Nolberto-Solano1.jpg"/>
+        <gallery> 
+	        <img src="/assets/teamsheets/newcastle/players/Nolberto-Solano2.jpg"/> 
+	        <img src="/assets/teamsheets/newcastle/players/Nolberto-Solano3.jpg"/> 
+        </gallery>
+        <description>
+          <![CDATA[His talents in football range from accurate crosses to accomplished dead-ball skills and he has traditionally played either on the right side of midfield or as a right back during his career. In 1998, Solano became the first Peruvian to play in England when he joined Newcastle from Boca Juniors for £2.5 million.
+Solano then returned to Newcastle United for a second time in August 2005 for a fee believed  to be in the region of £1.5 million.
+He then signed a two-year contract in 2005 with the option for Newcastle to extend it for another year.]]>
+        </description>
+        <statistics poy="1998-2004 2005-2007" goals="45">
+          <data key="Peruvian Player of the Year 1992" />
+          <data key="1997 Americas Ideal Team of the Year" />
+          <data key="2006 UEFA Intertoto cup" />
+          <data key="95 International caps" />
+          <data key="20 International goals" />
+        </statistics>
+      </player>
+
+      <player>
+        <name>Papiss Cisse</name>
+        <shirtno>9</shirtno>
+        <img src="/assets/teamsheets/newcastle/players/Papiss-Cisse1.jpg"/>
+        <gallery> 
+        	<img src="/assets/teamsheets/newcastle/players/Papiss-Cisse2.jpg"/> 
+        	<img src="/assets/teamsheets/newcastle/players/Papiss-Cisse3.jpg"/> 
+        </gallery>
+        <description>
+          <![CDATA[On 21st January 2012, Cissé signed for Newcastle United on a five-and-a-half-year deal for an estimated fee of £9 million and made his debut on 5th February 2012.
+Cisse scored his 12th goal in 13 appearances for Newcastle with an award winning strike against Chelsea.
+Cissé described the goal as the best of his career and it was subsequently chosen as the BBC's Goal of the season.]]>
+        </description>
+        <statistics poy="2012 - Present Day" goals="21">
+          <data key="Barclays Premier League Goal of the Month May 2012" />
+          <data key="Barclays Premier League goal of the season 2011/12"  />
+          <data key="26 International caps"  />
+          <data key="14 international goals"  />
+          <data key="13 goals in his debut season" />
+        </statistics>
+      </player>
+
+      <player>
+        <name>Hatem Ben Arfa</name>
+        <shirtno>10</shirtno>
+        <img src="/assets/teamsheets/newcastle/players/Hatem-BenArfa1.jpg"/>
+        <gallery> 
+        	<img src="/assets/teamsheets/newcastle/players/Hatem-BenArfa2.jpg"/> 
+        	<img src="/assets/teamsheets/newcastle/players/Hatem-BenArfa3.jpg"/> 
+        </gallery>
+        <description>
+          <![CDATA[On 27th August 2010, Ben Arfa agreed to personal terms with Newcastle and the following day the Club confirmed that it had signed the player on a season-long loan. He received the number 37 shirt and made his debut on 11th September 2010. He faced injury problems in 2011/12 but started with a flourish of goals in the 2012/13 season.
+On 31st August 2013, Newcastle recorded their first win and first Goal of the season thanks to a wonder goal from Ben Arfa in their 1-0 home win over Fulham]]>
+        </description>
+        <statistics poy="2011- Present Day" goals="10">
+          <data key="UNFP Young Player of the year " value="207/08" />
+          <data key="UNFP Player of the Month February " value="2010" />
+          <data key="4-time Ligue 1 winner"  />
+          <data key="13 International caps"  />
+          <data key="2 International goals"  />
+        </statistics>
+      </player>
+
+      <player>
+        <name>Shay Given</name>
+        <shirtno>1</shirtno>
+        <img src="/assets/teamsheets/newcastle/players/Shay-Given1.jpg"/>
+        <gallery> 
+        	<img src="/assets/teamsheets/newcastle/players/Shay-Given2.jpg"/> 
+        	<img src="/assets/teamsheets/newcastle/players/Shay-Given3.jpg"  /> 
+        </gallery>
+        <description>
+          <![CDATA[Given was one of the first signings of then-newly appointed manager Dalglish. Given made his debut in Newcastle's 2–1 home victory over Sheffield Wednesday on 9th August 1997.
+In the 2001/02 season, Given played in every Barclays Premier League match as Newcastle's previously unexpected title challenge ended in a fourth-place finish in the League.]]>
+        </description>
+        <statistics poy="1997-2007" goals="0">
+          <data key="UEFA Intertoto Cup winner 2006" />
+          <data key="From 2001-2006 Given missed only two league games out of 190" />
+          <data key="PFA Young player of the Year award" value="2010/11" />
+          <data key="Newcastle Player of the Year" value="2006" />
+          <data key="PFA Team of the Year" value="2001/02 2005/06" />
+        </statistics>
+      </player>
+    </top_players>     
+    
+    <video src="" />
+    
+    <gallery>
+            <item>
+                <img src="" alt="St James' Park" />
+                <description><![CDATA[First played on in 1880, St James’ Park is the home of Newcastle United Football Club. A major redevelopment in 1993 increased the stadium’s capacity to 36,610. 5 years later in 1998 a plan was proposed to increase the stadium capacity to 52,000. The redevelopment was completed in 2000 and cost £42 million. It is now the third largest Club football stadium in England, behind Old Trafford and Emirates Stadium. St James’ Park has held many International football matches, most recently it held a number of the London 2012 Olympics football matches.]]></description>
+                <statistics>
+                    <description><![CDATA[<span fontWeight="bold">Capacity:</span> 52,404 <br/><br/><span fontWeight="bold">Field Dimensions:</span> 105m x 68m<br/><br/><span fontWeight="bold">Surface:</span> Desso GrassMaster.]]></description>
+                    <stat key="Capacity" value="52,404" />
+                    <stat key="Field Dimensions" value="105m x 68m" />
+                    <stat key="Surface" value="Desso GrassMaster" />   
+                </statistics>
+            </item>
+    </gallery>
+    
+ <timeline><![CDATA[/assets/teamsheets/arsenal/timeline/DidYouKnow]]></timeline>
+
+</teaminfo>
+</teams>

@@ -1,0 +1,131 @@
+<teams>
+<teaminfo>
+    <name>Swansea City AFC</name>
+    <top_players>
+        <player>
+            <name>Ashley Williams</name>
+            <shirtno>6</shirtno>
+            <img src="/assets/teamsheets/swansea/players/Ashley-Williams1.jpg"/>
+
+            <gallery>
+                <img src="/assets/teamsheets/swansea/players/Ashley-Williams2.jpg" />
+                <img src="/assets/teamsheets/swansea/players/Ashley-Williams3.jpg"  />
+            </gallery>
+
+            <description>
+                <![CDATA[Williams joined Swansea City in March 2008 on loan. After helping Swansea City gain promotion to the Championship, Williams joined the Club for a record offer at the time.
+In the 2011/12 season, Williams won both the PFA Championship Player of the Year and the Championship Play-Off final to help promote Swansea City for the second time since joining them. 
+In July 2013, after wearing the armband for the majority of the Swans' games during the previous two seasons, Williams was handed the club captaincy on a permanent basis.]]>
+            </description>
+        <statistics poy="2008 – Present Day" goals="11">
+          <data key="ball League Championship Play-Off winner" value="2011/12" />
+          <data key="League Cup winner" value="2012/13" />
+          <data key="43 international caps for Wales"  />
+          <data key="1 international goal"  />
+          <data key="2007 North-West Player of the Year"  />
+        </statistics>
+        </player>
+
+      <player>
+        <name>Scott Sinclair </name>
+        <shirtno>10</shirtno>
+        	<img src="/assets/teamsheets/swansea/players/Scott-Sinclair1.jpg"/>
+        <gallery> 
+	        <img src="/assets/teamsheets/swansea/players/Scott-Sinclair2.jpg"/> 
+	        <img src="/assets/teamsheets/swansea/players/Scott-Sinclair3.jpg"/> 
+        </gallery>
+        <description>
+          <![CDATA[Sinclair was an integral part of Swansea City’s Barclays Premier League team in the 2010/11 season. 
+
+Sinclair joined Swansea City for £500,000 and got his first Barclays Premier League goal for the Welsh side when he scored a penalty in their 3-0 win against West Bromwich Albion. Sinclair scored 27 goals for Swansea City in his two years at the Club, 8 of which he scored in the Barclays Premier League.]]>
+        </description>
+        <statistics poy="2010 – 2012" goals="28">
+          <data key="Football League Championship Play-Off winner" />
+          <data key="Football League Championship runner- up" />
+          <data key="4 Great Britain caps" />
+          <data key="1 Great Britain goal" />
+        </statistics>
+      </player>
+
+      <player>
+        <name>Michu</name>
+        <shirtno>9</shirtno>
+        <img src="/assets/teamsheets/swansea/players/Michu1.jpg"/>
+        <gallery> 
+        	<img src="/assets/teamsheets/swansea/players/Michu2.jpg"/> 
+        	<img src="/assets/teamsheets/swansea/players/Michu3.jpg"/> 
+        </gallery>
+        <description>
+          <![CDATA[Miguel Perez Costa, commonly known as Michu, was purchased by the Club in July 2012 for £2 million and has been one of the Clubs most important players in their second and third seasons in the Barclays Premier League. 
+Michu scored 2 goals and made one assist in his first Barclays Premier League match for Swansea City. He described his Club debut as “incredible”. 
+On January 2013, Michu signed a new four year deal for Swansea City, tying him to the Welsh team until 2017.]]>
+        </description>
+        <statistics poy="2012 – Present Day" goals="23">
+          <data key="1 international cap for Spain" />
+          <data key="18 goals in his debut season for Swansea City"  />
+          <data key="Supporters’ Player of the Year 2012/13"  />
+          <data key="Swansea City Player of the Year 2012/13"  />
+          <data key="League Cup winner 2012/13" />
+        </statistics>
+      </player>
+
+      <player>
+        <name>Angel Rangel</name>
+        <shirtno>22</shirtno>
+        <img src="/assets/teamsheets/swansea/players/Angel-Rangel1.jpg"/>
+        <gallery> 
+        	<img src="/assets/teamsheets/swansea/players/Angel-Rangel2.jpg"/> 
+        	<img src="/assets/teamsheets/swansea/players/Angel-Rangel3.jpg"/> 
+        </gallery>
+        <description>
+          <![CDATA[Angel Rangel joined Swansea City in 2007. The Spanish right back has been a hugely important factor of Swansea City’s promotion to the Barclays Premier League and their success in the division. 
+In November 2011, Rangel was voted the best defender in the Barclays Premier League during Swansea City’s debut Barclays Premier League season. In march 2013 he extended his contract by 3 years, keeping him at the Club until 2017.]]>
+        </description>
+        <statistics poy="2007 - present" goals="8">
+          <data key="League One winner" value="2007/08" />
+          <data key="Football League Championship Play-Off winner" value="2010/11" />
+          <data key="League Cup winner 2012/13"  />
+          <data key="PFA League 1 Team of the Year 2007/08 "  />
+        </statistics>
+      </player>
+
+      <player>
+        <name>Nathan Dyer</name>
+        <shirtno>7</shirtno>
+        <img src="/assets/teamsheets/swansea/players/Nathan-Dyer1.jpg"/>
+        <gallery> 
+        	<img src="/assets/teamsheets/swansea/players/Nathan-Dyer2.jpg"/> 
+        	<img src="/assets/teamsheets/swansea/players/Nathan-Dyer3.jpg"  /> 
+        </gallery>
+        <description>
+          <![CDATA[In June 2009, after a short loan spell with the Club, Nathan Dyer joined Swansea City for £400,000. He then extended his contract for another 3 years in 2011. Dyer, alongside Angel Rangel and Scott Sinclair helped Swansea City move from League 1 to the Barclays Premier League.
+Dyer played a major role in Swansea City’s League Cup final win over Bradford city, hitting the back of the net twice and also being rewarded  Man of the Match. On 6th August, Dyer extended his contract for the second time till 2017.]]>
+        </description>
+        <statistics poy="2009 – Present Day" goals="14">
+          <data key="8 Barclays Premier League Goals" />
+          <data key="League Cup winner" value="2012/13" />
+          <data key="Football League Championship Play-Off winner" value="2010/11" />
+          <data key="2013 Alan Hardaker Trophy" value="2013" />
+        </statistics>
+      </player>
+    </top_players>     
+    
+    <video src="" />
+    
+    <gallery>
+            <item>
+                <img src="/assets/teamsheets/swansea/gallery/Liberty-Stadium1.jpg" alt="Liberty Stadium" />
+                <description><![CDATA[The Liberty Stadium is a 20,750 seater stadium that was opened in 2005 by the City of Swansea council. The stadium is home to the Barclays Premier League team Swansea City. The Stadium has the smallest capacity in the league and cost Swansea City council £27 million. The stadium’s name came from the Swansea based developers Liberty Properties PLC which won the right as a sponsor to name the stadium. The stadium has hosted several Wales International matches, most being friendlies, as the only two larger stadiums in Wales, the Cardiff City stadium and the Millennium stadium, are generally used for Wales’ competitive international fixtures.]]></description>
+                <statistics>
+                    <description><![CDATA[<span fontWeight="bold">Capacity:</span> 20,750 <br/><br/><span fontWeight="bold">Field Dimensions:</span> 105m x 68m<br/><br/><span fontWeight="bold">Surface:</span> Desso GrassMaster.]]></description>
+                    <stat key="Capacity" value="20,750" />
+                    <stat key="Field Dimensions" value="105m x 68m" />
+                    <stat key="Surface" value="Desso GrassMaster" />   
+                </statistics>
+            </item>
+    </gallery>
+    
+     <timeline><![CDATA[/assets/teamsheets/arsenal/timeline/DidYouKnow]]></timeline>
+
+</teaminfo>
+</teams>
