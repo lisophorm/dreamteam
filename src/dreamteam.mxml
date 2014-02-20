@@ -235,7 +235,7 @@
 				this.addEventListener( "hideDropShadow", hideDropshadow );
 				this.dispatchEvent( new ViewEvent( ViewEvent.LOCATION_RESTART ));
 				
-				debugPanel.registrationModule = RegistrationView.device;
+				//debugPanel.registrationModule = RegistrationView.device;
 			}
 
 			protected function notifyApplicationLogout( e:ApplicationEvent ):void
@@ -794,7 +794,7 @@
 			
 			protected function debugEventHandler(event : DebugEvent):void
 			{
-				debugPanel.appendOutput(String(event.socketCode));
+				//debugPanel.appendOutput(String(event.socketCode));
 			}
 			
 			protected function typingHandler(event:KeyboardEvent):void
@@ -819,7 +819,7 @@
 				}
 				if(sequencesMatch)
 				{
-					debugPanel.visible = true;
+					//debugPanel.visible = true;
 				}
 			}
 			
@@ -941,6 +941,6 @@
 		</s:Group>
 	</s:VGroup>
 	
-	<debug:DebugPanel id="debugPanel" visible="false"/>
+	<!--debug:DebugPanel id="debugPanel" visible="false"/-->
 
 </s:WindowedApplication>
