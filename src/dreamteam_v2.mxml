@@ -8,12 +8,12 @@
 					   addedToStage="fullscreen()" showStatusBar="false" 
 					   xmlns:registration="registration.*" 
 					   xmlns:debug="registration.debug.*">
-
+	
 	<fx:Style source="assets/css/Main.css" />
 	<fx:Style source="assets/css/Fonts.css" />	
-
+	
 	<fx:Declarations>
-
+		
 		<s:Parallel id="hideFX" duration="400">
 			<s:Fade alphaTo="0.0"/>
 		</s:Parallel>
@@ -21,7 +21,7 @@
 		<s:Parallel id="showFX" duration="400">
 			<s:Fade alphaTo="1.0"/>
 		</s:Parallel>
-
+		
 	</fx:Declarations>
 	
 	<fx:Script>
@@ -237,7 +237,7 @@
 				
 				//debugPanel.registrationModule = RegistrationView.device;
 			}
-
+			
 			protected function notifyApplicationLogout( e:ApplicationEvent ):void
 			{
 				this.loggedIn = false;
@@ -351,7 +351,7 @@
 						
 					}
 				}
-			
+				
 			}
 			
 			protected function notifyWaiting( e:KioskWaitEvent = null ):void
@@ -421,7 +421,7 @@
 					
 				}
 				
-//				trace("dreamteam :: gotoView :: " + stackStr + " :: " + obj["type"]);
+				//				trace("dreamteam :: gotoView :: " + stackStr + " :: " + obj["type"]);
 				
 				for (var i:int=0;i<indexSeq.length;i++)
 				{
@@ -630,7 +630,7 @@
 					case ViewEvent.LOCATION_WELCOME_BACK:
 						gotoView("WelcomeBack");
 						break;
-						
+					
 					default:
 				}
 			}
@@ -780,12 +780,12 @@
 				tf.font = fontName;
 				return FlexGlobals.topLevelApplication.systemManager.isFontFaceEmbedded(tf);
 			}
-
+			
 			private function setApplicationVersion():void {
 				var appXML:XML = NativeApplication.nativeApplication.applicationDescriptor;
 				var ns:Namespace = appXML.namespace();
 			}
-
+			
 			protected function videoSettings(event:FlexEvent):void
 			{
 				OSMFSettings.enableStageVideo = false;	
@@ -852,7 +852,7 @@
 	
 	<s:BorderContainer id="navigationbar" includeInLayout="false" borderAlpha="0" width="{this.stage.stageWidth}" height="90" click="fullscreen(event)">
 		<s:backgroundFill>
-				<s:LinearGradient rotation="90">
+			<s:LinearGradient rotation="90">
 				<s:GradientEntry color="0x000000" alpha=".5"/>
 				<s:GradientEntry color="0x000000" alpha=".1"/>
 			</s:LinearGradient>
@@ -886,11 +886,11 @@
 					<mx:VBox hideEffect="{hideFX}"  showEffect="{showFX}">
 						<views:TeamCarousel id="TeamCarousel" />
 					</mx:VBox>
-
+					
 					<mx:VBox hideEffect="{hideFX}"  showEffect="{showFX}">
 						<views:Game id="Game" />
 					</mx:VBox>
-
+					
 					<mx:VBox hideEffect="{hideFX}"  showEffect="{showFX}">
 						<views:SelectUserType id="SelectUserType" />
 					</mx:VBox>
@@ -922,7 +922,7 @@
 					<mx:VBox hideEffect="{hideFX}"  showEffect="{showFX}">
 						<views:Teamsheet id="Teamsheets" />
 					</mx:VBox>
-
+					
 					<mx:VBox hideEffect="{hideFX}"  showEffect="{showFX}">
 						<registration:RegistrationScan id="RegistrationView" debug="debugEventHandler(event)"/>
 					</mx:VBox>
@@ -942,5 +942,5 @@
 	</s:VGroup>
 	
 	<!--debug:DebugPanel id="debugPanel" visible="false"/-->
-
+	
 </s:WindowedApplication>
