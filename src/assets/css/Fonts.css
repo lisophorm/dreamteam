@@ -49,3 +49,16 @@
 	fontFamily: StandardBold;
 	embedAsCFF: true;
 }
+
+@font-face
+{
+	src: url("../fonts/PremierLeague/PremierLeague.otf");
+	fontFamily: PremiereLeague;
+	embedAsCFF: true;
+}
+
+@font-face
+{
+	src:url("../fonts/ExpertSans/ExpertSans-Regular.ttf");
+	fontFamily:ExpertSans;
+}

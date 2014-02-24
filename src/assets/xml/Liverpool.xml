@@ -1,19 +1,15 @@
 <teams>
 <teaminfo>
-    <name>Liverpool</name>
-    <statistics>
-
-    </statistics>
-
+    <name>Liverpool Fc</name>
     <top_players>
         <player>
             <name>Steven Gerrard</name>
             <shirtno>8</shirtno>
-            <img src="assets/teamsheets/liverpool/players/Steven-Gerrard1.jpg"/>
+            <img src="/assets/teamsheets/liverpool/players/Steven-Gerrard1.jpg"/>
 
             <gallery>
-                <img src="assets/teamsheets/liverpool/players/Steven-Gerrard2.jpg" />
-                <img src="assets/teamsheets/liverpool/players/Steven-Gerrard3.jpg"  />
+                <img src="/assets/teamsheets/liverpool/players/Steven-Gerrard2.jpg" />
+                <img src="/assets/teamsheets/liverpool/players/Steven-Gerrard3.jpg"  />
             </gallery>
 
             <description>
@@ -21,8 +17,7 @@
 His honours include 2 FA Cups, 3 League Cups, 2 Community Shields, 1 Champions League, 1 UEFA Cup and 2 Super Cups. Gerrard has been described as one of the greatest English midfielders in history, a real leader. 
 In 2005, Gerrard was honoured as the UEFA Club Footballer of the Year and won the Ballon d'Or Bronze Award. He is, to date, the only footballer ever to have scored a goal in an FA Cup Final, a League Cup Final, a UEFA Cup Final and a Champions League Final]]>
             </description>
-            <statistics poy="1998 - Present Day" goals="8">
-               
+            <statistics poy="1998 - Present Day" goals="104">
                 <data key="3 League Cups" />
                 <data key="105 international Caps for England" />
                 <data key="2 FA Cup Wins"  />
@@ -30,15 +25,15 @@ In 2005, Gerrard was honoured as the UEFA Club Footballer of the Year and won th
             </statistics>
         </player>
 
-        <player>
-            <name>Jamie Carragher</name>
-            <shirtno>23</shirtno>
-            <img src="assets/teamsheets/liverpool/players/Jamie-Carragher1.jpg"/>
-            <gallery>
-                <img src="assets/teamsheets/liverpool/players/Jamie-Carragher2.jpg" />
-                <img src="assets/teamsheets/liverpool/players/Jamie-Carragher3.jpg"  />
-            </gallery>
-            <description>
+      <player>
+        <name>Jamie Carragher</name>
+        <shirtno>6</shirtno>
+        	<img src="/assets/teamsheets/liverpool/players/Jamie-Carragher1.jpg"/>
+        <gallery> 
+	        <img src="/assets/teamsheets/liverpool/players/Jamie-Carragher2.jpg"/> 
+	        <img src="/assets/teamsheets/liverpool/players/Jamie-Carragher3.jpg"/> 
+        </gallery>
+        <description>
                 <![CDATA[Carragher started his footballing career at the Liverpool Academy, making his professional debut in the 1996/97 season. He then became a first-team regular in the following seasons.
 A one-Club man, he was Liverpool's vice-captain for 10 years and is the Club's second-longest ever serving player, making his 404th appearance for Liverpool in all competitions on 19th May 2013. 
 Carragher also holds the record for the most appearances in European competition for Liverpool with 150.]]>
@@ -48,44 +43,40 @@ Carragher also holds the record for the most appearances in European competition
                 <data key="3 Liverpool Player of the Year awards" /> 
                 <data key="3 League Cups" />
                 <data key="38 international Caps for England" />
- 
-
             </statistics>
         </player>
 
-        <player>
-            <name>Robbie Fowler</name>
-            <shirtno>9</shirtno>
-            <img src="assets/teamsheets/liverpool/Robbie-Fowler1.jpg"/>
-            <gallery>
-                <img src="assets/teamsheets/liverpool/players/Robbie-Fowler2.jpg"/>
-                <img src="assets/teamsheets/liverpool/players/Robbie-Fowler3.jpg"/>
-            </gallery>
+      <player>
+        <name>1993 – 2001 2006 - 2007</name>
+        <shirtno>9</shirtno>
+        <img src="/assets/teamsheets/liverpool/players/Robbie-Fowler1.jpg"/>
+        <gallery> 
+        	<img src="/assets/teamsheets/liverpool/players/Robbie-Fowler2.jpg"/> 
+        	<img src="/assets/teamsheets/liverpool/players/Robbie-Fowler3.jpg"/> 
+        </gallery>
             <description>
                 <![CDATA[Fowler's career began with Liverpool. He signed as a youth team player after leaving school in the summer of 1991, signing professional terms on his 17th birthday, 9 April 1992.
 In the 1994/95 season, Fowler was ever-present for Liverpool, playing in all of their 57 competitive matches; including the victory in the 1995 League Cup final and a match against Arsenal in which he scored the Premier League's fastest ever hat-trick, 4 minutes and 33 seconds, a record that still stands. 
 2000/01 was Fowler's most successful season. He appeared in three finals, scoring 17 goals and lifting three trophies in a unique cup treble.]]>
             </description>
-            <statistics poy="1993 – 2001  2006 - 2007" goals="128">
+            <statistics poy="1993 – 2001 2006 - 2007" goals="128">
                 <data key="1 FA Cup win" />
                 <data key="1 UEFA Cup win" />
                 <data key="2 PFA Young Player of the Year awards" />
                 <data key="2 Premier League Player of the Month awards" />
                 <data key="26 international caps for England" />
-
             </statistics>
-
         </player>
 
-        <player>
-            <name>John BArnes</name>
-            <shirtno>10</shirtno>
-            <img src="assets/teamsheets/liverpool/players/John-Barnes1.jpg"/>
-            <gallery>
-                <img src="assets/teamsheets/liverpool/players/John-Barnes2.jpg" />
-                <img src="assets/teamsheets/liverpool/players/John-Barnes3.jpg"  />
-            </gallery>
-            <description>
+      <player>
+        <name>John Barnes</name>
+        <shirtno>10</shirtno>
+        <img src="/assets/teamsheets/liverpool/players/John-Barnes1.jpg"/>
+        <gallery> 
+        	<img src="/assets/teamsheets/liverpool/players/John-Barnes2.jpg"/> 
+        	<img src="/assets/teamsheets/liverpool/players/John-Barnes3.jpg"/> 
+        </gallery>
+        <description>
                 <![CDATA[Barnes left Watford on 9th June 1987 in a £900,000 deal to join Kenny Dalglish's Liverpool. In his first season at Anfield, Liverpool coasted to the league title, remaining undefeated for the first 29 games of the season and ending up with just two defeats.
 Barnes then went on scoring and in the 1990/91 season scored 16 league goals for Liverpool.
 The Liverpool fans adoration for "Digger" (he was nicknamed after the character Digger Barnes in the American soap Dallas) was emphasised when he finished in the top 5 of the poll: 100 Players ‘Who Shook The Kop’, which was conducted by the fans in the summer of 2006.]]>
@@ -96,20 +87,17 @@ The Liverpool fans adoration for "Digger" (he was nicknamed after the character 
                 <data key="2  FWA Footballer of Year awards"  />
                 <data key="PFA Players’ Player of the Year 1988"  />
                 <data key="2 Football League First Division titles"  />
-
-
             </statistics>
-       
         </player>
 
-        <player>
-            <name>Luis Suarez</name>
-            <shirtno>7</shirtno>
-            <img src="assets/teamsheets/liverpool/players/Luis-Suarez1.jpg"/>
-            <gallery>
-                <img src="assets/teamsheets/liverpool/players/Luis-Suarez2.jpg" />
-                <img src="assets/teamsheets/liverpool/players/Luis-Suarez3.jpg"  />
-            </gallery>
+      <player>
+        <name>Luis Suarez</name>
+        <shirtno>8</shirtno>
+        <img src="/assets/teamsheets/liverpool/players/Luis-Suarez1.jpg"/>
+        <gallery> 
+        	<img src="/assets/teamsheets/liverpool/players/Luis-Suarez2.jpg"/> 
+        	<img src="/assets/teamsheets/liverpool/players/Luis-Suarez3.jpg"  /> 
+        </gallery>
             <description>
                 <![CDATA[Suárez signed a five-and-a-half-year deal until 2016 and was Liverpool's most expensive signing (£22.8 million). Suárez made his Liverpool debut on 2nd February against Stoke City at Anfield in a 2–0 win. He came on as a substitute and scored Liverpool's second goal in front of the Kop in the sixty-third minute. On 7th August 2012, Suárez signed a new long-term contract with Liverpool. On 26th August, he scored his first goal of the 2012/13 season in a 2–2 draw with champions Manchester City. Then, at Anfield 6 weeks later, he got a hat-trick against Norwich City for the second consecutive season. He was second-top goalscorer in the Barclays Premier League for 2012/13 with 23 goals and Liverpool's top scorer in all competitions]]>
             </description>
@@ -119,29 +107,36 @@ The Liverpool fans adoration for "Digger" (he was nicknamed after the character 
                 <data key="PFA Team of the Year" value="2012/13" />
                 <data key="Dutch Football League of the Year " value="2009/10" />
                 <data key="70 international caps for Uruguay" />
-
-
             </statistics>
-        </player>
-    </top_players>    
+      </player>
+    </top_players>     
     
-    <video src="assets/teamsheets/liverpool/gallery/Anfield1.jpg" />
+    <video src="/assets/teamsheets/liverpool/video/Liverpool Video.flv" />
+    
     <gallery>
             <item>
-                <img src="assets/teamsheets/liverpool/gallery/Anfield1.jpg" alt="Anfield" />
-                <description><![CDATA[Anfield is one of the oldest stadiums in the Barclays Premier League after being opened in 1884. Although once the home of bitter rivals Everton FC, after Everton moved to Goodison Park in 1892, newly formed Liverpool secured it as their permanent home. The record attendance of 61,905 was set at a match between Liverpool and Wolverhampton Wanderers in 1952. With the loudest fans in the League, Liverpool use the great fan support in Anfield to their advantage in their games. Liverpool were undefeated at Anfield in 7 separate seasons, the last of which being the 2008/2009 season.
-]]>
-                </description>
+                <img src="/assets/teamsheets/liverpool/gallery/Anfield1.jpg" alt="Anfield" />
+                <description><![CDATA[Anfield is one of the oldest stadiums in the Barclays Premier League after being opened in 1884. Although once the home of bitter rivals Everton FC, after Everton moved to Goodison Park in 1892, newly formed Liverpool secured it as their permanent home. The record attendance of 61,905 was set at a match between Liverpool and Wolverhampton Wanderers in 1952. With the loudest fans in the League, Liverpool use the great fan support in Anfield to their advantage in their games. Liverpool were undefeated at Anfield in 7 separate seasons, the last of which being the 2008/2009 season.]]></description>
                 <statistics>
-                    <description><![CDATA[<span fontWeight="bold">Capacity:</span> 45,276 <br/><br/><span fontWeight="bold">Field Dimensions:</span> 105× 68<br/><br/><span fontWeight="bold">Surface:</span> Grass.]]></description>
-
+                    <description><![CDATA[<span fontWeight="bold">Capacity:</span> 45,276 <br/><br/><span fontWeight="bold">Field Dimensions:</span> 105m x 68m<br/><br/><span fontWeight="bold">Surface:</span> Desso GrassMaster.]]></description>
                     <stat key="Capacity" value="45,276" />
-                    <stat key="Field Dimensions" value="105× 68" />
-                    <stat key="Surface" value="Grass" />
+                    <stat key="Field Dimensions" value="105m x 68m" />
+                    <stat key="Surface" value="Desso GrassMaster" />   
+                </statistics>
+            </item>
+<item>
+                <img src="/assets/teamsheets/liverpool/gallery/Anfield1.jpg" alt="Anfield" />
+                <description><![CDATA[Anfield is one of the oldest stadiums in the Barclays Premier League after being opened in 1884. Although once the home of bitter rivals Everton FC, after Everton moved to Goodison Park in 1892, newly formed Liverpool secured it as their permanent home. The record attendance of 61,905 was set at a match between Liverpool and Wolverhampton Wanderers in 1952. With the loudest fans in the League, Liverpool use the great fan support in Anfield to their advantage in their games. Liverpool were undefeated at Anfield in 7 separate seasons, the last of which being the 2008/2009 season.]]></description>
+                <statistics>
+                    <description><![CDATA[<span fontWeight="bold">Capacity:</span> 45,276 <br/><br/><span fontWeight="bold">Field Dimensions:</span> 105m x 68m<br/><br/><span fontWeight="bold">Surface:</span> Desso GrassMaster.]]></description>
+                    <stat key="Capacity" value="45,276" />
+                    <stat key="Field Dimensions" value="105m x 68m" />
+                    <stat key="Surface" value="Desso GrassMaster" />   
                 </statistics>
             </item>
     </gallery>
-    <timeline><![CDATA[/assets/teamsheets/liverpool/timeline/DidYouKnow.swf]]></timeline>
+    
+   <timeline><![CDATA[assets/teamsheets/liverpool/timeline/DidYouKnow.swf]]></timeline>
 
 </teaminfo>
 </teams>

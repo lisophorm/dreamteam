@@ -64,7 +64,7 @@ Following the conclusion of his playing career Gray moved into the media, workin
         <shirtno>11</shirtno>
         <img src="/assets/teamsheets/sunderland/players/Kevin-Phillips1.jpg"/>
         <gallery> 
-        	<img src="/assets/teamsheets/sunderland/players/Kevin-Phillips2.jpg"/> 
+        	<img src="/assets/teamsheets/sunderland/players/Kevin-Phillips2.png"/> 
         	<img src="/assets/teamsheets/sunderland/players/Kevin-Phillips3.jpg"/> 
         </gallery>
             <description>
@@ -102,11 +102,11 @@ He became a local legend at Sunderland, winning both the Sunderland and North-Ea
       </player>
     </top_players>     
     
-    <video src="" />
+    <video src="/assets/teamsheets/sunderland/video/Sunderland.flv" />
     
     <gallery>
             <item>
-                <img src="" alt="Stadium of Light" />
+                <img src="/assets/teamsheets/sunderland/Gallery/Sunderland.jpg" alt="Stadium of Light" />
                 <description><![CDATA[The Stadium of Light was opened in 1997 and has a maximum capacity for football matches of 49,000 people. It is the fifth-largest capacity of all of the English football stadiums. As well as Sunderland, the Stadium of Light has also hosted football matches for the England National team who have won both games they have played at the stadium.The highest recorded League attendance at the Stadium of Light is 48,335 set on 13th April 2002 for Sunderland vs Liverpool. However, this number was trumped by the 57,000 attendees that watched Rihanna perform in the stadium in 2013!]]>
                 </description>
                 <statistics>

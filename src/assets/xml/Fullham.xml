@@ -1,0 +1,145 @@
+<teams>
+<teaminfo>
+    <name>Fulham FC</name>
+    <top_players>
+        <player>
+            <name>Brede Hangeland</name>
+            <shirtno>5</shirtno>
+            <img src="/assets/teamsheets/fulham/players/Brede-Hangeland1.jpg"/>
+
+            <gallery>
+                <img src="/assets/teamsheets/fulham/players/Brede-Hangeland2.jpg" />
+                <img src="/assets/teamsheets/fulham/players/Brede-Hangeland3.jpg"  />
+            </gallery>
+
+            <description>
+                <![CDATA[On 29th January 2008 he made his Barclays Premier League debut when Fulham played Bolton Wanderers at the Reebok Stadium. He was voted Man of the Match by Sky Sports after the game. Following a series of good performances he quickly became a fans’ favourite at Craven Cottage. Hangeland scored two goals in an away win at Birmingham City on 15th May 2011. This took his tally up to 6 Barclays Premier League goals in the season which made him the highest scoring centre back in the League. Hangeland signed a two-year contract extension with the option of a further year on 28th March 2013, keeping him at the Club until the summer of 2015.]]>
+            </description>
+        <statistics poy="2008-Present Day" goals="8">
+          <data key="Europa League Finalist" value="2009/10" />
+          <data key="84 International Caps for Norway" />
+          <data key="4 International Goals"  />
+          <data key="Top scoring defender at the Club"  />
+        </statistics>
+        </player>
+
+      <player>
+        <name>Clint Dempsey</name>
+        <shirtno>10</shirtno>
+        	<img src="/assets/teamsheets/fulham/players/Clint-Dempsey1.jpg"/>
+        <gallery> 
+	        <img src="/assets/teamsheets/fulham/players/Clint-Dempsey2.jpg"/> 
+	        <img src="/assets/teamsheets/fulham/players/Clint-Dempsey3.jpg"/> 
+        </gallery>
+        <description>
+          <![CDATA[In December 2006, MLS player Clint Dempsey joined Fulham FC.
+
+Dempsey was voted Fulham Player of the season for 2010/11 by the fans, and his 12 Barclays Premier League strikes meant he was the Club’s leading goal scorer for the campaign. 
+On June 7th 2012, Dempsey was voted the Fulham Player of the season by fans for the second consecutive season.]]>
+        </description>
+		<statistics poy="2008-2013" goals="0">
+          <data key="99 international caps for United States of America" />
+          <data key="4th in Barclays Premier League Player of the season 2011/12" />
+          <data key="UEFA Europa League finalist" value="2009/10" />
+          <data key="Fulham Player of the Season" value="2010/11 2011/12" />
+        </statistics>
+      </player>
+
+      <player>
+        <name>Mark Schwarzer</name>
+        <shirtno>6</shirtno>
+        <img src="/assets/teamsheets/fulham/players/Mark-Schwarzer1.jpg"/>
+        <gallery> 
+        	<img src="/assets/teamsheets/fulham/players/Mark-Schwarzer2.jpg"/> 
+        	<img src="/assets/teamsheets/fulham/players/Mark-Schwarzer3.jpg"/> 
+        </gallery>
+        <description>
+          <![CDATA[On 21st May 2008, Schwarzer signed a two-year deal at Fulham, ending an 11-year association with Middlesbrough. 
+
+Mark Schwarzer’s contribution during the Club’s 2008/9 campaign helped Fulham achieve a 7th place finish in the Barclays Premier League and a place in Europe for the following season.]]>
+        </description>
+        <statistics poy="2008-2013" goals="0">
+          <data key="108 International caps for Australia" />
+          <data key="Australian Player of the Year" value="2009" />
+          <data key="Barclays Premier League Player of the Month" value="Febuary 2009" />
+          <data key="Fulham Player of the Year " value="2008/09" />
+          <data key="Fulham Player of the Year " />
+        </statistics>
+      </player>
+
+      <player>
+        <name>Dimitar Berbatov</name>
+        <shirtno>9</shirtno>
+        <img src="/assets/teamsheets/fulham/players/Dimitar-Berbatov1.jpg"/>
+        <gallery> 
+        	<img src="/assets/teamsheets/fulham/players/Dimitar-Berbatov2.jpg"/> 
+        	<img src="/assets/teamsheets/fulham/players/Dimitar-Berbatov3.jpg"/> 
+        </gallery>
+        <description>
+          <![CDATA[On 31st August 2012, it was announced Berbatov had signed a two-year contract with Fulham for an undisclosed fee.
+
+Berbatov is known for his footballing intelligence, technical ability and composure; in particular, his unhurried stance in front of goal has been described as "elegant and calm”.
+His impressive physical stature combines with these attributes to form a strong all-round attacking player]]>
+        </description>
+        <statistics poy="2012-2014" goals="15">
+          <data key="Fulham Player of the Season" value="2012/13" />
+          <data key="Barclays Premier League winner" value="2008/09 2010/11" />
+          <data key="7 Bulgarian Footballer of the Year awards"  />
+          <data key="78 international caps for Bulgaria"  />
+        </statistics>
+      </player>
+
+      <player>
+        <name>Steed Malbranque</name>
+        <shirtno>9</shirtno>
+        <img src="/assets/teamsheets/fulham/players/Steed-Malbranque1.jpg"/>
+        <gallery> 
+        	<img src="/assets/teamsheets/fulham/players/Steed-Malbranque2.jpg"/> 
+        	<img src="/assets/teamsheets/fulham/players/Steed-Malbranque3.jpg"  /> 
+        </gallery>
+        <description>
+          <![CDATA[Steed made his move to the Barclays Premier League from Lyon in 2001, joining Fulham and making his debut against Manchester United. He went on to score 10 goals in his first season.
+
+He become a firm favourite during his five years at the Club, playing a total of 211 games and scoring 44 goals.]]>
+        </description>
+        <statistics poy="2001 - 2008" goals="44">
+          <data key="France U-20 International" />
+          <data key="Arsenal Player of the Year" value="2010/11" />
+          <data key="Joined Fulham for £4.5 million" />
+          <data key="Coup de la Ligue winner" />
+          <data key="Scored 10 goals in his first season for Fulham" />
+        </statistics>
+      </player>
+    </top_players>     
+    
+    <video src="/assets/teamsheets/fulham/video/Fulham Video_1.flv" />
+    
+    <gallery>
+            <item>
+                <img src="/assets/teamsheets/fulham/gallery/Craven-Cottage1.jpg" alt="Craven-Cottage1" />
+                <description><![CDATA[Craven Cottage underwent construction in 1894 and was opened 2 years later. 
+2004 saw a major refurbishment to increase the capacity of the stadium from 22,000 to 25,700. Like many of the stadiums in the Barclays Premier League, “the Cottage” was designed by Scottish architect Archibald Leitch. Fulham recorded their greatest ever attendance against the Millwall Dockers in 1938, 49,335 fans attended the match.]]></description>
+                <statistics>
+                    <description><![CDATA[<span fontWeight="bold">Capacity:</span> 25,700 <br/><br/><span fontWeight="bold">Field Dimensions:</span> 105m x 68m<br/><br/><span fontWeight="bold">Surface:</span> Desso GrassMaster.]]></description>
+                    <stat key="Capacity" value="25,700" />
+                    <stat key="Field Dimensions" value="105m x 68m" />
+                    <stat key="Surface" value="Desso GrassMaster" />   
+                </statistics>
+            </item>
+            <item>
+                <img src="/assets/teamsheets/fulham/gallery/Craven-Cottage1.jpg" alt="Craven-Cottage1" />
+                <description><![CDATA[Craven Cottage underwent construction in 1894 and was opened 2 years later. 
+2004 saw a major refurbishment to increase the capacity of the stadium from 22,000 to 25,700. Like many of the stadiums in the Barclays Premier League, “the Cottage” was designed by Scottish architect Archibald Leitch. Fulham recorded their greatest ever attendance against the Millwall Dockers in 1938, 49,335 fans attended the match.]]></description>
+                <statistics>
+                    <description><![CDATA[<span fontWeight="bold">Capacity:</span> 25,700 <br/><br/><span fontWeight="bold">Field Dimensions:</span> 105m x 68m<br/><br/><span fontWeight="bold">Surface:</span> Desso GrassMaster.]]></description>
+                    <stat key="Capacity" value="25,700" />
+                    <stat key="Field Dimensions" value="105m x 68m" />
+                    <stat key="Surface" value="Desso GrassMaster" />   
+                </statistics>
+            </item>
+    </gallery>
+    
+    <timeline><![CDATA[assets/teamsheets/fulham/timeline/DidYouKnow.swf]]></timeline>
+
+</teaminfo>
+</teams>

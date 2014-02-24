@@ -5,11 +5,11 @@
         <player>
             <name>Andy Dawson</name>
             <shirtno>3</shirtno>
-            <img src="/assets/teamsheets/hull city/players/Andy-Dawson1.jpg"/>
+            <img src="/assets/teamsheets/hullcity/players/Andy-Dawson1.jpg"/>
 
             <gallery>
-                <img src="/assets/teamsheets/hull city/players/Andy-Dawson2.jpg" />
-                <img src="/assets/teamsheets/hull city/players/Andy-Dawson3.jpg"  />
+                <img src="/assets/teamsheets/hullcity/players/Andy-Dawson2.jpg" />
+                <img src="/assets/teamsheets/hullcity/players/Andy-Dawson3.jpg"  />
             </gallery>
 
             <description>
@@ -29,10 +29,10 @@ He is a traditional left-back and when playing, wears all-black boots and old-fa
       <player>
         <name>Geovanni</name>
         <shirtno>10</shirtno>
-        	<img src="/assets/teamsheets/hull city/players/Geovanni1.jpg"/>
+        	<img src="/assets/teamsheets/hullcity/players/Geovanni1.jpg"/>
         <gallery> 
-	        <img src="/assets/teamsheets/hull city/players/Geovanni2.jpg"/> 
-	        <img src="/assets/teamsheets/hull city/players/Geovanni3.jpg"/> 
+	        <img src="/assets/teamsheets/hullcity/players/Geovanni2.jpg"/> 
+	        <img src="/assets/teamsheets/hullcity/players/Geovanni3.jpg"/> 
         </gallery>
         <description>
           <![CDATA[In July 2008, Geovanni would join Hull City from Manchester City for an undisclosed fee. 
@@ -50,10 +50,10 @@ At the end of his first season, he finished as Hull City’s top goal scorer. He
       <player>
         <name>Robert Koren</name>
         <shirtno>10</shirtno>
-        <img src="/assets/teamsheets/hull city/players/Robert-Koren1.jpg"/>
+        <img src="/assets/teamsheets/hullcity/players/Robert-Koren1.jpg"/>
         <gallery> 
-        	<img src="/assets/teamsheets/hull city/players/Robert-Koren2.jpg"/> 
-        	<img src="/assets/teamsheets/hull city/players/Robert-Koren3.jpg"/> 
+        	<img src="/assets/teamsheets/hullcity/players/Robert-Koren2.jpg"/> 
+        	<img src="/assets/teamsheets/hullcity/players/Robert-Koren3.jpg"/> 
         </gallery>
         <description>
           <![CDATA[Koren joined Hull City in 2010 signing a two-year contract and quickly became known for his long-range shooting. 
@@ -72,10 +72,10 @@ Such a key player for the Tigers in 2011/12, there was much delight when, after 
       <player>
         <name>Tom Huddlestone</name>
         <shirtno>6</shirtno>
-        <img src="/assets/teamsheets/hull city/players/Tom-Huddlestone1.jpg"/>
+        <img src="/assets/teamsheets/hullcity/players/Tom-Huddlestone1.jpg"/>
         <gallery> 
-        	<img src="/assets/teamsheets/hull city/players/Tom-Huddlestone2.jpg"/> 
-        	<img src="/assets/teamsheets/hull city/players/Tom-Huddlestone3.jpg"/> 
+        	<img src="/assets/teamsheets/hullcity/players/Tom-Huddlestone2.jpg"/> 
+        	<img src="/assets/teamsheets/hullcity/players/Tom-Huddlestone3.jpg"/> 
         </gallery>
         <description>
           <![CDATA[A full England international, Hull City broke their Club record transfer fee to sign Huddlestone from Tottenham Hotspur in August 2013. An estimated £5 million was needed to prise the combative midfielder away from his former Club.
@@ -91,10 +91,10 @@ Following him to the KC Stadium was Spurs team-mate Jake Livermore on a seaso
       <player>
         <name>James Chester</name>
         <shirtno>5</shirtno>
-        <img src="/assets/teamsheets/hull city/players/James-Chester1.jpg"/>
+        <img src="/assets/teamsheets/hullcity/players/James-Chester1.jpg"/>
         <gallery> 
-        	<img src="/assets/teamsheets/hull city/players/James-Chester2.jpg"/> 
-        	<img src="/assets/teamsheets/hull city/players/James-Chester3.jpg"  /> 
+        	<img src="/assets/teamsheets/hullcity/players/James-Chester2.jpg"/> 
+        	<img src="/assets/teamsheets/hullcity/players/James-Chester3.jpg"  /> 
         </gallery>
         <description>
           <![CDATA[Young centre-back James Chester joined Hull City from Manchester United in January 2011, signing a deal that will keep him at the KC Stadium until 2014.
@@ -111,11 +111,11 @@ Chester adjusted well to the Championship, putting in several strong performance
       </player>
     </top_players>     
     
-    <video src="" />
+    <video src="assets/teamsheets/hullcity/video/HULL BPL GOALS MONTAGE.flv" />
     
     <gallery>
             <item>
-                <img src="dreamteam assets/teamsheets/hull city/gallery/KC-Stadium1.jpg" alt="KC Stadium" />
+                <img src="dreamteam assets/teamsheets/hullcity/gallery/KC-Stadium1.jpg" alt="KC Stadium" />
                 <description><![CDATA[The KC stadium, located in Kingston upon Hull and run by the local council, is the home to newly promoted team Hull City. The council sold part of its stake in the stadium to Kingston Communications (KC) whose sponsorship provided the stadium with it’s name. The KC stadium is also the home ground to professional rugby league team Hull FC. The Stadium is truly multi-functional: not only is the KC stadium home to two sporting teams, there has also been several live music concerts at the stadium with artists such as Sir Elton John, The Who and JLS performing there.]]></description>
                 <statistics>
                     <description><![CDATA[<span fontWeight="bold">Capacity:</span> 25,404 <br/><br/><span fontWeight="bold">Field Dimensions:</span> 101m x 64m<br/><br/><span fontWeight="bold">Surface:</span> Desso GrassMaster.]]></description>
@@ -126,7 +126,7 @@ Chester adjusted well to the Championship, putting in several strong performance
             </item>
     </gallery>
     
-     <timeline><![CDATA[/assets/teamsheets/manchestercity/timeline/DidYouKnow.swf]]></timeline>
+     <timeline><![CDATA[/assets/teamsheets/hullcity/timeline/DidYouKnow.swf]]></timeline>
 
 </teaminfo>
 </teams>

@@ -1,141 +1,147 @@
 <teams>
 <teaminfo>
-    <name>Arsenal FC</name>
+    <name>Everton FC</name>
     <top_players>
         <player>
-            <name>Thierry Henry</name>
-            <shirtno>14</shirtno>
-            <img src="/assets/teamsheets/arsenal/players/thierryhenry01.jpg"/>
+            <name>Duncan Ferguson</name>
+            <shirtno>24</shirtno>
+            <img src="/assets/teamsheets/everton/players/Duncan-Ferguson1.jpg"/>
 
             <gallery>
-                <img src="/assets/teamsheets/arsenal/players/thierryhenry02.jpg" />
-                <img src="/assets/teamsheets/arsenal/players/thierryhenry03.jpg"  />
+                <img src="/assets/teamsheets/everton/players/Duncan-Ferguson2.jpg" />
+                <img src="/assets/teamsheets/everton/players/Duncan-Ferguson3.jpg"  />
             </gallery>
 
             <description>
-                <![CDATA[Henry arrived from Juventus on 3rd August 1999 to Arsenal for an estimated fee of £11 million, reuniting with his former manager Arsène Wenger. One of Henry’s most successful seasons was in 2003/04 when Arsenal were determined to reclaim the Barclays Premier League crown. Henry was instrumental in Arsenal's exceptionally successful campaign. Henry ensured that the Gunners became the first team in more than a century to go through the entire domestic league season unbeaten, claiming the title in the process.]]>
+                <![CDATA[Fierce, uncompromising and destructive, Duncan Ferguson was one of a kind.
+On his day, he would simply bully teams into submission, calling on his brute strength and determination to win to dismantle even the most respected defence’s.
+His undying affection for Everton – and a blatant lack of it for any of his opponents – won the hearts and minds of the Goodison Park faithful, who to this day revere the striker as one of the Club’s all-time greats. Even a short-lived switch to Newcastle United in 1999 couldn’t diminish Ferguson’s status as he went on to make 273 appearances for the Merseyside outfit before retiring in May 2006.  After a spell out of the game and living abroad, Ferguson returned to Everton in October 2011 to take up his current position as a youth-team coach.]]>
             </description>
-        <statistics poy="1999-2007, 2012" goals="228">
-          <data key="PFA Player of the Year" value="2002/03 2003/04" />
-          <data key="Golden Boot winner" value="2001/02, 2003/04, 2004/05, 2005/06" />
-          <data key="2 Barclays Premier League titles"  />
-          <data key="3 FA Cup wins"  />
-          <data key="123 international caps for France"  />
+        <statistics poy="1994 -1998 2000 - 2006" goals="11">
+                <data key="FA Cup winner" value="1995" />
+                <data key="273 appearances for Everton, scoring 72 goals"  />
+                <data key="7 international caps for Scotland"  />
+                <data key="Scottish Premier League winner with Glasgow Rangers" value="1993/94" />
+                <data key="Now a youth coach at Everton" />
         </statistics>
         </player>
 
       <player>
-        <name>Dennis Bergkamp</name>
-        <shirtno>10</shirtno>
-        	<img src="/assets/teamsheets/arsenal/players/dennisbergkamp01.jpg"/>
-        <gallery> 
-	        <img src="/assets/teamsheets/arsenal/players/dennisbergkamp02.jpg"/> 
-	        <img src="/assets/teamsheets/arsenal/players/dennisbergkamp03.jpg"/> 
-        </gallery>
-        <description>
-          <![CDATA[Bergkamp left Internazionale and signed with Arsenal in June 1995 for a transfer fee estimated at £7.5 million. In the 2001/02 season Bergkamp played in 33 league matches, setting up 15 goals.
-            In the same year, Arsenal regained the Barclays Premier League title, beating Manchester United at Old Trafford in the penultimate game of the season to complete the Club's second double under Wenger. Arsenal defeated Chelsea 2–0 to win the FA Cup. Bergkamp reached a personal landmark during the 2002/03 season, scoring his 100th goal for Arsenal against Oxford United.]]>
-        </description>
-        <statistics poy="1995-2006" goals="120">
-          <data key="3 Barclays Premier League Titles" />
-          <data key="4 FA cups wins" />
-          <data key="World Top Goal Scorer of the Year" />
-          <data key="79 international caps for the Netherlands" />
-          <data key="Premier League Goal of the Season" value="1997/98, 2001/02" />
-          <data key="PFA and FWA Player of the Year" value="1997/98" />
-        </statistics>
-      </player>
-
-      <player>
-        <name>Tony Adams</name>
-        <shirtno>6</shirtno>
-        <img src="/assets/teamsheets/arsenal/players/tonyadams01.jpg"/>
-        <gallery> 
-        	<img src="/assets/teamsheets/arsenal/players/tonyadams02.jpg"/> 
-        	<img src="/assets/teamsheets/arsenal/players/tonyadams03.jpg"/> 
-        </gallery>
-        <description>
-          <![CDATA[Adams signed for Arsenal as a schoolboy in 1980 and 3 years later made his first team debut on 5th  November.
-            Adams was part of the "famous four" that lined up in Arsenal's defence, which was renowned for its well-disciplined use of the offside trap. On 1st January 1988, he became Arsenal captain at the age of 21; he would remain Club captain for the next 14 years until his retirement]]>
-        </description>
-        <statistics poy="1983 - 2002" goals="48">
-          <data key="4 League titles" />
-          <data key="European Cup Winners’ Cup"  />
-          <data key="66 international caps for England"  />
-          <data key="3 Community Shield wins"  />
-          <data key="PFA Young Player of the Year " value="1987/88" />
-        </statistics>
-      </player>
-
-      <player>
-        <name>David Seaman</name>
+        <name>Neville Southall</name>
         <shirtno>1</shirtno>
-        <img src="/assets/teamsheets/arsenal/players/davidseaman01.jpg"/>
+        <img src="/assets/teamsheets/everton/players/Neville-Southall1.jpg"/>
         <gallery> 
-        	<img src="/assets/teamsheets/arsenal/players/davidseaman02.jpg"/> 
-        	<img src="/assets/teamsheets/arsenal/players/davidseaman03.jpg"/> 
+	        <img src="/assets/teamsheets/everton/players/Neville-Southall2.jpg"/> 
+	        <img src="/assets/teamsheets/everton/players/Neville-Southall3.jpg"/> 
         </gallery>
         <description>
-          <![CDATA[Arsenal’s manager George Graham signed Seaman for £1.3 million (at the time a British record for a goalkeeper)..Seaman's time at Arsenal coincided with one of the most successful periods in the Club's history. The 1990/91 season saw Seaman concede only 18 goals when playing in every match of the 38-game season, as Arsenal regained the League title.
-            Arsenal won both the FA Cup and the League Cup in 1993 and supplemented this a year later with the European Cup Winners' Cup.]]>
+          <![CDATA[In his pomp, Neville Southall was regarded by many as the greatest goalkeeper on the planet. Boasting shot-stopping nous and agility that belied his broad frame, the Welshman was named in the PFA Team of the Year on four successive occasions as he kept goal throughout the most trophy-laden era in Everton’s history. In total, he won five major honors with the Blues – two League Championships, two FA Cups and the Club’s only continental title, the 1985 European Cup Winners’ Cup. Such was Southall’s affiliation with Everton that Llandudno-born glovesman remained at Goodison Park beyond his 39th birthday, finally calling time on a 17-year Toffees career in 1998. His record of 751 appearances remains a Club record, as is his tally of 269 clean sheets]]>
         </description>
-        <statistics poy="1990-2003" goals="0">
-          <data key="League Cup Winner" value="1992/93" />
-          <data key="PFA Team of the Year " value="1997" />
-          <data key="75 international caps for England"  />
-          <data key="4 FA Cup wins"  />
-          <data key="3 Barclays Premier League titles"  />
-          <data key="European Cup Winners’ Cup"  />
+        <statistics poy="1981-1997" goals="1">
+                <data key="751 Everton appearances" />
+                <data key="92 International caps for Wales – a national record" />
+                <data key="European Cup Winners’ Cup winner" />
+                <data key="Football League Championship winner" value="2011/13" />
+                <data key="4 PFA Team of the Year" />
         </statistics>
       </player>
 
       <player>
-        <name>Jack Wilshere</name>
-        <shirtno>8</shirtno>
-        <img src="/assets/teamsheets/arsenal/players/jackwihslere01.jpg"/>
+        <name>Tim Cahill</name>
+        <shirtno>17</shirtno>
+        <img src="/assets/teamsheets/everton/players/Tim-Cahill1.jpg"/>
         <gallery> 
-        	<img src="/assets/teamsheets/arsenal/players/jackwihslere02.jpg"/> 
-        	<img src="/assets/teamsheets/arsenal/players/jackwihslere03.jpg"  /> 
+        	<img src="/assets/teamsheets/everton/players/Tim-Cahill2.jpg"/> 
+        	<img src="/assets/teamsheets/everton/players/Tim-Cahill3.jpg"/> 
         </gallery>
         <description>
-          <![CDATA[Wilshere came up through Arsenal Youth Academy and was given the number 19 shirt in the first- team squad for season 2008/09.  He became the Club’s youngest league debutant against Blackburn Rovers in September 2008 at the age of 16.  His breakthrough season at the Club was 2010/11 when he was voted the Player of the season.]]>
+          <![CDATA[Standing at just 5ft 10ins tall, Australia's Tim Cahill was an unlikely aerial menace.
+Yet, that's exactly what the Sydney-born attacking midfielder proved to be during his time in the Barclays Premier League - an eight-year spell spent entirely with Everton. Signed from Millwall in 2004 following his heroics in firing the Lions to a surprise FA Cup final, Cahill went on to score 68 goals in 280 outings for the Toffees - most notably netting five against Liverpool to establish himself as the Club's leading post-war league scorer against their arch rivals.
+Internationally, Cahill hit global heights in 2006 when he became the first Australian to net at a World Cup finals and remains a key figure for the Socceroos to this day.
+Having left Everton in July 2012, the 33-year-old now applies his trade with New York Red Bulls in America’s MLS.]]>
         </description>
-        <statistics poy="2008-Present Day" goals="9">
-          <data key="14 international caps for England" />
-          <data key="Arsenal Player of the Year" value="2010/11" />
-          <data key="PFA Young player of the Year award" value="2010/11" />
-          <data key="League Sheild Winner" value="2006, 2007" />
-          <data key="FA Youth Cup Winner " value="2006, 2007" />
+        <statistics poy="2004 – 2012" goals="56">
+                <data key="Oceanic Footballer of the Year" value="2004" />
+                <data key="64 international caps for Australia"  />
+                <data key="Everton's leading league scorer against Liverpool in the post-war era"  />
+                <data key="Everton's Player and Players' Player of the Season" value="2004/05" />
+        </statistics>
+      </player>
+
+      <player>
+        <name>Leighton Baines</name>
+        <shirtno>3</shirtno>
+        <img src="/assets/teamsheets/everton/players/Leighton-Baines1.jpg"/>
+        <gallery> 
+        	<img src="/assets/teamsheets/everton/players/Leighton-Baines2.jpg"/> 
+        	<img src="/assets/teamsheets/everton/players/Leighton-Baines3.jpg"/> 
+        </gallery>
+        <description>
+          <![CDATA[Signed from Wigan Athletic in 2007, Leighton Baines has gone on to establish himself as a mainstay of Everton's first team and one of the leading left-backs in the world game.
+Equally dependable both in defense and attack, the Liverpool-born defender is also renowned for his lethal set-piece prowess, highlighted by an astonishing 100 per cent Barclays Premier League penalty success rate and two stunning free-kick goals against West Ham United early in the 2013/14 campaign.
+Part of the Wigan team which earned promotion to the top flight in 2004/05, Baines has been voted Everton's Player of the Season three times since making the switch to Goodison Park, earning a spot in the PFA Team of the Year in 2011/12 and 2012/13.
+On the international scene, Baines has also been a long-time rival for Chelsea star Ashley Cole since making his England debut in a friendly against Egypt in March 2010.]]>
+        </description>
+        <statistics poy="2007 - Present Day" goals="18">
+                <data key="FA Cup runner-up with Everton" value="2009" />    
+                <data key="2  Everton Player’s Player of the Season awards" />
+                <data key="Twice named in the PFA Team of the Year" />
+                <data key="22 international caps for England"/>
+                <data key=" 22 international caps for England"/>
+        </statistics>
+      </player>
+
+      <player>
+        <name>Wayne Rooney</name>
+        <shirtno>8</shirtno>
+        <img src="/assets/teamsheets/everton/players/Wayne-Rooney1.jpg"/>
+        <gallery> 
+        	<img src="/assets/teamsheets/everton/players/Wayne-Rooney2.jpg"/> 
+        	<img src="/assets/teamsheets/everton/players/Wayne-Rooney3.jpg"  /> 
+        </gallery>
+        <description>
+          <![CDATA[Everton Academy product Wayne Rooney burst on to the scene in October 2002, beating legendary Arsenal goalkeeper David Seaman aged just 16 to net an unforgettable winner and end the champions’ 30-match unbeaten run.
+A boyhood Blue, Rooney had already bagged his first senior goals in a League Cup win over Wrexham earlier that campaign, at the time becoming Everton’s youngest ever scorer.
+His continued good form caught the eyes of the world and following his goal scoring heroics for England at Euro 2004, the 18-year-old was sold to Manchester United for £25.6million - the highest fee ever paid for teenager.
+Rooney departed Goodison Park having netted a haul of 17 goals in just 77 games for the Toffees, proving his billing as one of the most exciting prospects the country had ever produced.  
+Already Manchester United's leading goal scorer of the Premier League era, Rooney is rapidly closing in on Sir Bobby Charlton's all-time club record of 249.]]>
+        </description>
+        <statistics poy="2002 - 2004" goals="15">
+                <data key="Made his Barclays Premier League debut for Everton aged just 16" />
+                <data key="Became the world’s most expensive teenager when joining Manchester United" value="2004" />
+                <data key="Won five Barclays Premier League titles" />
+                <data key="Named in the PFA Team of the Year on three occasions" />
+                <data key="PFA Player of the Year" value="2010" />
         </statistics>
       </player>
     </top_players>     
     
-    <video src="/assets/teamsheets/arsenal/video/Arsenal Video 1.f4v" />
+    <video src="assets/teamsheets/everton/video/Everton Video.flv" />
     
     <gallery>
             <item>
-                <img src="/assets/teamsheets/arsenal/gallery/Arsenal Stadium.jpg" alt="Emirates Stadium" />
-                <description><![CDATA[Opened in 2006, Emirates Stadium is one of the newest stadia in the Barclays Premier League. The stadium was built on a former waste disposal site in Ashburton Grove and Emirates Airline were named as the main sponsor of the ground in 2004. The stadium’s site takes up around 17 acres and is incredibly advanced, there is constant computer monitoring of the stadiums conditions to ensure the pitch is always the highest quality possible.]]></description>
+                <img src="/assets/teamsheets/everton/gallery/Goodison-Park.jpg" alt="Goodison Park" />
+                <description><![CDATA[Goodison Park is the home of Everton and is just 3 kilometers from Liverpool city centre. The stadium was opened in 1892 making it one of the oldest stadia in the Barclays Premier League. The ground is famous for its tremendous matchday atmosphere generated by fanatical Evertonians. Fans are seated in either the Main Stand, the Bullens Road stand, the Park End or the raucous Gwladys Street stand. The ground has hosted more top-flight games than any other stadium in England and was used in the 1966 World Cup.]]></description>
                 <statistics>
-                    <description><![CDATA[<span fontWeight="bold">Capacity:</span> 60,362 <br/><br/><span fontWeight="bold">Field Dimensions:</span> 105m x 68m<br/><br/><span fontWeight="bold">Surface:</span> Desso GrassMaster.]]></description>
-                    <stat key="Capacity" value="60,362 " />
+                    <description><![CDATA[<span fontWeight="bold">Capacity:</span> 40,157 <br/><br/><span fontWeight="bold">Field Dimensions:</span> 105m x 68m<br/><br/><span fontWeight="bold">Surface:</span> Desso GrassMaster.]]></description>
+                    <stat key="Capacity" value="40,157 " />
                     <stat key="Field Dimensions" value="105m x 68m" />
                     <stat key="Surface" value="Desso GrassMaster" />   
                 </statistics>
             </item>
             <item>
-                <img src="/assets/teamsheets/arsenal/gallery/External Stadium.jpg" alt="Emirates Stadium" />
-                <description><![CDATA[Opened in 20016, Emirates Stadium is one of the newest stadia in the Barclays Premier League. The stadium was built on a former waste disposal site in Ashburton Grove and Emirates Airline were named as the main sponsor of the ground in 2004. The stadium’s site takes up around 17 acres and is incredibly advanced, there is constant computer monitoring of the stadiums conditions to ensure the pitch is always the highest quality possible.]]></description>
+                <img src="/assets/teamsheets/everton/gallery/Goodison-Park.jpg" alt="Goodison Park" />
+                <description><![CDATA[Goodison Park is the home of Everton and is just 3 kilometers from Liverpool city centre. The stadium was opened in 1892 making it one of the oldest stadia in the Barclays Premier League. The ground is famous for its tremendous matchday atmosphere generated by fanatical Evertonians. Fans are seated in either the Main Stand, the Bullens Road stand, the Park End or the raucous Gwladys Street stand. The ground has hosted more top-flight games than any other stadium in England and was used in the 1966 World Cup.]]></description>
                 <statistics>
-                    <description><![CDATA[<span fontWeight="bold">Capacity:</span> 60,362 <br/><br/><span fontWeight="bold">Field Dimensions:</span> 105m x 68m<br/><br/><span fontWeight="bold">Surface:</span> Desso GrassMaster.]]></description>
-                    <stat key="Capacity" value="60,362 " />
+                    <description><![CDATA[<span fontWeight="bold">Capacity:</span> 40,157 <br/><br/><span fontWeight="bold">Field Dimensions:</span> 105m x 68m<br/><br/><span fontWeight="bold">Surface:</span> Desso GrassMaster.]]></description>
+                    <stat key="Capacity" value="40,157 " />
                     <stat key="Field Dimensions" value="105m x 68m" />
                     <stat key="Surface" value="Desso GrassMaster" />   
                 </statistics>
             </item>
     </gallery>
     
- <timeline><![CDATA[/assets/teamsheets/everton/timeline/DidYouKnow.swf]]></timeline>
- 
+		 <timeline><![CDATA[assets/teamsheets/everton/timeline/DidYouKnow.swf]]></timeline>
+
 </teaminfo>
 </teams>

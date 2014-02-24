@@ -102,7 +102,7 @@
 					node.@logo = ""; 
 					var addinsNo:Number = Math.round(itemNo/list.length());
 					var xmlCopy:XML = new XML(<mylist/>);
-						
+					
 					var count:int = 0;
 					for (var i:int=0;i<itemNo;i++)
 					{
@@ -120,7 +120,7 @@
 					return list;
 				}
 			}
-
+			
 			
 			private function createListeners( e:Event= null ):void
 			{
@@ -144,31 +144,30 @@
 			
 			private function mySelect(event:MouseEvent):void
 			{
-					 
-					if ( this.currentIndex> 0 )
-						(CarouselGroup.getElementAt( this.currentIndex ) as UIComponent).filters = null;
-					
-					for(var j:uint = 0; j < CarouselGroup.numElements; j++)
+				
+				if ( this.currentIndex> 0 )
+					(CarouselGroup.getElementAt( this.currentIndex ) as UIComponent).filters = null;
+				
+				for(var j:uint = 0; j < CarouselGroup.numElements; j++)
+				{
+					if (CarouselGroup.getElementAt( j )==event.currentTarget)
 					{
-						if (CarouselGroup.getElementAt( j )==event.currentTarget)
-						{
-							currentIndex = j;
-							//Console.log("currentIndex: "+currentIndex,this)
-						}
+						currentIndex = j;
+						//Console.log("currentIndex: "+currentIndex,this)
 					}
-					
-					accept();
-					
-					/*
-					
-					TweenMax.to(CarouselGroup.getElementAt( currentIndex ), .5, 
-						{ scaleX: 1.2, scaleY: 1.2, ease: com.greensock.easing.Sine.easeOut, 
-							onComplete: function():void { gotoTeam(teamDataList[currentIndex].@name.toString()) 
-							} 
-						}); 
-					*/
-					//Console.log( "currentIndex: "+ teamDataList[currentIndex].@name, this );
-					
+				}
+				accept();
+				
+				/*
+				
+				TweenMax.to(CarouselGroup.getElementAt( currentIndex ), .5, 
+				{ scaleX: 1.2, scaleY: 1.2, ease: com.greensock.easing.Sine.easeOut, 
+				onComplete: function():void { gotoTeam(teamDataList[currentIndex].@name.toString()) 
+				} 
+				}); 
+				*/
+				//Console.log( "currentIndex: "+ teamDataList[currentIndex].@name, this );
+				
 			}
 			protected function accept( e:Event = null ):void
 			{
@@ -229,9 +228,9 @@
 			private function myRollOut(event:MouseEvent):void
 			{
 				if (CarouselGroup.getElementAt( currentIndex )!=event.currentTarget)
-				event.currentTarget.filters = null;
+					event.currentTarget.filters = null;
 			}
-			]]>
+		]]>
 	</fx:Script>
 	<fx:Declarations>
 		<!-- Place non-visual elements (e.g., services, value objects) here -->
@@ -239,26 +238,24 @@
 		<s:Sine id="sineEasing" easeInFraction="0.3"/>
 		<s:Linear id="slowDown" easeInFraction=".1" easeOutFraction=".1"  />
 		<s:HTTPService id="publishSelectTeam" resultFormat="flashvars" method="POST" url="{this.parentApplication.localURL+'userteam.php'}" result="publish_success(event)" fault="publish_failed(event)" />
-
+		
 	</fx:Declarations>
 	<!-- Menu -->
 	<!-- Field -->
 	
-		<s:VGroup horizontalAlign="center" width="100%" verticalCenter="0">
-			<s:Spacer height="80" />
-			<s:Label id="frontMessage" horizontalCenter="0"  text="PLEASE SELECT YOUR TEAM" />
-			<s:Spacer height="70" />
-			<s:DataGroup id="CarouselGroup" updateComplete="createListeners(event)" horizontalCenter="0"  width="1200" itemRenderer="registration.logoItemRenderer">			
-				<s:layout>
-					<s:TileLayout orientation="rows" clipAndEnableScrolling="true"
-								  requestedColumnCount="-1" requestedRowCount="-1"
-								  verticalGap="50" horizontalGap="0" useVirtualLayout="true" />
-				</s:layout>
-				<s:XMLListCollection  id="teamList"   source="{teamDataList}"/>	
-			</s:DataGroup>
-			<!--s:Spacer height="90" />
-			<s:Button label="CONTINUE" click="accept(event)" skinClass="skins.barclaysButton" /-->
-		</s:VGroup>
-			
-			
+	<s:VGroup horizontalAlign="center" width="100%" verticalCenter="0">
+		<s:Spacer height="80" />
+		<s:Label id="frontMessage" horizontalCenter="0"  text="PLEASE SELECT YOUR TEAM" />
+		<s:Spacer height="70" />
+		<s:DataGroup id="CarouselGroup" updateComplete="createListeners(event)" horizontalCenter="0"  itemRenderer="registration.logoItemRenderer">			
+			<s:layout>
+				<s:TileLayout orientation="rows" horizontalAlign="center" clipAndEnableScrolling="true"
+							  requestedColumnCount="10" requestedRowCount="-1"
+							  verticalGap="50" horizontalGap="0" useVirtualLayout="true" />
+			</s:layout>
+			<s:XMLListCollection  id="teamList"   source="{teamDataList}"/>	
+		</s:DataGroup>
+	</s:VGroup>
+	
+	
 </s:Group>

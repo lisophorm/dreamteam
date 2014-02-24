@@ -180,6 +180,9 @@
 			
 			protected function finalise(event : Event) : void
 			{
+				if(videoElemento) {
+					videoElemento.videoPlayer.stop();
+				}
 				trace("Teamsheet :: finalise");
 				gallery.finalise();
 			}

@@ -1,66 +1,88 @@
 /* CSS file */
 @namespace s "library://ns.adobe.com/flex/spark";
 @namespace mx "library://ns.adobe.com/flex/mx";
+@namespace components "views.components/*";
 
-
+@namespace components1 "views.components.*";
 global
 {
 	/*
 	text-align: center;
 	content-background-color: #FFFFFF;
 	*/
-	fontFamily: "StandardRegular";
+	fontFamily: "StandardRegularAllCase";
 }
 s|Label  {
 	fontSize: 20;
-	fontFamily: "StandardRegular";
+	fontFamily: "StandardRegularAllCase";	
 	color: #FFFFFF;
 	
 }
-s|VideoPlayer, s|VideoDisplay {
-	borderThickness: 0;
-	backgroundColor: #000000;
-}
-
-.cameraHeading 
-{
-	fontSize: 24;
-	fontFamily: "StandardRegular";
-	color: #FFFFFF;
-}
-.cameralistLabel 
-{
-	fontSize: 20;
-	fontFamily: "StandardRegularNoCFF";
-	color: #FFFFFF;
+s|Label#frontMessage  {
+	fontSize:57;
+	fontFamily: "StandardRegularAllCase";
+	
 }
 
 #photoList s|Label  {
 	fontSize: 24;
 	fontFamily: "StandardRegular";
-	color: #FFFFFF
+	color: #FFFFFF;
 		
 }
 #titleDisplay 
 {
-	fontSize: 28;
-	fontFamily: "StandardRegular";
+	fontSize: 43;
+	fontFamily: "StandardRegularAllCase";
+	color:#00AEEF;
+	textAlign: center;
+}
+
+.registrationOne{
+	fontSize: 112;
+	fontFamily:"PremiereLeague";
 	color:#FFFFFF;
 }
+
+.registrationTwo{
+	fontSize: 57;
+	fontFamily:"StandardRegularAllCase";
+	fontWeight:bold;
+	color:#00ADEE;
+}
+
+.registrationThree{
+	fontSize: 40;
+	fontFamily:"StandardRegularAllCase";
+	color:#FFFFFF;
+}
+
+.registrationFour{
+	fontSize: 25;
+	fontFamily:"StandardRegularAllCase";
+	color:#00ADEE;
+}
+
+.welcomeBackHeader{
+	fontSize: 112;
+	fontFamily:"PremiereLeague";
+	color:#FFFFFF;
+}
+
 .verysmallprint {
 	fontSize: 14;
-	fontFamily: "StandardRegular";
+	fontFamily: "StandardRegularAllCase";
 	color:#FFFFFF;
-
+	
 }
 .smallprint {
 	fontSize: 21;
-	fontFamily: "StandardRegular";
+	fontFamily: "StandardRegularAllCase";
 	color:#FFFFFF;
 }
 .smallprintLink {
 	fontSize: 21;
-	fontFamily: "StandardRegular";
+	fontFamily: "StandardRegularAllCase";
 }
 s|FormHeading s|Label#labelDisplay {
 	fontSize: 32;
@@ -68,14 +90,24 @@ s|FormHeading s|Label#labelDisplay {
 	color: #FFFFFF;
 	fontWeight: normal;
 }
+
+s|FormHeading#frontMessage s|Label#labelDisplay {
+	fontSize: 57;
+	fontFamily: "StandardRegularAllCase";
+	color: #FFFFFF;
+	fontWeight: normal;
+}
 s|FormItem
 {
-	skinClass: ClassReference("skins.vodafoneFormItem");
-	
+	skinClass: ClassReference("skins.BarclaysFormItem");	
+}
+s|FormItem s|Label#labelDisplay {
+	color: #00AEEF;
+	fontSize: 30;
 }
 #labelDisplay, .formItemLabelStyles {
 	fontSize: 32;
-	fontFamily: "StandardRegular";
+	fontFamily: "StandardRegularAllCase";
 	color: #FFFFFF;
 	fontWeight: normal;
 }
@@ -84,11 +116,10 @@ s|FormItem s|Label#labelDisplay, s|RadioButton s|Label,
 	fontFamily: "StandardRegularAllCase";
 }
 
-
 s|VGroup.Game s|Label
 {
 	fontSize: 32;
-	fontFamily: "StandardRegular";
+	fontFamily: "StandardRegularAllCase";
 	textAlign: left;
 	color: #FFFFFF;
 }
@@ -96,7 +127,7 @@ s|VGroup.Game s|Label
 s|VGroup.Game s|Label.userInfo
 {
 	fontSize: 32;
-	fontFamily: "StandardRegular"; 
+	fontFamily: "StandardRegularAllCase"; 
 	textAlign: left;
 	color: #FFFFFF;
 }
@@ -104,21 +135,22 @@ s|VGroup.Game s|Label.userInfo
 s|VGroup.Game s|Label.heading
 {
 	fontSize: 32;
-	fontFamily: "StandardRegular";
+	fontFamily: "StandardRegularAllCase";
 	textAlign: left;
-	color: #E60000;
+	color: #FFFFFF;
 }
 s|Button {
 	skinClass: ClassReference("skins.vodafoneButton");
-	fontFamily: "StandardRegular";
+	fontFamily: "StandardRegularAllCase";
 	fontSize: 28;
+	font-weight: normal;
 }
 .buttonLabel {
-	fontFamily: "StandardRegular";
+	fontFamily: "StandardRegularAllCase";
 	fontSize: 28;
 }
 s|TextInput {
-	fontFamily: "StandardMedium";
+	fontFamily: "Vodafone ExB";
 	fontSize: 32;
 }
 s|RadioButton {
@@ -127,9 +159,9 @@ s|RadioButton {
 }
 s|RadioButton #labelDisplay {
 	fontSize:18;
-	fontFamily: "StandardRegularAllCase";
 	
 }
+
 s|CheckBox {
 	skinClass: ClassReference("skins.vodafoneCheckBox");
 }
@@ -155,12 +187,63 @@ mx|ViewStack mx|VBox
 }
 .thankyou
 {
-	fontFamily: "StandardMedium";
-	fontSize: 40;
-}
-.sideButton {
-	fontSize: 14px;
 	fontFamily: "StandardRegular";
-	color: #CCCCCC;
 	
+	fontSize: 280;
+	color: #00AEEF;
+	lineHeight: 0px;
+}
+.tclink, .tcaccept#labelDisplay {
+	fontSize: 28;
+	fontFamily: "StandardRegularAllCase";
+}
+.tclink {
+	textDecoration: underline;
+	fontFamily: "StandardRegularAllCaseBold";
+}
+s|Label#welcomeBackUser{
+	fontSize:95;
+	fontFamily: "StandardRegularAllCase";
+	color:#00AEEF;
+}
+components1|CameraSelectionPanel{
+	fontSize:50;
+	fontFamily: "StandardRegularAllCase";
+	color:#00AEEF;
+}
+
+s|Label#cameraInstruction{
+	fontSize:40;
+	color:#FFFFFF;
+	fontFamily:"ExpertSans";
+}
+
+s|Label#countdownInstruction{
+	fontSize:57;
+	color:#FFFFFF;
+	fontFamily:"ExpertSans";
+}
+
+s|Label#countdownValueMain{
+	fontSize:480;
+	fontFamily:"PremiereLeague";
+	color:#00AEEF;
+}
+
+s|Label#countdownValueSecond{
+	fontSize:140;
+	fontFamily:"PremiereLeague";
+	color:#FFFFFF;
+}
+
+s|Label#cameraFullMessageMain{
+	fontSize:280;
+	fontFamily:"PremiereLeague";
+	color:#00AEEF;
+}
+
+s|Label#cameraFullMessageSecond{
+	fontSize:200;
+	fontFamily:"PremiereLeague";
+	color:#00AEEF;
 }

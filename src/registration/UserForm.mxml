@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
-		xmlns:s="library://ns.adobe.com/flex/spark" 
-		xmlns:mx="library://ns.adobe.com/flex/mx"
-		remove="exit(event)" creationComplete="created(event)" 
-		>
+		 xmlns:s="library://ns.adobe.com/flex/spark" 
+		 xmlns:mx="library://ns.adobe.com/flex/mx"
+		 remove="exit(event)" creationComplete="created(event)" 
+		 >
 	<fx:Script>
 		<![CDATA[
 			import com.alfo.utils.VirtualKeyboard;
@@ -48,7 +48,7 @@
 					this.currentURN = data.urn;
 					optin_marketing = data.optin_marketing;
 					optin_terms = data.optin_terms;
-
+					
 				} else
 				{				
 					//Console.log("NO CURRENT URN", this);
@@ -67,34 +67,35 @@
 				userEmail.text = ""; 
 				
 				termsCheck.selected = false;
-				premierLeagueCheck.selected = false;
-				clubCheck.selected = false;
-				barclaysCheck.selected = false;
-								
+				premierLeagueCheck.selected = true;
+				clubCheck.selected = true;
+				
 			}
 			protected function exit(event:Event=null):void
 			{
 				trace("*** INIT USERFORM ***");
 			}
-
+			
 			protected function submit(event:MouseEvent):void 
 			{
 				var validatorErrorArray:Array = Validator.validateAll(validatorArr);
 				var isValidForm:Boolean = validatorErrorArray.length == 0;
-				if (isValidForm) 
+				if(termsCheck.selected==false){
+					this.parentApplication.dispatchEvent(new KioskError(KioskError.ERROR, "You must agree the terms and conditions before proceeding", "ERROR"));
+					
+				} else if (isValidForm) 
 				{
 					//send data
 					saveData.send({urn: settings.userData.urn, 
-
+						
 						firstname:userFirstName.text, 
 						lastname: userLastName.text, 
 						email: userEmail.text, 
 						optInTerms: termsCheck.selected ? 1 : 0, 
 						optInPremier: premierLeagueCheck.selected ? 1 : 0,
-						optInClub:premierLeagueCheck.selected ? 1 : 0,
-						optInBarclays:barclaysCheck.selected ? 1 : 0
+						optInClub:premierLeagueCheck.selected ? 1 : 0
 					});
-				//	save();
+					//	save();
 				} 
 			}
 			
@@ -107,9 +108,8 @@
 				userLastName.text="";
 				userLastName.errorString="";
 				termsCheck.selected = false;
-				premierLeagueCheck.selected = false;
-				clubCheck.selected = false;
-				barclaysCheck.selected = false;
+				premierLeagueCheck.selected = true;
+				clubCheck.selected = true;
 			}
 			
 			protected function save(e:ResultEvent=null):void
@@ -120,7 +120,7 @@
 					if (e.result.result=="OK")
 					{
 						this.parentApplication.dispatchEvent( new UserEvent(UserEvent.REGISTERED, "classic"));
-						this.parentApplication.dispatchEvent( new ViewEvent( ViewEvent.LOCATION_SELECT_GAME_TEAM, {type: "GAME" } ));
+						this.parentApplication.dispatchEvent( new ViewEvent( ViewEvent.LOCATION_REGISTRATION_COMPLETE, {type: "GAME" } ));
 					} else
 					{
 						this.parentApplication.dispatchEvent(new KioskError(KioskError.ERROR, e.result.message.toString(), "COMMUNICATION ERROR"));
@@ -173,7 +173,7 @@
 						   source="{userEmail}"
 						   property="text">
 		</mx:EmailValidator>
-
+		
 		<s:HTTPService id="saveData" resultFormat="flashvars" method="POST" url="{(this.parentApplication).localURL+'register.php'}" result="save(event)" fault="error(event)" />
 	</fx:Declarations>
 	
@@ -184,11 +184,11 @@
 		<s:FormHeading id="frontMessage" label="PLEASE ENTER YOUR DETAILS" />
 		<s:Spacer height="30" />
 		<s:FormItem label="First Name:" skinClass="skins.BarclaysFormItem" >				
-			<s:TextInput id="userFirstName" width="500" height="54" skinClass="skins.BarclaysTextInput" keyDown="keyHandler(event)"/>
+			<s:TextInput id="userFirstName" width="500" height="54" autoCapitalize="word" skinClass="skins.BarclaysTextInput" keyDown="keyHandler(event)"/>
 		</s:FormItem>
 		
 		<s:FormItem label="Last Name:" skinClass="skins.BarclaysFormItem">
-			<s:TextInput id="userLastName" width="500" height="54" skinClass="skins.BarclaysTextInput" keyDown="keyHandler(event)"/>
+			<s:TextInput id="userLastName" width="500" height="54" autoCapitalize="word" skinClass="skins.BarclaysTextInput" keyDown="keyHandler(event)"/>
 		</s:FormItem>
 		
 		<s:FormItem label="Email address:" skinClass="skins.BarclaysFormItem">
@@ -204,26 +204,23 @@
 		
 		<s:Spacer height="20"/>
 		
-		<s:CheckBox id="premierLeagueCheck" width="145" styleName="tcaccept" label="I WOULD LIKE TO RECEIVE INFORMATION FROM THE PREMIER LEAGUE " skinClass="skins.BarclaysCheckBox" />
-
-		<s:Spacer height="20"/>
-		
-		<s:CheckBox id="clubCheck" width="145" styleName="tcaccept" label="I WOULD LIKE TO RECEIVE INFORMATION FROM MY CLUB " skinClass="skins.BarclaysCheckBox" />
+		<s:CheckBox id="premierLeagueCheck" width="145" styleName="tcaccept" label="I would like to receive information from the Premier League and Official Partners. " skinClass="skins.BarclaysCheckBox" />
 		
 		<s:Spacer height="20"/>
 		
-		<s:CheckBox id="barclaysCheck" width="145" styleName="tcaccept" label="I WOULD LIKE TO RECEIVE INFORMATION FROM BARCLAYS " skinClass="skins.BarclaysCheckBox" />
-	
+		<s:CheckBox id="clubCheck" width="145" styleName="tcaccept" label="I would like to receive information from my Club and Official Partners. " skinClass="skins.BarclaysCheckBox" />
+		
+		
 		<s:Spacer height="30"/>
 		
-	<s:HGroup width="100%" horizontalAlign="center">
+		<s:HGroup width="100%" horizontalAlign="center">
+			
+			<s:Button label="CANCEL" click="clearForm()" skinClass="skins.barclaysButton"/>
+			<s:Spacer width="50" />
+			
+			<s:Button label="SUBMIT" click="submit(event)" skinClass="skins.barclaysButton"/>
+		</s:HGroup>
 		
-		<s:Button label="CANCEL" click="clearForm()" skinClass="skins.barclaysButton"/>
-		<s:Spacer width="50" />
-		
-		<s:Button label="SUBMIT" click="submit(event)" skinClass="skins.barclaysButton"/>
-	</s:HGroup>
-	
 	</s:Form>
 	
 </s:Group>

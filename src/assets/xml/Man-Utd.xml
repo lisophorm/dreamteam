@@ -1,141 +1,154 @@
 <teams>
 <teaminfo>
-    <name>Arsenal FC</name>
+    <name>Manchester United Fc</name>
     <top_players>
         <player>
-            <name>Thierry Henry</name>
-            <shirtno>14</shirtno>
-            <img src="/assets/teamsheets/arsenal/players/thierryhenry01.jpg"/>
+            <name>Cristiano Ronaldo</name>
+            <shirtno>7</shirtno>
+            <img src="/assets/teamsheets/manchesterunited/players/Cristiano-Ronaldo1.jpg"/>
 
             <gallery>
-                <img src="/assets/teamsheets/arsenal/players/thierryhenry02.jpg" />
-                <img src="/assets/teamsheets/arsenal/players/thierryhenry03.jpg"  />
+                <img src="/assets/teamsheets/manchesterunited/players/Cristiano-Ronaldo2.jpg" />
+                <img src="/assets/teamsheets/manchesterunited/players/Cristiano-Ronaldo3.jpg"  />
             </gallery>
 
             <description>
-                <![CDATA[Henry arrived from Juventus on 3rd August 1999 to Arsenal for an estimated fee of £11 million, reuniting with his former manager Arsène Wenger. One of Henry’s most successful seasons was in 2003/04 when Arsenal were determined to reclaim the Barclays Premier League crown. Henry was instrumental in Arsenal's exceptionally successful campaign. Henry ensured that the Gunners became the first team in more than a century to go through the entire domestic league season unbeaten, claiming the title in the process.]]>
+                <![CDATA[Cristiano Ronaldo became Manchester United's first-ever Portuguese player when he signed for €15 million (£12.24 million) in the 2003/04 season. He arrived as a relatively unknown teenager but left as a global superstar.
+With his dazzling skills and incredible long-range shots, Ronaldo quickly became the player to watch with an incredible goal return for an attacking midfielder.
+In 2008 whilst a player with Manchester United, Cristiano Ronaldo was officially recognised as the best player in the world – winning the Ballon d’Or ahead of Lionel Messi.]]>
             </description>
-        <statistics poy="1999-2007, 2012" goals="228">
-          <data key="PFA Player of the Year" value="2002/03 2003/04" />
-          <data key="Golden Boot winner" value="2001/02, 2003/04, 2004/05, 2005/06" />
-          <data key="2 Barclays Premier League titles"  />
-          <data key="3 FA Cup wins"  />
-          <data key="123 international caps for France"  />
-        </statistics>
+            <statistics poy="2003 - 2009" goals="84"> 
+                <data key="3 Premier League titles" />
+                <data key="1 UEFA Champions League title" />
+                <data key="1 FIFA Club World Cup title"  />
+                <data key="2 Barclays Player of the Year awards"  />
+                <data key="2 PFA Player of the Year awards"  />
+                <data key="109 international caps for Portugal"  />
+                <data key="1 Premier League Golden Boot"  />
+                <data key="109 international caps for Portugal"  />
+            </statistics>
         </player>
 
       <player>
-        <name>Dennis Bergkamp</name>
-        <shirtno>10</shirtno>
-        	<img src="/assets/teamsheets/arsenal/players/dennisbergkamp01.jpg"/>
+        <name>David Beckham</name>
+        <shirtno>7</shirtno>
+        	<img src="/assets/teamsheets/manchesterunited/players/David-Beckham1.jpg"/>
         <gallery> 
-	        <img src="/assets/teamsheets/arsenal/players/dennisbergkamp02.jpg"/> 
-	        <img src="/assets/teamsheets/arsenal/players/dennisbergkamp03.jpg"/> 
+	        <img src="/assets/teamsheets/manchesterunited/players/David-Beckham2.jpg"/> 
+	        <img src="/assets/teamsheets/manchesterunited/players/David-Beckham3.jpg"/> 
         </gallery>
-        <description>
-          <![CDATA[Bergkamp left Internazionale and signed with Arsenal in June 1995 for a transfer fee estimated at £7.5 million. In the 2001/02 season Bergkamp played in 33 league matches, setting up 15 goals.
-            In the same year, Arsenal regained the Barclays Premier League title, beating Manchester United at Old Trafford in the penultimate game of the season to complete the Club's second double under Wenger. Arsenal defeated Chelsea 2–0 to win the FA Cup. Bergkamp reached a personal landmark during the 2002/03 season, scoring his 100th goal for Arsenal against Oxford United.]]>
-        </description>
-        <statistics poy="1995-2006" goals="120">
-          <data key="3 Barclays Premier League Titles" />
-          <data key="4 FA cups wins" />
-          <data key="World Top Goal Scorer of the Year" />
-          <data key="79 international caps for the Netherlands" />
-          <data key="Premier League Goal of the Season" value="1997/98, 2001/02" />
-          <data key="PFA and FWA Player of the Year" value="1997/98" />
-        </statistics>
+            <description>
+                <![CDATA[A member of the famous “Class of ’92” at Manchester United, David Beckham firmly established as the club’s first choice right midfielder during the 1994/95 season.
+Beckham scored the Premier League’s goal of the decade in the 1996/97 season when he caught Wimbledon keeper Neil Sullivan off his line, remarkably scoring from inside his own half.
+With arguably the best crosses and free-kicks in the business, Beckham continued to set the Barclays Premier League alight throughout the ‘90s and early ‘00s.]]>
+            </description>
+            <statistics poy="1993-2003" goals="62">
+                <data key="6 Premier League titles" />
+                <data key="2 FA Cup titles" /> 
+                <data key="1 UEFA Champions League winner" />
+                <data key="1 PFA Young Player of the Year" />
+                <data key="England Player of the Year " value="2003" />
+                <data key="Premier League Goal of the Decade" />
+                <data key="109 international caps for England" />
+            </statistics>
       </player>
 
       <player>
-        <name>Tony Adams</name>
-        <shirtno>6</shirtno>
-        <img src="/assets/teamsheets/arsenal/players/tonyadams01.jpg"/>
+        <name>Ryan Giggs</name>
+        <shirtno>11</shirtno>
+        <img src="/assets/teamsheets/manchesterunited/players/Ryan-Giggs1.jpg"/>
         <gallery> 
-        	<img src="/assets/teamsheets/arsenal/players/tonyadams02.jpg"/> 
-        	<img src="/assets/teamsheets/arsenal/players/tonyadams03.jpg"/> 
+        	<img src="/assets/teamsheets/manchesterunited/players/Ryan-Giggs2.jpg"/> 
+        	<img src="/assets/teamsheets/manchesterunited/players/Ryan-Giggs3.jpg"/> 
         </gallery>
-        <description>
-          <![CDATA[Adams signed for Arsenal as a schoolboy in 1980 and 3 years later made his first team debut on 5th  November.
-            Adams was part of the "famous four" that lined up in Arsenal's defence, which was renowned for its well-disciplined use of the offside trap. On 1st January 1988, he became Arsenal captain at the age of 21; he would remain Club captain for the next 14 years until his retirement]]>
-        </description>
-        <statistics poy="1983 - 2002" goals="48">
-          <data key="4 League titles" />
-          <data key="European Cup Winners’ Cup"  />
-          <data key="66 international caps for England"  />
-          <data key="3 Community Shield wins"  />
-          <data key="PFA Young Player of the Year " value="1987/88" />
-        </statistics>
+            <description>
+                <![CDATA[Ryan Giggs is the most decorated player in English football history. He also holds the Club record and Premier League record for most competitive appearances. During his time at Manchester United he has won 13 Premier League winner's medals, four FA Cup winner's medals, three League Cup winner's medals and two Champions League winner's medals. Giggs has never been sent off when playing for Manchester United.
+He is the only player to play in every season of the Premier League, and not only that but he has scored in every season too! In October 2013, Ryan Giggs became the player with all-time most appearances in the UEFA Champions League]]>
+            </description>
+            <statistics poy="1990-Present Day" goals="114">
+                <data key="13 Premier League titles" />
+                <data key="4 FA Cup titles" />
+                <data key="4 Football League Cup titles" />
+                <data key="League Sheild Winner" value="2006, 2007" />
+                <data key="FA Youth Cup Winner " value="2006, 2007" />
+            </statistics>
       </player>
 
       <player>
-        <name>David Seaman</name>
-        <shirtno>1</shirtno>
-        <img src="/assets/teamsheets/arsenal/players/davidseaman01.jpg"/>
+        <name>Eric Cantona</name>
+        <shirtno>7</shirtno>
+        <img src="/assets/teamsheets/manchesterunited/players/Eric-Cantona1.jpg"/>
         <gallery> 
-        	<img src="/assets/teamsheets/arsenal/players/davidseaman02.jpg"/> 
-        	<img src="/assets/teamsheets/arsenal/players/davidseaman03.jpg"/> 
+        	<img src="/assets/teamsheets/manchesterunited/players/Eric-Cantona2.jpg"/> 
+        	<img src="/assets/teamsheets/manchesterunited/players/Eric-Cantona3.jpg"/> 
         </gallery>
-        <description>
-          <![CDATA[Arsenal’s manager George Graham signed Seaman for £1.3 million (at the time a British record for a goalkeeper)..Seaman's time at Arsenal coincided with one of the most successful periods in the Club's history. The 1990/91 season saw Seaman concede only 18 goals when playing in every match of the 38-game season, as Arsenal regained the League title.
-            Arsenal won both the FA Cup and the League Cup in 1993 and supplemented this a year later with the European Cup Winners' Cup.]]>
-        </description>
-        <statistics poy="1990-2003" goals="0">
-          <data key="League Cup Winner" value="1992/93" />
-          <data key="PFA Team of the Year " value="1997" />
-          <data key="75 international caps for England"  />
-          <data key="4 FA Cup wins"  />
-          <data key="3 Barclays Premier League titles"  />
-          <data key="European Cup Winners’ Cup"  />
-        </statistics>
+            <description>
+                <![CDATA[Eric Cantona joined Manchester United from rivals Leeds United during the 1992/93 season. In Cantona's first year at Old Trafford, the club won their inaugural Premier League by 10 points – winning the title for the first time since 1967.
+The talismanic qualities that Cantona brought to the team had team-mates and fans alike in awe at times. In 2001 he was voted Manchester United’s Player of the Century.
+Famous for his stiffly upright shirt collar, the technical brilliance of ‘King Eric’, combined with his eccentric demeanour, ensured he will forever be a legend at Old Trafford.]]>
+            </description>
+            <statistics poy="1992-1997" goals="64">
+                <data key="4 Premier League titles" />
+                <data key="2 FA Cup titles"  />
+                <data key="1 PFA Team of the Year"  />
+                <data key="Premier League Overseas Player of the Decade"  />
+                <data key="Ballon d’OR third Place " value="1993" />
+            </statistics>
       </player>
 
       <player>
-        <name>Jack Wilshere</name>
-        <shirtno>8</shirtno>
-        <img src="/assets/teamsheets/arsenal/players/jackwihslere01.jpg"/>
+        <name>Paul Scholes</name>
+        <shirtno>18</shirtno>
+        <img src="/assets/teamsheets/manchesterunited/players/Paul-Scholes1.jpg"/>
         <gallery> 
-        	<img src="/assets/teamsheets/arsenal/players/jackwihslere02.jpg"/> 
-        	<img src="/assets/teamsheets/arsenal/players/jackwihslere03.jpg"  /> 
+        	<img src="/assets/teamsheets/manchesterunited/players/Paul-Scholes2.jpg"/> 
+        	<img src="/assets/teamsheets/manchesterunited/players/Paul-Scholes3.jpg"  /> 
         </gallery>
-        <description>
-          <![CDATA[Wilshere came up through Arsenal Youth Academy and was given the number 19 shirt in the first- team squad for season 2008/09.  He became the Club’s youngest league debutant against Blackburn Rovers in September 2008 at the age of 16.  His breakthrough season at the Club was 2010/11 when he was voted the Player of the season.]]>
-        </description>
-        <statistics poy="2008-Present Day" goals="9">
-          <data key="14 international caps for England" />
-          <data key="Arsenal Player of the Year" value="2010/11" />
-          <data key="PFA Young player of the Year award" value="2010/11" />
-          <data key="League Sheild Winner" value="2006, 2007" />
-          <data key="FA Youth Cup Winner " value="2006, 2007" />
-        </statistics>
+            <description>
+                <![CDATA[He first trained with Manchester United at the age of 14 after being spotted by a scout visiting his school, and was soon signed up as an apprentice after leaving school in 1991.
+Paul Scholes is famous worldwide for his technical skills: clean touch, passing range, vision, calmness on the ball even under pressure and rarely relinquishing possession.
+Scholes made over 700 appearances for United, the third-highest number of appearances by any player for the Club. Scholes retired in May 2013, signing off with an incredible 11th Premier League winner’s medal.]]>
+            </description>
+            <statistics poy="1993-2003" goals="107">
+                <data key="3 FA Cup titles" />    
+                <data key="11 Premier League titles" />    
+                <data key="2 Football League Cup titles" />
+                <data key="2 UEFA Champions League titles"  />
+                <data key="1 FIFA Club World Cup title"  />
+                <data key="2 PFA Team of the Year "  />
+                <data key="66 international caps for England"  />
+            </statistics>
       </player>
     </top_players>     
     
-    <video src="/assets/teamsheets/arsenal/video/Arsenal Video 1.f4v" />
+    <video src="/assets/teamsheets/manchesterunited/video/Manchester United Video 1.flv" />
     
     <gallery>
             <item>
-                <img src="/assets/teamsheets/arsenal/gallery/Arsenal Stadium.jpg" alt="Emirates Stadium" />
-                <description><![CDATA[Opened in 2006, Emirates Stadium is one of the newest stadia in the Barclays Premier League. The stadium was built on a former waste disposal site in Ashburton Grove and Emirates Airline were named as the main sponsor of the ground in 2004. The stadium’s site takes up around 17 acres and is incredibly advanced, there is constant computer monitoring of the stadiums conditions to ensure the pitch is always the highest quality possible.]]></description>
+                <img src="" alt="Old Trafford" />
+                <description><![CDATA[Old Trafford is a football stadium in Old Trafford, Greater Manchester, England and the home of Manchester United. It has a capacity of 75,765 and is the largest Club ground in the United Kingdom. The ground, nicknamed the Theatre of Dreams by Sir Bobby Charlton, has been United's permanent residence since 1910, with the exception of an eight-year absence from 1941 to 1949, following the bombing of the stadium during the Second World War.]]>
+                </description>
                 <statistics>
-                    <description><![CDATA[<span fontWeight="bold">Capacity:</span> 60,362 <br/><br/><span fontWeight="bold">Field Dimensions:</span> 105m x 68m<br/><br/><span fontWeight="bold">Surface:</span> Desso GrassMaster.]]></description>
-                    <stat key="Capacity" value="60,362 " />
-                    <stat key="Field Dimensions" value="105m x 68m" />
-                    <stat key="Surface" value="Desso GrassMaster" />   
+                    <description><![CDATA[<span fontWeight="bold">Capacity:</span> 75,765 <br/><br/><span fontWeight="bold">Field Dimensions:</span> 105m x 68m<br/><br/><span fontWeight="bold">Surface:</span> Desso GrassMaster.]]></description>
+                    <stat key="Capacity" value="75,765" />
+                    <stat key="Field Dimensions" value="105 × 68" />
+                    <stat key="Surface" value="Desso GrassMaster" />  
                 </statistics>
             </item>
             <item>
-                <img src="/assets/teamsheets/arsenal/gallery/External Stadium.jpg" alt="Emirates Stadium" />
-                <description><![CDATA[Opened in 20016, Emirates Stadium is one of the newest stadia in the Barclays Premier League. The stadium was built on a former waste disposal site in Ashburton Grove and Emirates Airline were named as the main sponsor of the ground in 2004. The stadium’s site takes up around 17 acres and is incredibly advanced, there is constant computer monitoring of the stadiums conditions to ensure the pitch is always the highest quality possible.]]></description>
+                <img src="" alt="Old Trafford" />
+                <description><![CDATA[Old Trafford is a football stadium in Old Trafford, Greater Manchester, England and the home of Manchester United. It has a capacity of 75,765 and is the largest Club ground in the United Kingdom. The ground, nicknamed the Theatre of Dreams by Sir Bobby Charlton, has been United's permanent residence since 1910, with the exception of an eight-year absence from 1941 to 1949, following the bombing of the stadium during the Second World War.]]>
+                </description>
                 <statistics>
-                    <description><![CDATA[<span fontWeight="bold">Capacity:</span> 60,362 <br/><br/><span fontWeight="bold">Field Dimensions:</span> 105m x 68m<br/><br/><span fontWeight="bold">Surface:</span> Desso GrassMaster.]]></description>
-                    <stat key="Capacity" value="60,362 " />
-                    <stat key="Field Dimensions" value="105m x 68m" />
-                    <stat key="Surface" value="Desso GrassMaster" />   
+                    <description><![CDATA[<span fontWeight="bold">Capacity:</span> 75,765 <br/><br/><span fontWeight="bold">Field Dimensions:</span> 105m x 68m<br/><br/><span fontWeight="bold">Surface:</span> Desso GrassMaster.]]></description>
+                    <stat key="Capacity" value="75,765" />
+                    <stat key="Field Dimensions" value="105 × 68" />
+                    <stat key="Surface" value="Desso GrassMaster" />  
                 </statistics>
             </item>
     </gallery>
     
-     <timeline><![CDATA[/assets/teamsheets/manchesterunited/timeline/DidYouKnow.swf]]></timeline>
+	<timeline><![CDATA[assets/teamsheets/manchesterunited/timeline/DidYouKnow.swf]]></timeline>
 
 </teaminfo>
 </teams>

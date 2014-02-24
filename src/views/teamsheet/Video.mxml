@@ -8,15 +8,16 @@
 			import com.alfo.utils.Console;
 			import com.greensock.TweenMax;
 			
+			import mx.events.FlexEvent;
+			import mx.events.ResizeEvent;
+			
 			import events.TeamEvent;
 			
 			import model.TeamModel;
 			
-			import mx.events.FlexEvent;
-			import mx.events.ResizeEvent;
-			
 			import org.osmf.events.MediaPlayerStateChangeEvent;
 			import org.osmf.events.TimeEvent;
+			import org.osmf.utils.OSMFSettings;
 //			import org.osmf.utils.OSMFSettings;
 			
 			[Bindable]

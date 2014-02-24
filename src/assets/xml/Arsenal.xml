@@ -94,11 +94,21 @@
             </statistics>
          </player>
       </top_players>
-      <video src="/assets/teamsheets/arsenal/video/Arsenal Video 1.f4v" />
+      <video src="/assets/teamsheets/arsenal/video/Arsenal Video 1.flv" />
       <gallery>
          <item>
             <img src="/assets/teamsheets/arsenal/gallery/Arsenal Stadium.jpg" alt="Emirates Stadium" />
             <description><![CDATA[Opened in 2006, Emirates Stadium is one of the newest stadia in the Barclays Premier League. The stadium was built on a former waste disposal site in Ashburton Grove and Emirates Airline were named as the main sponsor of the ground in 2004. The stadium’s site takes up around 17 acres and is incredibly advanced, there is constant computer monitoring of the stadiums conditions to ensure the pitch is always the highest quality possible.]]></description>
+            <statistics>
+               <description><![CDATA[<span fontWeight="bold">Capacity:</span> 60,362 <br/><br/><span fontWeight="bold">Field Dimensions:</span> 105m x 68m<br/><br/><span fontWeight="bold">Surface:</span> Desso GrassMaster.]]></description>
+               <stat key="Capacity" value="60,362 " />
+               <stat key="Field Dimensions" value="105m x 68m" />
+               <stat key="Surface" value="Desso GrassMaster" />
+            </statistics>
+         </item>
+         <item>
+            <img src="/assets/teamsheets/arsenal/gallery/External Stadium.jpg" alt="Emirates Stadium" />
+            <description><![CDATA[Opened in 20016, Emirates Stadium is one of the newest stadia in the Barclays Premier League. The stadium was built on a former waste disposal site in Ashburton Grove and Emirates Airline were named as the main sponsor of the ground in 2004. The stadium’s site takes up around 17 acres and is incredibly advanced, there is constant computer monitoring of the stadiums conditions to ensure the pitch is always the highest quality possible.]]></description>
             <statistics>
                <description><![CDATA[<span fontWeight="bold">Capacity:</span> 60,362 <br/><br/><span fontWeight="bold">Field Dimensions:</span> 105m x 68m<br/><br/><span fontWeight="bold">Surface:</span> Desso GrassMaster.]]></description>
                <stat key="Capacity" value="60,362 " />

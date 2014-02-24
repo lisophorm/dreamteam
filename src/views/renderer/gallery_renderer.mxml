@@ -15,7 +15,7 @@
 	</fx:Script>
 	
 	<s:BorderContainer borderVisible="false" width="1243" height="666" backgroundColor="0x000000">
-		<s:Image smooth="true" width="1243" height="666" backgroundColor="0x00000" backgroundAlpha=".5" source="{data.img.@src.toString()}"/>
+		<s:Image smooth="true" width="1243" height="666" backgroundColor="0x00000" backgroundAlpha=".5" scaleMode="zoom" source="{data.img.@src.toString()}"/>
 		<s:Label text="{data.img.@alt.toString().toUpperCase()}" color="{teamColor}" fontSize="62" paddingLeft="10" paddingTop="10" />
 		
 	</s:BorderContainer>
