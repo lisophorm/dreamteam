@@ -1,132 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <teams>
-<teaminfo>
-    <name>West Bromwich Albion FC</name>
-    <top_players>
-        <player>
+   <teaminfo>
+      <name>West Bromwich Albion FC</name>
+      <top_players>
+         <player>
             <name>Chris Brunt</name>
             <shirtno>11</shirtno>
-            <img src="/assets/teamsheets/West Brom/players/Chris-Brunt1.jpg"/>
-
+            <img src="/assets/teamsheets/westbrom/players/Chris-Brunt1.jpg" />
             <gallery>
-                <img src="/assets/teamsheets/West Brom/players/Chris-Brunt2.jpg" />
-                <img src="/assets/teamsheets/West Brom/players/Chris-Brunt3.jpg"  />
+               <img src="/assets/teamsheets/westbrom/players/Chris-Brunt2.jpg" />
+               <img src="/assets/teamsheets/westbrom/players/Chris-Brunt3.jpg" />
             </gallery>
-
-            <description>
-                <![CDATA[Chris Brunt joined West Bromwich Albion in a £3million deal from Sheffield Wednesday in August 2007. 
+            <description><![CDATA[Chris Brunt joined West Bromwich Albion in a £3million deal from Sheffield Wednesday in August 2007. 
 The Northern Ireland international's price includes £500,000 of performance-related add-ons.
-Brunt established himself as a senior figure in Albion's team in the 2009/10 campaign and for the second successive term finished as Albion's equal top goal scorer. He was named Albion's Official Player of the Year, as voted for by the management staff and his team-mates]]>
-            </description>
+Brunt established himself as a senior figure in Albion's team in the 2009/10 campaign and for the second successive term finished as Albion's equal top goal scorer. He was named Albion's Official Player of the Year, as voted for by the management staff and his team-mates]]></description>
             <statistics poy="2007-Present Day" goals="34">
-                <data key="West Bromwich Albion Player of the Season" value="2008/09" />
-                <data key="League 1 Play-Off winner" value="2004/05" />
-                <data key="Over 40 International caps for Northern Ireland"  />
-                <data key="1 international goal"  />
-                <data key="Football League Championship winner" value="2007/08" />
+               <data key="West Bromwich Albion Player of the Season" value="2008/09" />
+               <data key="League 1 Play-Off winner" value="2004/05" />
+               <data key="Over 40 International caps for Northern Ireland" />
+               <data key="1 international goal" />
+               <data key="Football League Championship winner" value="2007/08" />
             </statistics>
-        </player>
-
-      <player>
-        <name>James Morrison</name>
-        <shirtno>7</shirtno>
-        	<img src="/assets/teamsheets/West Brom/players/James-Morrison1.jpg"/>
-        <gallery> 
-	        <img src="/assets/teamsheets/West Brom/players/James-Morrison2.jpg"/> 
-	        <img src="/assets/teamsheets/West Brom/players/James-Morrison3.jpg"/> 
-        </gallery>
-            <description>
-                <![CDATA[James Morrison is Albion’s longest-serving player, having joined the club for £1.5million from Middlesbrough in August 2007.
+         </player>
+         <player>
+            <name>James Morrison</name>
+            <shirtno>7</shirtno>
+            <img src="/assets/teamsheets/westbrom/players/James-Morrison1.jpg" />
+            <gallery>
+               <img src="/assets/teamsheets/westbrom/players/James-Morrison2.jpg" />
+               <img src="/assets/teamsheets/westbrom/players/James-Morrison3.jpg" />
+            </gallery>
+            <description><![CDATA[James Morrison is Albion’s longest-serving player, having joined the club for £1.5million from Middlesbrough in August 2007.
 The Scotland international further enhanced his reputation as a Barclays Premier League player during 2012/13, scoring five times in 35 league appearances from midfield.
-He won the Baggies’ 2011/12 Goal of the season award for his strike at Blackburn - in addition to a second-place finish in the Supporters' Player of the Season award poll.]]>
-            </description>
+He won the Baggies’ 2011/12 Goal of the season award for his strike at Blackburn - in addition to a second-place finish in the Supporters' Player of the Season award poll.]]></description>
             <statistics poy="2007-Present Day" goals="22">
-                <data key="28 International caps for Scotland" />
-                <data key="3 International Goals" /> 
-                <data key="UEFA Cup finalist" value="2005/06" />
-                <data key="Football League Championship winner" value="2007/08" />
+               <data key="28 International caps for Scotland" />
+               <data key="3 International Goals" />
+               <data key="UEFA Cup finalist" value="2005/06" />
+               <data key="Football League Championship winner" value="2007/08" />
             </statistics>
-      </player>
-
-      <player>
-        <name>Youssouf Mulumbu</name>
-        <shirtno>2</shirtno>
-        <img src="/assets/teamsheets/West Brom/players/Youssouf-Mulumbu1.jpg"/>
-        <gallery> 
-        	<img src="/assets/teamsheets/West Brom/players/Youssouf-Mulumbu2.jpg"/> 
-        	<img src="/assets/teamsheets/West Brom/players/Youssouf-Mulumbu3.jpg"/> 
-        </gallery>
-            <description>
-                <![CDATA[Albion wrapped up a permanent £175,000 deal for the former Paris Saint-Germain defensive midfielder in the summer of 2009.
-Mulumbu played a prominent role as Albion secured back-to-back top-ten Barclays Premier League finishes in 2012/13. Mulumbu further enhanced his reputation as a firm fans' favourite in April 2011 by scoring a last-gasp winner to end Albion's 26-year wait for a victory over derby rivals Villa.]]>
-            </description>
+         </player>
+         <player>
+            <name>Youssouf Mulumbu</name>
+            <shirtno>2</shirtno>
+            <img src="/assets/teamsheets/westbrom/players/Youssouf-Mulumbu1.jpg" />
+            <gallery>
+               <img src="/assets/teamsheets/westbrom/players/Youssouf-Mulumbu2.jpg" />
+               <img src="/assets/teamsheets/westbrom/players/Youssouf-Mulumbu3.jpg" />
+            </gallery>
+            <description><![CDATA[Albion wrapped up a permanent £175,000 deal for the former Paris Saint-Germain defensive midfielder in the summer of 2009.
+Mulumbu played a prominent role as Albion secured back-to-back top-ten Barclays Premier League finishes in 2012/13. Mulumbu further enhanced his reputation as a firm fans' favourite in April 2011 by scoring a last-gasp winner to end Albion's 26-year wait for a victory over derby rivals Villa.]]></description>
             <statistics poy="2009 – Present Day" goals="13">
-                <data key="19 International caps for DR Congo" />
-                <data key="1 goal for DR Congo"  />
-                <data key="Player of the Year " value="2010/11" />
+               <data key="19 International caps for DR Congo" />
+               <data key="1 goal for DR Congo" />
+               <data key="Player of the Year " value="2010/11" />
             </statistics>
-      </player>
-
-      <player>
-        <name>Jonas Olsson</name>
-        <shirtno>3</shirtno>
-        <img src="/assets/teamsheets/West Brom/players/Jonas-Olson1.jpg"/>
-        <gallery> 
-        	<img src="/assets/teamsheets/West Brom/players/Jonas-Olson2.jpg"/> 
-        	<img src="/assets/teamsheets/West Brom/players/Jonas-Olson3.jpg"/> 
-        </gallery>
-            <description>
-                <![CDATA[Jonas Olsson joined the Baggies on the penultimate day of the 2008 August transfer window in an £800,000 move from Dutch side NEC Nijmegen. The fee for the former Sweden Under-20 and Under-21 international was set to rise by a further £360,000 in performance-related add-ons. 
-Following his participation in Euro 2012 with Sweden, Olsson played 44 matches during 2012/13 and 36 full games in the Barclays Premier League – missing only two league games all season.]]>
-            </description>
+         </player>
+         <player>
+            <name>Jonas Olsson</name>
+            <shirtno>3</shirtno>
+            <img src="/assets/teamsheets/westbrom/players/Jonas-Olson1.jpg" />
+            <gallery>
+               <img src="/assets/teamsheets/westbrom/players/Jonas-Olson2.jpg" />
+               <img src="/assets/teamsheets/westbrom/players/Jonas-Olson3.jpg" />
+            </gallery>
+            <description><![CDATA[Jonas Olsson joined the Baggies on the penultimate day of the 2008 August transfer window in an £800,000 move from Dutch side NEC Nijmegen. The fee for the former Sweden Under-20 and Under-21 international was set to rise by a further £360,000 in performance-related add-ons. 
+Following his participation in Euro 2012 with Sweden, Olsson played 44 matches during 2012/13 and 36 full games in the Barclays Premier League – missing only two league games all season.]]></description>
             <statistics poy="2008-Present Day" goals="9">
-                <data key="1 goal for Sweden" />    
-                <data key="19 international caps for Sweden Under-21" />
-                <data key="Over 20 international caps for Sweden"  />
+               <data key="1 goal for Sweden" />
+               <data key="19 international caps for Sweden Under-21" />
+               <data key="Over 20 international caps for Sweden" />
             </statistics>
-      </player>
-
-      <player>
-        <name>Ben Foster</name>
-        <shirtno>1</shirtno>
-        <img src="/assets/teamsheets/West Brom/players/Ben-Foster1.jpg"/>
-        <gallery> 
-        	<img src="/assets/teamsheets/West Brom/players/Ben-Foster2.jpg"/> 
-        	<img src="/assets/teamsheets/West Brom/players/Ben-Foster3.jpg"  /> 
-        </gallery>
-            <description>
-                <![CDATA[Foster joined Barclays Premier League Club West Bromwich Albion on loan on 29th July 2011. Foster played in 37 of their 38 League games, only missing the final game of the season with a minor groin strain. He kept ten League clean sheets, equalling West Brom's Barclays Premier League clean sheets record, as the Club finished in tenth place, their highest League finish in thirty years. At the end of the season, Foster was given the Supporters' Player of the Year and the Players' Player of the Year awards.
-On 29th June 2012, Foster signed permanently with West Brom for an undisclosed fee, widely reported to be £4 million. He signed a three-year contract with an option of a further two years.]]>
-            </description>
+         </player>
+         <player>
+            <name>Ben Foster</name>
+            <shirtno>1</shirtno>
+            <img src="/assets/teamsheets/westbrom/players/Ben-Foster1.jpg" />
+            <gallery>
+               <img src="/assets/teamsheets/westbrom/players/Ben-Foster2.jpg" />
+               <img src="/assets/teamsheets/westbrom/players/Ben-Foster3.jpg" />
+            </gallery>
+            <description><![CDATA[Foster joined Barclays Premier League Club West Bromwich Albion on loan on 29th July 2011. Foster played in 37 of their 38 League games, only missing the final game of the season with a minor groin strain. He kept ten League clean sheets, equalling West Brom's Barclays Premier League clean sheets record, as the Club finished in tenth place, their highest League finish in thirty years. At the end of the season, Foster was given the Supporters' Player of the Year and the Players' Player of the Year awards.
+On 29th June 2012, Foster signed permanently with West Brom for an undisclosed fee, widely reported to be £4 million. He signed a three-year contract with an option of a further two years.]]></description>
             <statistics poy="2011-Present Day" goals="0">
-                <data key="6 international caps for England" />
-                <data key="West Bromwich Albion Players’ Player of the Year" value="2011/12" />
-                <data key="League Cup winner" value="2008/09, 2009/10, 2010/11" />
-                <data key="Football League Championship Play-Off winner" value="2005/06" />
+               <data key="6 international caps for England" />
+               <data key="West Bromwich Albion Players’ Player of the Year" value="2011/12" />
+               <data key="League Cup winner" value="2008/09, 2009/10, 2010/11" />
+               <data key="Football League Championship Play-Off winner" value="2005/06" />
             </statistics>
-      </player>
-    </top_players>     
-    
-    <video src="/assets/teamsheets/westbrom/video/West Brom Video.flv" />
-    
-    <gallery>
-            <item>
-                <img src="" alt="The Hawthornes" />
-                <description><![CDATA[West Brom have been playing at The Hawthorns for more than 100 years. The stadium was the first Football League ground to be built in the 20th Century and was opened on September 3, 1900, with construction work lasting just four months. The ground was built on the old Hawthorns Estate, and hawthorn bushes had been grown there in the past, so the name was especially appropriate.
+         </player>
+      </top_players>
+      <video src="/assets/teamsheets/westbrom/video/West Brom Video.flv" />
+      <gallery>
+         <item>
+            <img src="" alt="The Hawthornes" />
+            <description><![CDATA[West Brom have been playing at The Hawthorns for more than 100 years.\r\nThe stadium was the first Football League ground to be built in the 20th Century and was opened on September 3, 1900, with construction work lasting just four months.\r\nThe ground was built on the old Hawthorns Estate, and hawthorn bushes had been grown there in the past, so the name was especially appropriate.
 At 168 metres, The Hawthorns is the highest ground above sea level in the Football League.
-The largest recorded attendance at The Hawthorns was 64,815 on March 6, 1937, when Albion hosted Arsenal in an FA Cup quarter-final.  
-The Astle Gates pay tribute to club legend, Jeff ‘The King’ Astle, who died in January 2002. Astle scored in every round of the club’s 1968 FA Cup triumph, including the only goal in a 1-0 victory over Everton at Wembley.
-]]>
-                </description>
-                <statistics>
-                    <description><![CDATA[<span fontWeight="bold">Capacity:</span> 26,586 <br/><br/><span fontWeight="bold">Field Dimensions:</span> 105m x 68m<br/><br/><span fontWeight="bold">Surface:</span> Desso GrassMaster.]]></description>
-                    <stat key="Capacity" value="26,586 " />
-                    <stat key="Field Dimensions" value="105m x 68m" />
-                    <stat key="Surface" value="Desso GrassMaster" /> 
-                </statistics>
-            </item>
-    </gallery>
-    
-     <timeline><![CDATA[assets/teamsheets/westbrom/timeline/DidYouKnow.swf]]></timeline>
-
-</teaminfo>
+The largest recorded attendance at The Hawthorns was 64,815 on March 6, 1937, when Albion hosted Arsenal in an FA Cup quarter-final.  
+The Astle Gates pay tribute to club legend, Jeff ‘The King’ Astle, who died in January 2002. Astle scored in every round of the club’s 1968 FA Cup triumph, including the only goal in a 1-0 victory over Everton at Wembley.]]></description>
+            <statistics>
+               <description><![CDATA[<span fontWeight="bold">Capacity:</span> 26,586 <br/><br/><span fontWeight="bold">Field Dimensions:</span> 105m x 68m<br/><br/><span fontWeight="bold">Surface:</span> Desso GrassMaster.]]></description>
+               <stat key="Capacity" value="26,586 " />
+               <stat key="Field Dimensions" value="105m x 68m" />
+               <stat key="Surface" value="Desso GrassMaster" />
+            </statistics>
+         </item>
+      </gallery>
+       <timeline><![CDATA[assets/teamsheets/westbrom/timeline/DidYouKnow.swf]]></timeline>
+   </teaminfo>
 </teams>

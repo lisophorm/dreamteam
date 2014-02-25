@@ -1,126 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <teams>
-<teaminfo>
-    <name>Tottenham Hotspur Fc</name>
-    <top_players>
-        <player>
+   <teaminfo>
+      <name>Tottenham Hotspur Fc</name>
+      <top_players>
+         <player>
             <name>Gareth Bale</name>
             <shirtno>11</shirtno>
-            <img src="/assets/teamsheets/tottenham/players/Gareth-Bale1.jpg"/>
-
+            <img src="/assets/teamsheets/tottenham/players/Gareth-Bale1.jpg" />
             <gallery>
-                <img src="/assets/teamsheets/tottenham/players/Gareth-Bale2.jpg" />
-                <img src="/assets/teamsheets/tottenham/players/Gareth-Bale3.jpg"  />
+               <img src="/assets/teamsheets/tottenham/players/Gareth-Bale2.jpg" />
+               <img src="/assets/teamsheets/tottenham/players/Gareth-Bale3.jpg" />
             </gallery>
-
-            <description>
-                <![CDATA[Bale arrived at White Hart Lane as a 17-year-old left-back from Southampton and had become one of the best players in the game when he left for a world-record transfer to join Real Madrid in August, 2013. Powerful, pacy and with a demon of a left foot, the Welsh international developed his game at Spurs, scoring some outstanding goals, leading to him winning the PFA Young Player and Players’ Player of the Year, and the FWA Footballer of the Year in the 2012/2013 campaign.]]>
-            </description>
-        <statistics poy="2007 - 2013" goals="42">
-          <data key="PFA Young Player of the Year " value="2012/13" />
-          <data key="FWA Footballer of the Year" value="2012/13" />
-          <data key="2 Tottenham Hotspur Young Player of the Year Awards"  />
-          <data key="43 international caps for Wales"  />
-          <data key="UEFA Team of the Year 2011"  />
-        </statistics>
-        </player>
-
-      <player>
-        <name>Jermain Defoe</name>
-        <shirtno>14</shirtno>
-        	<img src="/assets/teamsheets/tottenham/players/Jermain-Defoe1.jpg"/>
-        <gallery> 
-	        <img src="/assets/teamsheets/tottenham/players/Jermain-Defoe2.jpg"/> 
-	        <img src="/assets/teamsheets/tottenham/players/Jermain-Defoe3.jpg"/> 
-        </gallery>
-        <description>
-          <![CDATA[Defoe joined Spurs in January, 2004, scoring on his debut against Portsmouth and regularly finding the target. He left for Pompey but returned after one season in January, 2009, and once again was frequently on the score sheet for Spurs, his natural goal scoring ability always coming to the fore. Defoe became only the third player to score five goals in one Barclays Premier League match against Wigan Athletic in 2009, and is now the fifth highest goalscorer in Tottenham Hotspur’s history with 139 goals in all competitions.]]>
-        </description>
-        <statistics poy="2004 – 2008 ,2009-2014 " goals="90">
-          <data key="Tottenham Hotspur  'Moment of the Year' (1): 2009/10 (for his 5 goals vs Wigan Athletic.)" />
-          <data key="55 international caps for England" />
-          <data key="19  international goals for England" />
-          <data key="BPL Player of the Month" value="August 2009" />
-        </statistics>
-      </player>
-
-      <player>
-        <name>David Ginola</name>
-        <shirtno>6</shirtno>
-        <img src="/assets/teamsheets/tottenham/players/David-Ginola1.jpg"/>
-        <gallery> 
-        	<img src="/assets/teamsheets/tottenham/players/David-Ginola2.jpg"/> 
-        	<img src="/assets/teamsheets/tottenham/players/David-Ginola3.jpg"/> 
-        </gallery>
-        <description>
-          <![CDATA[Tottenham Hotspur signed Ginola in July 1997 for £2.5m and within his first season was named PFA Players’ Player of the Year and FWA Footballer of the Year. 
-The respect and fondness Tottenham Hotspur fans have for Ginola was shown when he was given one of the biggest cheers on their 125th anniversary when the Club’s legends were paraded on the pitch. Ginola was inducted into the Tottenham Hotspur Hall of Fame on 11 December 2008.]]>
-        </description>
-        <statistics poy="1997 - 2000" goals="13">
-          <data key="17 international caps for France" />
-          <data key="Tottenham Hotspur Player of the Year 1998"  />
-          <data key="Football Writers Association Footballer of the Year 1998"  />
-          <data key="PFA Team of the Year 1998/99"  />
-          <data key="Football League Cup Winner" value="1999" />
-        </statistics>
-      </player>
-
-      <player>
-        <name>Ledley King</name>
-        <shirtno>6</shirtno>
-        <img src="/assets/teamsheets/tottenham/players/Ledley-King1.jpg"/>
-        <gallery> 
-        	<img src="/assets/teamsheets/tottenham/players/Ledley-King2.jpg"/> 
-        	<img src="/assets/teamsheets/tottenham/players/Ledley-King3.jpg"/> 
-        </gallery>
-        <description>
-          <![CDATA[A Spurs legend having worked his way through the youth ranks to become Club captain, lifting silverware when they won the 2008 League Cup at Wembley Stadium. King made his debut in May, 1999, at Anfield, the start of a 13-year career which saw him develop into one of the best defenders of his generation, despite being hindered by a knee injury. King was forced to retire through that injury at the end of the 2011/2012 campaign but will always be fondly remembered as a true great at Spurs.]]>
-        </description>
-        <statistics poy="1999 - 2012" goals="10">
-          <data key="Winner League Cup" value="2008" />
-          <data key="Runner-up League Cup" value="2002 2008" />
-          <data key="21 international caps for England"  />
-          <data key="Spurs Ambassador"  />
-        </statistics>
-      </player>
-
-      <player>
-        <name>Teddy Sheringham</name>
-        <shirtno>8</shirtno>
-        <img src="/assets/teamsheets/tottenham/players/Teddy-Sheringham1.jpg"/>
-        <gallery> 
-        	<img src="/assets/teamsheets/tottenham/players/Teddy-Sheringham2.jpg"/> 
-        	<img src="/assets/teamsheets/tottenham/players/Teddy-Sheringham3.jpg"  /> 
-        </gallery>
-        <description>
-          <![CDATA[Sheringham is currently the ninth-highest goalscorer in Barclays Premier League history with 147 goals and is the leagues 19th-highest appearance maker. 
-He holds the record as the oldest player to score in a Barclays Premier League match (40 years, 268 days).]]>
-        </description>
-        <statistics poy="1992 – 1997 2001 – 2003" goals="97">" />
-          <data key="PFA Team of the Year" value="2001/01" />
-          <data key="PFA Players' Player of the Year" value="2000/01" />
-          <data key="English Football Hall of Famer" value="2009" />
-          <data key="Premier League Golden Boot (inaugural winner): 1992/93" />
-        </statistics>
-      </player>
-    </top_players>     
-    
-    <video src="" />
-    
-    <gallery>
-            <item>
-                <img src="/assets/teamsheets/tottenham/gallery/White-HartLane1.jpg" alt="White Hart Lane" />
-                <description><![CDATA[White Hart Lane was originally a disused nursery owned by the brewery Charringtons and located behind a public house on Tottenham High Road (the actual White Hart Lane lies a few hundred yards north of the main entrance).
+            <description><![CDATA[Bale arrived at White Hart Lane as a 17-year-old left-back from Southampton and had become one of the best players in the game when he left for a world-record transfer to join Real Madrid in August, 2013. Powerful, pacy and with a demon of a left foot, the Welsh international developed his game at Spurs, scoring some outstanding goals, leading to him winning the PFA Young Player and Players’ Player of the Year, and the FWA Footballer of the Year in the 2012/2013 campaign.]]></description>
+            <statistics poy="2007 - 2013" goals="42">
+               <data key="PFA Young Player of the Year " value="2012/13" />
+               <data key="FWA Footballer of the Year" value="2012/13" />
+               <data key="2 Tottenham Hotspur Young Player of the Year Awards" />
+               <data key="43 international caps for Wales" />
+               <data key="UEFA Team of the Year 2011" />
+            </statistics>
+         </player>
+         <player>
+            <name>Jermain Defoe</name>
+            <shirtno>14</shirtno>
+            <img src="/assets/teamsheets/tottenham/players/Jermain-Defoe1.jpg" />
+            <gallery>
+               <img src="/assets/teamsheets/tottenham/players/Jermain-Defoe2.jpg" />
+               <img src="/assets/teamsheets/tottenham/players/Jermain-Defoe3.jpg" />
+            </gallery>
+            <description><![CDATA[Defoe joined Spurs in January, 2004, scoring on his debut against Portsmouth and regularly finding the target. He left for Pompey but returned after one season in January, 2009, and once again was frequently on the score sheet for Spurs, his natural goal scoring ability always coming to the fore. Defoe became only the third player to score five goals in one Barclays Premier League match against Wigan Athletic in 2009, and is now the fifth highest goalscorer in Tottenham Hotspur’s history with 139 goals in all competitions.]]></description>
+            <statistics poy="2004 – 2008 ,2009-2014 " goals="90">
+               <data key="Tottenham Hotspur  'Moment of the Year' (1): 2009/10 (for his 5 goals vs Wigan Athletic.)" />
+               <data key="55 international caps for England" />
+               <data key="19  international goals for England" />
+               <data key="BPL Player of the Month" value="August 2009" />
+            </statistics>
+         </player>
+         <player>
+            <name>David Ginola</name>
+            <shirtno>6</shirtno>
+            <img src="/assets/teamsheets/tottenham/players/David-Ginola1.jpg" />
+            <gallery>
+               <img src="/assets/teamsheets/tottenham/players/David-Ginola2.jpg" />
+               <img src="/assets/teamsheets/tottenham/players/David-Ginola3.jpg" />
+            </gallery>
+            <description><![CDATA[Tottenham Hotspur signed Ginola in July 1997 for £2.5m and within his first season was named PFA Players’ Player of the Year and FWA Footballer of the Year. 
+The respect and fondness Tottenham Hotspur fans have for Ginola was shown when he was given one of the biggest cheers on their 125th anniversary when the Club’s legends were paraded on the pitch. Ginola was inducted into the Tottenham Hotspur Hall of Fame on 11 December 2008.]]></description>
+            <statistics poy="1997 - 2000" goals="13">
+               <data key="17 international caps for France" />
+               <data key="Tottenham Hotspur Player of the Year 1998" />
+               <data key="Football Writers Association Footballer of the Year 1998" />
+               <data key="PFA Team of the Year 1998/99" />
+               <data key="Football League Cup Winner" value="1999" />
+            </statistics>
+         </player>
+         <player>
+            <name>Ledley King</name>
+            <shirtno>6</shirtno>
+            <img src="/assets/teamsheets/tottenham/players/Ledley-King1.jpg" />
+            <gallery>
+               <img src="/assets/teamsheets/tottenham/players/Ledley-King2.jpg" />
+               <img src="/assets/teamsheets/tottenham/players/Ledley-King3.jpg" />
+            </gallery>
+            <description><![CDATA[A Spurs legend having worked his way through the youth ranks to become Club captain, lifting silverware when they won the 2008 League Cup at Wembley Stadium. King made his debut in May, 1999, at Anfield, the start of a 13-year career which saw him develop into one of the best defenders of his generation, despite being hindered by a knee injury. King was forced to retire through that injury at the end of the 2011/2012 campaign but will always be fondly remembered as a true great at Spurs.]]></description>
+            <statistics poy="1999 - 2012" goals="10">
+               <data key="Winner League Cup" value="2008" />
+               <data key="Runner-up League Cup" value="2002 2008" />
+               <data key="21 international caps for England" />
+               <data key="Spurs Ambassador" />
+            </statistics>
+         </player>
+         <player>
+            <name>Teddy Sheringham</name>
+            <shirtno>8</shirtno>
+            <img src="/assets/teamsheets/tottenham/players/Teddy-Sheringham1.jpg" />
+            <gallery>
+               <img src="/assets/teamsheets/tottenham/players/Teddy-Sheringham2.jpg" />
+               <img src="/assets/teamsheets/tottenham/players/Teddy-Sheringham3.jpg" />
+            </gallery>
+            <description><![CDATA[Sheringham is currently the ninth-highest goalscorer in Barclays Premier League history with 147 goals and is the leagues 19th-highest appearance maker. 
+He holds the record as the oldest player to score in a Barclays Premier League match (40 years, 268 days).]]></description>
+            <statistics poy="1992 – 1997 2001 – 2003" goals="97">
+               " /&gt;
+               <data key="PFA Team of the Year" value="2001/01" />
+               <data key="PFA Players' Player of the Year" value="2000/01" />
+               <data key="English Football Hall of Famer" value="2009" />
+               <data key="Premier League Golden Boot (inaugural winner): 1992/93" />
+            </statistics>
+         </player>
+      </top_players>
+      <video src="/assets/teamsheets/tottenham/video/Spurs Goals Edit_1024x576.flv" />
+      <gallery>
+         <item>
+            <img src="/assets/teamsheets/tottenham/gallery/White-HartLane1.jpg" alt="White Hart Lane" />
+            <description><![CDATA[White Hart Lane was originally a disused nursery owned by the brewery Charringtons and located behind a public house on Tottenham High Road (the actual White Hart Lane lies a few hundred yards north of the main entrance).
 The profits from the 1921 FA Cup win were used to build a covered terrace at the Paxton Road end and the Park Lane end was built at a cost of over £3,000 two years later. This increased the grounds capacity to around 58,000 with room for 40,000 under cover. The East Stand (Worcester Avenue) was finished in 1934 and this increased capacity to around 80,000 spectators but cost £60,000. Since White Hart lane became an all-seater stadium, the capacity had to be reduced to 36,310.]]></description>
-                <statistics>
-                    <description><![CDATA[<span fontWeight="bold">Capacity:</span> 36,310 <br/><br/><span fontWeight="bold">Field Dimensions:</span> 105m x 68m<br/><br/><span fontWeight="bold">Surface:</span> Desso GrassMaster.]]></description>
-                    <stat key="Capacity" value="36,310" />
-                    <stat key="Field Dimensions" value="105m x 68m" />
-                    <stat key="Surface" value="Grass" />   
-                </statistics>
-            </item>
-    </gallery>
-    
-     <timeline><![CDATA[/assets/teamsheets/tottenham/timeline/DidYouKnow.swf]]></timeline>
-
-</teaminfo>
+            <statistics>
+               <description><![CDATA[<span fontWeight="bold">Capacity:</span> 36,310 <br/><br/><span fontWeight="bold">Field Dimensions:</span> 105m x 68m<br/><br/><span fontWeight="bold">Surface:</span> Desso GrassMaster.]]></description>
+               <stat key="Capacity" value="36,310" />
+               <stat key="Field Dimensions" value="105m x 68m" />
+               <stat key="Surface" value="Grass" />
+            </statistics>
+         </item>
+         <item>
+            <img src="/assets/teamsheets/tottenham/gallery/White-HartLane1.jpg" alt="White Hart Lane" />
+            <description><![CDATA[White Hart Lane was originally a disused nursery owned by the brewery Charringtons and located behind a public house on Tottenham High Road (the actual White Hart Lane lies a few hundred yards north of the main entrance).
+The profits from the 1921 FA Cup win were used to build a covered terrace at the Paxton Road end and the Park Lane end was built at a cost of over £3,000 two years later. This increased the grounds capacity to around 58,000 with room for 40,000 under cover. The East Stand (Worcester Avenue) was finished in 1934 and this increased capacity to around 80,000 spectators but cost £60,000. Since White Hart lane became an all-seater stadium, the capacity had to be reduced to 36,310.]]></description>
+            <statistics>
+               <description><![CDATA[<span fontWeight="bold">Capacity:</span> 36,310 <br/><br/><span fontWeight="bold">Field Dimensions:</span> 105m x 68m<br/><br/><span fontWeight="bold">Surface:</span> Desso GrassMaster.]]></description>
+               <stat key="Capacity" value="36,310" />
+               <stat key="Field Dimensions" value="105m x 68m" />
+               <stat key="Surface" value="Grass" />
+            </statistics>
+         </item>
+      </gallery>
+      <timeline><![CDATA[assets/teamsheets/tottenham/timeline/DidYouKnow.swf]]></timeline>
+   </teaminfo>
 </teams>

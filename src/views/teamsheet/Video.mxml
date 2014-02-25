@@ -5,8 +5,12 @@
 		 creationComplete="created(event)" >
 	<fx:Script>
 		<![CDATA[
-			import com.alfo.utils.Console;
-			import com.greensock.TweenMax;
+			import com.alfo.DelayedExecution;
+			
+			import flash.display.DisplayObject;
+			import flash.display.DisplayObjectContainer;
+			import flash.display.MovieClip;
+			import flash.utils.getQualifiedClassName;
 			
 			import mx.events.FlexEvent;
 			import mx.events.ResizeEvent;
@@ -17,8 +21,8 @@
 			
 			import org.osmf.events.MediaPlayerStateChangeEvent;
 			import org.osmf.events.TimeEvent;
-			import org.osmf.utils.OSMFSettings;
-//			import org.osmf.utils.OSMFSettings;
+			
+			private var prima:Boolean=true;
 			
 			[Bindable]
 			protected var teamColor:uint = 0xFFFFFF;
@@ -85,6 +89,104 @@
 				videoPlayer.setActualSize(300,300);
 			}
 			
+			protected function videoPlayer_mediaPlayerStateChangeHandler(event:MediaPlayerStateChangeEvent):void
+			{
+				trace("video state change:"+event.state);
+				trace(event);
+				if(event.state == "playing") {
+					if(prima) {
+						trace("lanciodelay:");
+						prima=false;
+						new DelayedExecution(1000,this,debuggacazzo);
+							
+					}
+					
+					if(videoPlayer.videoObject) {
+						trace("esiste:"+event.state);
+						videoPlayer.videoObject.smoothing=true;
+					} else {
+						trace("non:"+event.state);
+						
+					}
+				}
+			}
+			
+			private function debuggacazzo():void {
+				//var theVideo:video
+				trace("debuggami syo cazzo");
+				traceDisplayList(videoPlayer.getChildAt(0));
+				trace("culo");
+			}
+			
+			public static function traceDisplayList(displayObject:DisplayObject, instanceOnly:Boolean = false, withData:Boolean = true, withParent:Boolean = false, maxDepth:int = 100, skipClass:Class = null, levelSpace:String = " ", currentDepth:int = 0, parent:String = ""):void 
+			{
+				if (skipClass != null) { if (displayObject is skipClass) { return; } }
+				
+				var displayName:String = displayObjectCleanName(displayObject);
+				displayName += (displayName != "") ? " " : "";
+				if (instanceOnly && displayName == "") { return; }
+				
+				var className:String = getCleanClassName(displayObject);
+				
+				if(className=="Video") {
+					trace("BEKKKATO IL VIDEO");
+					var vid:flash.media.Video = displayObject as flash.media.Video;
+					vid.smoothing=true;
+				}
+			
+				
+				var text:String = (className == "TextField") ? String(" \"" + TextField(displayObject).text) + "\"" : ""
+				
+				var objectName:String = displayName + className + text;
+				
+				var dataString:String = (withData) ? String(" [x:" + displayObject.x + " y:" + displayObject.y + " width:" + displayObject.width + " height:" + displayObject.height + "]") : "";
+				
+				var parentName:String = (withParent && parent != "") ? String(" (" +  parent + ")") : "";   
+				
+				var levelStr:String = (withParent) ? String(currentDepth + " ") : "";
+				
+				trace(levelStr + levelSpace + objectName + dataString + parentName);
+				
+				if (displayObject is DisplayObjectContainer && currentDepth < maxDepth)
+				{       
+					for (var i:int = 0; i < DisplayObjectContainer(displayObject).numChildren; i++)
+					{
+						traceDisplayList(DisplayObjectContainer(displayObject).getChildAt(i), instanceOnly, withData, withParent, maxDepth, skipClass, levelSpace + "    ", currentDepth + 1, objectName);
+					}
+				}
+			}   
+			
+			public static function getCleanClassName(obj:*):String 
+			{
+				var className:String = String(getQualifiedClassName(obj));
+				var indexOfString:int = className.lastIndexOf("::");
+				className = (indexOfString < 0) ? className : className.slice(indexOfString + 2);
+				return className;           
+			}
+			
+			public static function displayObjectCleanName(displayObject:DisplayObject):String
+			{
+				return String((displayObject.name.substr(0, 8) == "instance") ? "" : displayObject.name);
+			}
+			
+			protected function videoPlayer_creationCompleteHandler(event:FlexEvent):void
+			{
+				//videoPlayer.playerControls.visible=false;
+				
+			}
+			
+			protected function videoPlayer_updateCompleteHandler(event:FlexEvent):void
+			{
+				trace("video update complete");
+				traceDisplayList(videoPlayer);
+				if (videoPlayer.videoObject) {
+					videoPlayer.videoObject.smoothing = true;
+				} else {
+					trace("no video object");
+				}
+				
+			}
+			
 		]]>
 			</fx:Script>
 	<fx:Declarations>
@@ -95,7 +197,8 @@
 		<s:borderStroke>
 			<s:SolidColorStroke weight="15" color="0x000000" />
 		</s:borderStroke>
-		<s:VideoDisplay id="videoPlayer" pauseWhenHidden="true" autoRewind="true" visible="true" scaleMode="letterbox" complete="videoCompleteHandler(event)" source="{videoSource}"  click="videoClickHandler(event)"  autoDisplayFirstFrame="true" autoPlay="true"/>
+		
+		<s:VideoDisplay updateComplete="videoPlayer_updateCompleteHandler(event)" creationComplete="videoPlayer_creationCompleteHandler(event)" scaleMode="zoom" id="videoPlayer" mediaPlayerStateChange="videoPlayer_mediaPlayerStateChangeHandler(event)" pauseWhenHidden="true" autoRewind="true" visible="true" complete="videoCompleteHandler(event)" source="{videoSource}"  click="videoClickHandler(event)"   autoDisplayFirstFrame="true" autoPlay="true"/>
 		<!--<s:ToggleButton horizontalCenter="0" verticalCenter="0"
 			skinClass="skins.PlayPauseButtonSkin" id="playPauseButton" click="videoClickHandler(event)">
 			<s:filters>

@@ -1,141 +1,148 @@
 <teams>
 <teaminfo>
-    <name>Arsenal FC</name>
+    <name>Southampton FC</name>
     <top_players>
         <player>
-            <name>Thierry Henry</name>
+            <name>Matt Le Tissier</name>
             <shirtno>14</shirtno>
-            <img src="/assets/teamsheets/arsenal/players/thierryhenry01.jpg"/>
+            <img src="/assets/teamsheets/southampton/players/Matt-Le-Tissier1.jpg"/>
 
             <gallery>
-                <img src="/assets/teamsheets/arsenal/players/thierryhenry02.jpg" />
-                <img src="/assets/teamsheets/arsenal/players/thierryhenry03.jpg"  />
+                <img src="/assets/teamsheets/southampton/players/Matt-Le-Tissier2.jpg" />
+                <img src="/assets/teamsheets/southampton/players/Matt-Le-Tissier3.jpg"  />
             </gallery>
-
             <description>
-                <![CDATA[Henry arrived from Juventus on 3rd August 1999 to Arsenal for an estimated fee of £11 million, reuniting with his former manager Arsène Wenger. One of Henry’s most successful seasons was in 2003/04 when Arsenal were determined to reclaim the Barclays Premier League crown. Henry was instrumental in Arsenal's exceptionally successful campaign. Henry ensured that the Gunners became the first team in more than a century to go through the entire domestic league season unbeaten, claiming the title in the process.]]>
+                <![CDATA[Le Tissier spent his entire professional Club career with Southampton and even scored the final goal at the Club’s old ground, The Dell. His loyalty garnering special affection from Southampton's fans who nicknamed him "Le God".
+He was voted PFA Young Player of the Year for the 1989/90 season, in which he was one of the league's top goal scorers with 20 goals. An attacking midfielder with exceptional technical skills, Le Tissier was the first midfielder to score 100 goals in the Barclays Premier League. Throughout his career, Le Tissier had a fearsome reputation for scoring from the spot, converting 47 of the 48 penalties that he took for Southampton.]]>
             </description>
-        <statistics poy="1999-2007, 2012" goals="228">
-          <data key="PFA Player of the Year" value="2002/03 2003/04" />
+        <statistics poy="1986 - 2002" goals="161">
+          <data key="2 Premier League Player of the Month awards" />
           <data key="Golden Boot winner" value="2001/02, 2003/04, 2004/05, 2005/06" />
-          <data key="2 Barclays Premier League titles"  />
-          <data key="3 FA Cup wins"  />
-          <data key="123 international caps for France"  />
+          <data key="8 international caps for England"  />
+          <data key="Full Members Club finalist 1992"  />
+          <data key="English Football Hall of Fame"  />
         </statistics>
         </player>
 
       <player>
-        <name>Dennis Bergkamp</name>
-        <shirtno>10</shirtno>
-        	<img src="/assets/teamsheets/arsenal/players/dennisbergkamp01.jpg"/>
+        <name>Rickie Lambert</name>
+        <shirtno>9</shirtno>
+        	<img src="/assets/teamsheets/southampton/players/Rickie-Lambert1.jpg"/>
         <gallery> 
-	        <img src="/assets/teamsheets/arsenal/players/dennisbergkamp02.jpg"/> 
-	        <img src="/assets/teamsheets/arsenal/players/dennisbergkamp03.jpg"/> 
+	        <img src="/assets/teamsheets/southampton/players/Rickie-Lambert2.jpg"/> 
+	        <img src="/assets/teamsheets/southampton/players/Rickie-Lambert3.jpg"/> 
         </gallery>
         <description>
-          <![CDATA[Bergkamp left Internazionale and signed with Arsenal in June 1995 for a transfer fee estimated at £7.5 million. In the 2001/02 season Bergkamp played in 33 league matches, setting up 15 goals.
-            In the same year, Arsenal regained the Barclays Premier League title, beating Manchester United at Old Trafford in the penultimate game of the season to complete the Club's second double under Wenger. Arsenal defeated Chelsea 2–0 to win the FA Cup. Bergkamp reached a personal landmark during the 2002/03 season, scoring his 100th goal for Arsenal against Oxford United.]]>
+          <![CDATA[Lambert  proved a key signing for Southampton with a transfer fee from Bristol Rovers of approximately £1 million, he quickly became their top scorer as they were promoted to the Championship in 2010 and to the Barclays Premier League the following season.
+He scored on his first ever Barclays Premier League appearance, scoring just minutes after replacing Jay Rodriguez as a substitute against Manchester City. This goal meant that Lambert joined a select group of players who have scored in all 4 league divisions.]]>
         </description>
-        <statistics poy="1995-2006" goals="120">
-          <data key="3 Barclays Premier League Titles" />
-          <data key="4 FA cups wins" />
-          <data key="World Top Goal Scorer of the Year" />
-          <data key="79 international caps for the Netherlands" />
-          <data key="Premier League Goal of the Season" value="1997/98, 2001/02" />
-          <data key="PFA and FWA Player of the Year" value="1997/98" />
+        <statistics poy="1995-2006" goals="96">
+          <data key="4 international caps for England" />
+          <data key="2 international goals" />
+          <data key="Football League Championship runner-up" />
+          <data key="4 international caps for England" />
+          <data key="Southampton Player of the Year" value="2009/10, 2011/12" />
+          <data key="Championship Golden Boot" value="2011/12" />
         </statistics>
       </player>
 
       <player>
-        <name>Tony Adams</name>
-        <shirtno>6</shirtno>
-        <img src="/assets/teamsheets/arsenal/players/tonyadams01.jpg"/>
+        <name>Maya Yoshida</name>
+        <shirtno>3</shirtno>
+        <img src="/assets/teamsheets/southampton/players/Maya-Yoshida1.jpg"/>
         <gallery> 
-        	<img src="/assets/teamsheets/arsenal/players/tonyadams02.jpg"/> 
-        	<img src="/assets/teamsheets/arsenal/players/tonyadams03.jpg"/> 
+        	<img src="/assets/teamsheets/southampton/players/Maya-Yoshida2.jpg"/> 
+        	<img src="/assets/teamsheets/southampton/players/Maya-Yoshida3.jpg"/> 
         </gallery>
         <description>
-          <![CDATA[Adams signed for Arsenal as a schoolboy in 1980 and 3 years later made his first team debut on 5th  November.
-            Adams was part of the "famous four" that lined up in Arsenal's defence, which was renowned for its well-disciplined use of the offside trap. On 1st January 1988, he became Arsenal captain at the age of 21; he would remain Club captain for the next 14 years until his retirement]]>
+          <![CDATA[On 30th August 2012, Maya agreed to join Southampton on a three-year contract for a fee thought to be in the region of £3 million. 
+He made his debut on the 15th September 2012, against Arsenal, coming on as a 28th minute substitute for Jos Hooiveld.
+Maya then made his home debut in a 4–1 win over Aston Villa, playing the whole 90 minutes.]]>
         </description>
-        <statistics poy="1983 - 2002" goals="48">
-          <data key="4 League titles" />
-          <data key="European Cup Winners’ Cup"  />
-          <data key="66 international caps for England"  />
-          <data key="3 Community Shield wins"  />
-          <data key="PFA Young Player of the Year " value="1987/88" />
+        <statistics poy="2012- Present Day" goals="0">
+          <data key="31 international caps for Japan" />
+          <data key="3 International goals"  />
+          <data key="Captained Japan at the London 2012 Olympic Games"  />
+          <data key="Joined Southampton for £3 million"  />
+          <data key="AFC Asian Cup winner" value="2011" />
         </statistics>
       </player>
 
       <player>
-        <name>David Seaman</name>
-        <shirtno>1</shirtno>
-        <img src="/assets/teamsheets/arsenal/players/davidseaman01.jpg"/>
+        <name>James Beattie</name>
+        <shirtno>9</shirtno>
+        <img src="/assets/teamsheets/southampton/players/James-Beattie1.jpg"/>
         <gallery> 
-        	<img src="/assets/teamsheets/arsenal/players/davidseaman02.jpg"/> 
-        	<img src="/assets/teamsheets/arsenal/players/davidseaman03.jpg"/> 
+        	<img src="/assets/teamsheets/southampton/players/James-Beattie2.jpg"/> 
+        	<img src="/assets/teamsheets/southampton/players/James-Beattie3.jpg"/> 
         </gallery>
         <description>
-          <![CDATA[Arsenal’s manager George Graham signed Seaman for £1.3 million (at the time a British record for a goalkeeper)..Seaman's time at Arsenal coincided with one of the most successful periods in the Club's history. The 1990/91 season saw Seaman concede only 18 goals when playing in every match of the 38-game season, as Arsenal regained the League title.
-            Arsenal won both the FA Cup and the League Cup in 1993 and supplemented this a year later with the European Cup Winners' Cup.]]>
+          <![CDATA[Beattie joined Southampton from Blackburn Rovers in July 1998, valued at £1 million.
+In the 2002/03 season, Beattie scored 23 goals, making him the third-highest Barclays Premier League goalscorer (and the highest English goalscorer) for that season. 
+His fine form helped Southampton reach the 2003 FA Cup final, their first since victory in 1976.]]>
         </description>
-        <statistics poy="1990-2003" goals="0">
-          <data key="League Cup Winner" value="1992/93" />
-          <data key="PFA Team of the Year " value="1997" />
+        <statistics poy="1998-2005" goals="68">
+          <data key="FA Cup finalist" value="2002/03" />
+          <data key="Scottish Premier League Champions" value="2011/11" />
+          <data key="Highest scoring English Player in the Barclays Premier League" value="2003/04" />
           <data key="75 international caps for England"  />
-          <data key="4 FA Cup wins"  />
-          <data key="3 Barclays Premier League titles"  />
-          <data key="European Cup Winners’ Cup"  />
+          <data key="5 international caps for England"  />
+          <data key="4 Under-21 International goals"  />
         </statistics>
       </player>
 
       <player>
-        <name>Jack Wilshere</name>
-        <shirtno>8</shirtno>
-        <img src="/assets/teamsheets/arsenal/players/jackwihslere01.jpg"/>
+        <name>Claus Lundekvam</name>
+        <shirtno>4</shirtno>
+        <img src="/assets/teamsheets/southampton/players/Claus-Lundekvam1.jpg"/>
         <gallery> 
-        	<img src="/assets/teamsheets/arsenal/players/jackwihslere02.jpg"/> 
-        	<img src="/assets/teamsheets/arsenal/players/jackwihslere03.jpg"  /> 
+        	<img src="/assets/teamsheets/southampton/players/Claus-Lundekvam2.jpg"/> 
+        	<img src="/assets/teamsheets/southampton/players/Claus-Lundekvam3.jpg"  /> 
         </gallery>
         <description>
-          <![CDATA[Wilshere came up through Arsenal Youth Academy and was given the number 19 shirt in the first- team squad for season 2008/09.  He became the Club’s youngest league debutant against Blackburn Rovers in September 2008 at the age of 16.  His breakthrough season at the Club was 2010/11 when he was voted the Player of the season.]]>
+          <![CDATA[Graeme Souness spent £400,000 on signing Claus Lundekvam from Brann in his native Norway and the 6’3” defender went on to become a rock in the heart of the Southampton defence. 
+Claus played a huge part in one of the Club’s best ever seasons, captaining the side as they finished 8th in the Barclays Premier League before leading the Saints out at the 2003 FA Cup final.
+Lundekvam was capped 40 times for his national side, his first international goal was the 1,000th goal in the history of the Norwegian national team.]]>
         </description>
-        <statistics poy="2008-Present Day" goals="9">
-          <data key="14 international caps for England" />
-          <data key="Arsenal Player of the Year" value="2010/11" />
-          <data key="PFA Young player of the Year award" value="2010/11" />
-          <data key="League Sheild Winner" value="2006, 2007" />
-          <data key="FA Youth Cup Winner " value="2006, 2007" />
+        <statistics poy="1996 – 2008" goals="2">
+          <data key="290 Barclays Premier League appearances" />
+          <data key="40 international caps for Norway" />
+          <data key="Former captain of Norway" />
+          <data key="FA Cup finalist" value="2002/03" />
         </statistics>
       </player>
     </top_players>     
     
-    <video src="/assets/teamsheets/arsenal/video/Arsenal Video 1.f4v" />
+    <video src="/assets/teamsheets/southampton/video/Southampton Video.flv" />
     
     <gallery>
             <item>
-                <img src="/assets/teamsheets/arsenal/gallery/Arsenal Stadium.jpg" alt="Emirates Stadium" />
-                <description><![CDATA[Opened in 2006, Emirates Stadium is one of the newest stadia in the Barclays Premier League. The stadium was built on a former waste disposal site in Ashburton Grove and Emirates Airline were named as the main sponsor of the ground in 2004. The stadium’s site takes up around 17 acres and is incredibly advanced, there is constant computer monitoring of the stadiums conditions to ensure the pitch is always the highest quality possible.]]></description>
+                <img src="/assets/teamsheets/southampton/players/gallery/St-MarysStadium1.jpg" alt="St Marys' Stadium" />
+                <description><![CDATA[Graeme Souness spent £400,000 on signing Claus Lundekvam from Brann in his native Norway and the 6’3” defender went on to become a rock in the heart of the Southampton defence. 
+Claus played a huge part in one of the Club’s best ever seasons, captaining the side as they finished 8th in the Barclays Premier League before leading the Saints out at the 2003 FA Cup final.
+Lundekvam was capped 40 times for his national side, his first international goal was the 1,000th goal in the history of the Norwegian national team.]]></description>
                 <statistics>
-                    <description><![CDATA[<span fontWeight="bold">Capacity:</span> 60,362 <br/><br/><span fontWeight="bold">Field Dimensions:</span> 105m x 68m<br/><br/><span fontWeight="bold">Surface:</span> Desso GrassMaster.]]></description>
-                    <stat key="Capacity" value="60,362 " />
+                    <description><![CDATA[<span fontWeight="bold">Capacity:</span> 32,689 <br/><br/><span fontWeight="bold">Field Dimensions:</span> 105m x 68m<br/><br/><span fontWeight="bold">Surface:</span> Desso GrassMaster.]]></description>
+                    <stat key="Capacity" value="32,689" />
                     <stat key="Field Dimensions" value="105m x 68m" />
                     <stat key="Surface" value="Desso GrassMaster" />   
                 </statistics>
             </item>
             <item>
-                <img src="/assets/teamsheets/arsenal/gallery/External Stadium.jpg" alt="Emirates Stadium" />
-                <description><![CDATA[Opened in 20016, Emirates Stadium is one of the newest stadia in the Barclays Premier League. The stadium was built on a former waste disposal site in Ashburton Grove and Emirates Airline were named as the main sponsor of the ground in 2004. The stadium’s site takes up around 17 acres and is incredibly advanced, there is constant computer monitoring of the stadiums conditions to ensure the pitch is always the highest quality possible.]]></description>
+                <img src="/assets/teamsheets/southampton/players/gallery/St-MarysStadium1.jpg" alt="St Marys' Stadium" />
+                <description><![CDATA[Graeme Souness spent £400,000 on signing Claus Lundekvam from Brann in his native Norway and the 6’3” defender went on to become a rock in the heart of the Southampton defence. 
+Claus played a huge part in one of the Club’s best ever seasons, captaining the side as they finished 8th in the Barclays Premier League before leading the Saints out at the 2003 FA Cup final.
+Lundekvam was capped 40 times for his national side, his first international goal was the 1,000th goal in the history of the Norwegian national team.]]></description>
                 <statistics>
-                    <description><![CDATA[<span fontWeight="bold">Capacity:</span> 60,362 <br/><br/><span fontWeight="bold">Field Dimensions:</span> 105m x 68m<br/><br/><span fontWeight="bold">Surface:</span> Desso GrassMaster.]]></description>
-                    <stat key="Capacity" value="60,362 " />
+                    <description><![CDATA[<span fontWeight="bold">Capacity:</span> 32,689 <br/><br/><span fontWeight="bold">Field Dimensions:</span> 105m x 68m<br/><br/><span fontWeight="bold">Surface:</span> Desso GrassMaster.]]></description>
+                    <stat key="Capacity" value="32,689" />
                     <stat key="Field Dimensions" value="105m x 68m" />
                     <stat key="Surface" value="Desso GrassMaster" />   
                 </statistics>
             </item>
     </gallery>
     
-     <timeline><![CDATA[/assets/teamsheets/southampton/timeline/DidYouKnow.swf]]></timeline>
+    <timeline><![CDATA[assets/teamsheets/southampton/timeline/DidYouKnow.swf]]></timeline>
 
 </teaminfo>
 </teams>

@@ -1,134 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <teams>
-<teaminfo>
-    <name>Stoke City Fc</name>
-    <top_players>
-        <player>
+   <teaminfo>
+      <name>Stoke City Fc</name>
+      <top_players>
+         <player>
             <name>Ryan Shawcross</name>
             <shirtno>17</shirtno>
-            <img src="/assets/teamsheets/stoke/players/Ryan-Shawcross1.jpg"/>
-
+            <img src="/assets/teamsheets/stoke/players/Ryan-Shawcross1.jpg" />
             <gallery>
-                <img src="/assets/teamsheets/stoke/players/Ryan-Shawcross2.jpg" />
-                <img src="/assets/teamsheets/stoke/players/Ryan-Shawcross3.jpg"  />
+               <img src="/assets/teamsheets/stoke/players/Ryan-Shawcross2.jpg" />
+               <img src="/assets/teamsheets/stoke/players/Ryan-Shawcross3.jpg" />
             </gallery>
-
-            <description>
-                <![CDATA[Shawcross joined Stoke City in August 2007 on a 6-month loan and scored in his first two games giving him a strong reputation.
+            <description><![CDATA[Shawcross joined Stoke City in August 2007 on a 6-month loan and scored in his first two games giving him a strong reputation.
 Over a 3-year period Shawcross grew as a player and in the 2010/11 season he was given the captain’s armband.
-On 24 August 2013 Shawcross scored the winning goal against Crystal Palace which earned City their first win of the 2013/14 season.]]>
-            </description>
-        <statistics poy="2008 - Present Day" goals="10">
-          <data key="Football League Championship runner-up " value="2007/08" />
-          <data key="Championship Team of the year" value="2007/08" />
-          <data key="Stoke City Young Player of the Year 2008/09, 2009/10"  />
-          <data key="FA Cup runner-up 2010/11"  />
-          <data key="1 international cap against Sweden 2013"  />
-        </statistics>
-        </player>
-
-      <player>
-        <name>Glen Whelan </name>
-        <shirtno>6</shirtno>
-        	<img src="/assets/teamsheets/stoke/players/Glen-Whelan1.jpg"/>
-        <gallery> 
-	        <img src="/assets/teamsheets/stoke/players/Glen-Whelan2.jpg"/> 
-	        <img src="/assets/teamsheets/stoke/players/Glen-Whelan3.jpg"/> 
-        </gallery>
-        <description>
-          <![CDATA[Whelan joined Stoke City on 30th January 2008 for £500,000 signing a three-and-a-half-year contract.
-He made his 100th appearance for Stoke in a 2–0 win over Everton on 1st January 2011.
-Whelan signed a new three-and-a-half-year contract on 11th January 2012 and said "I am loving life at the moment and things are going really well, so I am absolutely delighted to commit my long term future to the Club"]]>
-        </description>
-        <statistics poy="2008 – Present Day" goals="5">
-          <data key="51 international caps for Republic of Ireland " />
-          <data key="2 international goals" />
-          <data key="Played every game at the European Championships 2012 with Republic of Ireland" />
-          <data key="FA Cup runner-up 2010/11" />
-          <data key="FAI Under-21 Player of the Year" value="2004" />
-        </statistics>
-      </player>
-
-      <player>
-        <name>Jonathan Walters</name>
-        <shirtno>13</shirtno>
-        <img src="/assets/teamsheets/stoke/players/Jonathan-Walters1.jpg"/>
-        <gallery> 
-        	<img src="/assets/teamsheets/stoke/players/Jonathan-Walters2.jpg"/> 
-        	<img src="/assets/teamsheets/stoke/players/Jonathan-Walters3.jpg"/> 
-        </gallery>
-        <description>
-          <![CDATA[On 18th August 2010, Walters joined Barclays Premier League side Stoke City for an initial £2.75 million fee on a four year contract.
- In October 2010 he scored his first Barclays Premier League goal in a 1–0 win over Blackburn Rovers. 
-In 2010/11 Stoke City progressed to the FA Cup Final, ensuring they qualified for the UEFA Europa League the following year. In the same season Walters was awarded the Coaches’ Player of the Year award after being the Club’s top goal scorer.]]>
-        </description>
-        <statistics poy="2010 – Present Day" goals="21">
-          <data key="4 international goals" />
-          <data key="21 international caps for the Republic of Ireland"  />
-          <data key="Walters has started over 100 consecutive Barclays Premier League matches for Stoke City"  />
-          <data key="Stoke City Coaches’ Player of the Year 2010/11"  />
-          <data key="FA Cup runner-up" value="2010/11" />
-        </statistics>
-      </player>
-
-      <player>
-        <name>Ricardo Fuller</name>
-        <shirtno>25</shirtno>
-        <img src="/assets/teamsheets/stoke/players/Jonathan-Walter3.jpg"/>
-        <gallery> 
-        	<img src="/assets/teamsheets/stoke/players/Ricardo-Fuller2.jpg"/> 
-        	<img src="/assets/teamsheets/stoke/players/Ricardo-Fuller3.jpg"/> 
-        </gallery>
-        <description>
-          <![CDATA[Fuller joined Stoke City in 2006 for a fee of around £500,000. In his first season he was the top goal scorer with 11 goals.
-In the 2007/08 season, Fuller became a vital part of Stoke City’s promotion winning side, becoming a firm fan favourite in the process.]]>
-        </description>
-        <statistics poy="2006 - 2012" goals="43">
-          <data key="Football League Championship runner up" value="2007/08" />
-          <data key="Stoke City Top Goal Scorer" value="2008/09 2009/10" />
-          <data key="70 international caps for Jamaica"  />
-          <data key="Football League Championship Player of the Month: April 2006"  />
-          <data key="FA Cup runner-up 2010/11"  />
-        </statistics>
-      </player>
-
-      <player>
-        <name>Peter Crouch</name>
-        <shirtno></shirtno>
-        <img src="/assets/teamsheets/stoke/players/Peter-Crouch1.jpg"/>
-        <gallery> 
-        	<img src="/assets/teamsheets/stoke/players/Peter-Crouch2.jpg"/> 
-        	<img src="/assets/teamsheets/stoke/players/Peter-Crouch3.jpg"  /> 
-        </gallery>
-        <description>
-          <![CDATA[On 31st August 2011, Stoke City announced the signing of Crouch from Tottenham Hotspur for a Club record fee of £10 million which could rise to £12 million on a four-year contract.
-The 6ft 7in frontman made a big impact in his first season at the Britannia Stadium, none more so than his spectacular volley in the draw with Manchester City. His 14 goals in all competitions that season led to him emerging as a deserved winner of the Player of the Year award.]]>
-        </description>
-        <statistics poy="2010-Present Day) " goals="8">
-          <data key="42 international caps for England" />
-          <data key="22 international goals" />
-          <data key="FA Cup winner" value="2005/06" />
-          <data key="Stoke City Player of the Year " value="2011/12" />
-          <data key="UEFA Champions League finalist" value="2006/07" />
-        </statistics>
-      </player>
-    </top_players>     
-    
-    <video src="" />
-    
-    <gallery>
-            <item>
-                <img src="/assets/teamsheets/stoke/gallery/Brittania-Stadium1" alt="Brittania Stadium" />
-                <description><![CDATA[The Britannia Stadium is the home ground for Stoke FC. The stadium was built in 1997 at a cost of £14.7 million as a replacement for the Victoria Ground. The stadium has a maximum capacity of 27,740. Like many football stadiums owned by Barclays Premier League teams, Britannia Stadium is also used for other activities to gain revenue. The Britannia has a full conference, banqueting and events facility within the Stadium. In 2012 Stoke FC announced plans to increase the stadium capacity to over 30,000.]]></description>
-                <statistics>
-                    <description><![CDATA[<span fontWeight="bold">Capacity:</span> 27,740 <br/><br/><span fontWeight="bold">Field Dimensions:</span> 105m x 68m<br/><br/><span fontWeight="bold">Surface:</span> Desso GrassMaster.]]></description>
-                    <stat key="Capacity" value="27,740 " />
-                    <stat key="Field Dimensions" value="100m x 64m" />
-                    <stat key="Surface" value="Desso GrassMaster" />   
-                </statistics>
-            </item>
-    </gallery>
-    
-     <timeline><![CDATA[/assets/teamsheets/stokecity/timeline/DidYouKnow.swf]]></timeline>
-
-</teaminfo>
-</teams> 
+On 24 August 2013 Shawcross scored the winning goal against Crystal Palace which earned City their first win of the 2013/14 season.]]></description>
+            <statistics poy="2008 - Present Day" goals="10">
+               <data key="Football League Championship runner-up " value="2007/08" />
+               <data key="Championship Team of the year" value="2007/08" />
+               <data key="Stoke City Young Player of the Year 2008/09, 2009/10" />
+               <data key="FA Cup runner-up 2010/11" />
+               <data key="1 international cap against Sweden 2013" />
+            </statistics>
+         </player>
+         <player>
+            <name>Glen Whelan</name>
+            <shirtno>6</shirtno>
+            <img src="/assets/teamsheets/stoke/players/Glen-Whelan1.jpg" />
+            <gallery>
+               <img src="/assets/teamsheets/stoke/players/Glen-Whelan2.jpg" />
+               <img src="/assets/teamsheets/stoke/players/Glen-Whelan3.jpg" />
+            </gallery>
+            <description><![CDATA[Whelan joined Stoke City on 30th January 2008 for £500,000 signing a three-and-a-half-year contract.
+He made his 100th appearance for Stoke in a 2–0 win over Everton on 1st January 2011.
+Whelan signed a new three-and-a-half-year contract on 11th January 2012 and said "I am loving life at the moment and things are going really well, so I am absolutely delighted to commit my long term future to the Club"]]></description>
+            <statistics poy="2008 – Present Day" goals="5">
+               <data key="51 international caps for Republic of Ireland " />
+               <data key="2 international goals" />
+               <data key="Played every game at the European Championships 2012 with Republic of Ireland" />
+               <data key="FA Cup runner-up 2010/11" />
+               <data key="FAI Under-21 Player of the Year" value="2004" />
+            </statistics>
+         </player>
+         <player>
+            <name>Jonathan Walters</name>
+            <shirtno>13</shirtno>
+            <img src="/assets/teamsheets/stoke/players/Jonathan-Walters1.jpg" />
+            <gallery>
+               <img src="/assets/teamsheets/stoke/players/Jonathan-Walters2.jpg" />
+               <img src="/assets/teamsheets/stoke/players/Jonathan-Walters3.jpg" />
+            </gallery>
+            <description><![CDATA[On 18th August 2010, Walters joined Barclays Premier League side Stoke City for an initial £2.75 million fee on a four year contract.
+ In October 2010 he scored his first Barclays Premier League goal in a 1–0 win over Blackburn Rovers. 
+In 2010/11 Stoke City progressed to the FA Cup Final, ensuring they qualified for the UEFA Europa League the following year. In the same season Walters was awarded the Coaches’ Player of the Year award after being the Club’s top goal scorer.]]></description>
+            <statistics poy="2010 – Present Day" goals="21">
+               <data key="4 international goals" />
+               <data key="21 international caps for the Republic of Ireland" />
+               <data key="Walters has started over 100 consecutive Barclays Premier League matches for Stoke City" />
+               <data key="Stoke City Coaches’ Player of the Year 2010/11" />
+               <data key="FA Cup runner-up" value="2010/11" />
+            </statistics>
+         </player>
+         <player>
+            <name>Ricardo Fuller</name>
+            <shirtno>25</shirtno>
+            <img src="/assets/teamsheets/stoke/players/Jonathan-Walter3.jpg" />
+            <gallery>
+               <img src="/assets/teamsheets/stoke/players/Ricardo-Fuller2.jpg" />
+               <img src="/assets/teamsheets/stoke/players/Ricardo-Fuller3.jpg" />
+            </gallery>
+            <description><![CDATA[Fuller joined Stoke City in 2006 for a fee of around £500,000. In his first season he was the top goal scorer with 11 goals.
+In the 2007/08 season, Fuller became a vital part of Stoke City’s promotion winning side, becoming a firm fan favourite in the process.]]></description>
+            <statistics poy="2006 - 2012" goals="43">
+               <data key="Football League Championship runner up" value="2007/08" />
+               <data key="Stoke City Top Goal Scorer" value="2008/09 2009/10" />
+               <data key="70 international caps for Jamaica" />
+               <data key="Football League Championship Player of the Month: April 2006" />
+               <data key="FA Cup runner-up 2010/11" />
+            </statistics>
+         </player>
+         <player>
+            <name>Peter Crouch</name>
+            <shirtno />
+            <img src="/assets/teamsheets/stoke/players/Peter-Crouch1.jpg" />
+            <gallery>
+               <img src="/assets/teamsheets/stoke/players/Peter-Crouch2.jpg" />
+               <img src="/assets/teamsheets/stoke/players/Peter-Crouch3.jpg" />
+            </gallery>
+            <description><![CDATA[On 31st August 2011, Stoke City announced the signing of Crouch from Tottenham Hotspur for a Club record fee of £10 million which could rise to £12 million on a four-year contract.
+The 6ft 7in frontman made a big impact in his first season at the Britannia Stadium, none more so than his spectacular volley in the draw with Manchester City. His 14 goals in all competitions that season led to him emerging as a deserved winner of the Player of the Year award.]]></description>
+            <statistics poy="2010-Present Day) " goals="8">
+               <data key="42 international caps for England" />
+               <data key="22 international goals" />
+               <data key="FA Cup winner" value="2005/06" />
+               <data key="Stoke City Player of the Year " value="2011/12" />
+               <data key="UEFA Champions League finalist" value="2006/07" />
+            </statistics>
+         </player>
+      </top_players>
+      <video src="/assets/teamsheets/stoke/video/SCFC FA TOUR_1.flv" />
+      <gallery>
+         <item>
+            <img src="/assets/teamsheets/stoke/gallery/Brittania-Stadium1" alt="Brittania Stadium" />
+            <description><![CDATA[The Britannia Stadium is the home ground for Stoke FC. The stadium was built in 1997 at a cost of £14.7 million as a replacement for the Victoria Ground. The stadium has a maximum capacity of 27,740. Like many football stadiums owned by Barclays Premier League teams, Britannia Stadium is also used for other activities to gain revenue. The Britannia has a full conference, banqueting and events facility within the Stadium. In 2012 Stoke FC announced plans to increase the stadium capacity to over 30,000.]]></description>
+            <statistics>
+               <description><![CDATA[<span fontWeight="bold">Capacity:</span> 27,740 <br/><br/><span fontWeight="bold">Field Dimensions:</span> 105m x 68m<br/><br/><span fontWeight="bold">Surface:</span> Desso GrassMaster.]]></description>
+               <stat key="Capacity" value="27,740 " />
+               <stat key="Field Dimensions" value="100m x 64m" />
+               <stat key="Surface" value="Desso GrassMaster" />
+            </statistics>
+         </item>
+         <item>
+            <img src="/assets/teamsheets/stoke/gallery/Brittania-Stadium1" alt="Brittania Stadium" />
+            <description><![CDATA[The Britannia Stadium is the home ground for Stoke FC. The stadium was built in 1997 at a cost of £14.7 million as a replacement for the Victoria Ground. The stadium has a maximum capacity of 27,740. Like many football stadiums owned by Barclays Premier League teams, Britannia Stadium is also used for other activities to gain revenue. The Britannia has a full conference, banqueting and events facility within the Stadium. In 2012 Stoke FC announced plans to increase the stadium capacity to over 30,000.]]></description>
+            <statistics>
+               <description><![CDATA[<span fontWeight="bold">Capacity:</span> 27,740 <br/><br/><span fontWeight="bold">Field Dimensions:</span> 105m x 68m<br/><br/><span fontWeight="bold">Surface:</span> Desso GrassMaster.]]></description>
+               <stat key="Capacity" value="27,740 " />
+               <stat key="Field Dimensions" value="100m x 64m" />
+               <stat key="Surface" value="Desso GrassMaster" />
+            </statistics>
+         </item>
+      </gallery>
+      <timeline><![CDATA[/assets/teamsheets/stoke/timeline/DidYouKnow.swf]]></timeline>
+   </teaminfo>
+</teams>

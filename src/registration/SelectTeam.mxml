@@ -173,7 +173,7 @@
 			{
 				if (this.currentIndex>=0)
 				{
-					publish( teamDataList[currentIndex].@id - 1)
+					publish( teamDataList[currentIndex].@id-1);
 				} else
 				{
 					this.parentApplication.dispatchEvent( new KioskError( KioskError.ERROR,  "No team selected. Please select your team and try again.", "Please select team"));
