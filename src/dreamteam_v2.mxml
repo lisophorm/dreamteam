@@ -7,7 +7,8 @@
 					   creationComplete="init(event)"  resize="onresize()"
 					   addedToStage="fullscreen()" showStatusBar="false" 
 					   xmlns:registration="registration.*" 
-					   xmlns:debug="registration.debug.*">
+					   xmlns:debug="registration.debug.*"
+					   alwaysInFront="true">
 	
 	<fx:Style source="assets/css/Main.css" />
 	<fx:Style source="assets/css/Fonts.css" />	
@@ -819,7 +820,7 @@
 				}
 				if(sequencesMatch)
 				{
-					//debugPanel.visible = true;
+					debugPanel.visible = true;
 				}
 			}
 			
@@ -853,8 +854,8 @@
 	<s:BorderContainer id="navigationbar" includeInLayout="false" borderAlpha="0" width="{this.stage.stageWidth}" height="90" click="fullscreen(event)">
 		<s:backgroundFill>
 			<s:LinearGradient rotation="90">
-				<s:GradientEntry color="0x000000" alpha=".5"/>
-				<s:GradientEntry color="0x000000" alpha=".1"/>
+				<s:GradientEntry color="0x000000" alpha="0"/>
+				<s:GradientEntry color="0x000000" alpha="0"/>
 			</s:LinearGradient>
 		</s:backgroundFill>
 		<s:HGroup verticalAlign="middle" width="100%" height="90">
@@ -947,6 +948,6 @@
 		</s:Group>
 	</s:VGroup>
 	
-	<!--debug:DebugPanel id="debugPanel" visible="false"/-->
+	<debug:DebugPanel id="debugPanel" visible="false"/>
 	
 </s:WindowedApplication>

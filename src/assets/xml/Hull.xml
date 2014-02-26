@@ -1,132 +1,145 @@
 <teams>
-<teaminfo>
-    <name>Hull City FC</name>
-    <top_players>
-        <player>
-            <name>Andy Dawson</name>
-            <shirtno>3</shirtno>
-            <img src="/assets/teamsheets/hullcity/players/Andy-Dawson1.jpg"/>
+	<teaminfo>
+		<name>Hull City FC</name>
+		<top_players>
+			<player>
+				<name>Andy Dawson</name>
+				<shirtno>3</shirtno>
+				<img src="/assets/teamsheets/hullcity/players/Andy-Dawson1.jpg" />
 
-            <gallery>
-                <img src="/assets/teamsheets/hullcity/players/Andy-Dawson2.jpg" />
-                <img src="/assets/teamsheets/hullcity/players/Andy-Dawson3.jpg"  />
-            </gallery>
+				<gallery>
+					<img src="/assets/teamsheets/hullcity/players/Andy-Dawson2.jpg" />
+					<img src="/assets/teamsheets/hullcity/players/Andy-Dawson3.jpg" />
+				</gallery>
 
-            <description>
+				<description>
                 <![CDATA[Dawson moved to Hull City on 16th May 2003 on a free transfer from Scunthorpe United. During his several years at the Club, he has worn the captain's armband on many occasions.
 
 Dawson is renowned for his long-range shots, particularly from free-kicks. 
 He is a traditional left-back and when playing, wears all-black boots and old-fashioned white sock tie.]]>
-            </description>
-        <statistics poy="2003 - 2013" goals="8">
-                <data key="Football League Championship Play-Off winner" value="2007/08" />
-                <data key="Football League Championship runner-up" value="2012/13" />
-                <data key="Played with Hull City in 4 different English Divisions"  />
-                <data key="Played with Hull City in 4 different English Divisions"  />
-        </statistics>
-        </player>
+				</description>
+				<statistics poy="2003 - 2013" goals="8">
+					<data key="Football League Championship Play-Off winner"
+						value="2007/08" />
+					<data key="Football League Championship runner-up" value="2012/13" />
+					<data key="Played with Hull City in 4 different English Divisions" />
+					<data key="Played with Hull City in 4 different English Divisions" />
+				</statistics>
+			</player>
 
-      <player>
-        <name>Geovanni</name>
-        <shirtno>10</shirtno>
-        	<img src="/assets/teamsheets/hullcity/players/Geovanni1.jpg"/>
-        <gallery> 
-	        <img src="/assets/teamsheets/hullcity/players/Geovanni2.jpg"/> 
-	        <img src="/assets/teamsheets/hullcity/players/Geovanni3.jpg"/> 
-        </gallery>
-        <description>
+			<player>
+				<name>Geovanni</name>
+				<shirtno>10</shirtno>
+				<img src="/assets/teamsheets/hullcity/players/Geovanni1.jpg" />
+				<gallery>
+					<img src="/assets/teamsheets/hullcity/players/Geovanni2.jpg" />
+					<img src="/assets/teamsheets/hullcity/players/Geovanni3.jpg" />
+				</gallery>
+				<description>
           <![CDATA[In July 2008, Geovanni would join Hull City from Manchester City for an undisclosed fee. 
 On his first game for Hull City against Fulham, he scored and was voted Man of the Match.
 
 At the end of his first season, he finished as Hull City’s top goal scorer. He then signed a new two-year contract with Hull City in September 2009, which would expire in June 2010/11.]]>
-        </description>
-        <statistics poy="2008-2010" goals="11">
-                <data key="Brazil U23 Pre-Olympic Tournament 1999" />
-                <data key="Copa do Brazil winner 2000" /> 
-                <data key="1 international cap for Brazil" />
-        </statistics>
-      </player>
+				</description>
+				<statistics poy="2008-2010" goals="11">
+					<data key="Brazil U23 Pre-Olympic Tournament 1999" />
+					<data key="Copa do Brazil winner 2000" />
+					<data key="1 international cap for Brazil" />
+				</statistics>
+			</player>
 
-      <player>
-        <name>Robert Koren</name>
-        <shirtno>10</shirtno>
-        <img src="/assets/teamsheets/hullcity/players/Robert-Koren1.jpg"/>
-        <gallery> 
-        	<img src="/assets/teamsheets/hullcity/players/Robert-Koren2.jpg"/> 
-        	<img src="/assets/teamsheets/hullcity/players/Robert-Koren3.jpg"/> 
-        </gallery>
-        <description>
+			<player>
+				<name>Robert Koren</name>
+				<shirtno>10</shirtno>
+				<img src="/assets/teamsheets/hullcity/players/Robert-Koren1.jpg" />
+				<gallery>
+					<img src="/assets/teamsheets/hullcity/players/Robert-Koren2.jpg" />
+					<img src="/assets/teamsheets/hullcity/players/Robert-Koren3.jpg" />
+				</gallery>
+				<description>
           <![CDATA[Koren joined Hull City in 2010 signing a two-year contract and quickly became known for his long-range shooting. 
 
 Such a key player for the Tigers in 2011/12, there was much delight when, after a summer of speculation, Robert put pen to paper on a new two-year in 2012 as the Club won automatic promotion to the Barclays Premier League.]]>
-        </description>
-        <statistics poy="2007-Present Day" goals="26">
-                <data key="Football League Championship runner-up" />
-                <data key="Hull City Player of the Season" value="2011/12" />
-                <data key="Hull City Goal of the Season " value="2011/12" />
-                <data key="Football League CHampionship" value="2007/08" />
-                <data key="65 international Caps for Slovenia" />
-        </statistics>
-      </player>
+				</description>
+				<statistics poy="2007-Present Day" goals="26">
+					<data key="Football League Championship runner-up" />
+					<data key="Hull City Player of the Season" value="2011/12" />
+					<data key="Hull City Goal of the Season " value="2011/12" />
+					<data key="Football League CHampionship" value="2007/08" />
+					<data key="65 international Caps for Slovenia" />
+				</statistics>
+			</player>
 
-      <player>
-        <name>Tom Huddlestone</name>
-        <shirtno>6</shirtno>
-        <img src="/assets/teamsheets/hullcity/players/Tom-Huddlestone1.jpg"/>
-        <gallery> 
-        	<img src="/assets/teamsheets/hullcity/players/Tom-Huddlestone2.jpg"/> 
-        	<img src="/assets/teamsheets/hullcity/players/Tom-Huddlestone3.jpg"/> 
-        </gallery>
-        <description>
+			<player>
+				<name>Tom Huddlestone</name>
+				<shirtno>6</shirtno>
+				<img src="/assets/teamsheets/hullcity/players/Tom-Huddlestone1.jpg" />
+				<gallery>
+					<img src="/assets/teamsheets/hullcity/players/Tom-Huddlestone2.jpg" />
+					<img src="/assets/teamsheets/hullcity/players/Tom-Huddlestone3.jpg" />
+				</gallery>
+				<description>
           <![CDATA[A full England international, Hull City broke their Club record transfer fee to sign Huddlestone from Tottenham Hotspur in August 2013. An estimated £5 million was needed to prise the combative midfielder away from his former Club.
 Following him to the KC Stadium was Spurs team-mate Jake Livermore on a season-long loan. Huddlestone made his debut on the first day of the 2013/14 season]]>
-        </description>
-        <statistics poy="2013-Present Day" goals="1">
-                <data key="4 international caps for England" />    
-                <data key="League Cup winner" />
-                <data key="5 U21 International goals"  />
-        </statistics>
-      </player>
+				</description>
+				<statistics poy="2013-Present Day" goals="1">
+					<data key="4 international caps for England" />
+					<data key="League Cup winner" />
+					<data key="5 U21 International goals" />
+				</statistics>
+			</player>
 
-      <player>
-        <name>James Chester</name>
-        <shirtno>5</shirtno>
-        <img src="/assets/teamsheets/hullcity/players/James-Chester1.jpg"/>
-        <gallery> 
-        	<img src="/assets/teamsheets/hullcity/players/James-Chester2.jpg"/> 
-        	<img src="/assets/teamsheets/hullcity/players/James-Chester3.jpg"  /> 
-        </gallery>
-        <description>
+			<player>
+				<name>James Chester</name>
+				<shirtno>5</shirtno>
+				<img src="/assets/teamsheets/hullcity/players/James-Chester1.jpg" />
+				<gallery>
+					<img src="/assets/teamsheets/hullcity/players/James-Chester2.jpg" />
+					<img src="/assets/teamsheets/hullcity/players/James-Chester3.jpg" />
+				</gallery>
+				<description>
           <![CDATA[Young centre-back James Chester joined Hull City from Manchester United in January 2011, signing a deal that will keep him at the KC Stadium until 2014.
 Chester scored his first goal for the Club in the 2–2 draw against Leeds United at the KC Stadium on 1st February 2011.
 Chester adjusted well to the Championship, putting in several strong performances at the heart of defence and occasionally in central midfield.]]>
-        </description>
-        <statistics poy="2011-Present Day" goals="5">
-                <data key="League Cup semi-finalist" />
-                <data key="4 FA Cup titles" />
-                <data key="Signed a 3-year deal with Hull City" value="2013" />
-                <data key="BPL Golden Boot" value="2007, 2010" />
-                <data key="Football League Championship Best Defence" value="2011/12" />
-        </statistics>
-      </player>
-    </top_players>     
-    
-    <video src="assets/teamsheets/hullcity/video/HULL BPL GOALS MONTAGE.flv" />
-    
-    <gallery>
-            <item>
-                <img src="dreamteam assets/teamsheets/hullcity/gallery/KC-Stadium1.jpg" alt="KC Stadium" />
-                <description><![CDATA[The KC stadium, located in Kingston upon Hull and run by the local council, is the home to newly promoted team Hull City. The council sold part of its stake in the stadium to Kingston Communications (KC) whose sponsorship provided the stadium with it’s name. The KC stadium is also the home ground to professional rugby league team Hull FC. The Stadium is truly multi-functional: not only is the KC stadium home to two sporting teams, there has also been several live music concerts at the stadium with artists such as Sir Elton John, The Who and JLS performing there.]]></description>
-                <statistics>
-                    <description><![CDATA[<span fontWeight="bold">Capacity:</span> 25,404 <br/><br/><span fontWeight="bold">Field Dimensions:</span> 101m x 64m<br/><br/><span fontWeight="bold">Surface:</span> Desso GrassMaster.]]></description>
-                    <stat key="Capacity" value="25,404 " />
-                    <stat key="Field Dimensions" value="101m x 64m" />
-                    <stat key="Surface" value="Grass" />   
-                </statistics>
-            </item>
-    </gallery>
-    
-     <timeline><![CDATA[/assets/teamsheets/hullcity/timeline/DidYouKnow.swf]]></timeline>
+				</description>
+				<statistics poy="2011-Present Day" goals="5">
+					<data key="League Cup semi-finalist" />
+					<data key="4 FA Cup titles" />
+					<data key="Signed a 3-year deal with Hull City" value="2013" />
+					<data key="BPL Golden Boot" value="2007, 2010" />
+					<data key="Football League Championship Best Defence" value="2011/12" />
+				</statistics>
+			</player>
+		</top_players>
 
-</teaminfo>
+		<video src="assets/teamsheets/hullcity/video/HULL BPL GOALS MONTAGE.flv" />
+
+		<gallery>
+			<item>
+				<img src="dreamteam assets/teamsheets/hullcity/gallery/Kull-01.jpg"
+					alt="KC Stadium" />
+				<description><![CDATA[The KC stadium, located in Kingston upon Hull and run by the local council, is the home to newly promoted team Hull City. The council sold part of its stake in the stadium to Kingston Communications (KC) whose sponsorship provided the stadium with it’s name. The KC stadium is also the home ground to professional rugby league team Hull FC. The Stadium is truly multi-functional: not only is the KC stadium home to two sporting teams, there has also been several live music concerts at the stadium with artists such as Sir Elton John, The Who and JLS performing there.]]></description>
+				<statistics>
+					<description><![CDATA[<span fontWeight="bold">Capacity:</span> 25,404 <br/><br/><span fontWeight="bold">Field Dimensions:</span> 101m x 64m<br/><br/><span fontWeight="bold">Surface:</span> Desso GrassMaster.]]></description>
+					<stat key="Capacity" value="25,404 " />
+					<stat key="Field Dimensions" value="101m x 64m" />
+					<stat key="Surface" value="Grass" />
+				</statistics>
+			</item>
+			<item>
+				<img src="dreamteam assets/teamsheets/hullcity/gallery/Hull-02.jpg"
+					alt="KC Stadium" />
+				<description><![CDATA[The KC stadium, located in Kingston upon Hull and run by the local council, is the home to newly promoted team Hull City. The council sold part of its stake in the stadium to Kingston Communications (KC) whose sponsorship provided the stadium with it’s name. The KC stadium is also the home ground to professional rugby league team Hull FC. The Stadium is truly multi-functional: not only is the KC stadium home to two sporting teams, there has also been several live music concerts at the stadium with artists such as Sir Elton John, The Who and JLS performing there.]]></description>
+				<statistics>
+					<description><![CDATA[<span fontWeight="bold">Capacity:</span> 25,404 <br/><br/><span fontWeight="bold">Field Dimensions:</span> 101m x 64m<br/><br/><span fontWeight="bold">Surface:</span> Desso GrassMaster.]]></description>
+					<stat key="Capacity" value="25,404 " />
+					<stat key="Field Dimensions" value="101m x 64m" />
+					<stat key="Surface" value="Grass" />
+				</statistics>
+			</item>
+		</gallery>
+
+		<timeline><![CDATA[/assets/teamsheets/hullcity/timeline/DidYouKnow.swf]]></timeline>
+
+	</teaminfo>
 </teams>

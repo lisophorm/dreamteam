@@ -126,6 +126,7 @@
 			}
 			protected function change(e:Event):void
 			{
+				trace("description change:"+description.text);
 				// quantity given as 0
 				holder.width = 1024;
 				description.width = 743;
@@ -166,8 +167,10 @@
 		</s:stroke>
 	</s:Line>
 		<s:Group width="100%" >
-	<s:Label text="{random_quantity}" fontFamily="StandardRegular" updateComplete="change(event)" textAlign="justify" fontSize="228" id="quantity" paddingTop="10"/>
-	<s:Label text="{random_description}" fontFamily="StandardRegular" updateComplete="change(event)" textAlign="justify" width="743" lineHeight="67" fontSize="59"  id="description" paddingBottom="10"/>
+			<!-- 228 -->
+	<s:Label text="{random_quantity}" fontFamily="StandardRegular" updateComplete="change(event)" textAlign="justify" fontSize="32" id="quantity" paddingTop="10"/>
+			<!-- 59 -->
+	<s:Label text="{random_description}" fontFamily="StandardRegular" updateComplete="change(event)" textAlign="justify" width="743" lineHeight="67" fontSize="10"  id="description" paddingBottom="10"/>
 		</s:Group>
 	<s:Line width="100%">
 		<s:stroke>

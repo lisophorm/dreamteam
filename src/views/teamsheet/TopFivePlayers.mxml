@@ -6,6 +6,7 @@
 	<fx:Script>
 		<![CDATA[
 			import com.alfo.utils.Console;
+			import com.alfo.utils.StringUtils;
 			import com.greensock.TweenMax;
 			
 			import mx.events.FlexEvent;
@@ -24,6 +25,9 @@
 			
 			[Bindable]
 			protected var teamColor:uint = 0xFFFFFF;
+			
+			[Bindable]
+			protected var fontSize_Year:Number=60;
 			
 			
 			public function created(event:FlexEvent=null):void
@@ -160,7 +164,26 @@
 					}
 					if ( statistics[statisticsIndex].hasOwnProperty("@value") )
 					{
-						stat_POY_years = statistics[statisticsIndex].@value.toString();
+						var stat_POY_years_temp:Array=statistics[statisticsIndex].@value.toString().split(",");
+						
+						var stat_POY_years_temp_vec:Array=new Array();
+						
+						if(stat_POY_years_temp.length>1) {
+							for (var a:Number=0;a<stat_POY_years_temp.length;a++) {
+								stat_POY_years_temp_vec.push(StringUtils.trim(String(stat_POY_years_temp[a])));
+							}
+							stat_POY_years = stat_POY_years_temp_vec.join("\r\n");
+						} else {
+							stat_POY_years = StringUtils.trim(statistics[statisticsIndex].@value.toString());
+						}
+						if(stat_POY_years_temp.length==1 || stat_POY_years_temp.length==2) {
+							fontSize_Year=60;
+						} else if(stat_POY_years_temp.length<=4) {
+							fontSize_Year=40;
+						} else {
+							fontSize_Year=30;
+						}
+						
 					} else {
 						stat_POY_years = "";
 					}
@@ -207,7 +230,7 @@
 					stat_POY_years = topfiveData[currentIndex].statistics.@poy.toString();
 				}
 				stat_goals = topfiveData[currentIndex].statistics.@goals.toString();
-				stat_goals_for = ("GOALS SCORED FOR "+TeamModel.selectedTeam).toUpperCase();
+				stat_goals_for = ("GOALS\r\nSCORED FOR\r\n"+TeamModel.selectedTeam).toUpperCase();
 				
 			}
 			protected function mySelect( e:Event=null ):void
@@ -286,11 +309,11 @@
 			<s:VGroup width="100%" height="170" paddingLeft="32" paddingRight="32" bottom="0">
 				<s:Label text="STATISTICS" color="{teamColor}" fontSize="30" paddingBottom="{ stat_POY.length>40 ? 10 : 0 }" />
 				<s:HGroup verticalAlign="middle">
-					<s:HGroup id="statRoller" width="400" height="113" verticalAlign="middle" verticalCenter="0">
-						<s:Label id="statA_1" text="{stat_POY}" width="200"  fontSize="28" fontFamily="StandardRegularAllCase" />
+					<s:HGroup id="statRoller" width="400" height="113" verticalAlign="bottom" verticalCenter="0">
+						<s:Label id="statA_1" text="{stat_POY}" width="200" paddingTop="50"  fontSize="28" fontFamily="StandardRegularAllCase" />
 						<s:VGroup >
-							<s:Label id="statA_2" text="{stat_POY_years}"  visible="{stat_POY_years!=''}" fontSize="{stat_POY_season!='' ? 40 : 100}" />
-							<s:Label id="statA_3" text="{stat_POY_season}" includeInLayout="{stat_POY_season!=''}" visible="{stat_POY_season!=''}" fontSize="40" fontFamily="StandardRegularAllCase"  />
+							<s:Label id="statA_2" text="{stat_POY_years}"   visible="{stat_POY_years!=''}" trackingRight="-5" fontSize="{stat_POY_season!='' ? 40 : fontSize_Year}" />
+							<s:Label id="statA_3" text="{stat_POY_season}"  includeInLayout="{stat_POY_season!=''}" visible="{stat_POY_season!=''}" fontSize="40" fontFamily="StandardRegularAllCase"  />
 						</s:VGroup>
 					</s:HGroup>
 					<s:Spacer width="15" height="113" />
@@ -299,8 +322,8 @@
 							<s:SolidColorStroke color="{teamColor}" weight="1" />
 						</s:stroke>
 					</s:Line>
-					<s:Label paddingLeft="20" id="statB_1" text="{stat_goals}" fontSize="93" />
-					<s:Label id="statB_2" text="{stat_goals_for}" width="300" fontSize="28" fontFamily="StandardRegularAllCase" />
+					<s:Label paddingLeft="20" id="statB_1" text="{stat_goals}" trackingRight="-5" fontSize="93" />
+					<s:Label id="statB_2" text="{stat_goals_for}" width="300" paddingTop="-20" fontSize="28" fontFamily="StandardRegularAllCase" />
 					<s:Line height="113" width="1">
 						<s:stroke>
 							<s:SolidColorStroke color="{teamColor}" weight="1" />

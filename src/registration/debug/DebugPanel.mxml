@@ -19,7 +19,7 @@
 			
 			protected function debugOutputChangeHandler(event:Event):void
 			{
-				trace("DebugPanel :: output change => \n" + debugOutput.text);
+				//trace("DebugPanel :: output change => \n" + debugOutput.text);
 				
 			}
 			

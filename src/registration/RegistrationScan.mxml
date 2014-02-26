@@ -431,10 +431,11 @@
 		<s:State name="USER_NOT_FOUND" />
 		<s:State name="USER_FOUND" />
 		<s:State name="REGISTRATION_ERROR" />
+		<s:State name="NETWORK_ERROR" />
 	</s:states>
 	
 	<s:VGroup id="welcomeScreen" horizontalAlign="center" includeIn="READY_TO_SCAN" width="1366">
-		<s:Label id="welcomeLabel" textAlign="center" width="1200" styleName="registrationOne" text="WELCOME TO BPL LIVE">
+		<s:Label id="welcomeLabel" textAlign="center" width="1200" styleName="registrationOne" text="WELCOME TO{'\n'}BARCLAYS PREMIER LEAGUE LIVE">
 			<s:filters>
 				<s:GlowFilter color="0x00AEEF" strength="15"/>
 			</s:filters>
