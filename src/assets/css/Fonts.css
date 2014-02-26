@@ -1,51 +1,60 @@
+/* CSS file */
+@namespace s "library://ns.adobe.com/flex/spark";
+@namespace mx "library://ns.adobe.com/flex/mx";
+
 @font-face
 {
-	
-	src: url("/assets/fonts/PremierLeague/PremierLeague.ttf");
+	src: url("../fonts/PremierLeague/PremierLeague.ttf");
 	fontFamily: "StandardRegular";
 	embedAsCFF: true;
 }
 @font-face
 {
-	src: url("/assets/fonts/ExpertSans/ExpertSans-Light.ttf");
+	src: url("../fonts/ExpertSans/ExpertSans-Light.ttf");
 	fontFamily: "StandardRegularAllCase";
 	embedAsCFF: true;
 }
 @font-face
 {
-	src: url("/assets/fonts/ExpertSans/ExpertSans-Bold.ttf");
+	src: url("../fonts/ExpertSans/ExpertSans-Bold.ttf");
 	fontFamily: "StandardRegularAllCase";
 	fontWeight: bold;
 	embedAsCFF: true;
 }
 @font-face
 {
-	src: url("/assets/fonts/sky-text-regular.ttf");
+	src: url("../fonts/ExpertSans/ExpertSans-Bold.ttf");
+	fontFamily: "StandardRegularAllCaseBold";
+	embedAsCFF: true;
+}
+@font-face
+{
+	src: url("../fonts/sky-text-regular.ttf");
 	fontFamily: "StandardSans";
 	embedAsCFF: true;
 }
 @font-face
 {
-	src: url("/assets/fonts/Digital/DS-DIGIB.ttf");
+	src: url("../fonts/Digital/DS-DIGIB.ttf");
 	fontFamily: "Digital";
 	embedAsCFF: true;
 }
 @font-face
 {
-	src: url("/assets/fonts/sky-text-regular.ttf");
+	src: url("../fonts/sky-text-regular.ttf");
 	fontFamily: StandardRegularNoCFF;
-	embedAsCFF: false;
+	embedAsCFF: true;
 }
 @font-face
 {
-	src: url("/assets/fonts/sky-text-medium.ttf");
+	src: url("../fonts/sky-text-medium.ttf");
 	fontFamily: StandardMedium;
 	embedAsCFF: true;
 }
 
 @font-face
 {
-	src: url("/assets/fonts/sky-text-bold.ttf");
+	src: url("../fonts/sky-text-bold.ttf");
 	fontFamily: StandardBold;
 	embedAsCFF: true;
 }

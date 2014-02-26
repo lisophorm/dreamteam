@@ -49,9 +49,9 @@
 		<!-- Place non-visual elements (e.g., services, value objects) here -->
 	</fx:Declarations>
 	
-	<s:VGroup width="100%" height="100%" horizontalAlign="center" verticalAlign="middle">
-		<s:Spacer width="10" height="30"/>
-		<s:Label textAlign="center" width="750" styleName="thankyou" text="{ML.t('Thank you for selecting your \nDream Team.')}"  />
-		<s:Spacer width="10" height="30"/>
+	<s:VGroup width="100%" height="597" horizontalAlign="center" verticalAlign="middle">
+		<s:Spacer width="10" height="40"/>
+		<s:Label styleName="thankyou" text="THANK"  />
+		<s:Label styleName="thankyou" text="YOU"  paddingTop="-50" />
 	</s:VGroup>
 </s:Group>

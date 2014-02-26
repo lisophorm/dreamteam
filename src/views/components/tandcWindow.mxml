@@ -5,7 +5,7 @@
 			   xmlns:s="library://ns.adobe.com/flex/spark"
 			   xmlns:mx="library://ns.adobe.com/flex/halo"
 			   title="{ML.t('Terms and Conditions')}"
-			   width="600" height="460"
+			   width="900" height="650"
 			   close="ttlWndw_close(event);" resize="onresize()"
 			   added="onAdded()"  
 			   remove="exit();" xmlns:controls="com.flexcapacitor.controls.*" skinClass="skins.barTitleWindow" >
