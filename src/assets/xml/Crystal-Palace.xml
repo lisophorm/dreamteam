@@ -98,7 +98,19 @@ In 90-91 he was a crucial player of the squad that finished 3rd and again receiv
       <video src="/assets/teamsheets/crystalpalace/video/Crystal Palace FC on YouTube.flv" />
       <gallery>
          <item>
-            <img src="/assets/teamsheets/crystalpalace/gallery/01.jpg" alt="Selhurst Park" />
+            <img src="/assets/teamsheets/crystalpalace/gallery/Selhurst-Park-01.jpg" alt="Selhurst Park" />
+            <description><![CDATA[Selhurst Park was built in 1924 on top of a former brickfield. 
+The Eagles recruited Scottish architect Archibald Leitch to design the stadium.  
+This ground also holds the English football record for staging a game seen by the greatest amount of people.]]></description>
+            <statistics>
+               <description><![CDATA[<span fontWeight="bold">Capacity:</span> 26,309 <br/><br/><span fontWeight="bold">Field Dimensions:</span> 105m x 68m<br/><br/><span fontWeight="bold">Surface:</span> Desso GrassMaster.]]></description>
+               <stat key="Capacity" value="26,309 " />
+               <stat key="Field Dimensions" value="105m x 68m" />
+               <stat key="Surface" value="Desso GrassMaster" />
+            </statistics>
+         </item>
+                  <item>
+            <img src="/assets/teamsheets/crystalpalace/gallery/Selhurst-Park-02.jpg" alt="Selhurst Park" />
             <description><![CDATA[Selhurst Park was built in 1924 on top of a former brickfield. 
 The Eagles recruited Scottish architect Archibald Leitch to design the stadium.  
 This ground also holds the English football record for staging a game seen by the greatest amount of people.]]></description>

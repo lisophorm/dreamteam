@@ -129,17 +129,19 @@ The highest attendance recorded at Villa Park was 76,588 on 2nd March 1946 in an
 
                 </statistics>
             </item>
-              <item>
+            <item>
                 <img src="/assets/teamsheets/astonvilla/gallery/Villa-park-02.jpg" alt="Villa Park" />
                 <description><![CDATA[Villa Park comprises of 42,788 seats split between four stands. These four stands are the Holte End to the South, the Trinity Road Stand to the West, the Doug Ellis Stand opposite the Trinity Road Stand and the North Stand behind the Northern goal.  All of the stands are composed of two tiers except the Trinity Road Stand, which has three.
-The highest attendance recorded at Villa Park was 76,588 on 2nd March 1946 in an FA Cup 6th round tie against Derby County. The highest attendance in a Premier League game was 42,788 on 29th December 2009, against Liverpool]]>
+The highest attendance recorded at Villa Park was 76,588 on 2nd March 1946 in an FA Cup 6th round tie against Derby County. The highest attendance in a Premier League game was 42,788 on 29th December 2009, against Liverpool.]]>
                 </description>
                 <statistics>
-                     <description><![CDATA[<span fontWeight="bold">Capacity:</span> 42,788<br/><br/><span fontWeight="bold">Field Dimensions:</span> 105m x 68m<br/><br/><span fontWeight="bold">Surface:</span> Desso GrassMaster.]]></description>
-                     <stat key="Capacity" value="42,788" />
+                    <description><![CDATA[<span fontWeight="bold">Capacity:</span> 42,788<br/><br/><span fontWeight="bold">Field Dimensions:</span> 105m x 68m<br/><br/><span fontWeight="bold">Surface:</span> Desso GrassMaster.]]></description>
+
+                    <stat key="Capacity" value="42,788" />
                     <stat key="Field Dimensions" value="105m x 68m" />
                     <stat key="Surface" value="Desso GrassMaster" />
                     
+
                 </statistics>
             </item>
     </gallery>

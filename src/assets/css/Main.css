@@ -140,7 +140,7 @@ s|VGroup.Game s|Label.heading
 	color: #FFFFFF;
 }
 s|Button {
-	skinClass: ClassReference("skins.vodafoneButton");
+	skinClass: ClassReference("skins.barclaysButton");
 	fontFamily: "StandardRegularAllCase";
 	fontSize: 28;
 	font-weight: normal;

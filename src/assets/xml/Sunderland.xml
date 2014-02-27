@@ -116,6 +116,17 @@ He became a local legend at Sunderland, winning both the Sunderland and North-Ea
                     <stat key="Surface" value="Desso GrassMaster" />
                 </statistics>
             </item>
+                        <item>
+                <img src="/assets/teamsheets/sunderland/Gallery/Stadium-of-Light-02.jpg" alt="Stadium of Light" />
+                <description><![CDATA[The Stadium of Light was opened in 1997 and has a maximum capacity for football matches of 49,000 people. It is the fifth-largest capacity of all of the English football stadiums. As well as Sunderland, the Stadium of Light has also hosted football matches for the England National team who have won both games they have played at the stadium.The highest recorded League attendance at the Stadium of Light is 48,335 set on 13th April 2002 for Sunderland vs Liverpool. However, this number was trumped by the 57,000 attendees that watched Rihanna perform in the stadium in 2013!]]>
+                </description>
+                <statistics>
+                    <description><![CDATA[<span fontWeight="bold">Capacity:</span> 49,000 <br/><br/><span fontWeight="bold">Field Dimensions:</span> 10m x 64m<br/><br/><span fontWeight="bold">Surface:</span> Desso GrassMaster.]]></description>
+                    <stat key="Capacity" value="49,000 " />
+                    <stat key="Field Dimensions" value="100m x 64m" />
+                    <stat key="Surface" value="Desso GrassMaster" />
+                </statistics>
+            </item>
     </gallery>
     
      <timeline><![CDATA[/assets/teamsheets/sunderland/timeline/DidYouKnow.swf]]></timeline>

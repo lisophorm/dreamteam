@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+
+-->
+
+
+<!--- The default skin class for the Spark Button component.  
+
+       @see spark.components.Button
+        
+      @langversion 3.0
+      @playerversion Flash 10
+      @playerversion AIR 1.5
+      @productversion Flex 4
+-->
+<s:SparkButtonSkin xmlns:fx="http://ns.adobe.com/mxml/2009" 
+             xmlns:s="library://ns.adobe.com/flex/spark" 
+             xmlns:fb="http://ns.adobe.com/flashbuilder/2009"
+             minWidth="21" minHeight="21" 
+             alpha.disabled="0.5">
+     
+    <fx:Metadata>
+        <![CDATA[ 
+        /** 
+         * @copy spark.skins.spark.ApplicationSkin#hostComponent
+         */
+        [HostComponent("spark.components.Button")]
+        ]]>
+    </fx:Metadata>
+    
+    <fx:Script fb:purpose="styling">
+        <![CDATA[         
+            import spark.components.Group;
+            /* Define the skin elements that should not be colorized. 
+            For button, the graphics are colorized but the label is not. */
+            static private const exclusions:Array = ["iconDisplay", "labelDisplay"];
+            
+            /** 
+             * @private
+             */     
+            override public function get colorizeExclusions():Array {return exclusions;}
+            
+            /**
+             * @private
+             */
+            override protected function initializationComplete():void
+            {
+                useChromeColor = true;
+                super.initializationComplete();
+            }  
+            
+            /**
+             *  @private
+             */
+            override protected function updateDisplayList(unscaledWidth:Number, unscaledHeight:Number) : void
+            {
+                var cr:Number = getStyle("cornerRadius");
+                
+                if (cornerRadius != cr)
+                {
+                    cornerRadius = cr;
+                    fill.radiusX = cornerRadius;
+                }
+                
+                
+                super.updateDisplayList(unscaledWidth, unscaledHeight);
+            }
+            
+            private var cornerRadius:Number = 2;
+                                 
+        ]]>        
+    </fx:Script>
+        
+    <!-- states -->
+    <s:states>
+        <s:State name="up" />
+        <s:State name="over" />
+        <s:State name="down" />
+        <s:State name="disabled" />
+    </s:states>
+    
+    
+    <!-- layer 2: fill -->
+    <!--- @private -->
+    <s:Rect id="fill" left="1" right="1" top="1" bottom="1" >
+        <s:fill>
+            <s:SolidColor color="0xFFFFFF" />
+        </s:fill>
+    </s:Rect>
+
+    
+
+    <!-- layer 8: text -->
+    <!--- @copy spark.components.supportClasses.ButtonBase#labelDisplay  -->
+    
+    
+	<s:Path horizontalCenter="0" verticalCenter="-5" winding="nonZero" data="M3.03613 17.251C2.50684 17.251 1.9668 17.1992 1.41504 17.0957 0.863281 16.9922 0.391602 16.8486 0 16.665L5.65918 8.59082 0.242188 0.724609C0.678711 0.540039 1.23047 0.391602 1.89844 0.275391 2.56445 0.161133 3.13965 0.103516 3.62305 0.103516 4.29004
+			0.103516 4.90527 0.223633 5.46875 0.46582 6.03223 0.707031 6.4873 1.11621 6.83203 1.69043L9.21289 5.52051 11.7656 1.44922C12.0879 0.919922 12.502 0.546875 13.0078 0.327148 13.5137 0.109375 14.0654 0 14.6641 0 15.124 0 15.6533 0.0458984 16.251
+			0.137695 16.8496 0.229492 17.3438 0.368164 17.7354 0.551758L12.1455 8.83301 17.5967 16.6299C17.1592 16.8145 16.6426 16.9639 16.0439 17.0791 15.4463 17.1934 14.8477 17.251 14.25 17.251 13.376 17.251 12.6807 17.1416 12.1631 16.9238 11.6455 16.7051
+			11.2256 16.332 10.9033 15.8018L8.48828 11.9033 6.00391 15.9746C5.70508 16.4355 5.3252 16.7627 4.86523 16.958 4.40527 17.1533 3.7959 17.251 3.03613 17.251Z">
+		<s:fill>
+			<s:SolidColor color="#00AEEF"/>
+		</s:fill>
+	</s:Path>
+	
+	
+</s:SparkButtonSkin>
