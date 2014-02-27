@@ -249,6 +249,7 @@
 				pref.saveApplicationVariables( e.value );
 				baseURL =  "http://"+pref.prefsXML..serverIP+"/";
 				facebookAppID = pref.prefsXML..facebookAppID;
+				localURL= "http://"+pref.prefsXML..localIP+"/";
 				ApplicationType = pref.prefsXML..applicationtype.toString().toUpperCase();
 				urn = int(pref.prefsXML..urnLength);
 				scoreFormat = pref.prefsXML..scoreFormat;
@@ -511,6 +512,11 @@
 			
 			protected function doNavigation(e:ViewEvent):void
 			{
+				
+				trace("DO NAV APPTYPEL:"+this.ApplicationType);
+				trace("DO NAV e.location:"+e.location);
+				
+				
 				clearPopups();
 				hideDropshadow();
 				switch (e.location)

@@ -23,5 +23,6 @@ package com.alfo.utils
 
 			MonsterDebugger.trace(obj==null ? simpleSprite : obj, "["+obj.toString().split(".")[obj.toString().split(".").length-1]+"] "+s.toString());
 		} */
+		}
 	}
 }

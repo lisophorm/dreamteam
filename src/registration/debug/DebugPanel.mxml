@@ -8,8 +8,6 @@
 		<![CDATA[
 			import registration.Registration;
 			
-			import spark.events.TextOperationEvent;
-			
 			public var registrationModule : Registration;
 			
 			public function fireSocketCode(socketCode : int):void
@@ -69,4 +67,5 @@
 	<s:Button label="301" click="{fireSocketCode(301)}" skinClass="spark.skins.spark.ButtonSkin" width="100%"/>
 	<s:Button label="302" click="{fireSocketCode(302)}" skinClass="spark.skins.spark.ButtonSkin" width="100%"/>
 	<s:Button label="303" click="{fireSocketCode(303)}" skinClass="spark.skins.spark.ButtonSkin" width="100%"/>
+	<s:Button label="Thankyu" click="{fireSocketCode(303)}" skinClass="spark.skins.spark.ButtonSkin" width="100%"/>
 </s:VGroup>
