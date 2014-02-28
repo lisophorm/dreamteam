@@ -199,7 +199,7 @@
 		
 		<s:HGroup width="417">
 			<s:CheckBox id="termsCheck" width="145" styleName="tcaccept" label="ACCEPT " skinClass="skins.BarclaysCheckBox" />
-			<s:Label color="0x00AEEF" styleName="tclink" paddingTop="4" buttonMode="true" text="TERMS AND CONDITIONS" click="tandcd_clickHandler(event)" />
+			<s:Label color="0x00AEEF" styleName="tclink" paddingTop="4" buttonMode="true" text="TERMS AND CONDITIONS" />
 		</s:HGroup>
 		
 		<s:Spacer height="20"/>

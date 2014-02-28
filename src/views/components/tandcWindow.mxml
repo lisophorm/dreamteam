@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
 		 xmlns:s="library://ns.adobe.com/flex/spark" 
-		 xmlns:mx="library://ns.adobe.com/flex/mx" width="900" added="onAdded()" remove="exit()">
+		 xmlns:mx="library://ns.adobe.com/flex/mx" width="100%" height="100%" added="onAdded()" remove="exit()" xmlns:components="com.flexcapacitor.components.*" xmlns:controls="com.flexcapacitor.controls.*">
 	<fx:Script>
 		<![CDATA[
-			import mx.events.FlexEvent;
-			import mx.managers.PopUpManager;
+			import flash.utils.setInterval;
 			
 			import mx.core.UIFTETextField;
+			import mx.events.FlexEvent;
+			import mx.managers.PopUpManager;
 			
 			
 			protected var isremoving:Boolean = false;
@@ -26,6 +27,7 @@
 				isremoving = false;
 			}
 			
+			public var initialUrl:String;
 			
 			protected function exit(e:FlexEvent=null):void
 			{
@@ -39,12 +41,45 @@
 				return isremoving;
 			}
 			
-			protected function myHtml_creationCompleteHandler(event:FlexEvent):void
+
+			
+			protected function ta_addedToStageHandler(event:Event):void
 			{
-				var source:File = File.applicationDirectory.resolvePath("assets/html/tandc.html"); 
-				myHtml.htmlLoader.load(new URLRequest(source.url));
+				//var pt:Point = new Point(event.localX, event.localY);
 				
+				setInterval(resizza,300);
+				
+				var pt:Point = event.target.parent.localToGlobal(new Point());
+				//var locazia:Point=gino.contentToGlobal(new Point());
+				//trace("converso x:"+locazia.x+" y:"+locazia.y+" t:"+pt.x);
+				// This copies a single file into a subdir of appStorageDir
+				
+				try
+				{
+					var source:File = File.applicationDirectory.resolvePath("assets/html/tandc.html"); 
+					// create file(s) in a subdir of appStorageDir to simplify cleanup
+					var destination:File = File.applicationStorageDirectory.resolvePath("assets/html/tandc.html");
+					// now do the copy and create a ref to our HTML file that a browser will understand
+					source.copyTo(destination, true);   
+					initialUrl = "file://" + destination.nativePath ;
+					trace("terms added to stage");
+					
+				} catch (error:Error)
+				{
+					trace("Warning: "+error.message.toString());
+				}
+				
+				tec.x=(stage.width-this.width)/2+18;
+				tec.y=(stage.height-this.height)/2;
+				tec.source=initialUrl;
 			}
+
+			private function resizza() {
+				tec.width=stage.width;
+				tec.x=0;
+				tec.y=testa.height;
+			}
+
 			
 		]]>
 	</fx:Script>
@@ -54,16 +89,10 @@
 	<fx:Declarations>
 		<s:DropShadowFilter id="shadowfilter" strength=".8" distance="8" />
 	</fx:Declarations> 
-	<s:Rect id="tbFill" left="0" right="0" top="0" bottom="0" radiusX="0" >
-		<s:stroke>
-			<s:SolidColorStroke id="borderStroke" color="0x00adee" weight="4"/>
-		</s:stroke>
-		<s:fill>
-			<s:SolidColor color="#FFFFFF"/>
-		</s:fill>
-	</s:Rect>
 
 	<s:VGroup width="100%" height="100%" horizontalAlign="center" verticalAlign="middle">
+	<s:VGroup id="testa">
+		
 		<s:Spacer height="15" />
 		<s:HGroup width="100%" verticalAlign="middle" horizontalAlign="center">
 			<s:Label id="titleDisplay" maxDisplayedLines="1" 
@@ -72,10 +101,8 @@
 					 text="TERMS AND CONDITIONS"
 					 verticalAlign="middle" horizontalCenter="0" />
 		</s:HGroup>
-		<s:Spacer height="15" />
-		<mx:HTML fontFamily="Arial"   textFieldClass="mx.core.UIFTETextField" width="95%" height="600" id="myHtml" creationComplete="myHtml_creationCompleteHandler(event)" />
-		<s:Spacer height="15" />
-		<s:Button label="CLOSE" click="PopUpManager.removePopUp(this);" />
-		<s:Spacer height="15" />
+	</s:VGroup>
+		<controls:WebView width="{stage.width}" id="tec" height="{stage.height-testa.height}" addedToStage="ta_addedToStageHandler(event)"/>
+		<s:Button label="CLOSE" click="PopUpManager.removePopUp(this);" bottom="0" />
 	</s:VGroup>
 </s:Group>

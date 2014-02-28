@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		 xmlns:s="library://ns.adobe.com/flex/spark" 
+		 xmlns:mx="library://ns.adobe.com/flex/mx" width="900" added="onAdded()" remove="exit()">
+	<fx:Script>
+		<![CDATA[
+			import mx.events.FlexEvent;
+			import mx.managers.PopUpManager;
+			
+			import mx.core.UIFTETextField;
+			
+			
+			protected var isremoving:Boolean = false;
+			
+			[Bindable]
+			public var message:String="";
+			
+			[Bindable]
+			public var windowTitle:String="I/O ERROR:";
+			
+			[Bindable]
+			public var exitFunction:Function = null;
+			
+			protected function onAdded(e:FlexEvent=null):void
+			{
+				isremoving = false;
+			}
+			
+			
+			protected function exit(e:FlexEvent=null):void
+			{
+				isremoving = true;
+				if (exitFunction!=null)
+					exitFunction();
+				
+			}
+			public function get isRemoving():Boolean
+			{
+				return isremoving;
+			}
+			
+			protected function myHtml_creationCompleteHandler(event:FlexEvent):void
+			{
+				var source:File = File.applicationDirectory.resolvePath("assets/html/tandc.html"); 
+				myHtml.htmlLoader.load(new URLRequest(source.url));
+				
+			}
+			
+		]]>
+	</fx:Script>
+	<fx:Metadata>
+		[Event(name="closeError", type="flash.events.Event")]
+	</fx:Metadata>
+	<fx:Declarations>
+		<s:DropShadowFilter id="shadowfilter" strength=".8" distance="8" />
+	</fx:Declarations> 
+	<s:Rect id="tbFill" left="0" right="0" top="0" bottom="0" radiusX="0" >
+		<s:stroke>
+			<s:SolidColorStroke id="borderStroke" color="0x00adee" weight="4"/>
+		</s:stroke>
+		<s:fill>
+			<s:SolidColor color="#FFFFFF"/>
+		</s:fill>
+	</s:Rect>
+
+	<s:VGroup width="100%" height="100%" horizontalAlign="center" verticalAlign="middle">
+		<s:Spacer height="15" />
+		<s:HGroup width="100%" verticalAlign="middle" horizontalAlign="center">
+			<s:Label id="titleDisplay" maxDisplayedLines="1" 
+					 left="9" right="36" top="1" bottom="0" minHeight="80" 
+					 fontFamily="StandardRegular"
+					 text="TERMS AND CONDITIONS"
+					 verticalAlign="middle" horizontalCenter="0" />
+		</s:HGroup>
+		<s:Spacer height="15" />
+		<mx:HTML fontFamily="Arial"   textFieldClass="mx.core.UIFTETextField" width="95%" height="600" id="myHtml" creationComplete="myHtml_creationCompleteHandler(event)" />
+		<s:Spacer height="15" />
+		<s:Button label="CLOSE" click="PopUpManager.removePopUp(this);" />
+		<s:Spacer height="15" />
+	</s:VGroup>
+</s:Group>

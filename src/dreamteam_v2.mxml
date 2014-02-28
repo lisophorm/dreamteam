@@ -8,7 +8,7 @@
 					   addedToStage="fullscreen()" showStatusBar="false" 
 					   xmlns:registration="registration.*" 
 					   xmlns:debug="registration.debug.*"
-					   alwaysInFront="true">
+					   alwaysInFront="false">
 	
 	<fx:Style source="assets/css/Main.css" />
 	<fx:Style source="assets/css/Fonts.css" />	
@@ -873,7 +873,7 @@
 				<s:Button skinClass="skins.BasicButton" styleName="nav" icon="@Embed('assets/images/core/home_logo.png')" click="{defaultView()}"/>
 				<s:Button skinClass="skins.BasicButton" styleName="nav" label="{ML.t('Quit')}" click="exitApplication(event)" id="quitButton" color="0xFFFFFF" visible="{loggedIn}" includeInLayout="{loggedIn}" />
 				<s:Button skinClass="skins.BasicButton" styleName="nav" icon="@Embed('assets/images/core/padlock.png')" click="config(event)" color="0xFFFFFF" />
-				<s:Button label="userform" click="{gotoView('UserForm')}"/>
+				<!--s:Button label="userform" click="{gotoView('UserForm')}"/-->
 			</s:HGroup>		
 		</s:HGroup>
 		
