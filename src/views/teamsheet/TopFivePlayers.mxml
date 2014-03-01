@@ -325,28 +325,32 @@
 		
 
 			<s:VGroup width="100%" height="180" paddingLeft="32" paddingRight="32" bottom="0">
-				<s:Label text="STATISTICS" color="{teamColor}" fontSize="30" paddingBottom="{ stat_POY.length>40 ? 10 : 0 }" />
-				<s:HGroup verticalAlign="middle">
+				<!--paddingBottom="{ stat_POY.length>40 ? 10 : 0 }" -->
+				<s:Label text="STATISTICS" color="{teamColor}" fontSize="30"  />
+				<s:HGroup verticalAlign="bottom">
 					<s:HGroup id="statRoller" stateChangeComplete="statRoller_stateChangeCompleteHandler(event)" width="400" height="113" verticalAlign="bottom" verticalCenter="0">
-						<s:Label id="statA_1" lineHeight="28" text="{stat_POY}" creationComplete="statA_1_creationCompleteHandler(event)" updateComplete="statA_1_updateCompleteHandler(event)"  width="200" paddingTop="50"  fontSize="28" fontFamily="StandardRegularAllCase" />
+						<s:Label id="statA_1" lineHeight="28" text="{stat_POY}" verticalAlign="bottom" creationComplete="statA_1_creationCompleteHandler(event)" updateComplete="statA_1_updateCompleteHandler(event)"  width="200" paddingTop="50"  fontSize="28" height="180" fontFamily="StandardRegularAllCase" />
 						<s:VGroup >
 							<s:Label id="statA_2" text="{stat_POY_years}"   visible="{stat_POY_years!=''}" trackingRight="-5" fontSize="{stat_POY_season!='' ? 40 : fontSize_Year}" />
 							<s:Label id="statA_3" text="{stat_POY_season}"  includeInLayout="{stat_POY_season!=''}" visible="{stat_POY_season!=''}" fontSize="40" fontFamily="StandardRegularAllCase"  />
 						</s:VGroup>
 					</s:HGroup>
+					
+					<s:HGroup verticalAlign="middle" height="113">
 					<s:Spacer width="15" height="113" />
-					<s:Line height="113" width="1" >
+					<s:Line height="100%" width="1" >
 						<s:stroke>
 							<s:SolidColorStroke color="{teamColor}" weight="1" />
 						</s:stroke>
 					</s:Line>
-					<s:Label paddingLeft="20" id="statB_1" text="{stat_goals}" trackingRight="-5" fontSize="93" />
-					<s:Label id="statB_2" text="{stat_goals_for}" width="300" paddingTop="-20" fontSize="28" fontFamily="StandardRegularAllCase" />
+					<s:Label paddingLeft="20" id="statB_1" text="{stat_goals}" paddingTop="15" trackingRight="-5" fontSize="93" />
+					<s:Label id="statB_2" text="{stat_goals_for}" paddingRight="30"  paddingTop="5" fontSize="28" fontFamily="StandardRegularAllCase" />
 					<s:Line height="113" width="1">
 						<s:stroke>
 							<s:SolidColorStroke color="{teamColor}" weight="1" />
 						</s:stroke>
 					</s:Line>
+					</s:HGroup>
 				</s:HGroup>	
 			</s:VGroup>
 			

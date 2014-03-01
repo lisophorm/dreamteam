@@ -1,127 +1,141 @@
 <teams>
-<teaminfo>
-    <name>Chelsea Fc</name>
-    <top_players>
-        <player>
-            <name>Frank Lampard</name>
-            <shirtno>8</shirtno>
-            <img src="/assets/teamsheets/chelsea/players/Frank-Lampard1.jpg"/>
+	<teaminfo>
+		<name>Chelsea Fc</name>
+		<top_players>
+			<player>
+				<name>Frank Lampard</name>
+				<shirtno>8</shirtno>
+				<img src="/assets/teamsheets/chelsea/players/Frank-Lampard1.jpg" />
 
-            <gallery>
-                <img src="/assets/teamsheets/chelsea/players/Frank-Lampard2.jpg" />
-                <img src="/assets/teamsheets/chelsea/players/Frank-Lampard3.jpg"  />
-            </gallery>
+				<gallery>
+					<img src="/assets/teamsheets/chelsea/players/Frank-Lampard2.jpg" />
+					<img src="/assets/teamsheets/chelsea/players/Frank-Lampard3.jpg" />
+				</gallery>
 
-            <description>
+				<description>
                 <![CDATA[Frank Lampard’s Premier League debut came in 1996 for West Ham United. He joined Chelsea in 2001 and would go on to become the Club’s all-time top scorer. Lampard once played in 164 consecutive Barclays Premier League games and no midfielder has scored more Premier League goals than the England international; who won his 100th international cap in September 2013.]]>
-            </description>
-            <statistics poy="2001-Present" goals="203">
-                <data key="Chelsea Player of the Year" value="2004/04-2005/06" />
-                <data key="UEFA Champions League Winner" value="2011/12" />
-                <data key="3 Barclays Premier League titles"  />
-                <data key="More than 100 international caps for England"  />
-        </statistics>
-        </player>
+				</description>
+				<statistics poy="2001-Present" goals="203">
+					<data key="Chelsea Player of the Year" value="2004/04-2005/06" />
+					<data key="UEFA Champions League Winner" value="2011/12" />
+					<data key="3 Barclays Premier League titles" />
+					<data key="More than 100 international caps for England" />
+				</statistics>
+			</player>
 
-      <player>
-        <name>John Terry</name>
-        <shirtno>26</shirtno>
-        	<img src="/assets/teamsheets/chelsea/players/John-Terry1.jpg"/>
-        <gallery> 
-	        <img src="/assets/teamsheets/chelsea/players/John-Terry2.jpg"/> 
-	     /dreamteam assets/teamsheets   <img src="/assets/teamsheets/chelsea/players/John-Terry3.jpg"/> 
-        </gallery>
-        <description>
+			<player>
+				<name>John Terry</name>
+				<shirtno>26</shirtno>
+				<img src="/assets/teamsheets/chelsea/players/John-Terry1.jpg" />
+				<gallery>
+					<img src="/assets/teamsheets/chelsea/players/John-Terry2.jpg" />
+					/dreamteam assets/teamsheets
+					<img src="/assets/teamsheets/chelsea/players/John-Terry3.jpg" />
+				</gallery>
+				<description>
           <![CDATA[John Terry made his Chelsea Premier League debut in 1998 and became a regular in the side from the 2000/01 season, when he was voted the Club’s Player of the Year. On 5th December 2001, Terry captained Chelsea for the first time in a league match against Charlton Athletic. Terry was named permanent captain in the 2004/05 season when he led the side to its first Barclays Premier League championship and won Chelsea Player of the Year just 12 months later. He is one of five players to have made over 500 appearances for Chelsea and is also the Club’s all-time highest scoring defender, lifting the Barclays Premier League and FA Cup double in 2010.]]>
-        </description>
-            <statistics poy="1997-Present Day" goals="55">
-                <data key="Most all-time appearances as Chelsea captain" />
-                <data key="Three-time Barclays Premier League champion" /> 
-                <data key="Winner of two Chelsea Player of the Year awards" />
-                <data key="Five-time FA Cup winner" />
-                <data key="PFA Player of the Year" value="2004/05" />
-        </statistics>
-      </player>
+				</description>
+				<statistics poy="1997-Present Day" goals="55">
+					<data key="Most all-time appearances as Chelsea captain" />
+					<data key="Three-time Barclays Premier League champion" />
+					<data key="Winner of two Chelsea Player of the Year awards" />
+					<data key="Five-time FA Cup winner" />
+					<data key="PFA Player of the Year" value="2004/05" />
+				</statistics>
+			</player>
 
-      <player>
-        <name>Petr Cech</name>
-        <shirtno>1</shirtno>
-        <img src="/assets/teamsheets/chelsea/players/Petr-Cech1.jpg"/>
-        <gallery> 
-        	<img src="/assets/teamsheets/chelsea/players/Petr-Cech2.jpg"/> 
-        	<img src="/assets/teamsheets/chelsea/players/Petr-Cech3.jpg"/> 
-        </gallery>
-        <description>
+			<player>
+				<name>Petr Cech</name>
+				<shirtno>1</shirtno>
+				<img src="/assets/teamsheets/chelsea/players/Petr-Cech1.jpg" />
+				<gallery>
+					<img src="/assets/teamsheets/chelsea/players/Petr-Cech2.jpg" />
+					<img src="/assets/teamsheets/chelsea/players/Petr-Cech3.jpg" />
+				</gallery>
+				<description>
           <![CDATA[Petr Cech joined Chelsea in 2004 and in his fist season set a new Barclays Premier League record of 1,025 minutes without conceding a goal. He was awarded the Golden Glove at the end of the 2004/05 season for keeping a record 21 clean sheets in the Barclays Premier League, helping the club to its first championship in 50 years. He was the penalty shoot-out hero as Chelsea won the UEFA Champions League in 2012 and was captain a year later as Chelsea won the UEFA Europa League, defeating Benfica 2-1 in the final.]]>
-        </description>
-        <statistics poy="2004-Present Day" goals="0">
-                <data key="6 time ‘Footballer of the Year" />
-                <data key="PFA Young Player of the Year" value="1987/88" />
-                <data key="Barclays Premier League Winner" value="2004/05, 2005/06, 2009/10" />
-                <data key="UEFA Champions League Winner" value="2011/12" />
-                <data key="BPL Golden Glove Winner" value="2004/05, 2011/2012" />
-        </statistics>
-      </player>
+				</description>
+				<statistics poy="2004-Present Day" goals="0">
+					<data key="6 time ‘Footballer of the Year" />
+					<data key="PFA Young Player of the Year" value="1987/88" />
+					<data key="Barclays Premier League Winner" value="2004/05, 2005/06, 2009/10" />
+					<data key="UEFA Champions League Winner" value="2011/12" />
+					<data key="BPL Golden Glove Winner" value="2004/05, 2011/2012" />
+				</statistics>
+			</player>
 
-      <player>
-        <name>Dennis Wise</name>
-        <shirtno>11</shirtno>
-        <img src="/assets/teamsheets/chelsea/players/Dennis-Wise1.jpg"/>
-        <gallery> 
-        	<img src="/assets/teamsheets/chelsea/players/Dennis-Wise2.jpg"/> 
-        	<img src="/assets/teamsheets/chelsea/players/Dennis-Wise3.jpg"/> 
-        </gallery>
-        <description>
+			<player>
+				<name>Dennis Wise</name>
+				<shirtno>11</shirtno>
+				<img src="/assets/teamsheets/chelsea/players/Dennis-Wise1.jpg" />
+				<gallery>
+					<img src="/assets/teamsheets/chelsea/players/Dennis-Wise2.jpg" />
+					<img src="/assets/teamsheets/chelsea/players/Dennis-Wise3.jpg" />
+				</gallery>
+				<description>
           <![CDATA[Dennis Wise signed for Chelsea in 1990 for a then Club record fee. He spent 11 years at Stamford Bridge and in his time with the Club, the combative midfielder featured 445 times and scored 76 goals; including a memorable Champions League equaliser at the San Siro against AC Milan in 1999. He lifted the FA Cup in 1997 and 2000, and the League Cup in 1998.]]>
-        </description>
-        <statistics poy="1990-2001" goals="76">
-                <data key="FA Cup winner" value="1997, 2000" />    
-                <data key="261 Premier League Chelsea appearances" value="1997" />
-                <data key="21 international caps for England"  />
-                <data key="UEFA Super Cup Winner" value="1998" />
-                <data key="League Cup winner" value="1998" />
-        </statistics>
-      </player>
+				</description>
+				<statistics poy="1990-2001" goals="76">
+					<data key="FA Cup winner" value="1997, 2000" />
+					<data key="261 Premier League Chelsea appearances" value="1997" />
+					<data key="21 international caps for England" />
+					<data key="UEFA Super Cup Winner" value="1998" />
+					<data key="League Cup winner" value="1998" />
+				</statistics>
+			</player>
 
-      <player>
-        <name>Didier Drogba</name>
-        <shirtno>11</shirtno>
-        <img src="/assets/teamsheets/chelsea/players/Didier-Drogba1.jpg"/>
-        <gallery> 
-        	<img src="/assets/teamsheets/chelsea/players/Didier-Drogba2.jpg"/> 
-        	<img src="/assets/teamsheets/chelsea/players/Didier-Drogba3.jpg"  /> 
-        </gallery>
-        <description>
+			<player>
+				<name>Didier Drogba</name>
+				<shirtno>11</shirtno>
+				<img src="/assets/teamsheets/chelsea/players/Didier-Drogba1.jpg" />
+				<gallery>
+					<img src="/assets/teamsheets/chelsea/players/Didier-Drogba2.jpg" />
+					<img src="/assets/teamsheets/chelsea/players/Didier-Drogba3.jpg" />
+				</gallery>
+				<description>
           <![CDATA[Signing for Chelsea in July 2004, Drogba would go on to score 157 goals in 341 appearances, making him the Club’s fourth all-time top scorer. A Barclays Premier League winner in 2005 and 2006, his goals earned him the Golden Boot in 2007, and he would pick up this award again as Chelsea won the double, Drogba contributing 37 goals in all competitions. The first African player to reach the 100-goal mark in the Barclays Premier League, Drogba signed off from Chelsea by scoring a header and then the winning penalty in the 2012 UEFA Champions League final.]]>
-        </description>
-        <statistics poy="2004-2013" goals="157">
-                <data key="3 Barclays Premier League Titles" />
-                <data key="4 FA Cup titles" />
-                <data key="Chelsea Player of the Year" value="2009/10" />
-                <data key="BPL Golden Boot" value="2007, 2010" />
-                <data key="PFA League Team of the Year" value="2007, 2010" />
-                <data key="98 international caps for The Ivory Coast" />
-        </statistics>
-      </player>
-    </top_players>     
-    
-    <video src="/assets/teamsheets/chelsea/video/Chelsea Video.flv" />
-    
-    <gallery>
-            <item>
-                <img src="/assets/teamsheets/chelsea/gallery/Stamford-Bridge-03.jpg" alt="Stamford Bridge" />
-                <description><![CDATA[Stamford Bridge was opened as an athletics stadium in the 1870s and was not used for football until the newly formed Chelsea Football Club moved in, in 1905. The renovated stadium was designed by legendary architect Archibald Leitch.
-                The stadium’s highest official attendance is 82,905, for a league match between Chelsea and Arsenal in 1935, though it is estimated more than 100,000 packed in for a friendly against Dinamo Moscow in 1945. In recent times, the stadium has once again been completely renovated and its current form has stood since 2001.]]></description>
-                <statistics>
-                    <description><![CDATA[<span fontWeight="bold">Capacity:</span> 41,624 <br/><br/><span fontWeight="bold">Field Dimensions:</span> 105m x 68m<br/><br/><span fontWeight="bold">Surface:</span> Desso GrassMaster.]]></description>
-                    <stat key="Capacity" value="41,624" />
-                    <stat key="Field Dimensions" value="103m x 67m" />
-                    <stat key="Surface" value="Desso GrassMaster" />   
-                </statistics>
-            </item>
-    </gallery>
-    
- <timeline><![CDATA[/assets/teamsheets/chelsea/timeline/DidYouKnow.swf]]></timeline>
+				</description>
+				<statistics poy="2004-2013" goals="157">
+					<data key="3 Barclays Premier League Titles" />
+					<data key="4 FA Cup titles" />
+					<data key="Chelsea Player of the Year" value="2009/10" />
+					<data key="BPL Golden Boot" value="2007, 2010" />
+					<data key="PFA League Team of the Year" value="2007, 2010" />
+					<data key="98 international caps for The Ivory Coast" />
+				</statistics>
+			</player>
+		</top_players>
 
-</teaminfo>
+		<video src="/assets/teamsheets/chelsea/video/Chelsea Video.flv" />
+
+		<gallery>
+			<item>
+				<img src="/assets/teamsheets/chelsea/gallery/Stamford-Bridge-03.jpg"
+					alt="Stamford Bridge" />
+				<description><![CDATA[Stamford Bridge was opened as an athletics stadium in the 1870s and was not used for football until the newly formed Chelsea Football Club moved in, in 1905. The renovated stadium was designed by legendary architect Archibald Leitch.
+                The stadium’s highest official attendance is 82,905, for a league match between Chelsea and Arsenal in 1935, though it is estimated more than 100,000 packed in for a friendly against Dinamo Moscow in 1945. In recent times, the stadium has once again been completely renovated and its current form has stood since 2001.]]></description>
+				<statistics>
+					<description><![CDATA[<span fontWeight="bold">Capacity:</span> 41,624 <br/><br/><span fontWeight="bold">Field Dimensions:</span> 105m x 68m<br/><br/><span fontWeight="bold">Surface:</span> Desso GrassMaster.]]></description>
+					<stat key="Capacity" value="41,624" />
+					<stat key="Field Dimensions" value="103m x 67m" />
+					<stat key="Surface" value="Desso GrassMaster" />
+				</statistics>
+			</item>
+			<item>
+				<img src="/assets/teamsheets/chelsea/gallery/Stamford-Bridge-03.jpg"
+					alt="Stamford Bridge" />
+				<description><![CDATA[Stamford Bridge was opened as an athletics stadium in the 1870s and was not used for football until the newly formed Chelsea Football Club moved in, in 1905. The renovated stadium was designed by legendary architect Archibald Leitch.
+                The stadium’s highest official attendance is 82,905, for a league match between Chelsea and Arsenal in 1935, though it is estimated more than 100,000 packed in for a friendly against Dinamo Moscow in 1945. In recent times, the stadium has once again been completely renovated and its current form has stood since 2001.]]></description>
+				<statistics>
+					<description><![CDATA[<span fontWeight="bold">Capacity:</span> 41,624 <br/><br/><span fontWeight="bold">Field Dimensions:</span> 105m x 68m<br/><br/><span fontWeight="bold">Surface:</span> Desso GrassMaster.]]></description>
+					<stat key="Capacity" value="41,624" />
+					<stat key="Field Dimensions" value="103m x 67m" />
+					<stat key="Surface" value="Desso GrassMaster" />
+				</statistics>
+			</item>
+		</gallery>
+
+		<timeline><![CDATA[/assets/teamsheets/chelsea/timeline/DidYouKnow.swf]]></timeline>
+
+	</teaminfo>
 </teams>
