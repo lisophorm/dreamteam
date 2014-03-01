@@ -68,6 +68,7 @@ package model
 				prefsXML.urnLength 		= values.urnLength;
 				prefsXML.applicationtype = values.applicationtype;
 				prefsXML.scoreFormat	 = values.scoreFormat;
+				prefsXML.localIP 		= values.localIP;
 
 				writeXMLData();
 				
@@ -121,6 +122,7 @@ package model
 				stream.close();
 			} catch (error:Error)
 			{
+				trace("error writing xml data");
 				trace(error);
 			}
 		

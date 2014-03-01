@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
 		 xmlns:s="library://ns.adobe.com/flex/spark" 
-		 xmlns:mx="library://ns.adobe.com/flex/mx" width="100%" height="100%" added="onAdded()" remove="exit()" xmlns:components="com.flexcapacitor.components.*" xmlns:controls="com.flexcapacitor.controls.*">
+		 xmlns:mx="library://ns.adobe.com/flex/mx" width="900" added="onAdded()" remove="exit()">
 	<fx:Script>
 		<![CDATA[
+			import flash.utils.getQualifiedClassName;
 			import flash.utils.setInterval;
 			
+			import mx.core.UIComponent;
 			import mx.core.UIFTETextField;
 			import mx.events.FlexEvent;
+			import mx.events.ResizeEvent;
 			import mx.managers.PopUpManager;
 			
 			
@@ -22,37 +25,12 @@
 			[Bindable]
 			public var exitFunction:Function = null;
 			
-			protected function onAdded(e:FlexEvent=null):void
-			{
-				isremoving = false;
-			}
+			private var webView:StageWebView;
 			
 			public var initialUrl:String;
 			
-			protected function exit(e:FlexEvent=null):void
+			protected function onAdded(e:FlexEvent=null):void
 			{
-				isremoving = true;
-				if (exitFunction!=null)
-					exitFunction();
-				
-			}
-			public function get isRemoving():Boolean
-			{
-				return isremoving;
-			}
-			
-
-			
-			protected function ta_addedToStageHandler(event:Event):void
-			{
-				//var pt:Point = new Point(event.localX, event.localY);
-				
-				setInterval(resizza,300);
-				
-				var pt:Point = event.target.parent.localToGlobal(new Point());
-				//var locazia:Point=gino.contentToGlobal(new Point());
-				//trace("converso x:"+locazia.x+" y:"+locazia.y+" t:"+pt.x);
-				// This copies a single file into a subdir of appStorageDir
 				
 				try
 				{
@@ -69,17 +47,124 @@
 					trace("Warning: "+error.message.toString());
 				}
 				
-				tec.x=(stage.width-this.width)/2+18;
-				tec.y=(stage.height-this.height)/2;
-				tec.source=initialUrl;
+				isremoving = false;
+				webView=new StageWebView();
+				webView.addEventListener(LocationChangeEvent.LOCATION_CHANGING,webChanging);
+				webView.addEventListener(LocationChangeEvent.LOCATION_CHANGE,webChange);
+				webView.addEventListener(Event.COMPLETE,webComplete);
+				webView.viewPort=new Rectangle(100,100,300,300);
+				webView.stage=stage;
+				webView.loadURL(initialUrl);
 			}
-
-			private function resizza() {
-				tec.width=stage.width;
-				tec.x=0;
-				tec.y=testa.height;
+			function webChanging(e:LocationChangeEvent) {
+				trace("changing");
+				webView.stage=null;
 			}
-
+			function webChange(e:LocationChangeEvent) {
+				trace("webChange");
+				webView.stage=null;
+			}
+			function webComplete(e:Event) {
+				trace("complete");
+				webView.stage=stage;
+			}
+			protected function exit(e:FlexEvent=null):void
+			{
+				if(webView) {
+					webView.stage=null;
+					webView.dispose();
+				}
+				isremoving = true;
+				if (exitFunction!=null)
+					exitFunction();
+				
+			}
+			public function get isRemoving():Boolean
+			{
+				return isremoving;
+			}
+			
+			protected function myHtml_creationCompleteHandler(event:FlexEvent):void
+			{
+				//var source:File = File.applicationDirectory.resolvePath("assets/html/tandc.html"); 
+				//myHtml.htmlLoader.load(new URLRequest(source.url));
+				
+			}
+			public static function traceDisplayList(displayObject:DisplayObject, instanceOnly:Boolean = false, withData:Boolean = true, withParent:Boolean = false, maxDepth:int = 100, skipClass:Class = null, levelSpace:String = " ", currentDepth:int = 0, parent:String = ""):void 
+			{
+				if (skipClass != null) { if (displayObject is skipClass) { return; } }
+				
+				var displayName:String = displayObjectCleanName(displayObject);
+				displayName += (displayName != "") ? " " : "";
+				if (instanceOnly && displayName == "") { return; }
+				
+				var className:String = getCleanClassName(displayObject);
+				
+				if(className=="Video") {
+					trace("BEKKKATO IL VIDEO");
+					var vid:flash.media.Video = displayObject as flash.media.Video;
+					vid.smoothing=true;
+				}
+				
+				
+				var text:String = (className == "TextField") ? String(" \"" + TextField(displayObject).text) + "\"" : ""
+				
+				var objectName:String = displayName + className + text;
+				
+				var dataString:String = (withData) ? String(" [x:" + displayObject.x + " y:" + displayObject.y + " width:" + displayObject.width + " height:" + displayObject.height + "]") : "";
+				
+				var parentName:String = (withParent && parent != "") ? String(" (" +  parent + ")") : "";   
+				
+				var levelStr:String = (withParent) ? String(currentDepth + " ") : "";
+				
+				trace(levelStr + levelSpace + objectName + dataString + parentName);
+				
+				if (displayObject is DisplayObjectContainer && currentDepth < maxDepth)
+				{       
+					for (var i:int = 0; i < DisplayObjectContainer(displayObject).numChildren; i++)
+					{
+						traceDisplayList(DisplayObjectContainer(displayObject).getChildAt(i), instanceOnly, withData, withParent, maxDepth, skipClass, levelSpace + "    ", currentDepth + 1, objectName);
+					}
+				}
+			}   
+			
+			public static function getCleanClassName(obj:*):String 
+			{
+				var className:String = String(getQualifiedClassName(obj));
+				var indexOfString:int = className.lastIndexOf("::");
+				className = (indexOfString < 0) ? className : className.slice(indexOfString + 2);
+				return className;           
+			}
+			
+			public static function displayObjectCleanName(displayObject:DisplayObject):String
+			{
+				return String((displayObject.name.substr(0, 8) == "instance") ? "" : displayObject.name);
+			}
+			
+			
+			protected function ciaociao_resizeHandler(event:ResizeEvent):void
+			{
+				//traceDisplayList(this);
+				//trace("resize)");
+				if(ciaociao) {
+					var pt:Point=ciaociao.localToGlobal(new Point(0,0));
+					trace("point.x:"+pt.x);
+					trace("point.x:"+pt.y);
+					if(webView) {
+						//webView.viewPort=new Rectangle(pt.x,pt.y,ciaociao.width,ciaociao.height);
+						//webView.stage=null;
+						//	this.invalidateDisplayList();
+						//	webView.viewPort=new Rectangle(pt.x,pt.y,ciaociao.width,ciaociao.height);
+						//webView.stage=stage;
+						
+					} else {
+						trace("no webview");
+					}
+				} else {
+					
+					trace("component not initiated");
+				}
+			}
 			
 		]]>
 	</fx:Script>
@@ -89,10 +174,16 @@
 	<fx:Declarations>
 		<s:DropShadowFilter id="shadowfilter" strength=".8" distance="8" />
 	</fx:Declarations> 
-
+	<s:Rect id="tbFill" left="0" right="0" top="0" bottom="0" radiusX="0" >
+		<s:stroke>
+			<s:SolidColorStroke id="borderStroke" color="0x00adee" weight="4"/>
+		</s:stroke>
+		<s:fill>
+			<s:SolidColor color="#FFFFFF"/>
+		</s:fill>
+	</s:Rect>
+	
 	<s:VGroup width="100%" height="100%" horizontalAlign="center" verticalAlign="middle">
-	<s:VGroup id="testa">
-		
 		<s:Spacer height="15" />
 		<s:HGroup width="100%" verticalAlign="middle" horizontalAlign="center">
 			<s:Label id="titleDisplay" maxDisplayedLines="1" 
@@ -101,8 +192,13 @@
 					 text="TERMS AND CONDITIONS"
 					 verticalAlign="middle" horizontalCenter="0" />
 		</s:HGroup>
-	</s:VGroup>
-		<controls:WebView width="{stage.width}" id="tec" height="{stage.height-testa.height}" addedToStage="ta_addedToStageHandler(event)"/>
-		<s:Button label="CLOSE" click="PopUpManager.removePopUp(this);" bottom="0" />
+		<s:Spacer height="15" />
+		<s:Group  width="95%" id="ciaociao" height="600" resize="ciaociao_resizeHandler(event)"  >
+			
+			
+		</s:Group>
+		<s:Spacer height="15" />
+		<s:Button label="CLOSE" click="PopUpManager.removePopUp(this);" />
+		<s:Spacer height="15" />
 	</s:VGroup>
 </s:Group>

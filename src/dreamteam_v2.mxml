@@ -2,7 +2,7 @@
 <s:WindowedApplication xmlns:fx="http://ns.adobe.com/mxml/2009" 
 					   xmlns:s="library://ns.adobe.com/flex/spark" 
 					   xmlns:mx="library://ns.adobe.com/flex/mx" xmlns:views="views.*"
-					   horizontalCenter="center" width="1024" height="768" backgroundColor="#000000"
+					   horizontalCenter="center"  backgroundColor="#000000"
 					   initialize="videoSettings(event)"
 					   creationComplete="init(event)"  resize="onresize()"
 					   addedToStage="fullscreen()" showStatusBar="false" 
@@ -423,7 +423,6 @@
 					
 				}
 				
-				//				trace("dreamteam :: gotoView :: " + stackStr + " :: " + obj["type"]);
 				
 				for (var i:int=0;i<indexSeq.length;i++)
 				{
@@ -873,10 +872,9 @@
 				<s:Button skinClass="skins.BasicButton" styleName="nav" icon="@Embed('assets/images/core/home_logo.png')" click="{defaultView()}"/>
 				<s:Button skinClass="skins.BasicButton" styleName="nav" label="{ML.t('Quit')}" click="exitApplication(event)" id="quitButton" color="0xFFFFFF" visible="{loggedIn}" includeInLayout="{loggedIn}" />
 				<s:Button skinClass="skins.BasicButton" styleName="nav" icon="@Embed('assets/images/core/padlock.png')" click="config(event)" color="0xFFFFFF" />
-				<!--s:Button label="userform" click="{gotoView('UserForm')}"/-->
+				<s:Button label="userform" click="{gotoView('UserForm')}"/>
 			</s:HGroup>		
 		</s:HGroup>
-		
 	</s:BorderContainer>
 	
 	<s:VGroup id="contentholder" width="100%" height="100%" verticalAlign="middle" horizontalAlign="center">
