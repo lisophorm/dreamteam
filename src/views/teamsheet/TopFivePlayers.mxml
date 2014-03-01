@@ -273,13 +273,13 @@
 			
 			protected function statA_1_updateCompleteHandler(event:FlexEvent):void
 			{
-				trace("STATA MADOONA POST PUTTANA"+statA_1.height);
+				trace("STATA_1 creationcomplete: "+statA_1.height);
 				
 			}
 			
 			protected function statA_1_creationCompleteHandler(event:FlexEvent):void
 			{
-				trace("STATA MADOONA CERATIONCOMPLETE PUTTANA"+statA_1.height);
+				trace("statA_1_creationCompleteHandler: "+statA_1.height);
 				
 			}
 			
@@ -325,7 +325,7 @@
 		
 
 			<s:VGroup width="100%" height="180" paddingLeft="32" paddingRight="32" bottom="0">
-				<s:Label text="STATISTICS"   color="{teamColor}" fontSize="30" paddingBottom="{ stat_POY.length>40 ? 10 : 0 }" />
+				<s:Label text="STATISTICS" color="{teamColor}" fontSize="30" paddingBottom="{ stat_POY.length>40 ? 10 : 0 }" />
 				<s:HGroup verticalAlign="middle">
 					<s:HGroup id="statRoller" stateChangeComplete="statRoller_stateChangeCompleteHandler(event)" width="400" height="113" verticalAlign="bottom" verticalCenter="0">
 						<s:Label id="statA_1" lineHeight="28" text="{stat_POY}" creationComplete="statA_1_creationCompleteHandler(event)" updateComplete="statA_1_updateCompleteHandler(event)"  width="200" paddingTop="50"  fontSize="28" fontFamily="StandardRegularAllCase" />

@@ -187,12 +187,7 @@
 			protected function init(e:Event = null):void
 			{
 				
-				if(Updater.isSupported) {
-					trace("checking update")
-					checkUpdate();
-				} else {
-					trace("update not supported");
-				}
+
 				
 				/*Mouse.hide();*/
 				
@@ -213,7 +208,7 @@
 				//password = pref.prefsXML..password;
 				password="123";
 				monitor =  new MonitorConnection(localURL+"ping.php");
-				checkUpdate();
+
 				
 				this.addEventListener( ApplicationEvent.SAVE_TYPE, notifyApplicationTypeUpdate );
 				this.addEventListener( ApplicationEvent.LOGOUT, notifyApplicationLogout );
