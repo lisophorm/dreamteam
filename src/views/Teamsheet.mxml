@@ -100,6 +100,7 @@
 				defaultFontsize = 100;
 				teamname_text.setStyle("fontSize", defaultFontsize);
 				Stack.selectedIndex = 0;
+				trace("Teamsheet :: reset");
 			}
 			
 			protected function populate(e:ResultEvent=null):void
@@ -214,6 +215,9 @@
 					videoElemento.videoPlayer.stop();
 				}
 				trace("Teamsheet :: finalise");
+				if(gallery.currentIndex) {
+					gallery.currentIndex=0;
+				}
 				gallery.finalise();
 			}
 			

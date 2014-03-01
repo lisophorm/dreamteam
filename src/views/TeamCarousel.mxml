@@ -11,23 +11,27 @@
 			import com.greensock.TweenMax;
 			import com.greensock.easing.Sine;
 			
-			import events.CarouselItemEvent;
-			import events.KioskError;
-			import events.ViewEvent;
-			
-			import model.entity.TeamDTO;
-			
 			import mx.collections.ArrayCollection;
 			import mx.core.UIComponent;
 			import mx.events.FlexEvent;
 			import mx.rpc.events.FaultEvent;
 			import mx.rpc.events.ResultEvent;
 			
+			import events.CarouselItemEvent;
+			import events.KioskError;
+			import events.ViewEvent;
+			
+			import flashx.textLayout.elements.SpecialCharacterElement;
+			
+			import model.entity.TeamDTO;
+			
 			import views.renderer.CarouseltemRenderer;
 			
 			public var data:Object;
 
 			protected var wrapper : UIComponent = new UIComponent();
+			
+			protected var debugTimer:Timer=new Timer(20);
 
 			// NEW
 			
@@ -62,8 +66,35 @@
 				initialise();
 			}
 			
+			private function debugTimera(e:TimerEvent) {
+				debugWin.text="";
+				if(mouseX) {
+					debugWin.text+="\r\nMouse x:"+mouseX.toString();
+				}
+				if(mouseY) {
+					debugWin.text+="\r\nMouse y:"+mouseY.toString();
+				}
+				if(friction) {
+					debugWin.text+="\r\friction:"+friction.toString();
+				}
+				if(velocity) {
+					debugWin.text+="\r\nvelocity x:"+velocity.toString();
+				}
+				if(CarouselLayout(CarouselGroup.layout).freeRotationDegree) {
+					debugWin.text+="\r\nnewAngle  x:"+CarouselLayout(CarouselGroup.layout).freeRotationDegree.toString();
+				}
+				
+				if(hasEventListener(Event.ENTER_FRAME)) {
+					debugWin.text+="\r\enterframe ON:";
+				} else {
+					debugWin.text+="\r\enterframe OFF:";
+				}
+			}
+			
 			public function initialise(event:Event=null):void
 			{
+				debugTimer.addEventListener(TimerEvent.TIMER,debugTimera);
+				debugTimer.start();
 				if (this.parentApplication.data!=null)
 				{
 					data = this.parentApplication.data;
@@ -190,6 +221,9 @@
 				backgroundimage.visible = false;
 				this.parentApplication.dispatchEvent( new ViewEvent( type=="GAME" ? ViewEvent.LOCATION_GAME : ViewEvent.LOCATION_TEAMSHEETS, {team: team } ));
 			}
+			
+
+			
 		]]>
 	</fx:Script>
 	
@@ -212,6 +246,8 @@
 				<s:Spacer height="10" />
 				<s:Image smooth="true" source="{'assets/images/'+(type=='GAME' ? 'txt_dream_team' : 'txt_select_your_teamsheet' )+'.png'}"  />			
 				<s:Label fontSize="20" textAlign="center" paddingTop="15" width="330" text="{(type=='GAME') ? game_subtext : teamsheet_subtext}" color="0x29b1f0"  />
+				<s:TextArea width="300" height="300" id="debugWin" text="Ciao" color="0xcc0000" />
+
 			</s:VGroup>
 			<s:Spacer width="100" />
 			<s:VGroup width="1400" >
@@ -231,6 +267,7 @@
 						<s:Image smooth="true" verticalAlign="bottom" source="assets/images/graphics_arrow.png"  />
 						<s:Spacer height="3" />
 						<s:Label fontSize="22" textAlign="center" width="330" text="SWIPE TO SELECT YOUR TEAM" color="0x29b1f0"  />
+
 					</s:VGroup>
 				</s:VGroup>
 			</s:VGroup>

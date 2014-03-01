@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
 		 xmlns:s="library://ns.adobe.com/flex/spark" 
-		 xmlns:mx="library://ns.adobe.com/flex/mx" creationComplete="created(event)" xmlns:swipemanager="views.controls.supportClasses.swipemanager.*">
+		 xmlns:mx="library://ns.adobe.com/flex/mx" creationComplete="created(event)" remove="group1_removeHandler(event)" xmlns:swipemanager="views.controls.supportClasses.swipemanager.*">
 	<fx:Script>
 		<![CDATA[
 			import com.alfo.utils.Console;
@@ -123,6 +123,13 @@
 			{
 				swipeDetector.disable();
 			}
+			
+			protected function group1_removeHandler(event:FlexEvent):void
+			{
+				trace("gallery remove from inside");
+				
+			}
+			
 		]]>
 	</fx:Script>
 	<fx:Declarations>
@@ -142,8 +149,8 @@
 		</s:DataGroup>
 		</s:Group>
 		<s:HGroup top="620" left="1140">
-			<s:Image width="40" height="40" smooth="true"  source="/assets/images/arrow_left.png" id="btn_previous" buttonMode="true"/>
-			<s:Image width="40" height="40" smooth="true"  source="/assets/images/arrow_right.png" id="btn_next" buttonMode="true"/>
+			<s:Image width="40" height="40" smooth="true" smoothingQuality="high"  source="/assets/images/arrow_left.png" id="btn_previous" buttonMode="true"/>
+			<s:Image width="40" height="40" smooth="true" smoothingQuality="high" source="/assets/images/arrow_right.png" id="btn_next" buttonMode="true"/>
 		</s:HGroup>	
 	</s:BorderContainer>
 	<s:Spacer height="20" />
