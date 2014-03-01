@@ -4,18 +4,14 @@
 		 xmlns:mx="library://ns.adobe.com/flex/mx" width="1920" height="1080" 
 		 xmlns:views="views.*"
 		 xmlns:layouts= "views.layouts.*"
-		 creationComplete="created(event)">
+		 creationComplete="created(event)"
+		 remove="esce(event)"
+		 >
 	
 	<fx:Script>
 		<![CDATA[
 			import com.greensock.TweenMax;
 			import com.greensock.easing.Sine;
-			
-			import events.CarouselItemEvent;
-			import events.KioskError;
-			import events.ViewEvent;
-			
-			import model.entity.TeamDTO;
 			
 			import mx.collections.ArrayCollection;
 			import mx.core.UIComponent;
@@ -23,12 +19,17 @@
 			import mx.rpc.events.FaultEvent;
 			import mx.rpc.events.ResultEvent;
 			
+			import events.CarouselItemEvent;
+			import events.KioskError;
+			import events.ViewEvent;
+			
+			import model.entity.TeamDTO;
+			
 			import views.renderer.CarouseltemRenderer;
 			
 			public var data:Object;
 
 			protected var wrapper : UIComponent = new UIComponent();
-
 			// NEW
 			
 			private var mousePositions : Array;
@@ -61,9 +62,25 @@
 				this.addEventListener( Event.INIT, initialise);
 				initialise();
 			}
-			
+			public function esce(event:Event=null):void
+			{
+				trace("********* REMOVE");
+				
+				mouseRecorderTimer.removeEventListener(TimerEvent.TIMER, recordMouse);
+				mouseRecorderTimer = null;
+				//addEventListener(MouseEvent.MOUSE_DOWN, mouseDownHandler);
+				//addEventListener(MouseEvent.MOUSE_UP, mouseUpHandler, true);
+				//addEventListener(Event.MOUSE_LEAVE,mouseOutHandler,true);
+				removeEventListener(TouchEvent.TOUCH_BEGIN,beginHandler);
+				removeEventListener(TouchEvent.TOUCH_END,endHandler);
+				//addEventListener(TouchEvent.TOUCH_TAP,tapItem);
+				CarouselGroup.removeEventListener(CarouselItemEvent.ITEM_SELECTED, itemSelectedHandler);
+				//CarouselLayout(CarouselGroup.layout).freeRotationDegree = 0;
+			}
 			public function initialise(event:Event=null):void
 			{
+				trace("********* INIT CROUSEL");
+				
 				if (this.parentApplication.data!=null)
 				{
 					data = this.parentApplication.data;
@@ -73,17 +90,51 @@
 				this.backgroundimage.visible = true;
 				
 				teamData.send();
-
+				Multitouch.inputMode=MultitouchInputMode.TOUCH_POINT; 
 				///////////////////				
 				mouseRecorderTimer = new Timer(20);
 				mouseRecorderTimer.addEventListener(TimerEvent.TIMER, recordMouse);
-				addEventListener(MouseEvent.MOUSE_DOWN, mouseDownHandler);
-				addEventListener(MouseEvent.MOUSE_UP, mouseUpHandler, true);
-				
+				//addEventListener(MouseEvent.MOUSE_DOWN, mouseDownHandler);
+				//addEventListener(MouseEvent.MOUSE_UP, mouseUpHandler, true);
+				//addEventListener(Event.MOUSE_LEAVE,mouseOutHandler,true);
+				addEventListener(TouchEvent.TOUCH_BEGIN,beginHandler);
+				addEventListener(TouchEvent.TOUCH_END,endHandler);
+				//addEventListener(TouchEvent.TOUCH_TAP,tapItem);
 				CarouselGroup.addEventListener(CarouselItemEvent.ITEM_SELECTED, itemSelectedHandler);
 				CarouselLayout(CarouselGroup.layout).freeRotationDegree = 0;
 			}
-
+			private function tapItem(e:TouchEvent) {
+				trace("you tapped me");
+			}
+			private function beginHandler(e:TouchEvent) {
+				trace("begin touch");
+				removeEventListener(Event.ENTER_FRAME, enterFrameHandler);
+				initialCarouselPosition = CarouselLayout(CarouselGroup.layout).freeRotationDegree;
+				mouseZero = mouseX;
+				
+				zeroTime = getTimer();	
+				mouseRecorderTimer.start();
+				mousePositions = [];
+			}
+			private function endHandler(e:TouchEvent) {
+				trace("end touch");
+				mouseRecorderTimer.stop();
+				var elapsed : int = getTimer() - zeroTime;
+				
+				if(elapsed > clickInterval)
+				{
+					trace("stop propagation");
+				/*	e.stopPropagation();
+					var lastSafePosition : int = Math.min(12, mousePositions.length);
+					var positionOne : Number = mousePositions[0];
+					var positionTwo : Number = mousePositions[lastSafePosition - 1];
+					velocity = (positionTwo - positionOne) / mousePositions.length * carouselSensitivity * 2;
+					if(Math.abs(velocity) > swipeThreshold)
+					{
+						addEventListener(Event.ENTER_FRAME, enterFrameHandler);
+					}*/
+				}
+			}
 			public function exit( e:Event = null):void
 			{
 				CarouselGroup.invalidateDisplayList();
@@ -112,7 +163,9 @@
 			{
 				this.parentApplication.dispatchEvent(new KioskError(KioskError.ERROR, e.fault.message.toString(), "COMMUNICATION ERROR"));
 			}
-
+			protected function mouseOutHandler(event : MouseEvent) : void {
+				trace("ciao ciao bambina");
+			}
 			protected function mouseDownHandler(event : MouseEvent) : void
 			{
 				removeEventListener(Event.ENTER_FRAME, enterFrameHandler);

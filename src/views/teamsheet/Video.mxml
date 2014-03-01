@@ -129,7 +129,7 @@
 				var className:String = getCleanClassName(displayObject);
 				
 				if(className=="Video") {
-					trace("BEKKKATO IL VIDEO");
+					//trace("BEKKKATO IL VIDEO");
 					var vid:flash.media.Video = displayObject as flash.media.Video;
 					vid.smoothing=true;
 				}
@@ -145,7 +145,7 @@
 				
 				var levelStr:String = (withParent) ? String(currentDepth + " ") : "";
 				
-				trace(levelStr + levelSpace + objectName + dataString + parentName);
+				//trace(levelStr + levelSpace + objectName + dataString + parentName);
 				
 				if (displayObject is DisplayObjectContainer && currentDepth < maxDepth)
 				{       
@@ -177,7 +177,7 @@
 			
 			protected function videoPlayer_updateCompleteHandler(event:FlexEvent):void
 			{
-				trace("video update complete");
+				//trace("video update complete");
 				traceDisplayList(videoPlayer);
 				if (videoPlayer.videoObject) {
 					videoPlayer.videoObject.smoothing = true;

@@ -9,24 +9,30 @@
 				addedToStage="initialise(event)" removedFromStage="finalise(event)">
 	<fx:Script>
 		<![CDATA[
-			import events.CarouselItemEvent;
-			
 			import flash.filters.BitmapFilterQuality;
-			
-			import model.entity.TeamDTO;
 			
 			import mx.events.FlexEvent;
 			
 			import spark.filters.GlowFilter;
 			
+			import events.CarouselItemEvent;
+			
+			import model.entity.TeamDTO;
+			
 			protected function initialise(event : Event):void
 			{
-				addEventListener(MouseEvent.MOUSE_UP, mouseUpHandler);
+				//addEventListener(MouseEvent.MOUSE_UP, mouseUpHandler);
+				addEventListener(TouchEvent.TOUCH_TAP,tapHandler);
 			}
 			
 			protected function mouseUpHandler(event : MouseEvent):void
 			{
 				trace("CarouselItemRenderer :: mouseUpHandler");
+				dispatchEvent(new CarouselItemEvent(CarouselItemEvent.ITEM_SELECTED, data as TeamDTO, true));
+			}
+			protected function tapHandler(event : TouchEvent):void
+			{
+				trace("CarouselItemRenderer :: tapandler");
 				dispatchEvent(new CarouselItemEvent(CarouselItemEvent.ITEM_SELECTED, data as TeamDTO, true));
 			}
 			
