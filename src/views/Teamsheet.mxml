@@ -146,6 +146,36 @@
 			
 			protected function change(e:IndexChangedEvent):void
 			{
+				switch(e.oldIndex) {
+					case 0:
+						trace("***** exit top 5");
+						break;
+					case 1:
+						trace("***** esit gallery");
+						break;
+					case 2:
+						trace("***** exit video");
+						break;
+					case 3:
+						trace("***** exit timeline");
+						break;
+				}
+				switch (e.newIndex) {
+					case 0:
+						trace("***** enter top 5");
+						break;
+					case 1:
+						trace("***** enter gallery");
+						gallery.currentIndex=0;
+						break;
+					case 2:
+						trace("***** enter video");
+						break;
+					case 3:
+						trace("***** enter timeline");
+						break;
+					
+				}
 				if (e.oldIndex!=e.newIndex && e.oldIndex>=0)
 				{
 					Stack.getChildAt(e.oldIndex).dispatchEvent(new Event("EXIT") );
