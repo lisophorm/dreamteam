@@ -313,7 +313,7 @@
 					}
 					if (tcWindow!=null)
 					{
-						popups.push(tcWindow);
+						popups.push();
 						
 					}
 					if (progressWindow!=null)
@@ -400,12 +400,10 @@
 			{
 				clearPopups();
 				tcWindow = new tandcWindow();
-				tcWindow.scaleX = tcWindow.scaleY = this.scale;
 				tcWindow.exitFunction = e.exitFunction;
 				
-				PopUpManager.addPopUp(tcWindow, this, true);
+				PopUpManager.addPopUp(tcWindow, this, false);
 				PopUpManager.centerPopUp(tcWindow);
-				centerPopups();
 			}
 			
 			protected function gotoView( stackStr:String="", obj:Object=null ) :void
