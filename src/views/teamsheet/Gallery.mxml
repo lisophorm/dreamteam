@@ -141,7 +141,7 @@
 	<s:BorderContainer  backgroundAlpha=".5" backgroundColor="0x00000" borderVisible="false" width="1243" height="666">
 		<s:Group id="holder"  width="1243" height="666">
 		
-		<s:DataGroup id="galleryGroup"  itemRenderer="views.renderer.gallery_renderer">
+	<s:DataGroup id="galleryGroup"  itemRenderer="views.renderer.gallery_renderer">
 			<s:layout>
 				<s:HorizontalLayout/>
 			</s:layout> 

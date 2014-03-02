@@ -4,13 +4,13 @@
 
 @font-face
 {
-	src: url("../fonts/PremierLeague/PremierLeague.ttf");
+	src: url("../fonts/PremierLeague/PremierLeague.otf");
 	fontFamily: "StandardRegular";
 	embedAsCFF: true;
 }
 @font-face
 {
-	src: url("../fonts/PremierLeague/PremierLeague.ttf");
+	src: url("../fonts/PremierLeague/PremierLeague.otf");
 	fontFamily: "StandardRegularNOCFF";
 	embedAsCFF: false;
 }

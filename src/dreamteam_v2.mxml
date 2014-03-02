@@ -27,6 +27,13 @@
 	
 	<fx:Script>
 		<![CDATA[
+			import mx.controls.Alert;
+			import mx.core.FlexGlobals;
+			import mx.events.FlexEvent;
+			import mx.managers.PopUpManager;
+			
+			import spark.filters.DropShadowFilter;
+			
 			import air.update.ApplicationUpdaterUI;
 			import air.update.events.UpdateEvent;
 			
@@ -42,18 +49,11 @@
 			import model.ML;
 			import model.MonitorConnection;
 			
-			import mx.controls.Alert;
-			import mx.core.FlexGlobals;
-			import mx.events.FlexEvent;
-			import mx.managers.PopUpManager;
-			
 			import org.osmf.utils.OSMFSettings;
 			
 			import registration.debug.DebugEvent;
 			
 			import skins.vodafoneFormItem;
-			
-			import spark.filters.DropShadowFilter;
 			
 			import views.components.ErrorAlert;
 			import views.components.PasswordAlert;
@@ -69,6 +69,8 @@
 			public var password:String;
 			protected var pref:Config;
 			protected var blinkTimer:Timer;
+			
+			import com.demonsters.debugger.MonsterDebugger;
 			
 			public static var APPLICATION_TYPE_SELECT_GAME_OR_RESULT:String	= "SELECT_GAME_OR_RESULT";
 			public static var APPLICATION_TYPE_REGISTRATION:String	 		= "REGISTRATION";
@@ -187,7 +189,8 @@
 			protected function init(e:Event = null):void
 			{
 				
-
+				//MonsterDebugger.initialize(this);
+				//MonsterDebugger.trace(this,"ciao mnd");
 				
 				/*Mouse.hide();*/
 				

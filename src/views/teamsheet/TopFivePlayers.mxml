@@ -5,13 +5,15 @@
 		 creationComplete="created(event)" >
 	<fx:Script>
 		<![CDATA[
-			import com.alfo.utils.Console;
 			import com.alfo.utils.StringUtils;
 			import com.greensock.TweenMax;
 			
 			import mx.events.FlexEvent;
 			
 			import events.TeamEvent;
+			
+			import flashx.textLayout.compose.TextFlowLine;
+			import flashx.textLayout.elements.ParagraphElement;
 			
 			import model.TeamModel;
 			
@@ -29,6 +31,13 @@
 			[Bindable]
 			protected var fontSize_Year:Number=60;
 			
+			[Bindable]
+			protected var padTop_Year:Number=0;
+			
+			[Bindable]
+			protected var baseShift_Year:Number=0;
+			
+			
 			
 			public function created(event:FlexEvent=null):void
 			{
@@ -37,11 +46,11 @@
 			}
 			public function init(event:Event=null):void
 			{
-//				Console.log("*** INIT TOPFIVEPLAYERS ***", this);
+				//				Console.log("*** INIT TOPFIVEPLAYERS ***", this);
 				
 				if (this.parentApplication.data!=null)
 				{
-				/*	data = this.parentApplication.data;
+					/*	data = this.parentApplication.data;
 					selectedTeam = data.team;
 					teamname = data.team;
 					Console.log( data.team, this );
@@ -55,11 +64,11 @@
 				
 				if (TeamEvent.TEAM_INFO == e.type )
 				{
-//					Console.log("*** READY TOPFIVEPLAYERS ***", this);
+					//					Console.log("*** READY TOPFIVEPLAYERS ***", this);
 					topfiveData = TeamModel.getTopPlayers();
 					teamColor = TeamModel.getTeamColor();
 					showInfo();
-//					Console.log( topfiveData, this );
+					//					Console.log( topfiveData, this );
 					
 					
 				}
@@ -67,37 +76,37 @@
 			}
 			protected function createListeners(event:Event = null):void
 			{
-//				Console.log("*** createListeners TOPFIVEPLAYERS ***"+players.numElements, this);
-					for(var j:uint = 0; j < players.numElements; j++)
-					{
-						var t:topfive_renderer = topfive_renderer(players.getElementAt( j ))
-//							Console.log("*** createListeners TOPFIVEPLAYERS ***"+players.getElementAt( j ), this);
-						if (players.getElementAt( j )!=null)
-						{
-							
-							//CarouselGroup.getElementAt( j ).alpha = .2;
-							//Console.log( CarouselGroup.getElementAt( j ), this);
-							//TOUCH EVENT
-							t.addEventListener( TouchEvent.TOUCH_TAP, mySelect);
-							t.addEventListener( TouchEvent.TOUCH_ROLL_OVER,myRollOver);
-							t.addEventListener( TouchEvent.TOUCH_ROLL_OUT,myRollOut);
-							
-							//MOUSE EVENT
-							t.addEventListener(MouseEvent.CLICK, mySelect);
-							t.addEventListener(MouseEvent.ROLL_OVER, myRollOver);
-							t.addEventListener(MouseEvent.ROLL_OUT, myRollOut);
-							t.buttonMode = t.mouseEnabled = true;
-							
-							
-							
-						}
-					}
-					try {
-						topfive_renderer(players.getElementAt( currentIndex )).cover.visible = false;	
-					} catch (e:Error)
+				//				Console.log("*** createListeners TOPFIVEPLAYERS ***"+players.numElements, this);
+				for(var j:uint = 0; j < players.numElements; j++)
+				{
+					var t:topfive_renderer = topfive_renderer(players.getElementAt( j ))
+					//							Console.log("*** createListeners TOPFIVEPLAYERS ***"+players.getElementAt( j ), this);
+					if (players.getElementAt( j )!=null)
 					{
 						
+						//CarouselGroup.getElementAt( j ).alpha = .2;
+						//Console.log( CarouselGroup.getElementAt( j ), this);
+						//TOUCH EVENT
+						t.addEventListener( TouchEvent.TOUCH_TAP, mySelect);
+						t.addEventListener( TouchEvent.TOUCH_ROLL_OVER,myRollOver);
+						t.addEventListener( TouchEvent.TOUCH_ROLL_OUT,myRollOut);
+						
+						//MOUSE EVENT
+						t.addEventListener(MouseEvent.CLICK, mySelect);
+						t.addEventListener(MouseEvent.ROLL_OVER, myRollOver);
+						t.addEventListener(MouseEvent.ROLL_OUT, myRollOut);
+						t.buttonMode = t.mouseEnabled = true;
+						
+						
+						
 					}
+				}
+				try {
+					topfive_renderer(players.getElementAt( currentIndex )).cover.visible = false;	
+				} catch (e:Error)
+				{
+					
+				}
 			}
 			
 			[Bindable]
@@ -105,14 +114,14 @@
 			
 			[Bindable]
 			protected var shirtno:String = "";
-
+			
 			[Bindable]
 			protected var description:String = "";
 			
 			[Bindable]
 			protected var stat_POY:String = "CRYSTAL PALACE PLAYER OF THE YEAR IN";
 			[Bindable]
-			protected var stat_POY_years:String = "2004-2005";
+			protected var stat_POY_years:String = "";
 			[Bindable]
 			protected var stat_POY_season:String = "SEASON";
 			
@@ -121,19 +130,19 @@
 			
 			[Bindable]
 			protected var stat_goals_for:String = "GOALS SCORED FOR CRYSTAL PALACE";	
-
+			
 			protected function showInfo():void
 			{
 				
 				player_name = topfiveData[currentIndex].name.text().toString().toUpperCase();
 				shirtno = topfiveData[currentIndex].shirtno.text();
 				description = topfiveData[currentIndex].description.toString();
-								
+				
 				//statistics
 				
 				showStatistics()				
 				var gallery:XMLList = topfiveData[currentIndex].gallery..img;
-//				Console.log( gallery, this);
+				//				Console.log( gallery, this);
 				teamshot1.source = gallery[0].@src.toString();
 				teamshot2.source = gallery[1].@src.toString();
 				
@@ -141,48 +150,135 @@
 					topfive_renderer(players.getElementAt( currentIndex )).cover.visible = false;	
 				} catch (e:Error)
 				{
-				
+					
 				}
 				
 			}
 			protected var statistics:XMLList;
 			protected var statisticsIndex:int=0;
 			
+			var totalLines:Number;
+			var prevWidth:Number;
+			var prevLines:Number;
+			
+			protected function iterateEnlarge(e:Event) {
+				trace("enlarge iteraton");							
+				trace("new width:"+statA_1.width+"new lines:"+statA_1.textFlow.flowComposer.numLines.toString());
+				if(statA_1.textFlow.flowComposer.numLines<=4 || statA_1.width>1000) {
+					trace("right fit!");
+					this.removeEventListener(Event.ENTER_FRAME,iterateEnlarge);
+					launchStat();
+				} else {
+					prevWidth=statA_1.width;
+					statA_1.width+=30;
+				}
+				
+			}
+			
+			
+			protected function iterateShrink(e:Event) {
+				trace("enlarge iteraton");							
+				trace("new width:"+statA_1.width+"new lines:"+statA_1.textFlow.flowComposer.numLines.toString());
+				if(statA_1.textFlow.flowComposer.numLines!=prevLines || statA_1.width<100) {
+					trace("right fit!");
+					statA_1.width=prevWidth;
+					this.removeEventListener(Event.ENTER_FRAME,iterateShrink);
+					launchStat();
+				} else {
+					prevWidth=statA_1.width;
+					statA_1.width-=30;
+				}
+				
+			}
+			
 			protected function showKeyStat():void
 			{
-				
-//				Console.log("showKeyStat", this);
+				var ready:Boolean=true;
+				statA_1.width=300;
+				//				Console.log("showKeyStat", this);
 				try
 				{
 					if ( statistics[statisticsIndex].hasOwnProperty("@key") )
 					{
+						trace("original key:"+statistics[statisticsIndex].@key.toString().toUpperCase());
 						stat_POY = statistics[statisticsIndex].@key.toString().toUpperCase();
 						
+						invalidateDisplayList();
+						trace("POY LINES"+statA_1.textFlow.flowComposer.numLines.toString());
+						prevLines=statA_1.textFlow.flowComposer.numLines;
+						if(statA_1.textFlow.flowComposer.numLines>4) {
+							trace("attempt enlarge");
+							ready=false;
+							this.addEventListener(Event.ENTER_FRAME,iterateEnlarge);
+							
+							trace("large loope end");
+						} else {
+							ready=false;
+							this.addEventListener(Event.ENTER_FRAME,iterateShrink);
+							
+						}
 						
 					} else {
 						stat_POY = "";
 					}
 					if ( statistics[statisticsIndex].hasOwnProperty("@value") )
 					{
+						trace("original value:"+statistics[statisticsIndex].@value.toString());
 						var stat_POY_years_temp:Array=statistics[statisticsIndex].@value.toString().split(",");
 						
-						var stat_POY_years_temp_vec:Array=new Array();
+						for (var u:Number=0;u<stat_POY_years_temp.length;u++) {
+							stat_POY_years_temp[u]=StringUtils.trim(stat_POY_years_temp[u]);
+						}
 						
-						if(stat_POY_years_temp.length>1) {
-							for (var a:Number=0;a<stat_POY_years_temp.length;a++) {
-								stat_POY_years_temp_vec.push(StringUtils.trim(String(stat_POY_years_temp[a])));
-							}
-							stat_POY_years = stat_POY_years_temp_vec.join("\r\n");
+						trace("years text:"+stat_POY_years_temp);
+						trace("years array length:"+stat_POY_years_temp.length);
+						
+						
+						switch(stat_POY_years_temp.length) {
+							case 1:
+								trace("years line 1:"+stat_POY_years_temp[0]);
+								fontSize_Year=60;
+								//baseShift_Year=-14;
+								stat_POY_years=stat_POY_years_temp[0];
+								break;
+							case 2:
+								trace("years line 2:"+stat_POY_years_temp[0]);
+								fontSize_Year=40;
+								//baseShift_Year=-14;
+								stat_POY_years=stat_POY_years_temp[0]+"\r\n"+stat_POY_years_temp[1];
+								break;
+							case 3:
+								//baseShift_Year=-14;
+								trace("years line 3:"+stat_POY_years_temp[0]);
+								fontSize_Year=28;
+								
+								//baseShift_Year=-14;
+								stat_POY_years=stat_POY_years_temp[0]+", "+stat_POY_years_temp[1]+"\r\n"+stat_POY_years_temp[2];
+								break;
+							case 4:
+								trace("years line 4:"+stat_POY_years_temp[0]);
+								fontSize_Year=28;
+								//baseShift_Year=-14;
+								stat_POY_years=stat_POY_years_temp[0]+", "+stat_POY_years_temp[1]+"\r\n"+stat_POY_years_temp[2]+", "+stat_POY_years_temp[3];
+								break;
+							
+						}
+						
+						/*if(stat_POY_years_temp.length>1) {
+						for (var a:Number=0;a<stat_POY_years_temp.length;a++) {
+						stat_POY_years_temp_vec.push(StringUtils.trim(String(stat_POY_years_temp[a])));
+						}
+						stat_POY_years = stat_POY_years_temp_vec.join("\r\n");
 						} else {
-							stat_POY_years = StringUtils.trim(statistics[statisticsIndex].@value.toString());
+						stat_POY_years = StringUtils.trim(statistics[statisticsIndex].@value.toString());
 						}
 						if(stat_POY_years_temp.length==1 || stat_POY_years_temp.length==2) {
-							fontSize_Year=60;
+						fontSize_Year=60;
 						} else if(stat_POY_years_temp.length<=4) {
-							fontSize_Year=40;
+						fontSize_Year=40;
 						} else {
-							fontSize_Year=30;
-						}
+						fontSize_Year=30;
+						}*/
 						
 					} else {
 						stat_POY_years = "";
@@ -196,34 +292,40 @@
 					}
 				} catch (e:Error)
 				{
-//					Console.log("Error:"+e.message, this);
+					//					Console.log("Error:"+e.message, this);
 				}
 				
 				
-				 statA_1.width = stat_POY_years!="" ? 200 : 300;
-				 
+				if(ready) {
+					launchStat();
+				}
 				
+			}
+			protected function launchStat():void {
 				statisticsIndex = (statisticsIndex+1) % (statistics.length());
 				var secondPart:Number = (stat_POY_years!="" ? (stat_POY_season!="" ? Math.max(statA_2.explicitWidth,statA_3.explicitWidth) : statA_2.explicitWidth) :  0 );
-			//	statA_2.explicitWidth
-				TweenMax.to( statRoller, .5, { alpha:1, width: statA_1.explicitWidth + secondPart, onComplete: nextStat});
-
-//				Console.log("statisticsIndex:"+statisticsIndex, this);
+				//TweenMax.to( statRoller, .5, { alpha:1, width: statA_1.explicitWidth + secondPart, onComplete: nextStat});
+				statRoller.width=statA_1.explicitWidth + secondPart;
+				TweenMax.to( statRoller, .5, { alpha:1, onComplete: nextStat});
+				TweenMax.to( goalgroup, .5, { alpha:1});
 				
 			}
 			protected function nextStat( e:Event = null ):void
 			{
 				TweenMax.to( statRoller, .5, {delay: 5, alpha:0, onComplete: showKeyStat});
+				TweenMax.to( goalgroup, .5, {delay: 5, alpha:0});
+				
 			}
 			protected function showStatistics():void
 			{
 				TweenMax.killTweensOf( statRoller, false );
+				TweenMax.killTweensOf( goalgroup, false );
 				statistics = topfiveData[currentIndex].statistics..data;
 				if (statistics.length()>0)
 				{
 					
 					showKeyStat()
-													
+					
 				} else 
 				{
 					stat_POY = (TeamModel.selectedTeam + " PLAYER OF THE YEAR IN").toUpperCase();
@@ -240,10 +342,10 @@
 				for(var j:uint = 0; j < players.numElements; j++)
 				{
 					topfive_renderer(players.getElementAt( j )).cover.visible = true;
-//					Console.log( "Click "+e.currentTarget+" = " +players.getElementAt( j ), this);
+					//					Console.log( "Click "+e.currentTarget+" = " +players.getElementAt( j ), this);
 					if (e.currentTarget == players.getElementAt( j ))
 					{
-//						Console.log( "Click "+j, this);
+						//						Console.log( "Click "+j, this);
 						if (currentIndex!=j)
 						{
 							currentIndex = j;
@@ -263,23 +365,22 @@
 				if (players.getElementAt( currentIndex )!=e.currentTarget)
 					e.currentTarget.cover.visible = true;
 			}
-				
 			
-			protected function statRoller_stateChangeCompleteHandler(event:FlexEvent):void
-			{
-				trace("STATO ROLLOLO CAMBIATOLO");
-				
-			}
 			
-			protected function statA_1_updateCompleteHandler(event:FlexEvent):void
-			{
-				trace("STATA_1 creationcomplete: "+statA_1.height);
-				
-			}
+
 			
-			protected function statA_1_creationCompleteHandler(event:FlexEvent):void
+			private function paragraphHeight(p:ParagraphElement):Number
 			{
-				trace("statA_1_creationCompleteHandler: "+statA_1.height);
+				var height:Number = 0;
+				var pos:int = p.getAbsoluteStart();
+				var endPos:int = pos + p.textLength;
+				while (pos < endPos)
+				{
+					var line:TextFlowLine = p.getTextFlow().flowComposer.findLineAtPosition(pos);
+					height += line.height;
+					pos += line.textLength;
+				}
+				return height;
 				
 			}
 			
@@ -291,84 +392,87 @@
 	</fx:Declarations>
 	<s:VGroup horizontalCenter="0">
 		
-	
-	<s:DataGroup id="players" rendererAdd="createListeners(event)"  itemRenderer="views.renderer.topfive_renderer">
-		<s:layout>
-			<s:HorizontalLayout/>
-		</s:layout> 
-		<s:XMLListCollection  id="topfiveDataList"  source="{topfiveData}"/>
-	</s:DataGroup>
 		
-	<s:HGroup gap="0">
-		
-	
-	<s:BorderContainer  backgroundAlpha=".7" borderVisible="false" backgroundColor="0x000000" width="859" height="689">
-			
-		
-		<s:HGroup verticalAlign="middle">
-			<s:Label text="{shirtno}" paddingLeft="32" paddingRight="32" fontSize="160" color="{teamColor}" textAlign="center" />
-			<s:Line height="100" width="2">
-				<s:stroke>
-					<s:SolidColorStroke color="{teamColor}" weight="2" />
-				</s:stroke>
-			</s:Line>
-			<s:Label fontFamily="StandardRegular" text="{player_name}" paddingLeft="32"  fontSize="62" width="500" color="{teamColor}" lineHeight="70"/>	
-		</s:HGroup>
-			
-		<s:Scroller id="scroller" top="180" height="300" skinClass="skins.ScrollBar"  verticalScrollPolicy="auto">
-		
-				<s:RichEditableText selectable="false" editable="false" fontFamily="StandardRegularAllCase" id="player_description" lineBreak="toFit" color="0xFFFFFF" paddingLeft="32"   textAlign="left"  maxWidth="800" paddingRight="32" fontSize="21" width="800" text="{description}" >
-				</s:RichEditableText>
-		</s:Scroller>
-			
-		
-		
-
-			<s:VGroup width="100%" height="180" paddingLeft="32" paddingRight="32" bottom="0">
-				<!--paddingBottom="{ stat_POY.length>40 ? 10 : 0 }" -->
-				<s:Label text="STATISTICS" color="{teamColor}" fontSize="30"  />
-				<s:HGroup verticalAlign="bottom">
-					<s:HGroup id="statRoller" stateChangeComplete="statRoller_stateChangeCompleteHandler(event)" width="400" height="113" verticalAlign="bottom" verticalCenter="0">
-						<s:Label id="statA_1" lineHeight="28" text="{stat_POY}" verticalAlign="bottom" creationComplete="statA_1_creationCompleteHandler(event)" updateComplete="statA_1_updateCompleteHandler(event)"  width="200" paddingTop="50"  fontSize="28" height="180" fontFamily="StandardRegularAllCase" />
-						<s:VGroup >
-							<s:Label id="statA_2" text="{stat_POY_years}"   visible="{stat_POY_years!=''}" trackingRight="-5" fontSize="{stat_POY_season!='' ? 40 : fontSize_Year}" />
-							<s:Label id="statA_3" text="{stat_POY_season}"  includeInLayout="{stat_POY_season!=''}" visible="{stat_POY_season!=''}" fontSize="40" fontFamily="StandardRegularAllCase"  />
-						</s:VGroup>
-					</s:HGroup>
-					
-					<s:HGroup verticalAlign="middle" height="113">
-					<s:Spacer width="15" height="113" />
-					<s:Line height="100%" width="1" >
-						<s:stroke>
-							<s:SolidColorStroke color="{teamColor}" weight="1" />
-						</s:stroke>
-					</s:Line>
-					<s:Label paddingLeft="20" id="statB_1" text="{stat_goals}" paddingTop="15" trackingRight="-5" fontSize="93" />
-					<s:Label id="statB_2" text="{stat_goals_for}" paddingRight="30"  paddingTop="5" fontSize="28" fontFamily="StandardRegularAllCase" />
-					<s:Line height="113" width="1">
-						<s:stroke>
-							<s:SolidColorStroke color="{teamColor}" weight="1" />
-						</s:stroke>
-					</s:Line>
-					</s:HGroup>
-				</s:HGroup>	
-			</s:VGroup>
-			
-	</s:BorderContainer>
+		<s:DataGroup id="players" rendererAdd="createListeners(event)"  itemRenderer="views.renderer.topfive_renderer">
+			<s:layout>
+				<s:HorizontalLayout/>
+			</s:layout> 
+			<s:XMLListCollection  id="topfiveDataList"  source="{topfiveData}"/>
+		</s:DataGroup>
 		
 		<s:HGroup gap="0">
-			<s:Rect width="2" height="100%">
-				<s:fill>
-					<s:SolidColor  color="{teamColor}" />
-				</s:fill>
-			</s:Rect>
-			<s:VGroup left="0" width="380" gap="0">				
-				<s:Image smooth="true"  height="342" backgroundColor="0xFFFFFF" id="teamshot1" />
-				<s:Image smooth="true" height="342" backgroundColor="0xFFFFFF" id="teamshot2" />
-			</s:VGroup>	
+			
+			
+			<s:BorderContainer  backgroundAlpha=".7" borderVisible="false" backgroundColor="0x000000" width="859" height="689">
+				
+				
+				<s:HGroup verticalAlign="middle">
+					<s:Label text="{shirtno}" paddingLeft="32" paddingRight="32" fontSize="160" color="{teamColor}" textAlign="center" />
+					<s:Line height="100" width="2">
+						<s:stroke>
+							<s:SolidColorStroke color="{teamColor}" weight="2" />
+						</s:stroke>
+					</s:Line>
+					<s:Label fontFamily="StandardRegular" text="{player_name}" paddingLeft="32"  fontSize="62" width="500" color="{teamColor}" lineHeight="70"/>	
+				</s:HGroup>
+				
+				<s:Scroller id="scroller" top="180" height="300" skinClass="skins.ScrollBar"  verticalScrollPolicy="auto">
+					
+					<s:RichEditableText selectable="false" editable="false" fontFamily="StandardRegularAllCase" id="player_description" lineBreak="toFit" color="0xFFFFFF" paddingLeft="32"   textAlign="left"  maxWidth="800" paddingRight="32" fontSize="21" width="800" text="{description}" >
+					</s:RichEditableText>
+				</s:Scroller>
+				<s:VGroup width="100%" height="180" paddingLeft="32" paddingRight="32" bottom="0">
+					<!--paddingBottom="{ stat_POY.length>40 ? 10 : 0 }" -->
+					<s:Label text="{statRoller.width}" color="{teamColor}" fontWeight="bold" fontSize="30" baselineShift="0" />
+					<s:HGroup verticalAlign="bottom">
+						<s:HGroup id="statRoller" width="400" height="113" verticalCenter="0">
+							<s:RichEditableText baselineShift="-5" backgroundAlpha="0"   lineHeight="90%" color="0xFFFFFF" id="statA_1"  text="{stat_POY}" verticalAlign="middle" width="300"   fontSize="28" height="113" fontFamily="StandardRegularAllCase" />
+							<s:VGroup >
+								<s:RichText id="statA_2" baselineShift="-5" backgroundAlpha="0" fontFamily="StandardRegularAllCase" color="0xffffff" lineHeight="90%" height="113" text="{stat_POY_years}" verticalAlign="middle"   visible="{stat_POY_years!=''}" trackingRight="-1" fontSize="{stat_POY_season!='' ? 93:fontSize_Year}" />
+								<s:Spacer width="10" height="113" />
+								<s:Label id="statA_3" baselineShift="-5" lineHeight="90%" height="113" text="{stat_POY_season}"  includeInLayout="{stat_POY_season!=''}" visible="{stat_POY_season!=''}" fontSize="40" fontFamily="StandardRegularAllCase"  />
+							</s:VGroup>
+						</s:HGroup>
+						
+						<s:HGroup verticalAlign="middle" height="113" id="goalgroup">
+							<s:Spacer width="10" height="113" />
+							<s:Line height="100%" width="1" >
+								<s:stroke>
+									<s:SolidColorStroke color="{teamColor}" weight="2" />
+									
+									</s:stroke>
+							</s:Line>
+							
+							<s:Spacer width="10" height="113" />
+							<s:Label id="statB_1" text="{stat_goals}" lineHeight="90%" paddingTop="15" trackingRight="-5" fontSize="93" />
+							<s:Label id="statB_2" text="{stat_goals_for}" lineHeight="90%" paddingRight="5"  paddingTop="5" fontSize="28" fontFamily="StandardRegularAllCase" />
+							<s:Label id="statB_3" text="{stat_goals}" paddingTop="10" lineHeight="90%" trackingRight="-5" fontSize="60" />
+							<s:Label id="statB_4" text="{stat_goals_for}" paddingRight="5" lineHeight="90%"  paddingTop="0" fontSize="18" fontFamily="StandardRegularAllCase" />
+
+							<s:Line height="113" width="1">
+								<s:stroke>
+									<s:SolidColorStroke color="{teamColor}" weight="1" />
+								</s:stroke>
+							</s:Line>
+						</s:HGroup>
+					</s:HGroup>	
+				</s:VGroup>
+				
+			</s:BorderContainer>
+			
+			<s:HGroup gap="0">
+				<s:Rect width="2" height="100%">
+					<s:fill>
+						<s:SolidColor  color="{teamColor}" />
+					</s:fill>
+				</s:Rect>
+				<s:VGroup left="0" width="380" gap="0">				
+					<s:Image smooth="true"  height="342" backgroundColor="0xFFFFFF" id="teamshot1" />
+					<s:Image smooth="true" height="342" backgroundColor="0xFFFFFF" id="teamshot2" />
+				</s:VGroup>	
+			</s:HGroup>
+			
 		</s:HGroup>
-		
-	</s:HGroup>
 	</s:VGroup>
 	
 </s:Group>

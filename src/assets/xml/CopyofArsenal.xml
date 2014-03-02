@@ -15,9 +15,9 @@
             <statistics poy="1999-2007, 2012" goals="228">
                <data key="PFA Player of the Year" value="2002/03, 2003/04" />
                <data key="Golden Boot winner" value="2001/02, 2003/04, 2004/05, 2005/06" />
-               <data key="2 Barclays Premier League titles" value="1998-99" />
-               <data key="3 FA Cup wins amd this text is very very long" value="2001/02, 2003/04, 2004/05" />
-               <data key="123 international caps for France and here we have even more text" />
+               <data key="2 Barclays Premier League titles" />
+               <data key="3 FA Cup wins" />
+               <data key="123 international caps for France" />
             </statistics>
          </player>
          <player>
