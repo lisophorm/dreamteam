@@ -11,19 +11,20 @@
 			import com.greensock.TweenMax;
 			import com.greensock.easing.Sine;
 			
-			import mx.collections.ArrayCollection;
-			import mx.core.UIComponent;
-			import mx.events.FlexEvent;
-			import mx.rpc.events.FaultEvent;
-			import mx.rpc.events.ResultEvent;
-			
 			import events.CarouselItemEvent;
 			import events.KioskError;
+			import events.LifecycleEvent;
 			import events.ViewEvent;
 			
 			import flashx.textLayout.elements.SpecialCharacterElement;
 			
 			import model.entity.TeamDTO;
+			
+			import mx.collections.ArrayCollection;
+			import mx.core.UIComponent;
+			import mx.events.FlexEvent;
+			import mx.rpc.events.FaultEvent;
+			import mx.rpc.events.ResultEvent;
 			
 			import views.renderer.CarouseltemRenderer;
 			
@@ -63,6 +64,7 @@
 			public function created(event:FlexEvent=null):void
 			{
 				this.addEventListener( Event.INIT, initialise);
+				this.addEventListener(LifecycleEvent.FINALISE, finalise);
 				initialise();
 			}
 			
@@ -93,13 +95,17 @@
 			
 			public function initialise(event:Event=null):void
 			{
+				/*
 				debugTimer.addEventListener(TimerEvent.TIMER,debugTimera);
 				debugTimer.start();
+				*/
+				
 				if (this.parentApplication.data!=null)
 				{
 					data = this.parentApplication.data;
 					type = data.type;
 				}
+				
 
 				this.backgroundimage.visible = true;
 				
@@ -115,6 +121,16 @@
 				CarouselLayout(CarouselGroup.layout).freeRotationDegree = 0;
 			}
 
+			public function finalise (event : LifecycleEvent) : void
+			{
+				mouseRecorderTimer.stop();
+				mouseRecorderTimer.removeEventListener(TimerEvent.TIMER, recordMouse);
+				mouseRecorderTimer = null;
+				removeEventListener(MouseEvent.MOUSE_DOWN, mouseDownHandler);
+				removeEventListener(MouseEvent.MOUSE_UP, mouseUpHandler, true);
+				removeEventListener(Event.ENTER_FRAME, enterFrameHandler);
+			}
+			
 			public function exit( e:Event = null):void
 			{
 				CarouselGroup.invalidateDisplayList();
@@ -221,9 +237,6 @@
 				backgroundimage.visible = false;
 				this.parentApplication.dispatchEvent( new ViewEvent( type=="GAME" ? ViewEvent.LOCATION_GAME : ViewEvent.LOCATION_TEAMSHEETS, {team: team } ));
 			}
-			
-
-			
 		]]>
 	</fx:Script>
 	

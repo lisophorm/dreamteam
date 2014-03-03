@@ -127,7 +127,6 @@
 			protected function group1_removeHandler(event:FlexEvent):void
 			{
 				trace("gallery remove from inside");
-				
 			}
 			
 		]]>

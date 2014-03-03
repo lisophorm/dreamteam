@@ -27,17 +27,11 @@
 	
 	<fx:Script>
 		<![CDATA[
-			import mx.controls.Alert;
-			import mx.core.FlexGlobals;
-			import mx.events.FlexEvent;
-			import mx.managers.PopUpManager;
-			
-			import spark.filters.DropShadowFilter;
-			
 			import air.update.ApplicationUpdaterUI;
 			import air.update.events.UpdateEvent;
 			
 			import events.ApplicationEvent;
+			import events.LifecycleEvent;
 			import events.KioskError;
 			import events.KioskEvent;
 			import events.KioskProgressEvent;
@@ -49,11 +43,20 @@
 			import model.ML;
 			import model.MonitorConnection;
 			
+			import mx.controls.Alert;
+			import mx.core.FlexGlobals;
+			import mx.events.FlexEvent;
+			import mx.managers.PopUpManager;
+			
+			import net.hires.debug.Stats;
+			
 			import org.osmf.utils.OSMFSettings;
 			
 			import registration.debug.DebugEvent;
 			
 			import skins.vodafoneFormItem;
+			
+			import spark.filters.DropShadowFilter;
 			
 			import views.components.ErrorAlert;
 			import views.components.PasswordAlert;
@@ -126,6 +129,7 @@
 			protected var debugKeySequence : Array = [71,85,66,69,68];
 			protected var runningKeySequence : Array = [];
 			public var localURL:String;
+			private var stats:Stats;
 			
 			
 			
@@ -235,6 +239,9 @@
 				this.dispatchEvent( new ViewEvent( ViewEvent.LOCATION_RESTART ));
 				
 				//debugPanel.registrationModule = RegistrationView.device;
+				
+				stats = new Stats();
+				statsContainer.addChild(stats);
 			}
 			
 			protected function notifyApplicationLogout( e:ApplicationEvent ):void
@@ -419,7 +426,6 @@
 					
 				}
 				
-				
 				for (var i:int=0;i<indexSeq.length;i++)
 				{
 					if	(indexSeq[i]==stackStr)
@@ -491,7 +497,8 @@
 				
 				if (lastScreen!=null)
 				{
-					lastScreen.dispatchEvent( new FlexEvent(FlexEvent.REMOVE) );
+					lastScreen.dispatchEvent( new FlexEvent(FlexEvent.REMOVE));
+					lastScreen.dispatchEvent(new LifecycleEvent(LifecycleEvent.FINALISE));
 				}
 				
 				if (nextScreen!=null)
@@ -507,10 +514,8 @@
 			
 			protected function doNavigation(e:ViewEvent):void
 			{
-				
 				trace("DO NAV APPTYPEL:"+this.ApplicationType);
 				trace("DO NAV e.location:"+e.location);
-				
 				
 				clearPopups();
 				hideDropshadow();
@@ -950,5 +955,7 @@
 	</s:VGroup>
 	
 	<debug:DebugPanel id="debugPanel" visible="false"/>
+	
+	<s:SpriteVisualElement id="statsContainer"/>
 	
 </s:WindowedApplication>
