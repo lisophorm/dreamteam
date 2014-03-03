@@ -8,8 +8,6 @@
 			import com.alfo.utils.StringUtils;
 			import com.greensock.TweenMax;
 			
-			import mx.events.FlexEvent;
-			
 			import events.TeamEvent;
 			
 			import flashx.textLayout.compose.TextFlowLine;
@@ -18,6 +16,8 @@
 			import flashx.textLayout.formats.LineBreak;
 			
 			import model.TeamModel;
+			
+			import mx.events.FlexEvent;
 			
 			import views.renderer.topfive_renderer;
 			
@@ -77,8 +77,23 @@
 					
 					
 				}
-				
 			}
+			
+			public function refresh():void
+			{
+				if(players && topfiveData)
+				{
+					if(players.numElements > 0)
+						topfive_renderer(players.getElementAt(0)).cover.visible = false;
+					currentIndex = 0;
+					showInfo();
+					for(var i : int = 1; i < players.numElements; i ++)
+					{
+						topfive_renderer(players.getElementAt(i)).cover.visible = true;
+					}
+				}
+			}
+			
 			protected function createListeners(event:Event = null):void
 			{
 				//				Console.log("*** createListeners TOPFIVEPLAYERS ***"+players.numElements, this);
@@ -361,12 +376,10 @@
 				}
 				stat_goals = topfiveData[currentIndex].statistics.@goals.toString();
 				stat_goals_for = ("GOALS\r\nSCORED FOR\r\n"+TeamModel.selectedTeam).toUpperCase();
-				
 			}
+			
 			protected function mySelect( e:Event=null ):void
 			{
-				
-				
 				for(var j:uint = 0; j < players.numElements; j++)
 				{
 					topfive_renderer(players.getElementAt( j )).cover.visible = true;
@@ -424,7 +437,6 @@
 		
 	</fx:Declarations>
 	<s:VGroup horizontalCenter="0">
-		
 		
 		<s:DataGroup id="players" rendererAdd="createListeners(event)"  itemRenderer="views.renderer.topfive_renderer">
 			<s:layout>

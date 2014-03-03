@@ -67,6 +67,8 @@
 				
 				reset();
 				
+				topFivePlayers.refresh();
+				
 				gameData.send();
 				
 				setTeamNameStyle();
