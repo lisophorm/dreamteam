@@ -167,7 +167,7 @@
 						break;
 					case 1:
 						trace("***** enter gallery");
-						gallery.currentIndex=0;
+						
 						break;
 					case 2:
 						trace("***** enter video");
@@ -211,14 +211,26 @@
 			
 			protected function finalise(event : Event) : void
 			{
+				// stp video
 				if(videoElemento) {
 					videoElemento.videoPlayer.stop();
 				}
+				// resets gallery
 				trace("Teamsheet :: finalise");
 				if(gallery.currentIndex) {
 					gallery.currentIndex=0;
 				}
 				gallery.finalise();
+				// resets top 5
+				if(topFivePlayers.currentIndex) {
+					topFivePlayers.currentIndex=0;
+				}
+			}
+			
+			protected function Stack_creationCompleteHandler(event:FlexEvent):void
+			{
+				// TODO Auto-generated method stub
+				
 			}
 			
 		]]>
@@ -285,9 +297,9 @@
 				
 			</s:Group>
 			
-			<mx:ViewStack id="Stack" height="100%" width="100%"  creationPolicy="all">
+			<mx:ViewStack id="Stack" height="100%" width="100%"  creationPolicy="all" creationComplete="Stack_creationCompleteHandler(event)">
 				<mx:VBox hideEffect="{hideFX}"  showEffect="{showFX}">
-					<teamsheet:TopFivePlayers/>
+					<teamsheet:TopFivePlayers id="topFivePlayers"/>
 				</mx:VBox>
 				<mx:VBox hideEffect="{hideFX}"   showEffect="{showFX}">
 					<teamsheet:Gallery id="gallery"/>
