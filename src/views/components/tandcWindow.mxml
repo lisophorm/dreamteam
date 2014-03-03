@@ -49,7 +49,7 @@
 	<s:VGroup width="100%" height="100%" horizontalAlign="center" id="gruosso" verticalAlign="bottom">
 		
 		
-		<s:Button skinClass="skins.vodafoneButton"  id="gino" label="Close" click="PopUpManager.removePopUp(this);"/>
+		<s:Button id="gino" label="Close" click="PopUpManager.removePopUp(this);"/>
 		<s:Spacer height="10" id="spazioGiu"  />
 	</s:VGroup>
 	<fx:Metadata>

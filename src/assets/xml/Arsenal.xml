@@ -13,11 +13,11 @@
             </gallery>
             <description><![CDATA[Henry arrived from Juventus on 3rd August 1999 to Arsenal for an estimated fee of £11 million, reuniting with his former manager Arsène Wenger. One of Henry’s most successful seasons was in 2003/04 when Arsenal were determined to reclaim the Barclays Premier League crown. Henry was instrumental in Arsenal's exceptionally successful campaign. Henry ensured that the Gunners became the first team in more than a century to go through the entire domestic league season unbeaten, claiming the title in the process.]]></description>
             <statistics poy="1999-2007, 2012" goals="228">
-               <data key="PFA Player of the Year" value="2002/03, 2003/04" />
-               <data key="Golden Boot winner" value="2001/02, 2003/04, 2004/05, 2005/06" />
-               <data key="2 Barclays Premier League titles" value="1998-99" />
-               <data key="3 FA Cup wins amd this text is very very long" value="2001/02, 2003/04, 2004/05" />
-               <data key="123 international caps for France and here we have even more text" />
+               <data key="99 international PFA Player of the Year" value="2002/03, 2003/04" />
+               <data key="99 international Golden Boot winner" value="2001/02, 2003/04, 2004/05, 2005/06" />
+               <data key="2 Barclays Premier League titles" />
+               <data key="3 FA Cup wins" />
+               <data key="123 international caps for France" />
             </statistics>
          </player>
          <player>

@@ -13,7 +13,9 @@
 			import events.TeamEvent;
 			
 			import flashx.textLayout.compose.TextFlowLine;
+			import flashx.textLayout.conversion.TextConverter;
 			import flashx.textLayout.elements.ParagraphElement;
+			import flashx.textLayout.formats.LineBreak;
 			
 			import model.TeamModel;
 			
@@ -36,6 +38,9 @@
 			
 			[Bindable]
 			protected var baseShift_Year:Number=0;
+			
+			[Bindable]
+			protected var stat1_width=300;
 			
 			
 			
@@ -162,23 +167,23 @@
 			var prevLines:Number;
 			
 			protected function iterateEnlarge(e:Event) {
-				trace("enlarge iteraton");							
-				trace("new width:"+statA_1.width+"new lines:"+statA_1.textFlow.flowComposer.numLines.toString());
+				//trace("enlarge iteraton");							
+				//trace("new width:"+statA_1.width+"new lines:"+statA_1.textFlow.flowComposer.numLines.toString());
 				if(statA_1.textFlow.flowComposer.numLines<=4 || statA_1.width>1000) {
 					trace("right fit!");
 					this.removeEventListener(Event.ENTER_FRAME,iterateEnlarge);
 					launchStat();
 				} else {
 					prevWidth=statA_1.width;
-					statA_1.width+=30;
+					statA_1.width+=5;
 				}
 				
 			}
 			
 			
 			protected function iterateShrink(e:Event) {
-				trace("enlarge iteraton");							
-				trace("new width:"+statA_1.width+"new lines:"+statA_1.textFlow.flowComposer.numLines.toString());
+				//trace("enlarge iteraton");							
+				//trace("new width:"+statA_1.width+"new lines:"+statA_1.textFlow.flowComposer.numLines.toString());
 				if(statA_1.textFlow.flowComposer.numLines!=prevLines || statA_1.width<100) {
 					trace("right fit!");
 					statA_1.width=prevWidth;
@@ -186,13 +191,15 @@
 					launchStat();
 				} else {
 					prevWidth=statA_1.width;
-					statA_1.width-=30;
+					
+					statA_1.width-=5;
 				}
 				
 			}
 			
 			protected function showKeyStat():void
 			{
+				trace("numchildren:"+statA_1.textFlow.numChildren);
 				var ready:Boolean=true;
 				statA_1.width=300;
 				//				Console.log("showKeyStat", this);
@@ -201,11 +208,32 @@
 					if ( statistics[statisticsIndex].hasOwnProperty("@key") )
 					{
 						trace("original key:"+statistics[statisticsIndex].@key.toString().toUpperCase());
+						var numWords:Array=statistics[statisticsIndex].@key.toString().split(" ");
+						if(numWords.length>1) {
+							trace("prima parola cortaaa");
+							var word1:String=numWords[0];
+							var word2:String=numWords[1];
+							if(word1.length<=3 && word2.length>10) {
+								//statA_1.width=500;
+								stat1_width=500;
+								trace("prima parola cortaaa"+word1+":"+word2);
+							}
+						}
+						
 						stat_POY = statistics[statisticsIndex].@key.toString().toUpperCase();
 						
-						invalidateDisplayList();
+						
+						//statA_1.textFlow=TextConverter.importToFlow(statistics[statisticsIndex].@key.toString().toUpperCase(),TextConverter.PLAIN_TEXT_FORMAT);
+						//statA_1.textFlow.lineBreak=LineBreak.TO_FIT;
+						//trace("line 1"+statA_1.textFlow.flowComposer.getLineAt(1).paragraph.
+						statA_1.validateNow();
+						trace("stat length:"+statA_1.width);
+						var textFlowLine:ParagraphElement = statA_1.textFlow.flowComposer.getLineAt(0).paragraph;
+						trace("row 1:"+textFlowLine.mxmlChildren[0].text);
 						trace("POY LINES"+statA_1.textFlow.flowComposer.numLines.toString());
 						prevLines=statA_1.textFlow.flowComposer.numLines;
+
+						
 						if(statA_1.textFlow.flowComposer.numLines>4) {
 							trace("attempt enlarge");
 							ready=false;
@@ -349,7 +377,8 @@
 						if (currentIndex!=j)
 						{
 							currentIndex = j;
-							showInfo();
+							TweenMax.to( statRoller, .5, { alpha:0, onComplete: showInfo});
+							TweenMax.to( goalgroup, .5, { alpha:0});
 						}
 					}
 				}
@@ -407,7 +436,7 @@
 				
 				
 				<s:HGroup verticalAlign="middle">
-					<s:Label text="{shirtno}" paddingLeft="32" paddingRight="32" fontSize="160" color="{teamColor}" textAlign="center" />
+					<s:Label text="{shirtno}" paddingLeft="32" paddingRight="32" baselineShift="-15" fontSize="160" color="{teamColor}" textAlign="center" />
 					<s:Line height="100" width="2">
 						<s:stroke>
 							<s:SolidColorStroke color="{teamColor}" weight="2" />
@@ -423,14 +452,14 @@
 				</s:Scroller>
 				<s:VGroup width="100%" height="180" paddingLeft="32" paddingRight="32" bottom="0">
 					<!--paddingBottom="{ stat_POY.length>40 ? 10 : 0 }" -->
-					<s:Label text="{statRoller.width}" color="{teamColor}" fontWeight="bold" fontSize="30" baselineShift="0" />
+					<s:Label text="STATISTICS" lineBreak="toFit" color="{teamColor}" fontWeight="bold" fontSize="30" baselineShift="0" />
 					<s:HGroup verticalAlign="bottom">
 						<s:HGroup id="statRoller" width="400" height="113" verticalCenter="0">
-							<s:RichEditableText baselineShift="-5" backgroundAlpha="0"   lineHeight="90%" color="0xFFFFFF" id="statA_1"  text="{stat_POY}" verticalAlign="middle" width="300"   fontSize="28" height="113" fontFamily="StandardRegularAllCase" />
+							<s:RichEditableText  baselineShift="-3" backgroundColor="0x0000bb" backgroundAlpha="1"   lineHeight="90%" color="0xFFFFFF" id="statA_1"  text="{stat_POY}" verticalAlign="middle" width="{stat1_width}"   fontSize="28" height="113" fontFamily="StandardRegularAllCase" />
 							<s:VGroup >
-								<s:RichText id="statA_2" baselineShift="-5" backgroundAlpha="0" fontFamily="StandardRegularAllCase" color="0xffffff" lineHeight="90%" height="113" text="{stat_POY_years}" verticalAlign="middle"   visible="{stat_POY_years!=''}" trackingRight="-1" fontSize="{stat_POY_season!='' ? 93:fontSize_Year}" />
+								<s:RichText id="statA_2" baselineShift="-5" backgroundColor="0x0000bb" backgroundAlpha="1" fontFamily="StandardRegularAllCase" color="0xffffff" lineHeight="90%" height="113" text="{stat_POY_years}" verticalAlign="middle"   visible="{stat_POY_years!=''}" trackingRight="-1" fontSize="{stat_POY_season!='' ? 93:fontSize_Year}" />
 								<s:Spacer width="10" height="113" />
-								<s:Label id="statA_3" baselineShift="-5" lineHeight="90%" height="113" text="{stat_POY_season}"  includeInLayout="{stat_POY_season!=''}" visible="{stat_POY_season!=''}" fontSize="40" fontFamily="StandardRegularAllCase"  />
+								<s:Label id="statA_3" baselineShift="-5" backgroundColor="0x0000bb" lineHeight="90%" height="113" text="{stat_POY_season}"  includeInLayout="{stat_POY_season!=''}" visible="{stat_POY_season!=''}" fontSize="40" fontFamily="StandardRegularAllCase"  />
 							</s:VGroup>
 						</s:HGroup>
 						
@@ -443,15 +472,15 @@
 									</s:stroke>
 							</s:Line>
 							
-							<s:Spacer width="10" height="113" />
-							<s:Label id="statB_1" text="{stat_goals}" lineHeight="90%" paddingTop="15" trackingRight="-5" fontSize="93" />
-							<s:Label id="statB_2" text="{stat_goals_for}" lineHeight="90%" paddingRight="5"  paddingTop="5" fontSize="28" fontFamily="StandardRegularAllCase" />
-							<s:Label id="statB_3" text="{stat_goals}" paddingTop="10" lineHeight="90%" trackingRight="-5" fontSize="60" />
-							<s:Label id="statB_4" text="{stat_goals_for}" paddingRight="5" lineHeight="90%"  paddingTop="0" fontSize="18" fontFamily="StandardRegularAllCase" />
-
+							<s:Spacer width="1" height="113" />
+							<s:Label id="statB_1" text="{stat_goals}"  backgroundColor="0x0000bb" lineHeight="90%" paddingTop="15" trackingRight="-5" visible="{ 520 > statRoller.width ? 10 : 0 }" includeInLayout="{ 520 > statRoller.width ? 10 : 0 }" fontSize="93" />
+							<s:Label id="statB_2" text="{stat_goals_for}" backgroundColor="0x0000bb" lineHeight="90%" paddingRight="5"  paddingTop="5" visible="{520 > statRoller.width ?true:false}" includeInLayout="{520 > statRoller.width ?true:false}"  fontSize="28" fontFamily="StandardRegularAllCase" />
+							<s:Label id="statB_3" text="{stat_goals}" paddingTop="10" lineHeight="90%" trackingRight="-5" visible="{statRoller.width > 520 ? true:false}"  includeInLayout="{statRoller.width > 520 ? true:false}" fontSize="60" />
+							<s:Label id="statB_4" text="{stat_goals_for}" paddingRight="0"  backgroundColor="0x0000bb" lineHeight="90%"  paddingTop="0" visible="{statRoller.width > 520? true:false}" includeInLayout="{statRoller.width > 520? true:false}" fontSize="18" fontFamily="StandardRegularAllCase" />
+							<s:Spacer width="5" height="113" />
 							<s:Line height="113" width="1">
 								<s:stroke>
-									<s:SolidColorStroke color="{teamColor}" weight="1" />
+									<s:SolidColorStroke color="{teamColor}" weight="2" />
 								</s:stroke>
 							</s:Line>
 						</s:HGroup>
