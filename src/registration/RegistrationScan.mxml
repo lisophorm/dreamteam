@@ -455,7 +455,7 @@
 			
 			<s:Label id="frontMessage" horizontalCenter="0" textAlign="center"
 					 text="PLEASE SCAN YOUR THUMB 3 TIMES"
-					 text.REGISTER_BEGIN = "REGISTRATION SCAN - PLEASE SCAN THUMB"
+					 text.REGISTER_BEGIN = "PLEASE WAIT"
 					 text.SCANNING_RESTART = "READING ERROR - PLEASE TRY AGAIN!"
 					 text.STEP1="PLEASE SCAN YOUR THUMB 3 TIMES"
 					 text.STEP2="PLEASE SCAN YOUR THUMB 3 TIMES"
