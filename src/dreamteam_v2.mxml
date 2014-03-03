@@ -131,9 +131,6 @@
 			public var localURL:String;
 			private var stats:Stats;
 			
-			
-			
-			
 			protected function fullscreen(e:Event=null):void
 			{
 				stage.displayState =  StageDisplayState.FULL_SCREEN_INTERACTIVE;
@@ -215,7 +212,6 @@
 				//password = pref.prefsXML..password;
 				password="123";
 				monitor =  new MonitorConnection(localURL+"ping.php");
-
 				
 				this.addEventListener( ApplicationEvent.SAVE_TYPE, notifyApplicationTypeUpdate );
 				this.addEventListener( ApplicationEvent.LOGOUT, notifyApplicationLogout );
@@ -240,8 +236,8 @@
 				
 				//debugPanel.registrationModule = RegistrationView.device;
 				
-				stats = new Stats();
-				statsContainer.addChild(stats);
+//				stats = new Stats();
+//				statsContainer.addChild(stats);
 			}
 			
 			protected function notifyApplicationLogout( e:ApplicationEvent ):void

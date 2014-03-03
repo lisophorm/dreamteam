@@ -56,7 +56,7 @@
 				if (TeamEvent.TEAM_INFO == e.type )
 				{
 					teamColor = TeamModel.getTeamColor();
-					videoSource = TeamModel.getVideo();		
+					videoSource = TeamModel.getVideo();	
 				}
 			}
 			
