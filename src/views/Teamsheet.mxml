@@ -77,8 +77,8 @@
 			protected function statEmpty( e:Event = null ):void
 			{
 				Stack.selectedIndex = 1;
-				
 			}
+			
 			protected function setTeamNameStyle():void
 			{
 				var df:spark.filters.DropShadowFilter = new spark.filters.DropShadowFilter();

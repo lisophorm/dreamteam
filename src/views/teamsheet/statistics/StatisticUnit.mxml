@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:HGroup xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		 xmlns:s="library://ns.adobe.com/flex/spark" 
+		 xmlns:mx="library://ns.adobe.com/flex/mx" height="76">
+	<fx:Script>
+		<![CDATA[
+			import com.greensock.TweenMax;
+			
+			protected var fontSelector : int = 0;
+			protected var fontSizes : Vector.<Number> = new <Number>[120, 60, 42, 24, 20];
+			protected var lineHeights : Vector.<Number> = new <Number>[120, 50, 40, 30, 20];
+			private var bodyCopyFontSize:int;
+			
+			public function initialise (contentXML : XML, lineColor : uint) : void
+			{
+				alpha = 0;
+				lineStroke.color = lineColor;
+				bodyCopyFontSize = 120;
+				
+				if(contentXML.numeralCopy)
+				{
+					numeralCopy.text = contentXML.numeralCopy;
+					numeralCopy.includeInLayout = numeralCopy.visible = true;
+					
+					numeralCopy.setStyle("color", "#FFFFFF");
+					numeralCopy.setStyle("fontSize", 120);
+				}
+				
+				bodyCopy.text = String(contentXML.bodyCopy).toUpperCase();
+				
+				bodyCopy.setStyle("color", "#FFFFFF");
+				bodyCopy.setStyle("fontSize", bodyCopyFontSize);
+				bodyCopy.setStyle("lineHeight", 100);
+				
+				addEventListener(Event.ENTER_FRAME, checkCopyTruncation);
+			}
+			
+			protected function checkCopyTruncation(event : Event) : void
+			{
+				if(bodyCopy.height > 120 && fontSelector < fontSizes.length)
+				{
+					bodyCopy.setStyle("fontSize", fontSizes[fontSelector]);
+					bodyCopy.setStyle("lineHeight", lineHeights[fontSelector]);
+					fontSelector ++;
+				}else
+				{
+					removeEventListener(Event.ENTER_FRAME, checkCopyTruncation);
+					TweenMax.to(this, .5, {alpha : 1});
+				}
+			}
+			
+			public function finalise () : void
+			{
+				removeEventListener(Event.ENTER_FRAME, checkCopyTruncation);
+				TweenMax.killTweensOf(this);
+			}
+		]]>
+	</fx:Script>
+	<s:RichText id="numeralCopy" includeInLayout="false" visible="false"/>
+	<s:Spacer width="5" includeInLayout="{numeralCopy.includeInLayout}"/>
+	<s:RichText id="bodyCopy" width="350" maxDisplayedLines="5"/>
+	<s:Spacer width="5"/>
+	<s:Line height="100">
+		<s:stroke>
+			<s:SolidColorStroke id="lineStroke"/>
+		</s:stroke>
+	</s:Line>
+	<s:Spacer width="5"/>
+</s:HGroup>

@@ -2,7 +2,7 @@
 <s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
 		 xmlns:s="library://ns.adobe.com/flex/spark" 
 		 xmlns:mx="library://ns.adobe.com/flex/mx" 
-		 creationComplete="created(event)" >
+		 creationComplete="created(event)" xmlns:statistics="views.teamsheet.statistics.*" >
 	<fx:Script>
 		<![CDATA[
 			import com.alfo.utils.StringUtils;
@@ -43,16 +43,14 @@
 			protected var stat1_width=300;
 			
 			
-			
 			public function created(event:FlexEvent=null):void
 			{
 				this.addEventListener( Event.INIT, init);
 				init();
 			}
+
 			public function init(event:Event=null):void
 			{
-				//				Console.log("*** INIT TOPFIVEPLAYERS ***", this);
-				
 				if (this.parentApplication.data!=null)
 				{
 					/*	data = this.parentApplication.data;
@@ -64,18 +62,14 @@
 				
 				TeamModel._instance.addEventListener( TeamEvent.TEAM_INFO, ready);
 			}	
+
 			protected function ready( e:TeamEvent ):void
 			{
-				
 				if (TeamEvent.TEAM_INFO == e.type )
 				{
-					//					Console.log("*** READY TOPFIVEPLAYERS ***", this);
 					topfiveData = TeamModel.getTopPlayers();
 					teamColor = TeamModel.getTeamColor();
 					showInfo();
-					//					Console.log( topfiveData, this );
-					
-					
 				}
 			}
 			
@@ -96,29 +90,19 @@
 			
 			protected function createListeners(event:Event = null):void
 			{
-				//				Console.log("*** createListeners TOPFIVEPLAYERS ***"+players.numElements, this);
 				for(var j:uint = 0; j < players.numElements; j++)
 				{
 					var t:topfive_renderer = topfive_renderer(players.getElementAt( j ))
-					//							Console.log("*** createListeners TOPFIVEPLAYERS ***"+players.getElementAt( j ), this);
 					if (players.getElementAt( j )!=null)
 					{
-						
-						//CarouselGroup.getElementAt( j ).alpha = .2;
-						//Console.log( CarouselGroup.getElementAt( j ), this);
-						//TOUCH EVENT
 						t.addEventListener( TouchEvent.TOUCH_TAP, mySelect);
 						t.addEventListener( TouchEvent.TOUCH_ROLL_OVER,myRollOver);
 						t.addEventListener( TouchEvent.TOUCH_ROLL_OUT,myRollOut);
 						
-						//MOUSE EVENT
 						t.addEventListener(MouseEvent.CLICK, mySelect);
 						t.addEventListener(MouseEvent.ROLL_OVER, myRollOver);
 						t.addEventListener(MouseEvent.ROLL_OUT, myRollOut);
 						t.buttonMode = t.mouseEnabled = true;
-						
-						
-						
 					}
 				}
 				try {
@@ -153,16 +137,13 @@
 			
 			protected function showInfo():void
 			{
-				
 				player_name = topfiveData[currentIndex].name.text().toString().toUpperCase();
 				shirtno = topfiveData[currentIndex].shirtno.text();
 				description = topfiveData[currentIndex].description.toString();
 				
-				//statistics
-				trace("show inf:"+topfiveData[currentIndex].toString());
-				showStatistics()				
+				showStatistics();
+				
 				var gallery:XMLList = topfiveData[currentIndex].gallery..img;
-				//				Console.log( gallery, this);
 				teamshot1.source = gallery[0].@src.toString();
 				teamshot2.source = gallery[1].@src.toString();
 				
@@ -181,201 +162,146 @@
 			var prevWidth:Number;
 			var prevLines:Number;
 			
-			protected function iterateEnlarge(e:Event) {
-				//trace("enlarge iteraton");							
-				//trace("new width:"+statA_1.width+"new lines:"+statA_1.textFlow.flowComposer.numLines.toString());
-				if(statA_1.textFlow.flowComposer.numLines<=4 || statA_1.width>1000) {
-					//trace("right fit!");
-					this.removeEventListener(Event.ENTER_FRAME,iterateEnlarge);
-					launchStat();
-				} else {
-					prevWidth=statA_1.width;
-					statA_1.width+=10;
-				}
-				
+			protected function iterateEnlarge(e:Event) : void
+			{
+//				if(statA_1.textFlow.flowComposer.numLines<=4 || statA_1.width>1000) {
+//					this.removeEventListener(Event.ENTER_FRAME,iterateEnlarge);
+//					launchStat();
+//				} else {
+//					prevWidth=statA_1.width;
+//					statA_1.width+=10;
+//				}
 			}
 			
-			
-			protected function iterateShrink(e:Event) {
-				//trace("enlarge iteraton");							
-				//trace("new width:"+statA_1.width+"new lines:"+statA_1.textFlow.flowComposer.numLines.toString());
-				if(statA_1.textFlow.flowComposer.numLines!=prevLines || statA_1.width<100) {
-					trace("right fit!");
-					statA_1.width=prevWidth;
-					this.removeEventListener(Event.ENTER_FRAME,iterateShrink);
-					launchStat();
-				} else {
-					prevWidth=statA_1.width;
-					
-					statA_1.width-=10;
-				}
-				
+			protected function iterateShrink(e:Event) : void
+			{
+//				if(statA_1.textFlow.flowComposer.numLines!=prevLines || statA_1.width<100) 
+//				{
+//					statA_1.width=prevWidth;
+//					this.removeEventListener(Event.ENTER_FRAME,iterateShrink);
+//					launchStat();
+//				} else {
+//					prevWidth=statA_1.width;
+//					
+//					statA_1.width-=10;
+//				}
 			}
 			
 			protected function showKeyStat():void
 			{
-				trace("numchildren:"+statA_1.textFlow.numChildren);
-				var ready:Boolean=true;
-				statA_1.width=300;
-				//				Console.log("showKeyStat", this);
-				try
-				{
-					if ( statistics[statisticsIndex].hasOwnProperty("@key") )
-					{
-						trace("original key:"+statistics[statisticsIndex].@key.toString().toUpperCase());
-						var numWords:Array=statistics[statisticsIndex].@key.toString().split(" ");
-						if(numWords.length>1) {
-							trace("prima parola cortaaa");
-							var word1:String=numWords[0];
-							var word2:String=numWords[1];
-							if(word1.length<=3 && word2.length>10) {
-								//statA_1.width=500;
-								stat1_width=500;
-								trace("prima parola cortaaa"+word1+":"+word2);
-							}
-						}
-						
-						stat_POY = statistics[statisticsIndex].@key.toString().toUpperCase();
-						
-						
-						//statA_1.textFlow=TextConverter.importToFlow(statistics[statisticsIndex].@key.toString().toUpperCase(),TextConverter.PLAIN_TEXT_FORMAT);
-						//statA_1.textFlow.lineBreak=LineBreak.TO_FIT;
-						//trace("line 1"+statA_1.textFlow.flowComposer.getLineAt(1).paragraph.
-						statA_1.validateNow();
-						//trace("stat length:"+statA_1.width);
-						//var textFlowLine:ParagraphElement = statA_1.textFlow.flowComposer.getLineAt(0).paragraph;
-						//trace("row 1:"+textFlowLine.mxmlChildren[0].text);
-						//trace("POY LINES"+statA_1.textFlow.flowComposer.numLines.toString());
-						prevLines=statA_1.textFlow.flowComposer.numLines;
-
-						
-						if(statA_1.textFlow.flowComposer.numLines>4) {
-							trace("attempt enlarge");
-							ready=false;
-							this.addEventListener(Event.ENTER_FRAME,iterateEnlarge);
-							
-							trace("large loope end");
-						} else {
-							ready=false;
-							this.addEventListener(Event.ENTER_FRAME,iterateShrink);
-							
-						}
-						
-					} else {
-						stat_POY = "";
-					}
-					if ( statistics[statisticsIndex].hasOwnProperty("@value") )
-					{
-						trace("original value:"+statistics[statisticsIndex].@value.toString());
-						var stat_POY_years_temp:Array=statistics[statisticsIndex].@value.toString().split(",");
-						
-						for (var u:Number=0;u<stat_POY_years_temp.length;u++) {
-							stat_POY_years_temp[u]=StringUtils.trim(stat_POY_years_temp[u]);
-						}
-						
-						//trace("years text:"+stat_POY_years_temp);
-						//trace("years array length:"+stat_POY_years_temp.length);
-						
-						
-						switch(stat_POY_years_temp.length) {
-							case 1:
-								trace("years line 1:"+stat_POY_years_temp[0]);
-								fontSize_Year=60;
-								//baseShift_Year=-14;
-								stat_POY_years=stat_POY_years_temp[0];
-								break;
-							case 2:
-								trace("years line 2:"+stat_POY_years_temp[0]);
-								fontSize_Year=40;
-								//baseShift_Year=-14;
-								stat_POY_years=stat_POY_years_temp[0]+"\r\n"+stat_POY_years_temp[1];
-								break;
-							case 3:
-								//baseShift_Year=-14;
-								trace("years line 3:"+stat_POY_years_temp[0]);
-								fontSize_Year=28;
-								
-								//baseShift_Year=-14;
-								stat_POY_years=stat_POY_years_temp[0]+", "+stat_POY_years_temp[1]+"\r\n"+stat_POY_years_temp[2];
-								break;
-							case 4:
-								trace("years line 4:"+stat_POY_years_temp[0]);
-								fontSize_Year=28;
-								//baseShift_Year=-14;
-								stat_POY_years=stat_POY_years_temp[0]+", "+stat_POY_years_temp[1]+"\r\n"+stat_POY_years_temp[2]+", "+stat_POY_years_temp[3];
-								break;
-							
-						}
-						
-						/*if(stat_POY_years_temp.length>1) {
-						for (var a:Number=0;a<stat_POY_years_temp.length;a++) {
-						stat_POY_years_temp_vec.push(StringUtils.trim(String(stat_POY_years_temp[a])));
-						}
-						stat_POY_years = stat_POY_years_temp_vec.join("\r\n");
-						} else {
-						stat_POY_years = StringUtils.trim(statistics[statisticsIndex].@value.toString());
-						}
-						if(stat_POY_years_temp.length==1 || stat_POY_years_temp.length==2) {
-						fontSize_Year=60;
-						} else if(stat_POY_years_temp.length<=4) {
-						fontSize_Year=40;
-						} else {
-						fontSize_Year=30;
-						}*/
-						
-					} else {
-						stat_POY_years = "";
-					}
-					if ( statistics[statisticsIndex].hasOwnProperty("@subvalue") )
-					{
-						stat_POY_season = statistics[statisticsIndex].@subvalue.toString().toUpperCase();	
-					} else {
-						
-						stat_POY_season = "";
-					}
-				} catch (e:Error)
-				{
-					//					Console.log("Error:"+e.message, this);
-				}
-				
-				
-				if(ready) {
-					launchStat();
-				}
-				
+//				var ready:Boolean=true;
+//				statA_1.width=300;
+//				try
+//				{
+//					if ( statistics[statisticsIndex].hasOwnProperty("@key") )
+//					{
+//						var numWords:Array=statistics[statisticsIndex].@key.toString().split(" ");
+//						if(numWords.length>1) {
+//							var word1:String=numWords[0];
+//							var word2:String=numWords[1];
+//							if(word1.length<=3 && word2.length>10) 
+//							{
+//								stat1_width=500;
+//							}
+//						}
+//						
+//						stat_POY = statistics[statisticsIndex].@key.toString().toUpperCase();
+//						statA_1.validateNow();
+//						prevLines=statA_1.textFlow.flowComposer.numLines;
+//						
+//						if(statA_1.textFlow.flowComposer.numLines>4) 
+//						{
+//							ready=false;
+//							this.addEventListener(Event.ENTER_FRAME,iterateEnlarge);
+//						} else {
+//							ready=false;
+//							this.addEventListener(Event.ENTER_FRAME,iterateShrink);
+//							
+//						}
+//						
+//					} else {
+//						stat_POY = "";
+//					}
+//					if ( statistics[statisticsIndex].hasOwnProperty("@value") )
+//					{
+//						var stat_POY_years_temp:Array=statistics[statisticsIndex].@value.toString().split(",");
+//						
+//						for (var u:Number=0;u<stat_POY_years_temp.length;u++) {
+//							stat_POY_years_temp[u]=StringUtils.trim(stat_POY_years_temp[u]);
+//						}
+//						
+//						switch(stat_POY_years_temp.length) {
+//							case 1:
+//								fontSize_Year=60;
+//								stat_POY_years=stat_POY_years_temp[0];
+//								break;
+//							case 2:
+//								fontSize_Year=40;
+//								stat_POY_years=stat_POY_years_temp[0]+"\r\n"+stat_POY_years_temp[1];
+//								break;
+//							case 3:
+//								fontSize_Year=28;
+//								stat_POY_years=stat_POY_years_temp[0]+", "+stat_POY_years_temp[1]+"\r\n"+stat_POY_years_temp[2];
+//								break;
+//							case 4:
+//								fontSize_Year=28;
+//								stat_POY_years=stat_POY_years_temp[0]+", "+stat_POY_years_temp[1]+"\r\n"+stat_POY_years_temp[2]+", "+stat_POY_years_temp[3];
+//								break;
+//						}
+//					} else {
+//						stat_POY_years = "";
+//					}
+//					if ( statistics[statisticsIndex].hasOwnProperty("@subvalue") )
+//					{
+//						stat_POY_season = statistics[statisticsIndex].@subvalue.toString().toUpperCase();	
+//					} else {
+//						
+//						stat_POY_season = "";
+//					}
+//				} catch (e:Error)
+//				{
+//				}
+//				
+//				if(ready) {
+//					launchStat();
+//				}
+//				
 			}
-			protected function launchStat():void {
-				statisticsIndex = (statisticsIndex+1) % (statistics.length());
-				var secondPart:Number = (stat_POY_years!="" ? (stat_POY_season!="" ? Math.max(statA_2.explicitWidth,statA_3.explicitWidth) : statA_2.explicitWidth) :  0 );
-				//TweenMax.to( statRoller, .5, { alpha:1, width: statA_1.explicitWidth + secondPart, onComplete: nextStat});
-				statRoller.width=statA_1.explicitWidth + secondPart;
-				TweenMax.to( statRoller, .5, { alpha:1, onComplete: nextStat});
-				TweenMax.to( goalgroup, .5, { alpha:1});
-				
+			
+			protected function launchStat():void 
+			{
+//				statisticsIndex = (statisticsIndex+1) % (statistics.length());
+//				var secondPart:Number = (stat_POY_years!="" ? (stat_POY_season!="" ? Math.max(statA_2.explicitWidth,statA_3.explicitWidth) : statA_2.explicitWidth) :  0 );
+//				statRoller.width=statA_1.explicitWidth + secondPart;
+//				TweenMax.to( statRoller, .5, { alpha:1, onComplete: nextStat});
+//				TweenMax.to( goalgroup, .5, { alpha:1});
 			}
+			
 			protected function nextStat( e:Event = null ):void
 			{
-				TweenMax.to( statRoller, .5, {delay: 5, alpha:0, onComplete: showKeyStat});
-				TweenMax.to( goalgroup, .5, {delay: 5, alpha:0});
+//				TweenMax.to( statRoller, .5, {delay: 5, alpha:0, onComplete: showKeyStat});
+//				TweenMax.to( goalgroup, .5, {delay: 5, alpha:0});
 				
 			}
 			protected function showStatistics():void
 			{
-				TweenMax.killTweensOf( statRoller, false );
-				TweenMax.killTweensOf( goalgroup, false );
-				statistics = topfiveData[currentIndex].statistics..data;
-				if (statistics.length()>0)
-				{
-					
-					showKeyStat()
-					
-				} else 
-				{
-					stat_POY = (TeamModel.selectedTeam + " PLAYER OF THE YEAR IN").toUpperCase();
-					stat_POY_years = topfiveData[currentIndex].statistics.@poy.toString();
-				}
-				stat_goals = topfiveData[currentIndex].statistics.@goals.toString();
-				stat_goals_for = ("GOALS\r\nSCORED FOR\r\n"+TeamModel.selectedTeam).toUpperCase();
+			 	statisticsScroller.refreshStatistics(topfiveData[currentIndex].statistics, teamColor);
+				
+//				TweenMax.killTweensOf( statRoller, false );
+//				TweenMax.killTweensOf( goalgroup, false );
+//				statistics = topfiveData[currentIndex].statistics..data;
+//				if (statistics.length()>0)
+//				{
+//					
+//					showKeyStat()
+//					
+//				} else 
+//				{
+//					stat_POY = (TeamModel.selectedTeam + " PLAYER OF THE YEAR IN").toUpperCase();
+//					stat_POY_years = topfiveData[currentIndex].statistics.@poy.toString();
+//				}
+//				stat_goals = topfiveData[currentIndex].statistics.@goals.toString();
+//				stat_goals_for = ("GOALS\r\nSCORED FOR\r\n"+TeamModel.selectedTeam).toUpperCase();
 			}
 			
 			protected function mySelect( e:Event=null ):void
@@ -383,19 +309,15 @@
 				for(var j:uint = 0; j < players.numElements; j++)
 				{
 					topfive_renderer(players.getElementAt( j )).cover.visible = true;
-					//					Console.log( "Click "+e.currentTarget+" = " +players.getElementAt( j ), this);
 					if (e.currentTarget == players.getElementAt( j ))
 					{
-						trace("click "+j);
 						if (currentIndex!=j)
 						{
-							TweenMax.killTweensOf( statRoller,true);
-							TweenMax.killTweensOf( goalgroup,true);
+//							TweenMax.killTweensOf( statRoller,true);
+//							TweenMax.killTweensOf( goalgroup,true);
 							
 							currentIndex = j;
 							showInfo();
-							//TweenMax.to( statRoller, .5, { alpha:0, onComplete: showInfo});
-							//TweenMax.to( goalgroup, .5, { alpha:0});
 						}
 					}
 				}
@@ -403,17 +325,14 @@
 			
 			protected function myRollOver( e:Event ):void
 			{
-				
 				e.currentTarget.cover.visible = false;
 			}
+			
 			protected function myRollOut( e:Event ):void
 			{
 				if (players.getElementAt( currentIndex )!=e.currentTarget)
 					e.currentTarget.cover.visible = true;
 			}
-			
-			
-
 			
 			private function paragraphHeight(p:ParagraphElement):Number
 			{
@@ -447,9 +366,7 @@
 		
 		<s:HGroup gap="0">
 			
-			
 			<s:BorderContainer  backgroundAlpha=".7" borderVisible="false" backgroundColor="0x000000" width="859" height="689">
-				
 				
 				<s:HGroup verticalAlign="middle">
 					<s:Label text="{shirtno}" paddingLeft="32" paddingRight="32" baselineShift="-15" fontSize="160" color="{teamColor}" textAlign="center" />
@@ -467,9 +384,10 @@
 					</s:RichEditableText>
 				</s:Scroller>
 				<s:VGroup width="100%" height="180" paddingLeft="32" paddingRight="32" bottom="0">
-					<!--paddingBottom="{ stat_POY.length>40 ? 10 : 0 }" -->
 					<s:Label text="STATISTICS" lineBreak="toFit" color="{teamColor}" fontWeight="bold" fontSize="30" baselineShift="0" />
-					<s:HGroup verticalAlign="bottom">
+					<statistics:StatisticsScroller id="statisticsScroller"/>
+					
+					<!--<s:HGroup verticalAlign="bottom">
 						<s:HGroup id="statRoller" width="400" height="113" verticalCenter="0" alpha="0">
 							<s:RichEditableText  baselineShift="-3" backgroundAlpha="1"   lineHeight="90%" color="0xFFFFFF" id="statA_1"  text="{stat_POY}" verticalAlign="middle" width="{stat1_width}"   fontSize="28" height="113" fontFamily="StandardRegularAllCase" />
 							<s:VGroup >
@@ -500,7 +418,10 @@
 								</s:stroke>
 							</s:Line>
 						</s:HGroup>
-					</s:HGroup>	
+					</s:HGroup>-->
+					
+					
+					
 				</s:VGroup>
 				
 			</s:BorderContainer>

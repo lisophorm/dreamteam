@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		 xmlns:s="library://ns.adobe.com/flex/spark" 
+		 xmlns:mx="library://ns.adobe.com/flex/mx"
+		 width="820" height="110" clipAndEnableScrolling="true">
+	
+	<fx:Script>
+		<![CDATA[
+			import com.greensock.TweenMax;
+			import com.greensock.easing.Strong;
+			
+			protected var transitionPause : Number = 1;
+			protected var transitionDuration : Number = 3;
+			
+			public function refreshStatistics (statistics : XMLList, lineColor : uint) : void
+			{
+				unitContainer.x = 0;
+				
+				while(unitContainer.numElements > 0)
+				{
+					unitContainer.removeElementAt(0);
+				}
+				
+				TweenMax.killDelayedCallsTo(executeTransition);
+				TweenMax.killTweensOf(unitContainer);
+				
+				for each(var statistic : XML in statistics.statistic)
+				{
+					var statisticUnit : StatisticUnit = new StatisticUnit();
+					statisticUnit.initialise(statistic, lineColor);
+					unitContainer.addElement(statisticUnit);
+				}
+				TweenMax.delayedCall(transitionPause, executeTransition);
+			}
+			
+			protected function executeTransition() : void
+			{
+				if(unitContainer.numElements > 0)
+					TweenMax.to(unitContainer, transitionDuration, {x:-unitContainer.getElementAt(0).width, onComplete : transitionCompleteHandler, ease:Strong.easeInOut});
+			}
+			
+			protected function transitionCompleteHandler() : void
+			{
+				unitContainer.x = 0;
+				unitContainer.addElement(unitContainer.getElementAt(0));
+				TweenMax.delayedCall(transitionPause, executeTransition);
+			}
+			
+			public function finalise () : void
+			{
+				TweenMax.killDelayedCallsTo(executeTransition);
+				TweenMax.killTweensOf(unitContainer);
+			}
+		]]>
+	</fx:Script>
+	<s:HGroup id="unitContainer"/>
+</s:Group>

@@ -91,31 +91,23 @@
 			
 			protected function videoPlayer_mediaPlayerStateChangeHandler(event:MediaPlayerStateChangeEvent):void
 			{
-				trace("video state change:"+event.state);
-				trace(event);
 				if(event.state == "playing") {
 					if(prima) {
-						trace("lanciodelay:");
 						prima=false;
 						new DelayedExecution(1000,this,debuggacazzo);
 							
 					}
 					
 					if(videoPlayer.videoObject) {
-						trace("esiste:"+event.state);
 						videoPlayer.videoObject.smoothing=true;
 					} else {
-						trace("non:"+event.state);
-						
 					}
 				}
 			}
 			
-			private function debuggacazzo():void {
-				//var theVideo:video
-				trace("debuggami syo cazzo");
+			private function debuggacazzo():void 
+			{
 				traceDisplayList(videoPlayer.getChildAt(0));
-				trace("culo");
 			}
 			
 			public static function traceDisplayList(displayObject:DisplayObject, instanceOnly:Boolean = false, withData:Boolean = true, withParent:Boolean = false, maxDepth:int = 100, skipClass:Class = null, levelSpace:String = " ", currentDepth:int = 0, parent:String = ""):void 
@@ -129,7 +121,6 @@
 				var className:String = getCleanClassName(displayObject);
 				
 				if(className=="Video") {
-					trace("BEKKKATO IL VIDEO");
 					var vid:flash.media.Video = displayObject as flash.media.Video;
 					vid.smoothing=true;
 				}
@@ -144,8 +135,6 @@
 				var parentName:String = (withParent && parent != "") ? String(" (" +  parent + ")") : "";   
 				
 				var levelStr:String = (withParent) ? String(currentDepth + " ") : "";
-				
-				trace(levelStr + levelSpace + objectName + dataString + parentName);
 				
 				if (displayObject is DisplayObjectContainer && currentDepth < maxDepth)
 				{       
@@ -171,20 +160,16 @@
 			
 			protected function videoPlayer_creationCompleteHandler(event:FlexEvent):void
 			{
-				//videoPlayer.playerControls.visible=false;
 				
 			}
 			
 			protected function videoPlayer_updateCompleteHandler(event:FlexEvent):void
 			{
-				trace("video update complete");
 				traceDisplayList(videoPlayer);
 				if (videoPlayer.videoObject) {
 					videoPlayer.videoObject.smoothing = true;
 				} else {
-					trace("no video object");
 				}
-				
 			}
 			
 		]]>

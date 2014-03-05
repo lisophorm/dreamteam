@@ -22,7 +22,22 @@
 In 1996 McGrath won a second League Cup for Villa. By the end of his Villa career he had chalked up 252 appearances in the claret and blue strip. He is affectionately referred to as 'God' by many Villa fans.]]>
             </description>
             <statistics poy="1982/1993" goals="9">
-               
+				<statistic>
+					<numeralCopy><![CDATA[1982]]></numeralCopy>
+					<bodyCopy><![CDATA[PFAI Players’ Player of the Year ]]></bodyCopy>
+				</statistic>
+				<statistic>
+					<numeralCopy><![CDATA[1993]]></numeralCopy>
+					<bodyCopy><![CDATA[PFA Player of the Year]]></bodyCopy>
+				</statistic>
+				<statistic>
+					<numeralCopy><![CDATA[]]></numeralCopy>
+					<bodyCopy><![CDATA[Premier League runner-up]]></bodyCopy>
+				</statistic>
+				<statistic>
+					<numeralCopy><![CDATA[83]]></numeralCopy>
+					<bodyCopy><![CDATA[international caps for Republic Of Ireland]]></bodyCopy>
+				</statistic>
                 <data key="PFA Player of the Year" value="1982" />
                 <data key="PFA Player of the Year" value="1993" />
                 <data key="FA Premier League – runner up"  />
@@ -44,6 +59,18 @@ Agbonlahor is a product of Aston Villa's Academy and has earned three caps for 
 He is Aston Villa’s all-time leading Premier League goal scorer.]]>
             </description>
             <statistics poy="2009/10" goals="62">
+				<statistic>
+					<numeralCopy><![CDATA[09/10]]></numeralCopy>
+					<bodyCopy><![CDATA[League Cup runner-up]]></bodyCopy>
+				</statistic>
+				<statistic>
+					<numeralCopy><![CDATA[2007]]></numeralCopy>
+					<bodyCopy><![CDATA[Barclays Premier League Player of the Month November]]></bodyCopy>
+				</statistic>
+				<statistic>
+					<numeralCopy><![CDATA[3]]></numeralCopy>
+					<bodyCopy><![CDATA[international caps for England]]></bodyCopy>
+				</statistic>
                 <data key="Football League Cup Runner-Up" value="2009/2010" />
                 <data key="Barclays Premier League Player of the Month November 2007" /> 
             </statistics>
@@ -64,6 +91,18 @@ Barry became the youngest player to appear in 300 Premier League games (aged 2
 He went on and captained Aston Villa and is 9th in their all-time list of appearances.]]>
             </description>
             <statistics poy="2006/2007" goals="41">
+				<statistic>
+					<numeralCopy><![CDATA[2001]]></numeralCopy>
+					<bodyCopy><![CDATA[Intertoto Cup Winner]]></bodyCopy>
+				</statistic>
+				<statistic>
+					<numeralCopy><![CDATA[06/07]]></numeralCopy>
+					<bodyCopy><![CDATA[Player of the Season]]></bodyCopy>
+				</statistic>
+				<statistic>
+					<numeralCopy><![CDATA[53]]></numeralCopy>
+					<bodyCopy><![CDATA[international caps for England]]></bodyCopy>
+				</statistic>
                 <data key="Intertoto Cup Winner" value="2001" />
                 <data key="Player of the season 2006/2007"  />
             </statistics>
@@ -84,6 +123,15 @@ On 15th September 2012, Benteke scored on his debut for Aston Villa in a 2–0 w
 Benteke is a regular starter in the 2013/14 Villa team and continues to impress the management team.]]>
             </description>
             <statistics poy="" goals="22">
+				<statistic>
+					<numeralCopy><![CDATA[15]]></numeralCopy>
+					<bodyCopy><![CDATA[international caps for Belgium]]></bodyCopy>
+				</statistic>
+				<statistic>
+					<numeralCopy><![CDATA[6]]></numeralCopy>
+					<bodyCopy><![CDATA[international Goals]]></bodyCopy>
+				</statistic>
+				
                 <data key="International Appearances" value="15" />    
                 <data key="International Goals" value="6" />
 
@@ -104,6 +152,22 @@ Benteke is a regular starter in the 2013/14 Villa team and continues to impress 
 From 1989 to 1998, Yorke played initially as a right winger until the 1995/96 season. He then switched to centre forward and quickly established himself as one of the Premier League’s top strikers.]]>
             </description>
             <statistics poy="1998" goals="73">
+				<statistic>
+					<numeralCopy><![CDATA[98/99]]></numeralCopy>
+					<bodyCopy><![CDATA[PFA Premier League Team of the Year]]></bodyCopy>
+				</statistic>
+				<statistic>
+					<numeralCopy><![CDATA[98/99]]></numeralCopy>
+					<bodyCopy><![CDATA[Premier League Golden Boot]]></bodyCopy>
+				</statistic>
+				<statistic>
+					<numeralCopy><![CDATA[98/99]]></numeralCopy>
+					<bodyCopy><![CDATA[Premier League Player of the Season]]></bodyCopy>
+				</statistic>
+				<statistic>
+					<numeralCopy><![CDATA[74]]></numeralCopy>
+					<bodyCopy><![CDATA[international caps for Trinidad and Tobago]]></bodyCopy>
+				</statistic>
                 <data key="Premier League Player of the Month 1996/1999/2000" />
                 <data key="PFA Premier League Team of the Year" value="1998" />
                 <data key="Premier League Golden Boot" value="1998" />
