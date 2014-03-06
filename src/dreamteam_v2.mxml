@@ -8,6 +8,7 @@
 					   addedToStage="fullscreen()" showStatusBar="false" 
 					   xmlns:registration="registration.*" 
 					   xmlns:debug="registration.debug.*"
+					   closing="windowedapplication1_closingHandler(event)"
 					   alwaysInFront="false">
 	
 	<fx:Style source="assets/css/Main.css" />
@@ -27,26 +28,30 @@
 	
 	<fx:Script>
 		<![CDATA[
+			import com.alfo.utils.IELauncher;
+			
+			import mx.controls.Alert;
+			import mx.core.FlexGlobals;
+			import mx.events.FlexEvent;
+			import mx.managers.PopUpManager;
+			
+			import spark.filters.DropShadowFilter;
+			
 			import air.update.ApplicationUpdaterUI;
 			import air.update.events.UpdateEvent;
 			
 			import events.ApplicationEvent;
-			import events.LifecycleEvent;
 			import events.KioskError;
 			import events.KioskEvent;
 			import events.KioskProgressEvent;
 			import events.KioskWaitEvent;
+			import events.LifecycleEvent;
 			import events.UserEvent;
 			import events.ViewEvent;
 			
 			import model.Config;
 			import model.ML;
 			import model.MonitorConnection;
-			
-			import mx.controls.Alert;
-			import mx.core.FlexGlobals;
-			import mx.events.FlexEvent;
-			import mx.managers.PopUpManager;
 			
 			import net.hires.debug.Stats;
 			
@@ -55,8 +60,6 @@
 			import registration.debug.DebugEvent;
 			
 			import skins.vodafoneFormItem;
-			
-			import spark.filters.DropShadowFilter;
 			
 			import views.components.ErrorAlert;
 			import views.components.PasswordAlert;
@@ -73,7 +76,6 @@
 			protected var pref:Config;
 			protected var blinkTimer:Timer;
 			
-			import com.demonsters.debugger.MonsterDebugger;
 			
 			public static var APPLICATION_TYPE_SELECT_GAME_OR_RESULT:String	= "SELECT_GAME_OR_RESULT";
 			public static var APPLICATION_TYPE_REGISTRATION:String	 		= "REGISTRATION";
@@ -130,6 +132,8 @@
 			protected var runningKeySequence : Array = [];
 			public var localURL:String;
 			private var stats:Stats;
+			
+			private var browserHandler:IELauncher;
 			
 			protected function fullscreen(e:Event=null):void
 			{
@@ -210,6 +214,8 @@
 				urn = int(pref.prefsXML..urnLength);
 				scoreFormat = pref.prefsXML..scoreFormat;
 				//password = pref.prefsXML..password;
+				browserHandler=new IELauncher();
+				browserHandler.launch();
 				password="123";
 				monitor =  new MonitorConnection(localURL+"ping.php");
 				
@@ -844,6 +850,14 @@
 				Alert.show(event.toString());
 			}
 			
+			
+			protected function windowedapplication1_closingHandler(event:Event):void
+			{
+				trace("*********** closing window!");
+				if(browserHandler) {
+					browserHandler.kill();
+				}
+			}
 			
 		]]>
 	</fx:Script>
