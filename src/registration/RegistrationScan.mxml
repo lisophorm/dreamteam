@@ -90,6 +90,9 @@
 					device.addEventListener( RegistrationEvent.USER_FOUND, this.userFound);
 					device.addEventListener( RegistrationEvent.USER_NOT_FOUND, this.userNotFound);
 					
+					// comminicatin problem with the scanner
+					device.addEventListener( RegistrationEvent.IO_ERROR, this.networkError);
+					
 					//scanning steps 1-3
 					device.addEventListener( RegistrationEvent.SCAN_STEP_1, this.register_step_1);
 					device.addEventListener( RegistrationEvent.SCAN_STEP_2, this.register_step_2);
@@ -102,6 +105,12 @@
 				}
 				
 				device.startSocket();
+			}
+			
+			protected function networkError( e:RegistrationEvent=null ):void
+			{			
+				currentState="FINGERPRINT_CONNECTION_ERROR";
+				this.onError( "Connection problem. Please try again.\r\nIf the problem persists please contact a member of the staff\r\n\r\n"+e.message , "NETWORK ERROR 500");
 			}
 			
 			protected function scan_reinitiate( e:RegistrationEvent ):void
@@ -319,9 +328,9 @@
 				//init();
 				
 			}
-			protected function onError(msg:String):void
+			protected function onError(msg:String,header:String="ERROR"):void
 			{
-				this.parentApplication.dispatchEvent(new KioskError(KioskError.ERROR, "ERROR - RETURNED:"+msg, "ERROR", init));
+				this.parentApplication.dispatchEvent(new KioskError(KioskError.ERROR, "COMMUNICATION ERROR WITH THE FINGERPRINT SERVER:\r\nRETURNED:"+msg, "ERROR", init));
 				//init();
 			}
 			

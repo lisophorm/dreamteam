@@ -10,7 +10,7 @@ package registration
 	import flash.utils.Timer;
 	
 	import registration.debug.DebugEvent;
-
+	
 	public class Registration extends EventDispatcher
 	{
 		import be.aboutme.airserver.AIRServer;
@@ -21,7 +21,7 @@ package registration
 		import be.aboutme.airserver.messages.Message;
 		import by.blooddy.crypto.serialization.JSON;
 		
-//		import com.utils.Console;
+		//		import com.utils.Console;
 		
 		private var server:AIRServer;
 		private var msg:String ="";
@@ -45,18 +45,18 @@ package registration
 			}
 			//start the server
 			try {
-		
+				
 				if (!hasStarted)
 				{
 					//Console.log("startSocket "+server, this);
-			
+					
 					server.start();
 				} else {
 					server.stop();
 					server.start();
 				}
 				hasStarted = true;
-						
+				
 			} catch (e:Error)
 			{
 				
@@ -66,7 +66,7 @@ package registration
 		
 		private function clientAddedHandler(event:AIRServerEvent):void
 		{
-		//	Console.log("Client added: " + event.client.id + "\n", this);
+			//	Console.log("Client added: " + event.client.id + "\n", this);
 			delayedIdleSocket();
 		}
 		
@@ -113,7 +113,7 @@ package registration
 			//Console.log("sending message: "+message.data, this);
 			server.sendMessageToAllClients(message);
 		}
-			
+		
 		
 		protected function delayedIdleSocket():void
 		{
@@ -131,7 +131,7 @@ package registration
 			t = null;				
 			this.idleSocket();
 		}
-	
+		
 		public function debugHandleCode(data:Object):void
 		{
 			handleCode(data);
@@ -150,53 +150,53 @@ package registration
 					case 101: 
 						//- Place finger on scanner
 						this.dispatchEvent( new RegistrationEvent( RegistrationEvent.SCAN_STEP_1, null, data["msg"]  ) );
-					break;
+						break;
 					case 102:
 						//- Lift finger and place a second time
 						this.dispatchEvent( new RegistrationEvent( RegistrationEvent.SCAN_STEP_2, null, data["msg"]  ) );
-					break;
+						break;
 					case 103:
 						//- Lift finger and place a last time
 						this.dispatchEvent( new RegistrationEvent( RegistrationEvent.SCAN_STEP_3, null, data["msg"]  ) );
-					break;
+						break;
 					case 104:
 						//- Scan successful
 						this.dispatchEvent( new RegistrationEvent( RegistrationEvent.SCAN_COMPLETED, null, data["msg"]  ) );
-					break;
+						break;
 					case 105:
 						//- Low quality scan - try again
 						this.dispatchEvent( new RegistrationEvent( RegistrationEvent.SCAN_AGAIN, null, data["msg"]  ) );
-					break;
+						break;
 					case 106:
 						//- Error
 						this.dispatchEvent( new RegistrationEvent( RegistrationEvent.ERROR, null, data["msg"]  ) );
-					break;
+						break;
 					case 107:
 						//- Error - start all three scan again
 						this.dispatchEvent( new RegistrationEvent( RegistrationEvent.SCAN_RESTART, null, data["msg"]  ) );
-					break;
+						break;
 					case 108:
 						// Send 'cancel' to reset.
 						this.dispatchEvent( new RegistrationEvent( RegistrationEvent.SCAN_CANCELLED, null, data["msg"]  ) );
-					break;
+						break;
 					case 201:
 						//- Registration successful
 						// I THINK THE URN SHOULD BE CREATED HERE
 						this.dispatchEvent( new RegistrationEvent( RegistrationEvent.USER_REGISTERED, null, data["msg"]  ) );
-					break;
+						break;
 					case 202:
 						//- Registration Error
 						this.dispatchEvent( new RegistrationEvent( RegistrationEvent.ERROR, null, data["msg"]  ) );
-					break;
+						break;
 					case 203:
 						//- Customer is already in the DB
 						this.dispatchEvent( new RegistrationEvent( RegistrationEvent.USER_ALREADY_REGISTERED, data["msg"]  ) );
-	
-					break;
+						
+						break;
 					case 301:
 						//- Identify Scan finger
 						this.dispatchEvent( new RegistrationEvent( RegistrationEvent.SCAN_READY, null, data["msg"]  ) );
-					break;
+						break;
 					case 302:
 						//- (Success, returns user ID)
 						if (data["msg"]=="000000000") //user not found
@@ -211,12 +211,17 @@ package registration
 						} else {
 							this.dispatchEvent( new RegistrationEvent( RegistrationEvent.USER_FOUND, data["msg"]  ) );
 						}
-					break;
+						break;
 					case 303 :
 						//- Customer not found
 						
 						this.dispatchEvent( new RegistrationEvent( RegistrationEvent.USER_NOT_FOUND, data["msg"] ) );
-					break;
+						break;
+					case 500 :
+						//- network error - cannot talk to fingerprint server
+						
+						this.dispatchEvent( new RegistrationEvent( RegistrationEvent.IO_ERROR, data["msg"] ) );
+						break;
 				}
 			}
 		}

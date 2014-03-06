@@ -15,6 +15,8 @@ package registration
 		public static var SCAN_CANCELLED:String 	= "SCAN_CANCELLED";
 		public static var SCAN_REINITIALISE:String 	= "SCAN_REINITIALISE";
 		
+		public static var IO_ERROR:String 	= "NETWORK_ERROR";
+		
 		
 		public static var USER_FOUND:String 			= "USER_FOUND";
 		public static var USER_REGISTERED:String 			= "USER_REGISTERED";
