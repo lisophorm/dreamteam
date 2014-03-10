@@ -2,7 +2,8 @@
 <s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
 		 xmlns:s="library://ns.adobe.com/flex/spark" 
 		 xmlns:mx="library://ns.adobe.com/flex/mx"
-		 remove="exit(event)" creationComplete="created(event)" 
+		 remove="exit(event)" creationComplete="created(event)"
+		 width="100%" height="100%"
 		 >
 	<fx:Script>
 		<![CDATA[
@@ -177,7 +178,7 @@
 		<s:HTTPService id="saveData" resultFormat="flashvars" method="POST" url="{(this.parentApplication).localURL+'register.php'}" result="save(event)" fault="error(event)" />
 	</fx:Declarations>
 	
-	<s:Form width="100%" id="userform" horizontalCenter="105" verticalCenter="-10">
+	<s:Form id="userform" horizontalCenter="105" verticalCenter="-10">
 		<s:layout>
 			<s:FormLayout/>
 		</s:layout>

@@ -89,9 +89,6 @@
 					DragManager.doDrag(dragInitiator, ds, event, img, _X, _Y, .8);
 				}				
 			}
-			
-
-			
 				
 		]]>
 	</fx:Script>
@@ -126,7 +123,8 @@
 			
 		</s:filters>
 		<s:fill>
-			<s:SolidColor color.goalkeeper="0xFECD0A" color.player="0xE6001C" color.over="0x999999" color="0x999999" color.initial="0x999999" />
+			<!--0xE6001C-->
+			<s:SolidColor color.goalkeeper="0xFECD0A" color.player="{this.parentApplication.currentTeamColour}" color.over="0x999999" color="0x999999" color.initial="0x999999" />
 		</s:fill>
 	</s:Rect>
 	<s:Label id="labelDisplay" styleName="sideButton"
@@ -134,7 +132,6 @@
 			 maxDisplayedLines="1"
 			 horizontalCenter="0" verticalCenter="1" verticalAlign="middle"
 			 left="10" right="10" top="2" bottom="2" text="{label}">
-		
 	</s:Label>
 	
 </s:Group>

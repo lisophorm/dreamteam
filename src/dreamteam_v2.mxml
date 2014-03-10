@@ -133,6 +133,14 @@
 			public var localURL:String;
 			private var stats:Stats;
 			
+			[Bindable]
+			public var registrationIncomplete:Boolean=false;
+			
+			[Bindable]
+			public var lastIncompleteURN:String="";
+			
+			[Bindable]
+			public var currentTeamColour:Number=0;
 
 			
 			protected function fullscreen(e:Event=null):void
@@ -514,7 +522,7 @@
 			
 			protected function doNavigation(e:ViewEvent):void
 			{
-				trace("DO NAV APPTYPEL:"+this.ApplicationType);
+				trace("DO NAV APP TYPE:"+this.ApplicationType);
 				trace("DO NAV e.location:"+e.location);
 				
 				clearPopups();
@@ -889,9 +897,9 @@
 			
 			<s:BorderContainer id="borderHolder" width="100%"  height="100%" backgroundAlpha="0" borderVisible="false">
 				
-				<mx:ViewStack id="Stack" height="100%" width="100%"  creationPolicy="all">
+				<mx:ViewStack id="Stack" height="100%" width="100%"  creationPolicy="all" backgroundAlpha="0">
 					
-					<mx:VBox hideEffect="{hideFX}"  showEffect="{showFX}">
+					<mx:VBox hideEffect="{hideFX}"  showEffect="{showFX}" backgroundAlpha="0">
 						<views:SelectGameOrResult id="SelectGameOrResult" />
 					</mx:VBox>
 					
@@ -912,7 +920,13 @@
 					</mx:VBox>
 					
 					<mx:VBox hideEffect="{hideFX}"  showEffect="{showFX}">
+						<s:BorderContainer width="100%" height="100%" borderVisible="false" backgroundImage="@Embed('./assets/images/Background2.png')">
+							<s:VGroup width="100%" height="100%" horizontalAlign="center" verticalAlign="middle">
+
 						<registration:UserForm id="UserForm" />
+							</s:VGroup>
+						</s:BorderContainer>
+
 					</mx:VBox>
 					
 					<mx:VBox hideEffect="{hideFX}"  showEffect="{showFX}">
@@ -950,7 +964,13 @@
 					</mx:VBox>					
 					
 					<mx:VBox hideEffect="{hideFX}"  showEffect="{showFX}">
+						<s:BorderContainer width="100%" height="100%" borderVisible="false" backgroundImage="@Embed('./assets/images/Background2.png')">
+						<s:VGroup horizontalAlign="center" width="100%" height="100%" verticalAlign="middle">
+							
+						
 						<registration:WelcomeBackView id="WelcomeBack"/>
+						</s:VGroup>
+						</s:BorderContainer>
 					</mx:VBox>									
 					
 				</mx:ViewStack>

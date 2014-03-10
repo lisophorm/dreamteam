@@ -4,20 +4,24 @@
 		 xmlns:mx="library://ns.adobe.com/flex/mx" creationComplete="created(event)" remove="group1_removeHandler(event)" xmlns:swipemanager="views.controls.supportClasses.swipemanager.*">
 	<fx:Script>
 		<![CDATA[
-			import com.alfo.utils.Console;
 			import com.greensock.TweenMax;
 			
-			import mx.events.DragEvent;
 			import mx.events.FlexEvent;
 			
 			import spark.utils.TextFlowUtil;
 			
-			import events.KioskError;
 			import events.TeamEvent;
+			
+			import flashx.textLayout.conversion.TextConverter;
 			
 			import model.TeamModel;
 			
 			import views.renderer.gallery_renderer;
+			
+			
+			
+			
+			
 			
 			[Bindable]
 			public var gallery:XMLList;
@@ -106,7 +110,10 @@
 				{
 					
 				}
+				//descriptiontext.textFlow=TextConverter.importToFlow( this.gallery[this.currentIndex].description, TextConverter.TEXT_LAYOUT_FORMAT);
 				description = this.gallery[this.currentIndex].description;
+				//descriptiontext.textFlow
+				//description="hello&#13;new&#13;line";
 				statistics = this.gallery[this.currentIndex].statistics.description;
 			}
 			
@@ -156,8 +163,7 @@
 	<s:BorderContainer backgroundAlpha=".5" backgroundColor="0x00000" width="100%" borderVisible="false" >
 		<s:HGroup paddingBottom="20" paddingTop="20" verticalAlign="top">
 			
-		<s:Label text="{description}" fontFamily="StandardRegularAllCase" height="200" width="900" paddingBottom="10" paddingTop="10" paddingLeft="20" paddingRight="20">
-		</s:Label>
+		<s:RichEditableText lineBreak="toFit" backgroundAlpha="0" text="{description}" id="descriptiontext" fontSize="20" color="0xffffff" fontFamily="StandardRegularAllCase" height="200" width="900" paddingBottom="10" paddingTop="10" paddingLeft="20" paddingRight="20" />
 		<s:Line height="80%" verticalCenter="0" top="40">
 			<s:stroke>
 				<s:SolidColorStroke weight="1" color="{teamColor}"/>

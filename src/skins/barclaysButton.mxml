@@ -159,7 +159,7 @@ in accordance with the terms of the license agreement accompanying it.
 	
 	<!-- layer 8: text -->
 	<!--- @copy spark.components.supportClasses.ButtonBase#labelDisplay  -->
-	<s:Label id="labelDisplay"
+	<s:Label id="labelDisplay" typographicCase="uppercase"
 			 textAlign="center" styleName="buttonLabel"
 			 maxDisplayedLines="1"
 			 horizontalCenter="0" verticalCenter="1" verticalAlign="middle"

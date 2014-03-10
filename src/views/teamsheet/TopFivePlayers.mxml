@@ -8,6 +8,8 @@
 			import com.alfo.utils.StringUtils;
 			import com.greensock.TweenMax;
 			
+			import mx.events.FlexEvent;
+			
 			import events.TeamEvent;
 			
 			import flashx.textLayout.compose.TextFlowLine;
@@ -16,8 +18,6 @@
 			import flashx.textLayout.formats.LineBreak;
 			
 			import model.TeamModel;
-			
-			import mx.events.FlexEvent;
 			
 			import views.renderer.topfive_renderer;
 			
@@ -68,10 +68,13 @@
 				if (TeamEvent.TEAM_INFO == e.type )
 				{
 					topfiveData = TeamModel.getTopPlayers();
+					for(var a:Number=0;a<topfiveData.length();a++) {
+						topfiveData[a].player.color=TeamModel.getTeamColor();
+					}
 					teamColor = TeamModel.getTeamColor();
 					showInfo();
 				}
-			}
+				}
 			
 			public function refresh():void
 			{

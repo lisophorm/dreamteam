@@ -8,7 +8,7 @@
 			<s:Label  fontFamily="StandardRegular" text="{data.name.text().toUpperCase()}" lineBreak="toFit" backgroundColor="0x000000" backgroundAlpha=".5" paddingBottom="5" paddingTop="5" paddingLeft="5" paddingRight="5" bottom="0" width="100%" textAlign="center"/>
 			<s:Line right="0" top="0" height="100%" width="1">
 				<s:stroke>
-					<s:SolidColorStroke weight="1" color="0xFF0000" />
+					<s:SolidColorStroke weight="1" color="{data.player.color}" />
 				</s:stroke>
 			</s:Line>
 			<s:Rect id="cover" width="162" height="161" >

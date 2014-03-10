@@ -15,19 +15,12 @@
 			import com.alfo.utils.EncryptWrapper;
 			import com.alfo.utils.StringUtils;
 			
-			import registration.debug.DebugEvent;
-			import events.KioskError;
-			import events.UserEvent;
-			import events.ViewEvent;
-			
 			import flash.display.StageDisplayState;
 			import flash.events.Event;
 			import flash.events.FocusEvent;
 			import flash.events.KeyboardEvent;
 			import flash.events.MouseEvent;
 			import flash.events.SoftKeyboardEvent;
-			
-			import model.Settings;
 			
 			import mx.events.FlexEvent;
 			import mx.events.StateChangeEvent;
@@ -36,6 +29,14 @@
 			import mx.rpc.http.HTTPService;
 			
 			import spark.events.TextOperationEvent;
+			
+			import events.KioskError;
+			import events.UserEvent;
+			import events.ViewEvent;
+			
+			import model.Settings;
+			
+			import registration.debug.DebugEvent;
 			
 			private var currentURN:String;
 			
@@ -58,6 +59,11 @@
 			
 			public function created(event:FlexEvent=null):void
 			{
+				
+				trace("********** init of finger scan rego process");
+				
+				
+				
 				init();
 				this.removeEventListener( Event.INIT, init);
 				this.addEventListener( Event.INIT, init);
@@ -67,6 +73,7 @@
 			}
 			public function init(event:Event=null):void
 			{
+				trace("previous registration:"+this.parentApplication.registrationIncomplete);
 				this.currentState = "";
 				currentURN = null;
 				frontMessage.text = "PLEASE WAIT - INITIALISING SCANNER";
@@ -90,7 +97,6 @@
 					device.addEventListener( RegistrationEvent.USER_FOUND, this.userFound);
 					device.addEventListener( RegistrationEvent.USER_NOT_FOUND, this.userNotFound);
 					
-					// comminicatin problem with the scanner
 					device.addEventListener( RegistrationEvent.IO_ERROR, this.networkError);
 					
 					//scanning steps 1-3
@@ -105,12 +111,6 @@
 				}
 				
 				device.startSocket();
-			}
-			
-			protected function networkError( e:RegistrationEvent=null ):void
-			{			
-				currentState="FINGERPRINT_CONNECTION_ERROR";
-				this.onError( "Connection problem. Please try again.\r\nIf the problem persists please contact a member of the staff\r\n\r\n"+e.message , "NETWORK ERROR 500");
 			}
 			
 			protected function scan_reinitiate( e:RegistrationEvent ):void
@@ -153,7 +153,15 @@
 			
 			protected function readyToScan( e:RegistrationEvent=null ):void
 			{
+				trace("RegistrationScan :: ready to scan");
 				currentState="READY_TO_SCAN";
+				// if last registration wasn't finalized, delete fingerprint data
+				if(this.parentApplication.registrationIncomplete) {
+					trace("last scan was incomplete");
+					this.parentApplication.registrationIncomplete=false;
+					device.sendMessage("delete "+this.parentApplication.lastIncompleteURN);
+					this.parentApplication.lastIncompleteURN="";
+				}
 			}
 			
 			protected function userRegistered( e:RegistrationEvent = null ):void
@@ -192,6 +200,12 @@
 				frontMessage.text = "WE CAN'T FIND YOU ON OUR SYSTEM, PLEASE SCAN YOUR\r\nTHUMB AGAIN IF YOU HAVE ALREADY REGISTERED\r\nOR PRESS THE BUTTON BELOW TO REGISTER";
 			}
 			
+			protected function networkError( e:RegistrationEvent=null ):void
+			{			
+				currentState="FINGERPRINT_CONNECTION_ERROR";
+				this.onError( "Connection problem. Please try again.\r\nIf the problem persists please contact a member of the staff\r\n\r\n"+e.message , "NETWORK ERROR 500");
+			}
+			
 			public function get uniqueID():Number
 			{
 				var unique : Number =  Number((new Date()).time);
@@ -201,6 +215,7 @@
 			
 			protected function exit(e:Event=null):void
 			{
+				trace("**************** exit registration");
 				stopListen();
 			}
 			
@@ -397,14 +412,21 @@
 			{
 				
 				this.currentState = "REGISTER_BEGIN";
+				// we just started the registration
+				this.parentApplication.registrationIncomplete=true;
 				
 				// create the user here
 				
 				var user : UserData = new UserData();
 				user.urn = "A"+uniqueID.toString()+"Z";
+				
+				
 				settings.userData = user;
 				
 				device.registerUser( user.urn );
+				
+				// stores urn in case of registration incomplete
+				this.parentApplication.lastIncompleteURN=user.urn;
 			}
 			
 			protected function onStateChange( e:StateChangeEvent ):void
@@ -440,11 +462,11 @@
 		<s:State name="USER_NOT_FOUND" />
 		<s:State name="USER_FOUND" />
 		<s:State name="REGISTRATION_ERROR" />
-		<s:State name="NETWORK_ERROR" />
+		<s:State name="FINGERPRINT_CONNECTION_ERROR" />
 	</s:states>
 	
 	<s:VGroup id="welcomeScreen" horizontalAlign="center" includeIn="READY_TO_SCAN" width="1366">
-		<s:Label id="welcomeLabel" textAlign="center" width="1200" styleName="registrationOne" text="WELCOME TO{'\n'}BARCLAYS PREMIER LEAGUE LIVE">
+		<s:Label id="welcomeLabel" textAlign="center" width="90%" styleName="registrationOne" text="WELCOME TO{'\n'}BARCLAYS PREMIER LEAGUE LIVE">
 			<s:filters>
 				<s:GlowFilter color="0x00AEEF" strength="15"/>
 			</s:filters>
@@ -465,6 +487,7 @@
 			<s:Label id="frontMessage" horizontalCenter="0" textAlign="center"
 					 text="PLEASE SCAN YOUR THUMB 3 TIMES"
 					 text.REGISTER_BEGIN = "PLEASE WAIT"
+					 text.FINGERPRINT_CONNECTION_ERROR="NETWORK ERROR 500 PLEASE ASK HELP TO A MEMBER OF STAFF"
 					 text.SCANNING_RESTART = "READING ERROR - PLEASE TRY AGAIN!"
 					 text.STEP1="PLEASE SCAN YOUR THUMB 3 TIMES"
 					 text.STEP2="PLEASE SCAN YOUR THUMB 3 TIMES"

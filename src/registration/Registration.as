@@ -222,6 +222,11 @@ package registration
 						
 						this.dispatchEvent( new RegistrationEvent( RegistrationEvent.IO_ERROR, data["msg"] ) );
 						break;
+					case 600 :
+						//- old user deleted - SCAN_REINITIALISE
+						
+						this.dispatchEvent( new RegistrationEvent( RegistrationEvent.SCAN_REINITIALISE, null, data["msg"]  ) );	
+						break;
 				}
 			}
 		}

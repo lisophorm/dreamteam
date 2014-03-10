@@ -242,7 +242,8 @@
 	</fx:Declarations>
 	<!-- Menu -->
 	<!-- Field -->
-	
+	<s:BorderContainer width="100%" height="100%" borderVisible="false" backgroundImage="@Embed('./assets/images/Background2.png')">
+
 	<s:VGroup horizontalAlign="center" width="100%" verticalCenter="0">
 		<s:Spacer height="80" />
 		<s:Label id="frontMessage" horizontalCenter="0"  text="PLEASE SELECT YOUR TEAM" />
@@ -256,6 +257,6 @@
 			<s:XMLListCollection  id="teamList"   source="{teamDataList}"/>	
 		</s:DataGroup>
 	</s:VGroup>
-	
+	</s:BorderContainer>
 	
 </s:Group>

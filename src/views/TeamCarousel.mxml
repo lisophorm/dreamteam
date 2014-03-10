@@ -226,7 +226,7 @@
 				<s:Spacer height="130" />
 				<s:Image smooth="true" scaleX=".6" scaleY=".6" source="assets/images/logo_live.png" />
 				<s:Spacer height="10" />
-				<s:Image smooth="true" source="{'assets/images/'+(type=='GAME' ? 'txt_dream_team' : 'txt_select_your_teamsheet' )+'.png'}"  />			
+				<s:Image smooth="true" source="{'assets/images/'+(type=='GAME' ? 'txt_dream_team' : 'txt_see_the_team_sheets' )+'.png'}"  />			
 				<s:Label fontSize="20" textAlign="center" paddingTop="15" width="330" text="{(type=='GAME') ? game_subtext : teamsheet_subtext}" color="0x29b1f0"  />
 			</s:VGroup>
 			<s:Spacer width="100" />
