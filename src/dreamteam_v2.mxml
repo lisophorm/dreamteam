@@ -8,7 +8,7 @@
 					   addedToStage="fullscreen()" showStatusBar="false" 
 					   xmlns:registration="registration.*" 
 					   xmlns:debug="registration.debug.*"
-					   closing="windowedapplication1_closingHandler(event)"
+					 
 					   alwaysInFront="false">
 	
 	<fx:Style source="assets/css/Main.css" />
@@ -133,7 +133,7 @@
 			public var localURL:String;
 			private var stats:Stats;
 			
-			private var browserHandler:IELauncher;
+
 			
 			protected function fullscreen(e:Event=null):void
 			{
@@ -214,8 +214,6 @@
 				urn = int(pref.prefsXML..urnLength);
 				scoreFormat = pref.prefsXML..scoreFormat;
 				//password = pref.prefsXML..password;
-				browserHandler=new IELauncher();
-				browserHandler.launch();
 				password="123";
 				monitor =  new MonitorConnection(localURL+"ping.php");
 				
@@ -594,7 +592,8 @@
 						break;
 					
 					case ViewEvent.LOCATION_REGISTRATION_COMPLETE:
-						gotoView("Thankyou");
+						gotoView("TeamCarousel", e.object);
+						//gotoView("Thankyou");
 						break;
 					
 					case ViewEvent.LOCATION_PHOTO_SELECTED_USER:
@@ -851,16 +850,12 @@
 			}
 			
 			
-			protected function windowedapplication1_closingHandler(event:Event):void
-			{
-				trace("*********** closing window!");
-				if(browserHandler) {
-					browserHandler.kill();
-				}
-			}
+
 			
 		]]>
 	</fx:Script>
+
+		
 	
 	<s:VGroup id="background"  width="100%" height="100%" verticalAlign="bottom" >
 		<s:Image verticalAlign="bottom"  width="100%" height="100%" click="fullscreen()"
@@ -883,7 +878,7 @@
 				<s:Button skinClass="skins.BasicButton" styleName="nav" icon="@Embed('assets/images/core/home_logo.png')" click="{defaultView()}"/>
 				<s:Button skinClass="skins.BasicButton" styleName="nav" label="{ML.t('Quit')}" click="exitApplication(event)" id="quitButton" color="0xFFFFFF" visible="{loggedIn}" includeInLayout="{loggedIn}" />
 				<s:Button skinClass="skins.BasicButton" styleName="nav" icon="@Embed('assets/images/core/padlock.png')" click="config(event)" color="0xFFFFFF" />
-				<s:Button label="userform" click="{gotoView('UserForm')}"/>
+				<!--s:Button label="userform" click="{gotoView('UserForm')}"/-->
 			</s:HGroup>		
 		</s:HGroup>
 	</s:BorderContainer>
@@ -963,7 +958,7 @@
 			
 		</s:Group>
 	</s:VGroup>
-	
+
 	<debug:DebugPanel id="debugPanel" visible="false"/>
 	
 	<s:SpriteVisualElement id="statsContainer"/>
