@@ -115,6 +115,8 @@
 			
 			protected function save(e:ResultEvent=null):void
 			{
+				trace("previous registration:"+this.parentApplication.registrationIncomplete);
+				this.parentApplication.registrationIncomplete=false;
 				// -> Do we need to send an isRegistered? We should divide Facebook and Direct registration perhaps
 				if(e.result)
 				{

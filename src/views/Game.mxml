@@ -7,6 +7,7 @@
 	<fx:Script>
 		<![CDATA[
 			import com.alfo.utils.Console;
+			import com.alfo.utils.PNGEncoderAsync;
 			import com.greensock.BlitMask;
 			import com.greensock.TweenMax;
 			
@@ -17,7 +18,6 @@
 			import mx.core.UIComponent;
 			import mx.events.DragEvent;
 			import mx.events.FlexEvent;
-			import mx.graphics.codec.JPEGEncoder;
 			import mx.graphics.codec.PNGEncoder;
 			import mx.managers.DragManager;
 			import mx.rpc.events.FaultEvent;
@@ -42,6 +42,8 @@
 			
 			protected var imageSave : URLLoader;
 			private var settings:Settings;
+			
+			private var imageByteArray : ByteArray;
 			
 			public function created(event:FlexEvent=null):void
 			{
@@ -69,6 +71,7 @@
 				TeamModel.selectedTeam = selectedTeam;
 				
 				settings = Settings.instance;
+				pngEncoder.addEventListener(Event.COMPLETE,savePicture);
 			}
 			
 			protected function redrawTeamConfigurations( e:TeamEvent = null ):void
@@ -191,6 +194,8 @@
 			[Bindable]
 			public var teamlogo:String;
 			
+			private var pngEncoder :PNGEncoderAsync = new PNGEncoderAsync();
+			
 			protected function populate(e:ResultEvent=null):void
 			{
 				if (selectedTeam!=null)
@@ -199,6 +204,7 @@
 					var team:XMLList = xml..team.(@name==selectedTeam);
 					var allPlayers:XMLList = team..player;
 					teamlogo = team.@logo;
+					this.parentApplication.currentTeamColour=team.@color;
 					for (var i:int = 0; i<allPlayers.length();i++)
 					{
 						//Console.log((allPlayers[i].parent() as XML).name(), this);
@@ -323,30 +329,12 @@
 				bd.draw(teamcontainer);
 //				encoder.addEventListener(Event.COMPLETE, encodeScreenshotCompleteHandler);
 //				encoder.encodeAsync(bd);	
-				var pngEncoder : PNGEncoder = new PNGEncoder();
 				
-				var newencoder : JPEGEncoder = new JPEGEncoder();
-				var imageByteArray : ByteArray = pngEncoder.encode(bd);
 				
-				var uniqueCode : String = Math.random().toString().substr(2,5);
-				var imageName : String = settings.userData.urn + "_" + uniqueCode + "_dreamteam.png";
 				
-				var teamFile : File = File.desktopDirectory.resolvePath(imageName);
-				var stream : FileStream = new FileStream();
-				stream.open(teamFile, FileMode.WRITE);
-				stream.writeBytes(imageByteArray);
-				stream.close();
+				pngEncoder.encode(bd);
 				
-				var imageUploadUrl : String = this.parentApplication.localURL + "uploader_dreamteam.php";
-				var request : URLRequest = new URLRequest(imageUploadUrl);
-				request.method = URLRequestMethod.POST;
-				
-				teamFile.addEventListener(Event.COMPLETE, imageUploadCompleteHandler);
-				teamFile.addEventListener(DataEvent.UPLOAD_COMPLETE_DATA,uploadDataComplete);
-				teamFile.addEventListener(IOErrorEvent.IO_ERROR, imageUploadErrorHandler);
-				teamFile.upload(request);
-				
-				this.parentApplication.dispatchEvent( new KioskProgressEvent(KioskProgressEvent.NOTIFY, "Uploading file" ) );
+
 				
 //				var header:URLRequestHeader = new URLRequestHeader("Content-type", "application/octet-stream");
 //				var request:URLRequest = new URLRequest(this.parentApplication.localURL + "uploader_dreamteam.php" + "?urn=" +settings.userData.urn + "&imageName=" + settings.userData.urn + "_" + uniqueCode + ".jpg" );
@@ -355,9 +343,35 @@
 //				request.data = imageByteArray;
 //				imageSave.load(request);
 			}
-			
+			protected function savePicture(e:Event) {
+				trace("******** png encode complete");
+				var uniqueCode : String = Math.random().toString().substr(2,5);
+				var imageName : String = settings.userData.urn + "_" + uniqueCode + "_dreamteam.png";
+				
+				var teamFile : File = File.desktopDirectory.resolvePath(imageName);
+				var stream : FileStream = new FileStream();
+				stream.open(teamFile, FileMode.WRITE);
+				stream.writeBytes(pngEncoder.png);
+				stream.close();
+				
+				var imageUploadUrl : String = this.parentApplication.localURL + "uploader_dreamteam.php";
+				var request : URLRequest = new URLRequest(imageUploadUrl);
+				request.method = URLRequestMethod.POST;
+				
+				teamFile.addEventListener(ProgressEvent.PROGRESS,imageUploadProgress);
+				teamFile.addEventListener(Event.COMPLETE, imageUploadCompleteHandler);
+				teamFile.addEventListener(DataEvent.UPLOAD_COMPLETE_DATA,uploadDataComplete);
+				teamFile.addEventListener(IOErrorEvent.IO_ERROR, imageUploadErrorHandler);
+				teamFile.upload(request);
+				
+				this.parentApplication.dispatchEvent( new KioskProgressEvent(KioskProgressEvent.NOTIFY, "Uploading file" ) );
+			}
+			protected function imageUploadProgress(e:ProgressEvent) {
+				trace("uploaded :"+e.bytesLoaded+"of:"+e.bytesLoaded);
+			}
 			protected function imageUploadCompleteHandler(event : Event) : void
 			{
+				trace("Game :: imageUploadCompleteHandler");
 				this.parentApplication.dispatchEvent( new KioskProgressEvent( KioskProgressEvent.UPDATE_COMPLETE ));
 			}
 			
@@ -369,7 +383,7 @@
 			
 			protected function uploadDataComplete(event:DataEvent):Boolean
 			{
-				
+				trace("Game :: uploadDataComplete");
 				try {
 					var result:XML = new XML(event.data);
 				} catch (e:Error) {
