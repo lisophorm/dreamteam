@@ -6,34 +6,25 @@
 		 creationComplete="created(event)" remove="exit(event)" >
 	<fx:Script>
 		<![CDATA[
-			import com.alfo.utils.Console;
-			import com.alfo.utils.PNGEncoderAsync;
-			import com.greensock.BlitMask;
 			import com.greensock.TweenMax;
+			import com.leeburrows.encoders.AsyncJPGEncoder;
+			import com.leeburrows.encoders.AsyncPNGEncoder;
+			import com.leeburrows.encoders.supportClasses.AsyncImageEncoderEvent;
 			
-			import flash.events.MouseEvent;
+			import flash.events.DataEvent;
+			import flash.events.Event;
+			import flash.events.IOErrorEvent;
+			import flash.events.ProgressEvent;
 			
-			import mx.core.BitmapAsset;
-			import mx.core.DragSource;
-			import mx.core.UIComponent;
-			import mx.events.DragEvent;
 			import mx.events.FlexEvent;
-			import mx.graphics.codec.PNGEncoder;
-			import mx.managers.DragManager;
 			import mx.rpc.events.FaultEvent;
 			import mx.rpc.events.ResultEvent;
 			
-			import spark.primitives.BitmapImage;
-			
 			import events.KioskError;
-			import events.KioskEvent;
 			import events.KioskProgressEvent;
-			import events.KioskWaitEvent;
 			import events.TeamEvent;
-			import events.UserEvent;
 			import events.ViewEvent;
 			
-			import model.ML;
 			import model.Settings;
 			import model.TeamModel;
 			
@@ -43,7 +34,24 @@
 			protected var imageSave : URLLoader;
 			private var settings:Settings;
 			
+			private var teamFile : File = new File();
+			
 			private var imageByteArray : ByteArray;
+			
+			
+			[Bindable]
+			public var goalkeeperData:XMLList;
+			[Bindable]
+			public var defenderData:XMLList;
+			[Bindable]
+			public var midfielderData:XMLList;
+			[Bindable]
+			public var forwardData:XMLList;
+			
+			[Bindable]
+			public var teamlogo:String;
+			
+			private var pngEncoder:AsyncJPGEncoder;
 			
 			public function created(event:FlexEvent=null):void
 			{
@@ -52,11 +60,12 @@
 			}
 			public function init(event:Event=null):void
 			{
-//				Console.log("*** INIT GAME ***", this);
+				trace("*** INIT GAME ***");
 				if (this.parentApplication.data!=null)
 				{
 					data = this.parentApplication.data;
 					selectedTeam = data.team;
+					trace( data.team);
 //					Console.log( data.team, this );
 				}
 				
@@ -71,7 +80,9 @@
 				TeamModel.selectedTeam = selectedTeam;
 				
 				settings = Settings.instance;
-				pngEncoder.addEventListener(Event.COMPLETE,savePicture);
+				pngEncoder = new AsyncJPGEncoder(85);
+				pngEncoder.addEventListener(AsyncImageEncoderEvent.COMPLETE,savePicture);
+				pngEncoder.addEventListener(AsyncImageEncoderEvent.PROGRESS,encodeProgressHandler);
 			}
 			
 			protected function redrawTeamConfigurations( e:TeamEvent = null ):void
@@ -171,6 +182,13 @@
 			}
 			public function exit( e:Event = null):void
 			{
+				if(teamFile.hasEventListener(ProgressEvent.PROGRESS)) {
+					teamFile.removeEventListener(ProgressEvent.PROGRESS,imageUploadProgress);
+					teamFile.removeEventListener(Event.COMPLETE, imageUploadCompleteHandler);
+					teamFile.removeEventListener(DataEvent.UPLOAD_COMPLETE_DATA,uploadDataComplete);
+					teamFile.removeEventListener(IOErrorEvent.IO_ERROR, imageUploadErrorHandler);
+				}
+				pngEncoder=null;
 				trace("*** EXIT GAME ***");
 				clock.clearTimer();
 				
@@ -182,19 +200,6 @@
 				
 			}
 
-			[Bindable]
-			public var goalkeeperData:XMLList;
-			[Bindable]
-			public var defenderData:XMLList;
-			[Bindable]
-			public var midfielderData:XMLList;
-			[Bindable]
-			public var forwardData:XMLList;
-			
-			[Bindable]
-			public var teamlogo:String;
-			
-			private var pngEncoder :PNGEncoderAsync = new PNGEncoderAsync();
 			
 			protected function populate(e:ResultEvent=null):void
 			{
@@ -205,6 +210,7 @@
 					var allPlayers:XMLList = team..player;
 					teamlogo = team.@logo;
 					this.parentApplication.currentTeamColour=team.@color;
+					this.parentApplication.currentGoalKeeperColour=team.@goalkeepercolor;
 					for (var i:int = 0; i<allPlayers.length();i++)
 					{
 						//Console.log((allPlayers[i].parent() as XML).name(), this);
@@ -325,14 +331,16 @@
 				email_overlay.visible=false;
 				//this.parentApplication.dispatchEvent(new KioskWaitEvent("Saving your dream team"));
 				
-				var bd:BitmapData = new BitmapData(teamcontainer.width, teamcontainer.height, true,0x00FFFFFF);
+				var bd:BitmapData = new BitmapData(teamcontainer.width, teamcontainer.height, false,0xFFFFFFFF);
 				bd.draw(teamcontainer);
 //				encoder.addEventListener(Event.COMPLETE, encodeScreenshotCompleteHandler);
 //				encoder.encodeAsync(bd);	
 				
 				
 				
-				pngEncoder.encode(bd);
+				pngEncoder.start(bd);
+				this.parentApplication.dispatchEvent( new KioskProgressEvent(KioskProgressEvent.NOTIFY, "Preparing image" ) );
+				
 				
 
 				
@@ -343,26 +351,43 @@
 //				request.data = imageByteArray;
 //				imageSave.load(request);
 			}
-			protected function savePicture(e:Event) {
+			private function encodeProgressHandler(event:AsyncImageEncoderEvent):void
+			{
+				//trace progress
+				trace("encoding progress:", Math.floor(event.percentComplete)+"% complete");
+			}
+			protected function savePicture(e:AsyncImageEncoderEvent) {
 				trace("******** png encode complete");
+				var userData:Object=new Object();
 				var uniqueCode : String = Math.random().toString().substr(2,5);
-				var imageName : String = settings.userData.urn + "_" + uniqueCode + "_dreamteam.png";
+				var imageName : String = settings.userData.urn + "_" + uniqueCode + "_dreamteam.jpg";
 				
-				var teamFile : File = File.desktopDirectory.resolvePath(imageName);
+				teamFile  = File.documentsDirectory.resolvePath("dreamteam_tempdir");
+				
+				if(!teamFile.exists) {
+					try {
+						teamFile.createDirectory();
+					} catch (e:Error) {
+						this.parentApplication.dispatchEvent( new KioskError(KioskError.ERROR, "Error creating temp directory \r\n"+teamFile.nativePath+"\r\n"+e.message, "I/O Error" ) );
+					}
+				}
+				
+				teamFile=File.documentsDirectory.resolvePath("dreamteam_tempdir"+File.separator+imageName);
+				
 				var stream : FileStream = new FileStream();
 				stream.open(teamFile, FileMode.WRITE);
-				stream.writeBytes(pngEncoder.png);
+				stream.writeBytes(pngEncoder.encodedBytes);
 				stream.close();
 				
-				var imageUploadUrl : String = this.parentApplication.localURL + "uploader_dreamteam.php";
-				var request : URLRequest = new URLRequest(imageUploadUrl);
-				request.method = URLRequestMethod.POST;
+				var imageUploadUrl : String = this.parentApplication.localURL + "uploader_dreamteam.php?teamname="+data.team;
+				//var request : URLRequest = new URLRequest(imageUploadUrl);
+
 				
 				teamFile.addEventListener(ProgressEvent.PROGRESS,imageUploadProgress);
 				teamFile.addEventListener(Event.COMPLETE, imageUploadCompleteHandler);
 				teamFile.addEventListener(DataEvent.UPLOAD_COMPLETE_DATA,uploadDataComplete);
 				teamFile.addEventListener(IOErrorEvent.IO_ERROR, imageUploadErrorHandler);
-				teamFile.upload(request);
+				teamFile.upload(new URLRequest(imageUploadUrl));
 				
 				this.parentApplication.dispatchEvent( new KioskProgressEvent(KioskProgressEvent.NOTIFY, "Uploading file" ) );
 			}
@@ -372,7 +397,7 @@
 			protected function imageUploadCompleteHandler(event : Event) : void
 			{
 				trace("Game :: imageUploadCompleteHandler");
-				this.parentApplication.dispatchEvent( new KioskProgressEvent( KioskProgressEvent.UPDATE_COMPLETE ));
+				//this.parentApplication.dispatchEvent( new KioskProgressEvent( KioskProgressEvent.UPDATE_COMPLETE ));
 			}
 			
 			protected function imageUploadErrorHandler(event : IOErrorEvent) : void
@@ -425,9 +450,9 @@
 		<s:VGroup horizontalAlign="center" width="100%" paddingTop="0">
 			<s:Group>
 				<s:HGroup horizontalCenter="50" verticalCenter="60">
-					<s:Label fontFamily="StandardRegularAllCase" text="{'You\'ve got '+clock.seconds.toString()+' seconds to select your Dream Team.\n'}" color="0x97393A" fontSize="19" />
+					<s:Label fontFamily="StandardRegularAllCase" text="{'You\'ve got '+clock.seconds.toString()+' seconds to select your Dream Team.\n'}" color="0x00ADEE" fontSize="19" />
 					<s:Spacer width="280" />
-					<s:Label fontFamily="StandardRegularAllCase" text="Use your finger to drag and drop players into the Team Sheet."  color="0x97393A" fontSize="19"/>					
+					<s:Label fontFamily="StandardRegularAllCase" text="Use your finger to drag and drop players into the Team Sheet."  color="0x00ADEE" fontSize="19"/>					
 					
 				</s:HGroup>
 				

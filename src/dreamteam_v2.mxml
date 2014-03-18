@@ -141,6 +141,9 @@
 			
 			[Bindable]
 			public var currentTeamColour:Number=0;
+			
+			[Bindable]
+			public var currentGoalKeeperColour:Number=0;
 
 			
 			protected function fullscreen(e:Event=null):void
@@ -392,7 +395,7 @@
 				progressWindow.windowTitle = e.title;
 				progressWindow.message = e.message;
 				progressWindow.exitFunction = e.exitFunction;
-				PopUpManager.addPopUp(progressWindow, this, true);
+				PopUpManager.addPopUp(progressWindow, this, false);
 				PopUpManager.centerPopUp(progressWindow);
 				centerPopups();
 			}

@@ -124,7 +124,7 @@
 		</s:filters>
 		<s:fill>
 			<!--0xE6001C-->
-			<s:SolidColor color.goalkeeper="0xFECD0A" color.player="{this.parentApplication.currentTeamColour}" color.over="0x999999" color="0x999999" color.initial="0x999999" />
+			<s:SolidColor color.goalkeeper="{this.parentApplication.currentGoalKeeperColour}" color.player="{this.parentApplication.currentTeamColour}" color.over="0x999999" color="0x999999" color.initial="0x999999" />
 		</s:fill>
 	</s:Rect>
 	<s:Label id="labelDisplay" styleName="sideButton"

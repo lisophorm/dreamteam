@@ -114,7 +114,7 @@
 			protected function resizza():void {
 				trace("resizza altro");
 				//var eventObject:Event = new Event ("showTerms");
-				//dispatchEvent(eventObject); 
+				//dispatchEvent(eventObject); 9
 			}
 			
 			
