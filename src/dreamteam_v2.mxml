@@ -377,7 +377,7 @@
 				clearPopups();
 				popupWait = new pleaseWait();
 				popupWait.message = e.message;
-				PopUpManager.addPopUp(popupWait, this, true) ;
+				PopUpManager.addPopUp(popupWait, this, false) ;
 				PopUpManager.centerPopUp(popupWait);
 				centerPopups();
 			}

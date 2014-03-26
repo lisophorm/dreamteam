@@ -33,7 +33,7 @@ Henry was instrumental in Arsenal's exceptionally successful campaign. Henry ens
 				</statistic>
 				<statistic>
 					<numeralCopy><![CDATA[123]]></numeralCopy>
-					<bodyCopy><![CDATA[international caps for France]]></bodyCopy>
+					<bodyCopy><![CDATA[caps for France]]></bodyCopy>
 				</statistic>
                <data key="99 international PFA Player of the Year" value="2002/03, 2003/04" />
                <data key="99 international Golden Boot winner" value="2001/02, 2003/04, 2004/05, 2005/06" />
@@ -76,7 +76,7 @@ In the same year, Arsenal regained the Barclays Premier League title, beating Ma
 				</statistic>
 				<statistic>
 					<numeralCopy><![CDATA[79]]></numeralCopy>
-					<bodyCopy><![CDATA[international caps for the Netherlands]]></bodyCopy>
+					<bodyCopy><![CDATA[caps for the Netherlands]]></bodyCopy>
 				</statistic>
                <data key="3 Barclays Premier League Titles" />
                <data key="4 FA cups wins" />
@@ -120,7 +120,7 @@ Adams was part of the "famous four" that lined up in Arsenal's defence, which wa
 				</statistic>
 				<statistic>
 					<numeralCopy><![CDATA[66]]></numeralCopy>
-					<bodyCopy><![CDATA[international caps for England]]></bodyCopy>
+					<bodyCopy><![CDATA[caps for England]]></bodyCopy>
 				</statistic>
                <data key="4 League titles" />
                <data key="European Cup Winners’ Cup" />
@@ -167,7 +167,7 @@ Arsenal won both the FA Cup and the League Cup in 1993 and supplemented this a y
 				</statistic>
 				<statistic>
 					<numeralCopy><![CDATA[75]]></numeralCopy>
-					<bodyCopy><![CDATA[international caps for England]]></bodyCopy>
+					<bodyCopy><![CDATA[caps for England]]></bodyCopy>
 				</statistic>
                <data key="League Cup Winner" value="1992/93" />
                <data key="PFA Team of the Year " value="1997" />
@@ -209,7 +209,7 @@ Arsenal won both the FA Cup and the League Cup in 1993 and supplemented this a y
 				</statistic>
 				<statistic>
 					<numeralCopy><![CDATA[14]]></numeralCopy>
-					<bodyCopy><![CDATA[international caps for England]]></bodyCopy>
+					<bodyCopy><![CDATA[caps for England]]></bodyCopy>
 				</statistic>
                <data key="14 international caps for England" />
                <data key="Arsenal Player of the Year" value="2010/11" />
@@ -219,7 +219,7 @@ Arsenal won both the FA Cup and the League Cup in 1993 and supplemented this a y
             </statistics>
          </player>
       </top_players>
-      <video src="/assets/teamsheets/arsenal/video/Arsenal Video 1.flv" />
+      <video src="/assets/teamsheets/arsenal/video/ArsenalVideo1.flv" />
       <gallery>
          <item>
             <img src="/assets/teamsheets/arsenal/gallery/Arsenal-Stadium.jpg" alt="Emirates Stadium" />
@@ -233,7 +233,7 @@ Arsenal won both the FA Cup and the League Cup in 1993 and supplemented this a y
          </item>
          <item>
             <img src="/assets/teamsheets/arsenal/gallery/External Stadium.jpg" alt="Emirates Stadium" />
-            <description><![CDATA[Opened in 20016, Emirates Stadium is one of the newest stadia in the Barclays Premier League. The stadium was built on a former waste disposal site in Ashburton Grove and Emirates Airline were named as the main sponsor of the ground in 2004. The stadium’s site takes up around 17 acres and is incredibly advanced, there is constant computer monitoring of the stadiums conditions to ensure the pitch is always the highest quality possible.]]></description>
+            <description><![CDATA[Opened in 2006, Emirates Stadium is one of the newest stadia in the Barclays Premier League. The stadium was built on a former waste disposal site in Ashburton Grove and Emirates Airline were named as the main sponsor of the ground in 2004. The stadium’s site takes up around 17 acres and is incredibly advanced, there is constant computer monitoring of the stadiums conditions to ensure the pitch is always the highest quality possible.]]></description>
             <statistics>
                <description><![CDATA[<span fontWeight="bold">Capacity:</span> 60,362 <br/><br/><span fontWeight="bold">Field Dimensions:</span> 105m x 68m<br/><br/><span fontWeight="bold">Surface:</span> Desso GrassMaster.]]></description>
                <stat key="Capacity" value="60,362 " />

@@ -339,7 +339,7 @@
 				
 				
 				pngEncoder.start(bd);
-				this.parentApplication.dispatchEvent( new KioskProgressEvent(KioskProgressEvent.NOTIFY, "Preparing image" ) );
+				this.parentApplication.dispatchEvent( new KioskProgressEvent(KioskProgressEvent.NOTIFY, "Please wait..." ) );
 				
 				
 
@@ -389,7 +389,7 @@
 				teamFile.addEventListener(IOErrorEvent.IO_ERROR, imageUploadErrorHandler);
 				teamFile.upload(new URLRequest(imageUploadUrl));
 				
-				this.parentApplication.dispatchEvent( new KioskProgressEvent(KioskProgressEvent.NOTIFY, "Uploading file" ) );
+				
 			}
 			protected function imageUploadProgress(e:ProgressEvent) {
 				trace("uploaded :"+e.bytesLoaded+"of:"+e.bytesLoaded);

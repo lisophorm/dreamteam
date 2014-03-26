@@ -1,5 +1,5 @@
 <game>
-  <team name="Arsenal" id="Arsenal"  goalkeepercolor="0x6E34A2" color="0xEB1B23" logo="Arsenal.png">
+  <team name="Arsenal" id="Arsenal"  color="0xA9172A" logo="Arsenal.png">
   <goalkeeper>
     <player>David Seaman</player>
     <player>Wojciech Szczesny</player>
@@ -41,8 +41,8 @@
     <player>Jose Antonio Reyes</player>
     </forward>
   </team>
-  <!--  original color: 0x00FF00 -->
-  <team name="Aston Villa" id="Aston-Villa"  goalkeepercolor="0xFDD209" color="0x79003B" logo="Aston-Villa.png">
+  
+  <team name="Aston Villa" id="Aston-Villa"  color="0xA9172A" logo="Aston-Villa.png">
   <goalkeeper>
     <player>Shay Given</player>
     <player>Brad Friedel</player>
@@ -86,7 +86,7 @@
   </team>
   
   
-  <team name="Cardiff" id="Cardiff"  goalkeepercolor="0x39B549" color="0xEB1D23" logo="Cardiff-City.png">
+  <team name="Cardiff" id="Cardiff"  color="0xA9172A" logo="Cardiff-City.png">
   <goalkeeper>
     <player>David Williams</player>
     <player>Jon Hallworth</player>
@@ -129,7 +129,7 @@
   </forward>
   </team>
   
-  <team name="Chelsea" id="Chelsea"  goalkeepercolor="0xFDD209" color="0x024592" logo="Chelsea.png">
+  <team name="Chelsea" id="Chelsea"  color="0xA9172A" logo="Chelsea.png">
   <goalkeeper>
     <player>Petr Cech</player>
     <player>Carlo Cudicini</player>
@@ -172,7 +172,7 @@
   </forward>
    </team>
    
-  <team name="Crystal Palace" id="Crystal-Palace"  goalkeepercolor="0x009344" color="0xAB162B" logo="Crystal-Palace.png">
+  <team name="Crystal Palace" id="Crystal-Palace"  color="0xA9172A" logo="Crystal-Palace.png">
   <goalkeeper>
     <player>Julián Speroni</player>
     <player>Gábor Király</player>
@@ -215,7 +215,7 @@
   </forward>
    </team>
    
-  <team name="Everton" id="Everton"  goalkeepercolor="0x009344" color="0x114E91" logo="Everton.png">
+  <team name="Everton" id="Everton"  color="0xA9172A" logo="Everton.png">
   <goalkeeper>
     <player>Tim Howard</player>
     <player>Paul Gerrard</player>
@@ -258,7 +258,7 @@
   </forward>
   </team>
   
-  <team name="Fulham" id="Fullham"  goalkeepercolor="0xa0ea2c" color="0xD61C2D" logo="Fulham.png">
+  <team name="Fulham" id="Fullham"  color="0xA9172A" logo="Fulham.png">
   <goalkeeper>
     <player>Mark Schwarzer</player>
     <player>Edwin van der Sar</player>
@@ -301,7 +301,7 @@
   </forward>
    </team>
    
-  <team name="Hull" id="Hull"  goalkeepercolor="0xA6DD50" color="0xFAA519" logo="Hull-City.png">
+  <team name="Hull" id="Hull"  color="0xA9172A" logo="Hull-City.png">
   <goalkeeper>
     <player>Matt Duke</player>
     <player>Boaz Myhill</player>
@@ -344,7 +344,7 @@
   </forward>
    </team>
    
-  <team name="Liverpool" id="Liverpool"  goalkeepercolor="0x000000" color="0xD61820" logo="Liverpool.png">
+  <team name="Liverpool" id="Liverpool"  color="0xA9172A" logo="Liverpool.png">
   <goalkeeper>
     <player>Pepe Reina</player>
     <player>Brad Jones</player>
@@ -386,7 +386,7 @@
     <player>John Barnes</player>
   </forward>
   </team>
-  <team name="Manchester City" id="Man-City"  goalkeepercolor="0x009344" color="0x6BACDD" logo="Man-City.png">
+  <team name="Manchester City" id="Man-City"  color="0xA9172A" logo="Man-City.png">
   <goalkeeper>
     <player>Joe Hart</player>
     <player>David James</player>
@@ -428,7 +428,7 @@
     <player>Edin Dzeko</player>
     </forward>
    </team>
-    <team name="Manchester United" id="Man-UTD"  goalkeepercolor="0x009344" color="0xDF1A21" logo="Man-Utd.png">
+    <team name="Manchester United" id="Man-UTD"  color="0xA9172A" logo="Man-Utd.png">
   <goalkeeper>
     <player>Peter Schmeichel</player>
     <player>Edwin Van Der Sar</player>
@@ -470,7 +470,7 @@
     <player>Teddy Sheringham</player>
 </forward>
    </team>
-    <team name="Newcastle" id="Newcastle"  goalkeepercolor="0x8DC53E" color="0xFFFFFF" logo="Newcastle.png">
+    <team name="Newcastle" id="Newcastle"  color="0xA9172A" logo="Newcastle.png">
   <goalkeeper>
     <player>Pavel Srníček</player>
     <player>Tim Krul</player>
@@ -512,7 +512,7 @@
     <player>Yoan Gouffran</player>
   </forward>
    </team>
-    <team name="Norwich" id="Norwich"  goalkeepercolor="0x69C5E1" color="0xFFDB00" logo="Norwich.png">
+    <team name="Norwich" id="Norwich"  color="0xA9172A" logo="Norwich.png">
   <goalkeeper>
     <player>John Ruddy</player>
     <player>Mark Bunn</player>
@@ -555,7 +555,7 @@
      </forward>
    </team>
    
-    <team name="Southampton" id="Southampton"  goalkeepercolor="0xA6DD50" color="0xD61820" logo="Southampton.png">
+    <team name="Southampton" id="Southampton"  color="0xA9172A" logo="Southampton.png">
   <goalkeeper>
     <player>Kelvin Davis</player>
     <player>Artur Boruc</player>
@@ -595,7 +595,7 @@
  </forward>
    </team>
    
-    <team name="Stoke City" id="Stoke"  goalkeepercolor="0x252161" color="0xD7172F" logo="Stoke.png">
+    <team name="Stoke City" id="Stoke"  color="0xA9172A" logo="Stoke.png">
   <goalkeeper>
     <player>Asmir Begovic</player>
     <player>Thomas Sorensen</player>
@@ -631,7 +631,7 @@
     </forward>
    </team>
    
-    <team name="Swansea" id="Swansea"  goalkeepercolor="0x000000" color="0xFFFFFF" logo="Swansea.png">
+    <team name="Swansea" id="Swansea"  color="0xA9172A" logo="Swansea.png">
   <goalkeeper>
     <player>Michael Vorm</player>
     <player>Gerhard Tremmel</player>
@@ -675,7 +675,7 @@
   </forward>
    </team>
    
-    <team name="Sunderland" id="Sunderland"  goalkeepercolor="0xA6DD50" color="0xEB1B2D" logo="Sunderland.png">
+    <team name="Sunderland" id="Sunderland"  color="0xA9172A" logo="Sunderland.png">
   <goalkeeper>
     <player>Simon Mignolet</player>
     <player>Craig Gordon</player>
@@ -718,7 +718,7 @@
   </forward>
    </team>
   
-    <team name="Tottenham" id="Tottenham"  goalkeepercolor="0xF05A29" color="0x001B57" logo="Tottenham.png">
+    <team name="Tottenham" id="Tottenham"  color="0xA9172A" logo="Tottenham.png">
 
   <goalkeeper>
     <player>Ian Walker</player>
@@ -761,7 +761,7 @@
     <player>Peter Crouch</player>
   </forward>
    </team>
-    <team name="West Brom" id="WBA"  goalkeepercolor="0xA0EA2C" color="0x002D6D" logo="WBA.png">
+    <team name="West Brom" id="WBA"  color="0xA9172A" logo="WBA.png">
   <goalkeeper>
     <player>Ben Foster</player>
     <player>Paul Robinson</player>
@@ -804,7 +804,7 @@
   </forward>
    </team>
    
-    <team name="West Ham" id="West-Ham"  goalkeepercolor="0xA0EA2C" color="0x892841" logo="West-ham.png">
+    <team name="West Ham" id="West-Ham"  color="0xA9172A" logo="West-ham.png">
  
   <goalkeeper>
     <player>Robert Green</player>

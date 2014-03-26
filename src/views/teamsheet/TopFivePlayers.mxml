@@ -429,15 +429,15 @@
 				
 			</s:BorderContainer>
 			
-			<s:HGroup gap="0">
+			<s:HGroup gap="0" horizontalAlign="left">
 				<s:Rect width="2" height="100%">
 					<s:fill>
 						<s:SolidColor  color="{teamColor}" />
 					</s:fill>
 				</s:Rect>
-				<s:VGroup left="0" width="380" gap="0">				
-					<s:Image smooth="true"  height="342" backgroundColor="0xFFFFFF" id="teamshot1" />
-					<s:Image smooth="true" height="342" backgroundColor="0xFFFFFF" id="teamshot2" />
+				<s:VGroup left="0" width="200" gap="0">				
+					<s:Image smooth="true" width="200" scaleMode="zoom"  height="200" backgroundColor="0xFFFFFF" id="teamshot1" />
+					<s:Image smooth="true" width="200" scaleMode="zoom" height="200" backgroundColor="0xFFFFFF" id="teamshot2" />
 				</s:VGroup>	
 			</s:HGroup>
 			
