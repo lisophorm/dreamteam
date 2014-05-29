@@ -476,7 +476,7 @@
 		<s:Spacer height="30"/>
 		<s:Image source="@Embed('assets/images/fingerprintinstrunctions.png')" smooth="true" smoothingQuality="high" />
 		<s:Spacer height="30"/>
-		<s:Label id="allFingerprintsLabel" textAlign="center" styleName="registrationFour" text="You only have to register once to play any activity at Barlcays Premier{'\n'}League Live and all prints are deleted directly after the event."/>
+		<s:Label id="allFingerprintsLabel" textAlign="center" styleName="registrationFour" text="You only have to register once to play any activity at Barclays Premier{'\n'}League Live and all prints are deleted directly after the event."/>
 	</s:VGroup>
 	
 	<s:VGroup horizontalAlign="center" verticalAlign="top" height="574" width="100%">
